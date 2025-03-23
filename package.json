@@ -1,0 +1,54 @@
+{
+  "name": "mashku-portfolio",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "UX Designer Portfolio Website",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint 'src/**/*.js' --fix",
+    "format": "prettier --write 'src/**/*.{js,scss,html}'",
+    "clean": "rm -rf dist",
+    "deploy": "npm run build && gh-pages -d dist",
+    "fetch-notion": "node src/scripts/fetch-notion-content.js",
+    "download-images": "node src/scripts/download-images.js",
+    "update-pages": "node src/scripts/update-project-pages.js",
+    "fetch-all": "npm run fetch-notion && npm run download-images && npm run update-pages"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.56.0",
+    "gh-pages": "^6.1.1",
+    "postcss": "^8.5.3",
+    "prettier": "^3.1.1",
+    "sass": "^1.69.7",
+    "tailwindcss": "^4.0.15",
+    "vite": "^5.0.10"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/mashku-portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "ux-design",
+    "web-design"
+  ],
+  "author": "Mashku",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^2.3.0",
+    "@tailwindcss/postcss": "^4.0.15",
+    "@tailwindcss/vite": "^4.0.15",
+    "dotenv": "^16.4.7"
+  }
+}
