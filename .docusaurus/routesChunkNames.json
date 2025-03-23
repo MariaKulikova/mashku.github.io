@@ -42,17 +42,10 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/markdown-page-3d7": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
-    "__context": {
-      "plugin": "plugin---markdown-pagea-74-7b5"
-    },
-    "content": "content---markdown-page-393-028"
-  },
   "/projects-be4": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
-      "plugin": "plugin---docsaba-d7c"
+      "plugin": "plugin---projectsaba-5d0"
     }
   },
   "/projects-1d1": {
@@ -64,21 +57,21 @@
   },
   "/projects/hackathons-e88": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-hackathons-924-2d0"
+    "content": "content---projects-hackathons-924-031"
   },
   "/projects/selectel-design-system-33b": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-selectel-design-systemcae-d56"
+    "content": "content---projects-selectel-design-systemcae-0e3"
   },
   "/projects/story-redesign-32b": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-story-redesign-2-d-5-6cd"
+    "content": "content---projects-story-redesign-2-d-5-df6"
   },
-  "/-e5f": {
-    "__comp": "__comp---site-src-pages-index-tsx-1-df-d3e",
+  "/-fd5": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
     "__context": {
       "plugin": "plugin---markdown-pagea-74-7b5"
     },
-    "config": "config---5-e-9-4f3"
+    "content": "content---e-7-c-0a5"
   }
 }

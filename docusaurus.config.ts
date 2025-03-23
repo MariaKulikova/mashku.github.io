@@ -46,7 +46,7 @@ const config: Config = {
       title: 'Masha K',
       items: [
         {
-          to: '/projects/category/projects',
+          to: '/projects/selectel-design-system',
           label: 'Portfolio',
           position: 'left',
         },
