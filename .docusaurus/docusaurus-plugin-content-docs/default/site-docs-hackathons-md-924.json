@@ -1,0 +1,28 @@
+{
+  "id": "hackathons",
+  "title": "Hackathons",
+  "description": "Participation in hackathons and creating innovative solutions under time constraints",
+  "source": "@site/docs/hackathons.md",
+  "sourceDirName": ".",
+  "slug": "/hackathons",
+  "permalink": "/projects/hackathons",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Hackathons",
+    "description": "Participation in hackathons and creating innovative solutions under time constraints"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Selectel Design System",
+    "permalink": "/projects/selectel-design-system"
+  },
+  "next": {
+    "title": "CDN Service Redesign",
+    "permalink": "/projects/story-redesign"
+  }
+}
