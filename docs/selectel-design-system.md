@@ -52,5 +52,5 @@ We developed and implemented a set of components and patterns, making the design
 
 ---
 
-**Next Project:** [Hackathons](/docs/projects/hackathons)  
-**Previous Project:** [Story Redesign](/docs/projects/story-redesign)
+**Next Project:** [Hackathons](/projects/hackathons)
+**Previous Project:** [Story Redesign](/projects/story-redesign)

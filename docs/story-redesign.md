@@ -64,5 +64,5 @@ After implementation, we collected data on the results of our solution. The conv
 
 ---
 
-**Next Project:** [Selectel Design System](/docs/projects/selectel-design-system)  
-**Previous Project:** [Hackathons](/docs/projects/hackathons)
+**Next Project:** [Selectel Design System](/projects/selectel-design-system)
+**Previous Project:** [Hackathons](/projects/hackathons)

@@ -70,5 +70,5 @@ We designed a service with:
 
 ---
 
-**Next Project:** [Story Redesign](/docs/projects/story-redesign)  
-**Previous Project:** [Selectel Design System](/docs/projects/selectel-design-system)
+**Next Project:** [Story Redesign](/projects/story-redesign)
+**Previous Project:** [Selectel Design System](/projects/selectel-design-system)
