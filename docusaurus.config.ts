@@ -10,8 +10,8 @@ const config: Config = {
   url: 'https://mashku.github.io',
   baseUrl: '/',
 
-  organizationName: 'mashku',
-  projectName: 'portfolio',
+  organizationName: 'mariakulikova',
+  projectName: 'mashku',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
