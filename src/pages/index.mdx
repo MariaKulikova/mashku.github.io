@@ -7,56 +7,167 @@ hide_table_of_contents: true
 import Link from '@docusaurus/Link';
 
 <div className="w-4/5 mx-auto p-5">
-  <section className="py-24 text-left">
-    # HEY, I AM MASHA
+  <section className="py-24 text-left flex items-center">
+    <img
+          src="/img/black-white.gif"
+          alt="Masha K"
+          className="rounded-full w-64 h-64"
+        />
+    <div>
+      # HEY, I AM MASHA AN UX DESIGNER {/* This is already h1 */}
 
-    As UX Designer I create user interfaces for complex B2C and B2B products in a wide range of fields, including AI, CloudTech, E-com and MarTech. Right now, I'm working on an AI assistant project with the University of Luxembourg.
+      I create user interfaces for complex B2C and B2B products in a wide range of fields, including AI, CloudTech, E-com and MarTech.
+      Right now, I'm working on an AI assistant project with the University of Luxembourg.
+      <br/>
+      <button to="https://drive.google.com/file/d/1gGDYX4TTZIv8rftfuQmAqfnbDs9SVnsT/view" className="button">
+        Download CV
+      </button>
+    </div>
   </section>
 
   <section className="py-24">
-    ## TEAMS
+    ## PROJECTS
 
-    <div className="mb-10">
-      ### Selectel
-      <p className="text-gray-500 mb-3">UX designer of Cloud Storage and CDN /2020-2022</p>
-      <Link to="/projects/selectel-design-system" 
-        className="text-gray-700 text-2xl leading-8 hover:text-gray-800 hover:bg-[#B4FFA1] hover:px-2 block">
-        How we create design system
-      </Link>
-      <Link to="/projects/story-redesign" 
-        className="text-gray-700 text-2xl leading-8 hover:text-gray-800 hover:bg-[#B4FFA1] hover:px-2 block mt-2">
-        Try to decrease count of tickets in support
-      </Link>
-    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            <u>University Of Luxembourg</u>
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
+        </p>
+        <div className="flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-2 h-2 mr-2 rounded-full" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            University Of Luxembourg
+          </a>
+          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold ml-2">
+            Product Design
+          </span>
+        </div>
+      </div>
 
-    <p className="mb-5">Full story of projects you can find at CV</p>
-    <Link to="https://drive.google.com/file/d/1gGDYX4TTZIv8rftfuQmAqfnbDs9SVnsT/view"
-      className="inline-block px-5 py-2.5 bg-gray-200 text-gray-700 no-underline border border-gray-300 rounded mt-5 hover:bg-gray-300">
-      Download CV
-    </Link>
-  </section>
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Simplifying act requests at Marquiz
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Marquiz
+          </a>
+          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            Product Design
+          </span>
+        </div>
+      </div>
 
-  <section className="py-24">
-    ## OTHER PROJECTS
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            How we made a redesign of CDN at Selectel
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Selectel
+          </a>
+          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            Product Design
+          </span>
+        </div>
+      </div>
 
-    <div className="mb-10">
-      <p className="text-gray-700 text-2xl leading-8">How details can tell story</p>
-      <p className="text-gray-500 mb-3">Blog on Telegram</p>
-    </div>
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Find a CoffeeShop near you
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          TelegramBot
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            CoffeeDrinkers
+          </a>
+          <span className="bg-telegrambot text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            TelegramBot
+          </span>
+        </div>
+      </div>
 
-    <div className="mb-10">
-      <p className="text-gray-700 text-2xl leading-8">Find a CoffeeShop near you</p>
-      <p className="text-gray-500 mb-3">TelegramBot</p>
-    </div>
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            How details can tell story
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Blog on Telegram
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            NomadicEye
+          </a>
+          <span className="bg-blog-on-telegram text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            Blog on Telegram
+          </span>
+        </div>
+      </div>
 
-    <div className="mb-10">
-      <p className="text-gray-700 text-2xl leading-8">What do you see here?</p>
-      <p className="text-gray-500 mb-3">Illustrations about me and you</p>
-    </div>
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            What do you see here?
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Illustrations about me and you
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Behance
+          </a>
+          <span className="bg-visual-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            Visual Design
+          </span>
+        </div>
+      </div>
 
-    <div className="mb-10">
-      <p className="text-gray-700 text-2xl leading-8">Estimate this on PlanBanan</p>
-      <p className="text-gray-500 mb-3">Estimating tool that used at real companies</p>
+      <div className="rounded-lg bg-white shadow-md p-4">
+        <h3 className="text-xl font-semibold mb-2 flex items-center">
+          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            Estimate this on PlanBanan
+          </a>
+        </h3>
+        <p className="text-gray-500 mb-4">
+          Estimating tool that used at real companies
+        </p>
+        <div className="flex items-center justify-between">
+          <a href="https://example.com" className="text-blue-600 hover:underline">
+            PlanBanan
+          </a>
+          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+            Product Design
+          </span>
+        </div>
+      </div>
     </div>
   </section>
 
