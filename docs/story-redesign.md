@@ -1,7 +1,7 @@
 ---
-sidebar_position: 3
 title: CDN Service Redesign
 description: A case study of the redesign process and UX improvements at Selectel
+hide_table_of_contents: true
 ---
 
 # CDN Service Redesign Story
@@ -66,3 +66,4 @@ After implementation, we collected data on the results of our solution. The conv
 
 **Next Project:** [Selectel Design System](/projects/selectel-design-system)
 **Previous Project:** [Hackathons](/projects/hackathons)
+=======

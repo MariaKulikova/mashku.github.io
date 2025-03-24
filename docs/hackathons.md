@@ -1,7 +1,7 @@
 ---
-sidebar_position: 2
 title: Hackathons
 description: Participation in hackathons and creating innovative solutions under time constraints
+hide_table_of_contents: true
 ---
 
 # Hackathons
@@ -65,10 +65,11 @@ We designed a service with:
 **Role:** UX Designer  
 **Year:** 2023-2024  
 **Event:** Digital Breakthrough Hackathon
-
 :::
 
 ---
 
 **Next Project:** [Story Redesign](/projects/story-redesign)
 **Previous Project:** [Selectel Design System](/projects/selectel-design-system)
+
+=======

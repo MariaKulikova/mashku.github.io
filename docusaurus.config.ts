@@ -10,6 +10,7 @@ const config: Config = {
   url: 'https://mashku.github.io',
   baseUrl: '/',
 
+  
   organizationName: 'mariakulikova',
   projectName: 'mashku',
   deploymentBranch: 'gh-pages',
@@ -27,8 +28,11 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
           routeBasePath: 'projects',
+          // Disable sidebar for all docs
+          sidebarPath: false,
+          // Show breadcrumbs
+          breadcrumbs: true,
         },
         blog: false,
         theme: {

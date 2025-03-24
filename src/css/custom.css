@@ -165,10 +165,25 @@ h2 .hash-link {
 /* Projects section */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
-  gap: 40px;
-  margin-top: 40px;
+  grid-auto-flow: dense;
+  gap: 32px;
+  margin-top: 32px;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 3fr;
 }
+
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .projects-grid > .project-card {
+    grid-column: 2 !important;
+  }
+}
+
 
 .project-card {
   display: flex;

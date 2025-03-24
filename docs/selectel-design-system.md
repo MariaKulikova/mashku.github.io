@@ -1,7 +1,7 @@
 ---
-sidebar_position: 1
 title: Selectel Design System
 description: Development and implementation of a comprehensive design system for Selectel
+hide_table_of_contents: true
 ---
 
 # Selectel Design System
@@ -54,3 +54,4 @@ We developed and implemented a set of components and patterns, making the design
 
 **Next Project:** [Hackathons](/projects/hackathons)
 **Previous Project:** [Story Redesign](/projects/story-redesign)
+=======
