@@ -2,6 +2,9 @@
  * Portfolio website styles
  */
 
+/* Import Onest font */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
+
 :root {
   --ifm-color-primary: #000000;
   --ifm-color-primary-dark: #000000;
@@ -17,12 +20,19 @@
 
 /* Base styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Onest", sans-serif;
+  font-optical-sizing: auto;
+
+  font-style: normal;
   color: #333;
   line-height: 1.5;
 }
 
 /* Typography */
+h1, h2, h3 {
+  font-family: "Onest", sans-serif;
+}
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 0.625rem;
@@ -145,14 +155,9 @@ a:hover {
   background-color: #d1d5db;
 }
 
-/* Remove default Docusaurus navbar underline */
-.navbar__link {
-  text-decoration: none !important;
-}
-
-.navbar__link:hover {
-  text-decoration: none !important;
-  background-color: var(--accent-color);
+/* Remove default Docusaurus navbar and its divider */
+.navbar {
+  border-bottom: none !important;
 }
 
 /* Clean footer style */

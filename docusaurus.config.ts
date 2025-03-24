@@ -42,54 +42,11 @@ const config: Config = {
       defaultMode: 'light',
       disableSwitch: true,
     },
+    // Empty navbar config to hide it
     navbar: {
-      title: 'Masha K',
-      items: [
-        {
-          to: '/projects/selectel-design-system',
-          label: 'Portfolio',
-          position: 'left',
-        },
-        {
-          href: 'https://t.me/username',
-          label: 'Telegram',
-          position: 'right',
-        },
-        {
-          href: 'https://dribbble.com/username',
-          label: 'Dribbble',
-          position: 'right',
-        },
-        {
-          href: '/files/cv.pdf',
-          label: 'CV',
-          position: 'right',
-        },
-      ],
+      items: []
     },
-    footer: {
-      style: 'light',
-      links: [
-        {
-          title: 'Connect',
-          items: [
-            {
-              label: 'Telegram',
-              href: 'https://t.me/username',
-            },
-            {
-              label: 'Dribbble',
-              href: 'https://dribbble.com/username',
-            },
-            {
-              label: 'CV',
-              href: '/files/cv.pdf',
-            },
-          ],
-        },
-      ],
-      copyright: `© ${new Date().getFullYear()} Masha K. All rights reserved.`,
-    },
+    // No footer config to hide it
     metadata: [
       {
         name: 'description',
