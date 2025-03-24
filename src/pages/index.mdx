@@ -6,164 +6,176 @@ hide_table_of_contents: true
 
 import Link from '@docusaurus/Link';
 
-<div className="w-4/5 mx-auto p-5">
-  <section className="py-24 text-left flex items-center">
-    <img
-          src="/img/black-white.gif"
-          alt="Masha K"
-          className="rounded-full w-64 h-64"
-        />
-    <div>
-      # HEY, I AM MASHA AN UX DESIGNER {/* This is already h1 */}
+<div className="container">
+  <section className="section">
+    <div className="bio">
+      <img
+        className="bio__avatar"
+        src="/img/black-white.gif"
+        alt="Masha K"
+      />
+      <div className="bio__content">
+        # HEY, I AM MASHA AN UX DESIGNER
 
-      I create user interfaces for complex B2C and B2B products in a wide range of fields, including AI, CloudTech, E-com and MarTech.
-      Right now, I'm working on an AI assistant project with the University of Luxembourg.
-      <br/>
-      <button to="https://drive.google.com/file/d/1gGDYX4TTZIv8rftfuQmAqfnbDs9SVnsT/view" className="button">
-        Download CV
-      </button>
+        I create user interfaces for complex B2C and B2B products in a wide range of fields, including AI, CloudTech, E-com and MarTech.
+        Right now, I'm working on an AI assistant project with the University of Luxembourg.
+      </div>
     </div>
   </section>
 
-  <section className="py-24">
+  <section className="section">
     ## PROJECTS
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            <u>University Of Luxembourg</u>
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+    <div className="projects-grid">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              University Of Luxembourg
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
         </p>
-        <div className="flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-2 h-2 mr-2 rounded-full" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            University Of Luxembourg
-          </a>
-          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold ml-2">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">University Of Luxembourg</a>
+          </div>
+          <span className="project-card__tag project-card__tag--product">
             Product Design
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Simplifying act requests at Marquiz
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              Simplifying act requests at Marquiz
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Marquiz
-          </a>
-          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">Marquiz</a>
+          </div>
+          <span className="project-card__tag project-card__tag--product">
             Product Design
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            How we made a redesign of CDN at Selectel
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              How we made a redesign of CDN at Selectel
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Cloud infrastructure provider. Selectel has 6 data centers in Moscow, Saint Petersburg.
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Selectel
-          </a>
-          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">Selectel</a>
+          </div>
+          <span className="project-card__tag project-card__tag--product">
             Product Design
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Find a CoffeeShop near you
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              Find a CoffeeShop near you
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           TelegramBot
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            CoffeeDrinkers
-          </a>
-          <span className="bg-telegrambot text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">CoffeeDrinkers</a>
+          </div>
+          <span className="project-card__tag project-card__tag--telegram">
             TelegramBot
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            How details can tell story
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              How details can tell story
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Blog on Telegram
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            NomadicEye
-          </a>
-          <span className="bg-blog-on-telegram text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">NomadicEye</a>
+          </div>
+          <span className="project-card__tag project-card__tag--blog">
             Blog on Telegram
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            What do you see here?
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className='link'>
+              What do you see here?
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Illustrations about me and you
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Behance
-          </a>
-          <span className="bg-visual-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <p>Behance</p>
+          </div>
+          <span className="project-card__tag project-card__tag--visual">
             Visual Design
           </span>
         </div>
       </div>
 
-      <div className="rounded-lg bg-white shadow-md p-4">
-        <h3 className="text-xl font-semibold mb-2 flex items-center">
-          <img src="/img/logo.svg" alt="Project Icon" className="w-6 h-6 mr-2" />
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            Estimate this on PlanBanan
-          </a>
-        </h3>
-        <p className="text-gray-500 mb-4">
+      <div className="project-card">
+        <div className="project-card__title">
+          <h4>
+            <a href="https://example.com" className="link">
+              Estimate this on PlanBanan
+            </a>
+          </h4>
+        </div>
+        <p className="project-card__description">
           Estimating tool that used at real companies
         </p>
-        <div className="flex items-center justify-between">
-          <a href="https://example.com" className="text-blue-600 hover:underline">
-            PlanBanan
-          </a>
-          <span className="bg-product-design text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
+        <div className="project-card__meta">
+          <div className="project-card__company">
+            <img className="project-card__icon" src="/img/logo.svg" alt="Project Icon" />
+            <a href="https://example.com" className="link">PlanBanan</a>
+          </div>
+          <span className="project-card__tag project-card__tag--product">
             Product Design
           </span>
         </div>
@@ -171,22 +183,21 @@ import Link from '@docusaurus/Link';
     </div>
   </section>
 
-  <section className="py-24 text-left">
+  <section className="section contacts">
     ## CONTACTS
 
-    I'm always open to new connections - if you have an interesting project or just want to chat, feel free to reach out!
+    <h4 className="contacts__description">
+      I'm always open to new connections - if you have an interesting project or just want to chat, feel free to reach out!
+    </h4>
 
-    <div className="space-x-2.5">
-      <Link to="https://t.me/mashku_me" 
-        className="text-gray-700 text-2xl leading-8 hover:text-gray-800 hover:bg-[#B4FFA1] hover:px-2">
+    <div className="contacts__links">
+      <Link to="https://t.me/mashku_me" className="link">
         TELEGRAM
       </Link>
-      <Link to="https://dribbble.com/mashku" 
-        className="text-gray-700 text-2xl leading-8 hover:text-gray-800 hover:bg-[#B4FFA1] hover:px-2">
+      <Link to="https://dribbble.com/mashku" className="link">
         DRIBBBLE
       </Link>
-      <Link to="https://drive.google.com/file/d/1gGDYX4TTZIv8rftfuQmAqfnbDs9SVnsT/view"
-        className="text-gray-700 text-2xl leading-8 hover:text-gray-800 hover:bg-[#B4FFA1] hover:px-2">
+      <Link to="https://drive.google.com/file/d/1gGDYX4TTZIv8rftfuQmAqfnbDs9SVnsT/view" className="link">
         CV
       </Link>
     </div>
