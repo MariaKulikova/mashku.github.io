@@ -2,74 +2,68 @@
 title: Hackathons
 description: Participation in hackathons and creating innovative solutions under time constraints
 hide_table_of_contents: true
+image: /img/hackathons/hackathons-1.png
 ---
 
-# Hackathons
-
-![Hackathons Overview](/img/hackathons/hackathons-1.png)
-
-## Context
-
-Participating in various hackathons to create innovative solutions under time constraints.
-
-## Tovarishi Project
-
-We took 3rd place at the regional stage of the Digital Breakthrough hackathon. Over the weekend we made a mobile SPA app for searching and distributing orders on the student campus.
-
-### Problem Statement
-There is a student campus that is located on an island. There are few stores on the island and prices are higher than in the city. Students buy food in the city and take it to their dorms by bus. There are no deliveries that bring food from the city to the island.
-We need to offer the best solution to the students' problem.
-
-### Research and Insights
-- We communicated with university students, learning about their problems and getting information that we used to develop solutions.
-- We found out that many students have cars and would like to earn money.
-- The students without a car were willing to pay between 300 and 500 rubles for delivering groceries.
-
-### Solution
-We made a system that allows us to connect students and professors who have a car and free time and students who want goods in the dorms.
-
-## Hunt U Project
-
-We reached the finals of the Digital Breakthrough hackathon. In 48 hours we built a working prototype of the product. We made a tool for comparing jobs and the most suitable candidates.
-
-### Problem Statement
-Job creation and initial selection of candidates takes a lot of time for recruiters and IT managers.
-
-### Process and Solution
-We talked to recruiters and team leaders and found out what activities they spend the most time on and tried to optimize and automate them. We analyzed existing solutions on the market and built the value of our solution.
-
-We designed a service with:
-- Job builder
-- Job and resume comparison
-- Candidate ranking based on past experience
-- Automatic rejection sending to unsuitable candidates
-
-### Project Presentation
-
-![Project Presentation](/img/hackathons/hackathons-2.png)
-
-![Team Working](/img/hackathons/hackathons-3.jpg)
-
-![Solution Overview](/img/hackathons/hackathons-4.png)
-
-![Interface Design](/img/hackathons/hackathons-5.png)
-
-![User Flow](/img/hackathons/hackathons-6.png)
-
-![Feature Demonstration](/img/hackathons/hackathons-7.png)
-
-![Results](/img/hackathons/hackathons-8.png)
-
-:::info Project Details
+### Context
 
 **Role:** UX Designer  
 **Year:** 2023-2024  
-**Event:** Digital Breakthrough Hackathon
-:::
+**Event:** [Digital Breakthrough Hackathon](https://leadersofdigital.ru/)
 
----
+Participating in various hackathons to create innovative solutions under time constraints.
 
-**Next Project:** [Story Redesign](/projects/story-redesign)
-**Previous Project:** [Selectel Design System](/projects/selectel-design-system)
+The main projects included the Tovarishi project, where we created a mobile SPA app for campus order distribution, and the Hunt U project, a tool for job and candidate matching. Both projects demonstrated our ability to quickly analyze problems and develop effective solutions under tight deadlines.
 
-=======
+### Problem and Tasks
+For Tovarishi project: Students on an isolated campus faced difficulties accessing affordable groceries from the city, with limited delivery options available.
+
+For Hunt U project: HR teams and IT managers spent excessive time on job creation and initial candidate selection, needing a more efficient solution.
+
+![Project Presentation](/img/hackathons/hackathons-2.png)
+![Team Working](/img/hackathons/hackathons-3.jpg)
+
+### Process
+
+Our approach involved intensive research and rapid development:
+
+- Conducted user interviews with students and recruiters
+- Analyzed existing market solutions
+- Developed and tested prototypes
+- Created working solutions within 48-hour constraints
+
+For Tovarishi:
+- Discovered students with cars willing to provide delivery services
+- Identified optimal pricing range (300-500 rubles)
+- Developed peer-to-peer delivery system
+
+For Hunt U:
+- Created comprehensive job builder
+- Implemented comparison algorithms
+- Developed automatic candidate ranking system
+
+### Results
+
+Tovarishi Project:
+- Secured 3rd place at regional Digital Breakthrough stage
+- Created functional mobile SPA for campus delivery coordination
+- Successfully connected students with and without vehicles
+
+Hunt U Project:
+- Advanced to Digital Breakthrough finals
+- Delivered working prototype with features including:
+  - Automated job creation
+  - Resume comparison system
+  - Candidate ranking
+  - Automated response system
+
+![Solution Overview](/img/hackathons/hackathons-4.png)
+![Interface Design](/img/hackathons/hackathons-5.png)
+![User Flow](/img/hackathons/hackathons-6.png)
+![Feature Demonstration](/img/hackathons/hackathons-7.png)
+![Results](/img/hackathons/hackathons-8.png)
+
+<div style={{borderTop: '1px solid var(--ifm-color-emphasis-300)', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+  <a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+  <a href="/projects/story-redesign" className="link">Story Redesign</a>
+</div>

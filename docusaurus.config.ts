@@ -5,12 +5,12 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Masha K',
   tagline: 'UX Designer Portfolio',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   url: 'https://mashku.github.io',
   baseUrl: '/',
 
-  
+
   organizationName: 'mariakulikova',
   projectName: 'mashku',
   deploymentBranch: 'gh-pages',
