@@ -12,7 +12,7 @@ const config: Config = {
 
   organizationName: 'mashku',
   projectName: 'mashku',
-  deploymentBranch: 'main',
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
