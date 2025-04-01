@@ -60,6 +60,10 @@ const config: Config = {
         name: 'keywords',
         content: 'UX Design, UI Design, Product Design, Portfolio, B2B, B2C, AI, CloudTech',
       },
+      {
+        name: 'last-updated',
+        content: '2025-04-01',
+      },
     ],
   } satisfies Preset.ThemeConfig,
 };
