@@ -7,12 +7,12 @@ const config: Config = {
   tagline: 'UX Designer Portfolio',
   favicon: 'img/favicon.svg',
 
-  url: 'https://mashku.github.io',
+  url: 'https://mashku.pro',
   baseUrl: '/',
 
   organizationName: 'mashku',
   projectName: 'mashku',
-  deploymentBranch: 'gh-pages',
+  deploymentBranch: 'main',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
