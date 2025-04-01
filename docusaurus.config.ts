@@ -11,8 +11,8 @@ const config: Config = {
   baseUrl: '/',
 
 
-  organizationName: 'mariakulikova',
-  projectName: 'mashku',
+  organizationName: 'mashku',
+  projectName: 'mashku.github.io',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
