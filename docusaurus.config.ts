@@ -8,11 +8,11 @@ const config: Config = {
   favicon: 'img/favicon.svg',
 
   url: 'https://mashku.github.io',
-  baseUrl: '/mashku/',
+  baseUrl: '/',
 
   organizationName: 'mashku',
   projectName: 'mashku',
-  deploymentBranch: 'gh-pages',
+  deploymentBranch: 'main',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
