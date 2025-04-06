@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Masha K',
   tagline: 'UX Designer Portfolio',
-  favicon: 'img/favicon.svg',
+  favicon: 'img/Logo.png',
 
   url: 'https://mashku.pro',
   baseUrl: '/',
@@ -49,7 +49,23 @@ const config: Config = {
     },
     // Empty navbar config to hide it
     navbar: {
-      items: []
+      items: [
+        {
+          position: 'left',
+          to: '/',
+          label: 'M',
+        },
+        {
+          to: '/',
+          label: 'Projects',
+          position: 'right',
+        },
+        {
+          to: '/about',
+          label: 'About',
+          position: 'right',
+        },
+      ],
     },
     // No footer config to hide it
     metadata: [
