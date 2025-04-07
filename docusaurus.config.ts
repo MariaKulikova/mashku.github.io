@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Masha K',
   tagline: 'UX Designer Portfolio',
-  favicon: 'img/Logo.png',
+  favicon: 'img/favicon.svg',
 
   url: 'https://mashku.pro',
   baseUrl: '/',
@@ -36,7 +36,11 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/general.css',
+            './src/css/about.css',
+            './src/css/project-page.css',
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -53,7 +57,7 @@ const config: Config = {
         {
           position: 'left',
           to: '/',
-          label: 'M',
+          label: 'Maria Kulikova',
         },
         {
           to: '/',

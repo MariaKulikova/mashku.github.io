@@ -1,9 +1,15 @@
 ---
-title: Selectel Design System
 description: Development and implementation of a comprehensive design system for Selectel
 hide_table_of_contents: true
 image: /img/design-system/designSystem-1.png
 ---
+
+<article>
+<div className="container">
+
+<div className="project-header">
+
+# Selectel Design System
 
 ### Context
 
@@ -12,6 +18,9 @@ image: /img/design-system/designSystem-1.png
 **Company:** [Selectel](https://selectel.ru/)
 
 The project focused on creating and implementing a unified design system for Selectel's products.
+</div>
+
+<div className="project-content">
 
 ### Problem and Tasks
 
@@ -52,19 +61,25 @@ Our approach involved several key phases:
 
 ### Results
 
-We successfully developed and implemented:
+We successfully developed and implemented these key components:
+
 - A comprehensive set of reusable components
 - Standardized design patterns
 - Clear documentation and guidelines
 - Efficient workflow between designers and developers
 
-This resulted in:
+The implementation brought significant improvements:
+
 - Improved design consistency across products
 - Faster design and development process
 - Better communication between team members
 - Streamlined implementation of new features
-
-<div style={{borderTop: '1px solid var(--ifm-color-emphasis-300)', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-  <a href="/projects/story-redesign" className="link">Story Redesign</a>
-  <a href="/projects/hackathons" className="link">Hackathons</a>
 </div>
+
+<div className="project-navigation">
+<a href="/projects/story-redesign" className="link">Story Redesign</a>
+<a href="/projects/hackathons" className="link">Hackathons</a>
+</div>
+
+</div>
+</article>

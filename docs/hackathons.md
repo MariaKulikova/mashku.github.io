@@ -1,9 +1,15 @@
 ---
-title: Hackathons
 description: Participation in hackathons and creating innovative solutions under time constraints
 hide_table_of_contents: true
 image: /img/hackathons/hackathons-1.png
 ---
+
+<article>
+<div className="container">
+
+<div className="project-header">
+
+# Hackatons
 
 ### Context
 
@@ -14,6 +20,9 @@ image: /img/hackathons/hackathons-1.png
 Participating in various hackathons to create innovative solutions under time constraints.
 
 The main projects included the Tovarishi project, where we created a mobile SPA app for campus order distribution, and the Hunt U project, a tool for job and candidate matching. Both projects demonstrated our ability to quickly analyze problems and develop effective solutions under tight deadlines.
+</div>
+
+<div className="project-content">
 
 ### Problem and Tasks
 For Tovarishi project: Students on an isolated campus faced difficulties accessing affordable groceries from the city, with limited delivery options available.
@@ -62,8 +71,12 @@ Hunt U Project:
 ![User Flow](/img/hackathons/hackathons-6.png)
 ![Feature Demonstration](/img/hackathons/hackathons-7.png)
 ![Results](/img/hackathons/hackathons-8.png)
-
-<div style={{borderTop: '1px solid var(--ifm-color-emphasis-300)', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-  <a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
-  <a href="/projects/story-redesign" className="link">Story Redesign</a>
 </div>
+
+<div className="project-navigation">
+<a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+<a href="/projects/story-redesign" className="link">Story Redesign</a>
+</div>
+
+</div>
+</article>

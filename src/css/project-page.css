@@ -1,0 +1,53 @@
+/* Project page styles */
+
+/* Project header */
+.project-header {
+  margin-bottom: 48px;
+}
+
+/* Project content */
+.project-content img {
+  width: 100%;
+  border-radius: 16px;
+  margin: 32px 0;
+}
+
+.project-content h3 {
+  margin: 48px 0 24px;
+}
+
+.project-content p {
+  margin-bottom: 16px;
+  color: var(--color-gray-primary-text);
+}
+
+.project-content ul {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.project-content li {
+  margin-bottom: 8px;
+  color: var(--color-gray-primary-text);
+}
+
+/* Project navigation */
+.project-navigation {
+  border-top: 1px solid var(--color-gray-borders);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 64px;
+}
+
+
+@media (max-width: 768px) {
+  .project-content img {
+    margin: 24px 0;
+  }
+
+  .project-content h3 {
+    margin: 36px 0 20px;
+  }
+}

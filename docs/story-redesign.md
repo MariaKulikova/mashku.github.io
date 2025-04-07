@@ -1,9 +1,15 @@
 ---
-title: CDN Service Redesign
 description: A case study of the redesign process and UX improvements at Selectel
 hide_table_of_contents: true
 image: /img/story-redesign/storyRedesign-1.png
 ---
+
+<article>
+<div className="container">
+
+<div className="project-header">
+
+# CDN Redesign
 
 ### Context
 
@@ -14,6 +20,9 @@ image: /img/story-redesign/storyRedesign-1.png
 CDN (Content Delivery Network) is a network of data caching servers that speed up the delivery of static content to end users. This includes website elements, videos, photos, gaming content, software updates, and streaming services.
 
 The system works by utilizing caching servers located worldwide. For example, if resources are accessed from Amsterdam, CDN selects the nearest server to ensure minimal response time between user requests and content delivery.
+</div>
+
+<div className="project-content">
 
 ### Problem and Tasks
 
@@ -56,8 +65,12 @@ We implemented several key improvements:
 ![Final Implementation](/img/story-redesign/storyRedesign-9.jpg)
 
 The redesign resulted in a 25% increase in conversion rate, significantly improving the user experience and successful completion of resource creation.
-
-<div style={{borderTop: '1px solid var(--ifm-color-emphasis-300)', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-  <a href="/projects/hackathons" className="link">Hackathons</a>
-  <a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
 </div>
+
+<div className="project-navigation">
+<a href="/projects/hackathons" className="link">Hackathons</a>
+<a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+</div>
+
+</div>
+</article>
