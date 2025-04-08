@@ -7,6 +7,10 @@ image: /img/hackathons/hackathons-1.png
 <article>
 <div className="container">
 
+<div className="top-navigation">
+<a href="/" className="link">← Back to Home</a>
+</div>
+
 <div className="project-header">
 
 # Hackatons
@@ -74,8 +78,11 @@ Hunt U Project:
 </div>
 
 <div className="project-navigation">
-<a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
-<a href="/projects/story-redesign" className="link">Story Redesign</a>
+<a href="/" className="link">← Back to Home</a>
+<div>
+  <a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+  <a href="/projects/story-redesign" className="link">Story Redesign</a>
+</div>
 </div>
 
 </div>

@@ -27,50 +27,45 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          routeBasePath: 'projects',
-          // Disable sidebar for all docs
-          sidebarPath: false,
-          // Show breadcrumbs
-          breadcrumbs: true,
-        },
+        docs: false,
         blog: false,
         theme: {
           customCss: [
             './src/css/general.css',
-            './src/css/about.css',
             './src/css/project-page.css',
           ],
         },
       } satisfies Preset.Options,
     ],
   ],
-
+  
   themeConfig: {
-    colorMode: {
-      defaultMode: 'light',
-      disableSwitch: true,
+  
+
+    
+    // Theme configuration
+    docs: {
+      sidebar: {
+        hideable: false,
+        autoCollapseCategories: true,
+      }
     },
-    // Empty navbar config to hide it
-    navbar: {
-      items: [
-        {
-          position: 'left',
-          to: '/',
-          label: 'Maria Kulikova',
-        },
-        {
-          to: '/',
-          label: 'Projects',
-          position: 'right',
-        },
-        {
-          to: '/about',
-          label: 'About',
-          position: 'right',
-        },
-      ],
+    
+    // Custom theme settings
+    customTheme: {
+      style: {
+        html: {
+          backgroundColor: '#E7E7E9',
+          height: '100%'
+        }
+      }
     },
+    
+    // Theme styles
+    style: {
+      lightBackground: '#E7E7E9',
+    },
+    
     // No footer config to hide it
     metadata: [
       {

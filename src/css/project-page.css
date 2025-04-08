@@ -1,5 +1,19 @@
 /* Project page styles */
 
+/* Top navigation */
+.top-navigation {
+  margin-bottom: 32px;
+}
+
+.top-navigation .link {
+  color: var(--color-gray-primary-text);
+  text-decoration: none;
+}
+
+.top-navigation .link:hover {
+  text-decoration: underline;
+}
+
 /* Project header */
 .project-header {
   margin-bottom: 48px;

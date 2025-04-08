@@ -7,11 +7,13 @@ image: /img/story-redesign/storyRedesign-1.png
 <article>
 <div className="container">
 
+<div className="top-navigation">
+<a href="/" className="link">← Back to Home</a>
+</div>
+
 <div className="project-header">
 
-# CDN Redesign
-
-### Context
+## How 1 small problem led to big changes
 
 **Role:** UX Designer  
 **Year:** 2023-2024  
@@ -24,24 +26,22 @@ The system works by utilizing caching servers located worldwide. For example, if
 
 <div className="project-content">
 
-### Problem and Tasks
-
+### Problem 
 Through analysis, we identified that approximately 30% of clients were abandoning the service during the order process. Our task was to analyze the entire user journey from the service page through registration and CDN resource ordering, identify pain points, and implement improvements to reduce drop-off rates.
 
-![User Journey Analysis](/img/story-redesign/storyRedesign-2.png)
-![Drop-off Points Analysis](/img/story-redesign/storyRedesign-3.png)
 
-### Process
 
-Our approach involved several key phases:
-
-1. Research
+### Research
 - Analyzed over 100 user sessions
 - Identified common patterns and pain points
 - Mapped the complete user journey
 - Documented key drop-off points
 
-2. Prototyping and Testing
+![User Journey Analysis](/img/story-redesign/storyRedesign-2.png)
+![Drop-off Points Analysis](/img/story-redesign/storyRedesign-3.png)
+
+### Prototyping and Testing
+
 - Created interactive prototypes
 - Conducted expert evaluations with designers
 - Gathered and incorporated feedback
@@ -51,7 +51,7 @@ Our approach involved several key phases:
 ![User Flow Iterations](/img/story-redesign/storyRedesign-5.png)
 ![Interface Improvements](/img/story-redesign/storyRedesign-6.png)
 
-### Results
+### Solution
 
 We implemented several key improvements:
 
@@ -64,12 +64,17 @@ We implemented several key improvements:
 ![Resource Verification Page](/img/story-redesign/storyRedesign-8.png)
 ![Final Implementation](/img/story-redesign/storyRedesign-9.jpg)
 
+### Results
+
 The redesign resulted in a 25% increase in conversion rate, significantly improving the user experience and successful completion of resource creation.
 </div>
 
 <div className="project-navigation">
-<a href="/projects/hackathons" className="link">Hackathons</a>
-<a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+<a href="/" className="link">← Back to Home</a>
+<div>
+  <a href="/projects/hackathons" className="link">Hackathons</a>
+  <a href="/projects/selectel-design-system" className="link">Selectel Design System</a>
+</div>
 </div>
 
 </div>

@@ -7,6 +7,10 @@ image: /img/design-system/designSystem-1.png
 <article>
 <div className="container">
 
+<div className="top-navigation">
+<a href="/" className="link">← Back to Home</a>
+</div>
+
 <div className="project-header">
 
 # Selectel Design System
@@ -77,8 +81,11 @@ The implementation brought significant improvements:
 </div>
 
 <div className="project-navigation">
-<a href="/projects/story-redesign" className="link">Story Redesign</a>
-<a href="/projects/hackathons" className="link">Hackathons</a>
+<a href="/" className="link">← Back to Home</a>
+<div>
+  <a href="/projects/story-redesign" className="link">Story Redesign</a>
+  <a href="/projects/hackathons" className="link">Hackathons</a>
+</div>
 </div>
 
 </div>
