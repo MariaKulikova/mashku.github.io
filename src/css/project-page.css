@@ -17,6 +17,15 @@
 /* Project header */
 .project-header {
   margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-header img {
+  width: 50%;
+  border-radius: 0;
+  margin: 0;
 }
 
 /* Project content */
@@ -55,6 +64,13 @@
   margin-top: 64px;
 }
 
+.section-margin {
+  margin-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 
 @media (max-width: 768px) {
   .project-content img {
@@ -65,3 +81,21 @@
     margin: 36px 0 20px;
   }
 }
+
+.two-column {
+  display: flex;
+  justify-content: space-between;
+}
+
+.two-column > div {
+  width: 48%; /* Adjust as needed */
+}
+
+.two-column-header {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+align-items: center;
+}
+
+

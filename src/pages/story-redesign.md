@@ -11,63 +11,117 @@ image: /img/story-redesign/storyRedesign-1.png
 <a href="/" className="link">← Back to Home</a>
 </div>
 
-<div className="project-header">
+<div className="section-margin">
+  
+  # How we reduce User Confusion and Support Load
 
-## How 1 small problem led to big changes
-
-**Role:** UX Designer  
-**Year:** 2023-2024  
-**Company:** [Selectel](https://selectel.ru/)
-
-CDN (Content Delivery Network) is a network of data caching servers that speed up the delivery of static content to end users. This includes website elements, videos, photos, gaming content, software updates, and streaming services.
-
-The system works by utilizing caching servers located worldwide. For example, if resources are accessed from Amsterdam, CDN selects the nearest server to ensure minimal response time between user requests and content delivery.
 </div>
 
-<div className="project-content">
+<section className="section-margin">
 
-### Problem 
-Through analysis, we identified that approximately 30% of clients were abandoning the service during the order process. Our task was to analyze the entire user journey from the service page through registration and CDN resource ordering, identify pain points, and implement improvements to reduce drop-off rates.
+#### Context
 
+I worked at Selectel, one of the leading cloud and data center service providers in Russia. I was responsible for the full user experience, including research and design, for the CDN and Cloud Storage products.
 
+In this case, I want to share a story about one specific challenge we faced while improving the CDN product. At some point, we noticed a large number of support requests — over 40% of them were about the resource status. Many users didn't understand when the CDN becomes active, how to connect a custom domain, or how to check if the setup was completed successfully.
+</section>
 
-### Research
-- Analyzed over 100 user sessions
-- Identified common patterns and pain points
-- Mapped the complete user journey
-- Documented key drop-off points
+<section className="section-margin">
 
-![User Journey Analysis](/img/story-redesign/storyRedesign-2.png)
-![Drop-off Points Analysis](/img/story-redesign/storyRedesign-3.png)
+#### Research
 
-### Prototyping and Testing
+<div className="two-column">
+  <div>
+    I started by reviewing the full user path — from the product page to resource creation. I looked at how users behave and found points in the path where about 30% of customers drop out. Users of CDN are 2 segments business users(Website owners, course creators, small teams) and Technical users (Sysadmins, developers, DevOps engineers). The issue mostly affected non-technical users who relied on the UI instead of reading documentation.
 
-- Created interactive prototypes
-- Conducted expert evaluations with designers
-- Gathered and incorporated feedback
-- Iterated on designs based on testing results
+    I reviewed more than 2,000 support tickets and watched more than 100 user web sessions.
+  </div>
+  <div>
 
-![Initial Prototypes](/img/story-redesign/storyRedesign-4.png)
-![User Flow Iterations](/img/story-redesign/storyRedesign-5.png)
-![Interface Improvements](/img/story-redesign/storyRedesign-6.png)
-
-### Solution
-
-We implemented several key improvements:
-
-1. Enhanced Resource Creation Form
-- Added step-by-step guidance
-- Implemented helpful tooltips
-- Streamlined the creation process
-
-![New Resource Creation Form](/img/story-redesign/storyRedesign-7.png)
-![Resource Verification Page](/img/story-redesign/storyRedesign-8.png)
-![Final Implementation](/img/story-redesign/storyRedesign-9.jpg)
-
-### Results
-
-The redesign resulted in a 25% increase in conversion rate, significantly improving the user experience and successful completion of resource creation.
+    ![User Journey Analysis](/img/story-redesign/storyRedesign-2.png)
+    ![Usability testing](/img/story-redesign/storyRedesign-3.png)
+  </div>
 </div>
+</section>
+
+<section className="section-margin">
+
+### Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do.
+</section>
+
+<section className="section-margin">
+
+#### Usability Testing
+
+I prepare interactive prototypes and did usability testing with non-technical specialists. It was successful without critical difficulties.
+
+![Usability testing](/img/story-redesign/storyRedesign-4.png)
+
+</section>
+
+<section className="section-margin">
+
+#### Design
+
+<div className="two-column">
+  <div>
+    Improved the resource creation form
+
+    - Added fields for custom domain and SSL
+    - Made protocol selection automatic
+    - Added a low-balance warning
+  
+  <div className="two-column">
+
+  ![Usability testing](/img/story-redesign/Selectel_default_domain_after_check.png)
+ 
+  </div>
+  </div>
+  
+  
+</div>
+</section>
+
+<section className="section-margin">
+
+#### Added a verification screen
+
+- Tips for configuring CNAME
+- Help buttons with clear, short instructions
+- A built-in checker to confirm setup status
+
+<div className="two-column"> 
+
+![Selectel default domain](/img/story-redesign/Selectel_default_domain.png)
+
+</div>
+
+</section>
+
+<section className="section-margin">
+
+#### Results
+
+<div className="two-column">
+  <div>
+    **Support requests dropped from 40% to 10%**
+    A clear sign the new UI was easier to use
+  </div>
+  <div>
+    **Faster support**
+    Team used built-in validation instead of external tools
+  </div>
+</div>
+<div className="two-column">
+  <div>
+  </div>
+  <div>
+    **Faster troubleshooting**
+    Users started sending screenshots of test results, making it easier to help
+  </div>
+</div>
+</section>
+
 
 <div className="project-navigation">
 <a href="/" className="link">← Back to Home</a>
