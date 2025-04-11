@@ -4,6 +4,9 @@ hide_table_of_contents: true
 image: /img/story-redesign/storyRedesign-1.png
 ---
 
+import '../css/project-page.css' 
+
+
 <article>
 <div className="container">
 
@@ -37,64 +40,63 @@ In this case, I want to share a story about one specific challenge we faced whil
     I reviewed more than 2,000 support tickets and watched more than 100 user web sessions.
   </div>
   <div>
-
-    ![User Journey Analysis](/img/story-redesign/storyRedesign-2.png)
-    ![Usability testing](/img/story-redesign/storyRedesign-3.png)
+    <img src="/img/story-redesign/storyRedesign-2.png" alt="User Journey Analysis" className="image image-with-border"/>
+    <img src="/img/story-redesign/storyRedesign-3.png" alt="Usability testing" className="image image-with-border"/>
   </div>
 </div>
 </section>
 
 <section className="section-margin">
+ <span className="feedback-box">
 
-### Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do.
+  Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do
+  </span>
+
 </section>
 
 <section className="section-margin">
 
 #### Usability Testing
 
-I prepare interactive prototypes and did usability testing with non-technical specialists. It was successful without critical difficulties.
+I prepared interactive prototypes and conducted usability testing with non-technical users. The tests went smoothly and revealed no critical issues.
 
-![Usability testing](/img/story-redesign/storyRedesign-4.png)
+
+    
+  <div className="image-grid">
+    <img src="/img/story-redesign/storyRedesign-5.png" alt="Prototypes" className="image"/>
+    <img src="/img/story-redesign/storyRedesign-6.png" alt="Prototypes" className="image"/>
+  </div>
 
 </section>
 
 <section className="section-margin">
 
-#### Design
+  #### Design
 
-<div className="two-column">
   <div>
     Improved the resource creation form
-
+    
     - Added fields for custom domain and SSL
     - Made protocol selection automatic
     - Added a low-balance warning
-  
-  <div className="two-column">
+  </div>
 
-  ![Usability testing](/img/story-redesign/Selectel_default_domain_after_check.png)
- 
+  <div className="image-grid">
+      <img src="/img/story-redesign/Selectel_default_domain.png" alt="Selectel default domain" className="image"/>
+      <img src="/img/story-redesign/Selectel_default_domain_after_check.png" alt="Domain after check" className="image"/>
   </div>
-  </div>
-  
-  
-</div>
 </section>
 
-<section className="section-margin">
+<section className="section-margin two-column">
 
-#### Added a verification screen
+<div>
+  Added a verification screen
 
-- Tips for configuring CNAME
-- Help buttons with clear, short instructions
-- A built-in checker to confirm setup status
-
-<div className="two-column"> 
-
-![Selectel default domain](/img/story-redesign/Selectel_default_domain.png)
-
+  - Tips for configuring CNAME
+  - Help buttons with clear, short instructions
+  - A built-in checker to confirm setup status
 </div>
+<img src="/img/story-redesign/Selectel_form.png" alt="Selectel form" className="image"/>
 
 </section>
 
@@ -103,22 +105,21 @@ I prepare interactive prototypes and did usability testing with non-technical sp
 #### Results
 
 <div className="two-column">
-  <div>
-    **Support requests dropped from 40% to 10%**
+  <div className="feedback-box">
+    Support requests dropped from 40% to 10%
+
     A clear sign the new UI was easier to use
   </div>
-  <div>
-    **Faster support**
+  <div className="feedback-box">
+    Faster support
+
     Team used built-in validation instead of external tools
   </div>
 </div>
-<div className="two-column">
-  <div>
-  </div>
-  <div>
-    **Faster troubleshooting**
-    Users started sending screenshots of test results, making it easier to help
-  </div>
+<div className="feedback-box">
+  Faster troubleshooting
+
+  Users started sending screenshots of test results, making it easier to help
 </div>
 </section>
 

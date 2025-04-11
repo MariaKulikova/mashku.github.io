@@ -133,10 +133,6 @@
     margin-bottom: 12px;
   }
   
-  .project-card__title subtitle {
-    margin: 0;
-  }
-  
   .project-card__meta {
     display: flex;
     align-items: center;
