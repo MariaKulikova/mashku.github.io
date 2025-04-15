@@ -4,21 +4,13 @@ hide_table_of_contents: true
 image: /img/story-redesign/storyRedesign-1.png
 ---
 
-import '../css/project-page.css' 
-
+import '../css/project-page.css'
+import { TopNavigation, ProjectNavigation } from '../components/NavigationButtons'
 
 <article>
 <div className="container">
 
-<div className="top-navigation">
-<a href="/" className="button">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.8333 10H4.16666" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9.99999 15.8334L4.16666 10L9.99999 4.16669" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-  All projects
-</a>
-</div>
+<TopNavigation />
 
 <div className="section-margin">
   
@@ -39,7 +31,7 @@ In this case, I want to share a story about one specific challenge we faced whil
 
 #### Research
 
-<div className="two-column">
+<div className="columns">
   <div>
     I started by reviewing the full user path — from the product page to resource creation. I looked at how users behave and found points in the path where about 30% of customers drop out. Users of CDN are 2 segments business users(Website owners, course creators, small teams) and Technical users (Sysadmins, developers, DevOps engineers). The issue mostly affected non-technical users who relied on the UI instead of reading documentation.
 
@@ -98,7 +90,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 
 #### Results
 
-<div className="two-column">
+<div className="columns">
   <div className="feedback-box">
     Support requests dropped from 40% to 10%
 
@@ -118,22 +110,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 </section>
 
 
-<div className="project-navigation">
-<a href="/" className="button">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.8333 10H4.16666" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9.99999 15.8334L4.16666 10L9.99999 4.16669" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-  All projects
-</a>
-<a href="/hackathons" className="button">
-  Next project: Hackathons
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.16666 10H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10 4.16669L15.8333 10L10 15.8334" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-</a>
-</div>
+<ProjectNavigation nextProject={{ title: "Hackathons", link: "/hackathons" }} />
 
 </div>
 </article>

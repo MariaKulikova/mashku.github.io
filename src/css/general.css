@@ -109,3 +109,58 @@ h6:hover .hash-link {
 .navbar {
   display: none !important;
 }
+
+/* Navigation buttons */
+.top-navigation {
+  margin-bottom: 32px;
+}
+
+.top-navigation .button {
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: var(--color-gray-headings);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-navigation .button:hover {
+  background-color: var(--color-gray-headings);
+  color: var(--color-white);
+}
+
+/* Project navigation */
+.project-navigation {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 64px;
+}
+
+.project-navigation .button {
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: var(--color-gray-headings);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-navigation .button:hover {
+  background-color: var(--color-gray-headings);
+  color: var(--color-white);
+}
+
+.project-navigation .button svg {
+  width: 20px;
+  height: 20px;
+}

@@ -5,19 +5,12 @@ image: /img/design-system/designSystem-1.png
 ---
 
 import '../css/project-page.css'
+import { TopNavigation, ProjectNavigation } from '../components/NavigationButtons'
 
 <article>
 <div className="container">
 
-<div className="top-navigation">
-<a href="/" className="button">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.8333 10H4.16666" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9.99999 15.8334L4.16666 10L9.99999 4.16669" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-  All projects
-</a>
-</div>
+<TopNavigation />
 
 <div className="section-margin">
 
@@ -28,122 +21,83 @@ import '../css/project-page.css'
 <section className="section-margin">
 
 #### Context
+Selectel had several digital products, and each had its own design approach. This made it hard to keep the user experience consistent. Our goal was to build a unified design system that would help both designers and developers work faster and stay aligned.
 
-**Role:** UX Designer
-**Year:** 2023-2024
-**Company:** [Selectel](https://selectel.ru/)
-
-The project focused on creating and implementing a unified design system for Selectel's products.
+I worked as part of a horizontal design team. We discussed ideas, agreed on patterns, and made decisions together — from naming to behavior. This helped us create a system that reflected real needs and worked across all products.
 </section>
 
 <section className="section-margin">
 
-#### Problem and Tasks
+#### My role
 
-<div className="two-column">
-  <div>
-    The main challenge was to establish consistency across Selectel's various products and improve the efficiency of the design and development process. We needed to create a comprehensive design system that would serve as a single source of truth for both designers and developers.
-  </div>
-  <div>
-    <img src="/img/design-system/designSystem-2.png" alt="Design System Structure" className="image"/>
-  </div>
+
+<div>
+  I helped to work on the core structure of the design system and create components like the Skeleton and Stepper with clear documentation and behavior rules. 
+  
+  I also led the work on improving the navigation system, which affected all products. This included analyzing user pain points and coordinating with different teams to agree on a new, consistent approach that solved real problems. Throughout the process, I stayed in close contact with developers to keep design and implementation in sync.
+
 </div>
-</section>
 
+</section>
 <section className="section-margin">
 
-#### Process
-
-Our approach involved several key phases:
-
-<div className="two-column">
+#### Stepper
+<div class="columns">
   <div>
-    1. System Architecture
-    - Created the foundational structure for the design system
-    - Established component relationships and hierarchies
-    - Developed standardized patterns for implementation
-  </div>
-  <div>
-    <img src="/img/design-system/designSystem-3.png" alt="Component Architecture" className="image"/>
-    <img src="/img/design-system/designSystem-4.png" alt="Component Relationships" className="image"/>
-  </div>
-</div>
-</section>
-
-<section className="section-margin">
-
-#### Component Development
-
-<div className="two-column">
-  <div>
-    - Designed and implemented key components like the Stepper
-    - Created comprehensive documentation for each component
-    - Defined states and interaction patterns
-  </div>
-  <div>
-    <img src="/img/design-system/designSystem-5.png" alt="Stepper Overview" className="image"/>
     <img src="/img/design-system/designSystem-6.png" alt="Stepper States" className="image"/>
     <img src="/img/design-system/designSystem-7.png" alt="Stepper Interactions" className="image"/>
   </div>
+  <img src="/img/design-system/designSystem-5.png" alt="Stepper Overview" className="image"/>
+  
 </div>
+
 </section>
 
 <section className="section-margin">
 
-#### Navigation System Implementation
+#### Skeleton 
+<div class="columns">
+<img src="/img/design-system/designSystem-2.png" alt="Design System Structure" className="image"/>
+<img src="/img/design-system/designSystem-3.png" alt="Component Architecture" className="image"/>
+<div>
+<img src="/img/design-system/designSystem-4.png" alt="Component Relationships" className="image"/>
 
-<div className="image-grid">
-  <img src="/img/design-system/designSystem-8.png" alt="Navigation Overview" className="image"/>
-  <img src="/img/design-system/designSystem-9.png" alt="Navigation Components" className="image"/>
-  <img src="/img/design-system/designSystem-10.png" alt="Navigation Patterns" className="image"/>
-  <img src="/img/design-system/designSystem-11.png" alt="Navigation Implementation" className="image"/>
+</div>
 </div>
 
-<div className="two-column">
+</section>
+
+<section className="section-margin">
+
+#### Navigation
+<div class="columns">
   <div>
-    - Developed a unified navigation system
-    - Created consistent patterns for user flow
-    - Implemented standardized navigation components
+    <img src="/img/design-system/designSystem-8.png" alt="Navigation Overview" className="image"/>
+    <img src="/img/design-system/designSystem-10.png" alt="Navigation Patterns" className="image"/>
+
+  </div>
+  <div>
+    <img src="/img/design-system/designSystem-9.png" alt="Navigation Components" className="image"/>
+    <img src="/img/design-system/designSystem-11.png" alt="Navigation Implementation" className="image"/>
   </div>
 </div>
+
+
 </section>
 
 <section className="section-margin">
 
 #### Results
 
-<div className="two-column">
-  <div className="feedback-box">
-    Key components developed:
-    - Comprehensive set of reusable components
-    - Standardized design patterns
-    - Clear documentation and guidelines
-  </div>
-  <div className="feedback-box">
-    Major improvements:
-    - Improved design consistency
-    - Faster development process
-    - Better team communication
-  </div>
-</div>
+We analyzed existing interfaces, identified common patterns, and built a component library in Figma with tokens, templates, and documentation. Then we worked with developers to bring everything into code, reviewed implementation, and made improvements along the way. 
+
+As a result, we launched a full design system now used by all product teams. It sped up development, improved interface consistency, and made collaboration between design and development much smoother.
+
 </section>
 
-<div className="project-navigation">
-<a href="/" className="button">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.8333 10H4.16666" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M9.99999 15.8334L4.16666 10L9.99999 4.16669" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-  All projects
-</a>
-<a href="/story-redesign" className="button">
-  Next project: Story Redesign
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.16666 10H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10 4.16669L15.8333 10L10 15.8334" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-</a>
-</div>
+
+
+<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/story-redesign" }} />
 
 </div>
 </article>
