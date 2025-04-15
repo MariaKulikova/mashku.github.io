@@ -5,13 +5,22 @@
   margin-bottom: 32px;
 }
 
-.top-navigation .link {
-  color: var(--color-gray-primary-text);
+.top-navigation .button {
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: var(--color-gray-headings);
   text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.top-navigation .link:hover {
-  text-decoration: underline;
+.top-navigation .button:hover {
+  background-color: var(--color-gray-headings);
+  color: var(--color-white);
 }
 
 /* Project header */
@@ -50,12 +59,34 @@
 
 /* Project navigation */
 .project-navigation {
-  border-top: 1px solid var(--color-gray-borders);
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 64px;
+}
+
+.project-navigation .button {
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: var(--color-gray-headings);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-navigation .button:hover {
+  background-color: var(--color-gray-headings);
+  color: var(--color-white);
+}
+
+.project-navigation .button svg {
+  width: 20px;
+  height: 20px;
 }
 
 .section-margin {
@@ -79,9 +110,8 @@
 .two-column {
   display: flex;
   flex-direction: row;
-  gap: 24px;
   width: 100%;
-
+  gap: 5%;
 }
 
 .two-column > div:first-child {
@@ -92,15 +122,44 @@
   width: 55%;
 }
 
+/* Results section */
+section:last-of-type .two-column {
+  gap: 24px;
+}
+
+section:last-of-type .two-column > div {
+  width: 50%;
+  margin: 0;
+}
+
+section:last-of-type .two-column .feedback-box {
+  width: 100%;
+  
+}
+
+section:last-of-type > .feedback-box {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .two-column {
     flex-direction: column;
+    gap: 24px;
   }
-  
+
   .two-column > div:first-child,
-  .two-column > div:last-child {
-    width: 100%;
+  .two-column > div:last-child,
+  section:last-of-type .two-column > div,
+  section:last-of-type .two-column .feedback-box,
+  .section-margin .two-column .feedback-box,
+  section:has(h4:-webkit-any(Results)) .two-column > div {
+    width: 100% !important;
   }
+}
+
+/* Results layout */
+section:has(h4:-webkit-any(Results)) > .feedback-box {
+  width: 100%;
 }
 
 .feedback-box {
@@ -111,6 +170,13 @@
   border-radius: 16px;
   width: 100%;
 }
+
+.feedback-box p {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-surface); 
+
+}
+
 .image {
   border-radius: 16px;
   margin-bottom: 16px;
@@ -118,7 +184,7 @@
 
 .image-grid {
   display: flex;
-  gap: 24px;
+  
   width: 100%;
 }
 
