@@ -40,7 +40,33 @@ const config: Config = {
   ],
   
   themeConfig: {
-  
+    colorMode: {
+      disableSwitch: true,
+      defaultMode: 'light',
+    },
+    navbar: {
+      style: 'primary',
+      hideOnScroll: false,
+
+      logo: {
+        alt: '',
+        src: 'img/eyes.svg',
+        
+        
+      },
+      items: [
+        {
+          href: 'mailto:hey@mashku.pro',
+          label: 'Contact',
+          position: 'right',
+        },
+        {
+          href: 'https://drive.google.com/file/d/1_GOSyFgumz0zUHknGf6MZMExY-cWYyij/view?usp=sharing',
+          label: 'CV',
+          position: 'right',
+        },
+      ],
+    },
 
     
     // Theme configuration

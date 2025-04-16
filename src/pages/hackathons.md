@@ -5,11 +5,10 @@ image: /img/hackathons/hackathons-1.png
 ---
 
 import '../css/project-page.css'
-import { TopNavigation, ProjectNavigation } from '../components/NavigationButtons'
+import { ProjectNavigation } from '../components/NavigationButtons'
 
 <article className="container">
 
-<TopNavigation />
 
 <div className="section-margin">
 

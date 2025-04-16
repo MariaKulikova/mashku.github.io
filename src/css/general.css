@@ -5,11 +5,20 @@
   --color-accent:#ED7044;
   
   /* Gray scale */
-  --color-gray-surface: #E7E7E9;     
-  --color-gray-borders: #131416;     
-  --color-gray-secondary-text: #777986;  
-  --color-gray-primary-text: #5B5D6B;   
-  --color-gray-headings: #101223;       
+  --color-gray-surface: #E7E7E9;
+  --color-gray-borders: #131416;
+  --color-gray-secondary-text: #777986;
+  --color-gray-primary-text: #5B5D6B;
+  --color-gray-headings: #101223;
+
+  /* Layout */
+  --layout-max-width: 1280px;
+  --layout-padding: 16px;
+  --layout-content-width: min(calc(100vw - (var(--layout-padding) * 2)), var(--layout-max-width));
+
+  @media (max-width: 996px) {
+    --layout-padding: 8px;
+  }
 
   /* Docusaurus required overrides */
   --ifm-background-color: var(--color-gray-surface) !important;
@@ -100,38 +109,128 @@ h6:hover .hash-link {
   display: none !important;
 }
 
-/* Skip to content link */
-#__docusaurus_skipToContent_fallback {
+
+
+/* Navbar container */
+nav.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   background-color: var(--color-gray-surface);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
-/* Hide navbar completely */
-.navbar {
-  display: none !important;
+@media (max-width: 996px) {
+  nav.navbar {
+    width: 100vw;
+    left: 0;
+  }
 }
 
-/* Navigation buttons */
-.top-navigation {
-  margin-bottom: 32px;
+/* Override Docusaurus mobile navbar behavior */
+@media (max-width: 996px) {
+  .navbar-sidebar {
+    display: none !important;
+  }
+
+  .navbar__toggle {
+    display: none !important;
+  }
+
+  .navbar__items {
+    display: flex !important;
+    flex: 1;
+  }
+
+  .navbar__items--right {
+    
+    display: flex !important;
+  }
+
+  .navbar__items--right .navbar__item {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .navbar__items--right .navbar__link {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 }
 
-.top-navigation .button {
-  padding: 12px 24px;
-  border-radius: 24px;
-  background-color: var(--color-white);
-  color: var(--color-gray-headings);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: background-color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* Inner container with max-width */
+.navbar__inner {
+  
+  max-width: var(--layout-content-width);
+  padding: 0 16px;
+  margin: 0 auto;
 }
 
-.top-navigation .button:hover {
-  background-color: var(--color-gray-headings);
-  color: var(--color-white);
+@media (max-width: 996px) {
+  .navbar__inner {
+    width: 100%;
+    padding: 0 8px;
+  }
 }
+
+
+.navbar__items--right {
+  padding-right: 16px;
+  gap: 24px;
+}
+
+@media (max-width: 996px) {
+  .navbar__items--right {
+    padding-right: 8px;
+    gap: 16px;
+  }
+}
+
+.navbar__logo {
+  height: 32px;
+  aspect-ratio: 2;
+  background:
+    radial-gradient(farthest-side,#000 15%,#0000 18%)0 0/50% 100%,
+    radial-gradient(50% 100% at 50% 160%,#fff 95%,#0000) 0 0/50% 50%,
+    radial-gradient(50% 100% at 50% -60%,#fff 95%,#0000) 0 100%/50% 50%;
+  background-repeat: repeat-x;
+  -webkit-mask: radial-gradient(50% 100%,#000 95%,#0000) 0 100%/50% 0% repeat-x;
+  animation: l3 2s infinite alternate ease-in;
+}
+
+@keyframes l3 {
+  0%, 70% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+  85% {
+    -webkit-mask-size: 50% 0;
+    mask-size: 50% 0;
+  }
+  100% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar__logo {
+    padding-left: 8px;
+  }
+}
+
+nav.navbar .navbar__link,
+nav.navbar .navbar__item {
+color: var(--color-gray-headings) !important;
+  
+}
+
 
 /* Project navigation */
 .project-navigation {
@@ -163,4 +262,41 @@ h6:hover .hash-link {
 .project-navigation .button svg {
   width: 20px;
   height: 20px;
+}
+
+/* Eyes animation */
+.animated-eyes {
+  width: 100%;
+  max-width: 401px;
+}
+
+.animated-eyes circle {
+  fill: var(--color-black);
+  animation: blinking 1.5s infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes blinking {
+  0%, 15% {
+    transform: scaleY(1);
+  }
+  20%, 40% {
+    transform: translateX(0.15px) scaleY(0.98);
+  }
+  45%, 55% {
+    transform: scaleY(0.1);
+  }
+  60%, 80% {
+    transform: translateX(-0.15px) scaleY(0.98);
+  }
+  85%, 100% {
+    transform: scaleY(1);
+  }
+}
+
+article {
+
+  margin-top: 64px;
+  
 }

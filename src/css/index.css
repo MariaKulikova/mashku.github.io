@@ -231,9 +231,14 @@
   }
   
   .section {
-    padding: 80px 24px;
+    padding: 144px 0 80px;
     width: 100%;
     background: var(--color-gray-surface);
+  }
+
+  /* Adjust section padding for subsequent sections */
+  .section:not(:first-child) {
+    padding: 80px 0;
   }
   
   /* Links */
@@ -250,8 +255,12 @@
   
   @media (max-width: 768px) {
     .section {
-      padding: 60px 0;
+      padding: 124px 0 60px;
       width: 100%;
+    }
+
+    .section:not(:first-child) {
+      padding: 60px 0;
     }
   
     .projects-grid {
@@ -270,6 +279,10 @@
     }
   
     .section {
+      padding: 96px 0 32px;
+    }
+
+    .section:not(:first-child) {
       padding: 32px 0;
     }
   

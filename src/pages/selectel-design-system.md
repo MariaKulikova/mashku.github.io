@@ -5,12 +5,11 @@ image: /img/design-system/designSystem-1.png
 ---
 
 import '../css/project-page.css'
-import { TopNavigation, ProjectNavigation } from '../components/NavigationButtons'
+import { ProjectNavigation } from '../components/NavigationButtons'
 
 <article>
 <div className="container">
 
-<TopNavigation />
 
 <div className="section-margin">
 
