@@ -61,7 +61,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://drive.google.com/file/d/1_GOSyFgumz0zUHknGf6MZMExY-cWYyij/view?usp=sharing',
+          href: 'https://docs.google.com/document/d/1mx1-8qmMANfiCamlVG_dNryXuxF23r-wZcwPh7Dgwig/edit?usp=drive_link',
           label: 'CV',
           position: 'right',
         },

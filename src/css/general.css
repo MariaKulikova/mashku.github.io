@@ -182,7 +182,7 @@ nav.navbar {
 
 .navbar__items--right {
   padding-right: 16px;
-  gap: 24px;
+  gap: 16px;
 }
 
 @media (max-width: 996px) {
@@ -225,10 +225,28 @@ nav.navbar {
   }
 }
 
-nav.navbar .navbar__link,
-nav.navbar .navbar__item {
-color: var(--color-gray-headings) !important;
-  
+nav.navbar .navbar__link {
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 24px;
+  background-color: var(--color-white);
+  color: var(--color-gray-headings) !important;
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav.navbar .navbar__link:hover {
+  background-color: var(--color-gray-headings);
+  color: var(--color-white) !important;
+}
+
+nav.navbar .navbar__link svg {
+  display: none;
 }
 
 

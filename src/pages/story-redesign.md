@@ -35,6 +35,8 @@ In this case, I want to share a story about one specific challenge we faced whil
     I started by reviewing the full user path — from the product page to resource creation. I looked at how users behave and found points in the path where about 30% of customers drop out. Users of CDN are 2 segments business users(Website owners, course creators, small teams) and Technical users (Sysadmins, developers, DevOps engineers). The issue mostly affected non-technical users who relied on the UI instead of reading documentation.
 
     I reviewed more than 2,000 support tickets and watched more than 100 user web sessions.
+
+    Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do
   </div>
   <div>
     <img src="/img/story-redesign/storyRedesign-2.png" alt="User Journey Analysis" className="image image-with-border"/>
@@ -43,13 +45,6 @@ In this case, I want to share a story about one specific challenge we faced whil
 </div>
 </section>
 
-<section className="section-margin">
- <span className="feedback-box">
-
-  Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do
-  </span>
-
-</section>
 
 <section className="section-margin">
 
@@ -89,23 +84,19 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 
 #### Results
 
-<div className="columns">
-  <div className="feedback-box">
-    Support requests dropped from 40% to 10%
+##### Support requests dropped from 40% to 10%
+A clear sign the new UI was easier to use
 
-   <p> A clear sign the new UI was easier to use</p>
-  </div>
-  <div className="feedback-box">
-    Faster support
 
-  <p>Team used built-in validation instead of external tools</p>
-  </div>
-</div>
-<div className="feedback-box">
-  Faster troubleshooting
+  
+##### Faster support
+Team used built-in validation instead of external tools
 
-  <p>Users started sending screenshots of test results, making it easier to help</p>
-</div>
+
+
+##### Faster troubleshooting
+Users started sending screenshots of test results, making it easier to help
+
 </section>
 
 

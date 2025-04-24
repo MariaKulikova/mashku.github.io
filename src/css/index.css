@@ -178,17 +178,21 @@
 
   .contacts__buttons {
     display: flex;
-    gap: 16px;
+    gap: 24px;
   }
 
   .contacts__buttons .button {
-    padding: 12px 24px;
+    height: 40px;
+    padding: 0 24px;
     border-radius: 24px;
     background-color: var(--color-white);
     color: var(--color-gray-headings);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
     transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .contacts__buttons .button:hover {
