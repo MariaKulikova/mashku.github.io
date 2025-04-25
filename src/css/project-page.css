@@ -24,11 +24,20 @@
 
 @media (max-width: 768px) {
   .project-content img {
-    margin: 24px 0;
+    margin: 16px 0;
   }
 
   .project-content h3 {
     margin: 32px 0 16px;
+  }
+
+  .section-margin {
+    margin-bottom: 48px;
+    gap: 12px;
+  }
+
+  .section-margin p {
+    margin-bottom: 24px;
   }
 }
 
@@ -54,9 +63,31 @@
   display: block;
 }
 
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .columns > * {
+    flex: none;
+    width: 100%;
+  }
+}
+
 .image {
   border-radius: 12px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .image {
+    margin-bottom: 8px;
+  }
+
+  .columns > div > .image:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .highlight {

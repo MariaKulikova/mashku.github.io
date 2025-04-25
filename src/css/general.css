@@ -124,10 +124,19 @@ nav.navbar {
   box-sizing: border-box;
 }
 
+/* Container query for navbar */
+@container (max-width: 500px) {
+  .navbar__items--right .navbar__link[href^="mailto:"] {
+    display: none !important;
+  }
+}
+
 @media (max-width: 996px) {
   nav.navbar {
     width: 100vw;
     left: 0;
+    container-type: inline-size;
+    container-name: navbar;
   }
 }
 
@@ -143,7 +152,7 @@ nav.navbar {
 
   .navbar__items {
     display: flex !important;
-    flex: 1;
+    align-items: center;
   }
 
   .navbar__items--right {
@@ -166,10 +175,13 @@ nav.navbar {
 
 /* Inner container with max-width */
 .navbar__inner {
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: var(--layout-content-width);
   padding: 0 16px;
   margin: 0 auto;
+  gap: 32px;
 }
 
 @media (max-width: 996px) {
@@ -182,7 +194,10 @@ nav.navbar {
 
 .navbar__items--right {
   padding-right: 16px;
-  gap: 16px;
+  gap: 24px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 @media (max-width: 996px) {
@@ -195,6 +210,7 @@ nav.navbar {
 .navbar__logo {
   height: 32px;
   aspect-ratio: 2;
+  margin-right: auto;
   background:
     radial-gradient(farthest-side,#000 15%,#0000 18%)0 0/50% 100%,
     radial-gradient(50% 100% at 50% 160%,#fff 95%,#0000) 0 0/50% 50%,
@@ -226,7 +242,7 @@ nav.navbar {
 }
 
 nav.navbar .navbar__link {
-  padding: 0 16px;
+  padding: 0 12px;
   text-decoration: none;
   font-size: var(--font-size-h4);
   font-weight: var(--font-weight-bold);
