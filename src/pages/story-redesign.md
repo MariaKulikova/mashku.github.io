@@ -19,7 +19,7 @@ import { ProjectNavigation } from '../components/NavigationButtons'
 
 <section className="section-margin">
 
-#### Context
+### Context
 
 I worked at Selectel, one of the leading cloud and data center service providers in Russia. I was responsible for the full user experience, including research and design, for the CDN and Cloud Storage products.
 
@@ -28,7 +28,7 @@ In this case, I want to share a story about one specific challenge we faced whil
 
 <section className="section-margin">
 
-#### Research
+### Research
 
 <div className="columns">
   <div>
@@ -47,7 +47,7 @@ In this case, I want to share a story about one specific challenge we faced whil
 
 <section className="section-margin">
 
-#### Usability Testing
+### Usability Testing
 
 I prepared interactive prototypes and conducted usability testing with non-technical users. The tests went smoothly and revealed no critical issues.
 
@@ -58,7 +58,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 
 <section className="section-margin">
 
-  #### Design
+  ### Design
 
   <div>
    We’ve added a verification screen with CNAME setup tips, helpful instructions, and a built-in checker to confirm everything is working.
@@ -81,7 +81,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 
 <section className="section-margin">
 
-#### Results
+### Results
 <div className="columns">   
 
   <div className="highlight">   
@@ -100,7 +100,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 
   <div className="highlight">   
 
-  #### Faster troubleshooting 
+  #### Faster troubleshooting
   Users started sending screenshots of test results, making it easier to help
  
   </div> 

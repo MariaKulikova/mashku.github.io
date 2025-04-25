@@ -19,7 +19,7 @@ import { ProjectNavigation } from '../components/NavigationButtons'
 
 <section className="section-margin">
 
-#### Context
+### Context
 Selectel had several digital products, and each had its own design approach. This made it hard to keep the user experience consistent. Our goal was to build a unified design system that would help both designers and developers work faster and stay aligned.
 
 I worked as part of a horizontal design team. We discussed ideas, agreed on patterns, and made decisions together — from naming to behavior. This helped us create a system that reflected real needs and worked across all products.
@@ -27,7 +27,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 <section className="section-margin">
 
-#### My role
+### My role
 
 
 <div>
@@ -40,7 +40,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 </section>
 <section className="section-margin">
 
-#### Stepper
+### Stepper
 <div class="columns">
   <div>
     <img src="/img/design-system/designSystem-6.png" alt="Stepper States" className="image"/>
@@ -54,7 +54,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 <section className="section-margin">
 
-#### Skeleton 
+### Skeleton
 <div class="columns">
 <img src="/img/design-system/designSystem-2.png" alt="Design System Structure" className="image"/>
 <img src="/img/design-system/designSystem-3.png" alt="Component Architecture" className="image"/>
@@ -68,7 +68,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 <section className="section-margin">
 
-#### Navigation
+### Navigation
 <div class="columns">
   <div>
     <img src="/img/design-system/designSystem-8.png" alt="Navigation Overview" className="image"/>
@@ -86,12 +86,23 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 <section className="section-margin">
 
-#### Results
+### Results
+<div className="columns">
+  <div className="highlight">
+    #### Unified Library
+    Built complete component library with tokens and documentation
+  </div>
 
-We analyzed existing interfaces, identified common patterns, and built a component library in Figma with tokens, templates, and documentation. Then we worked with developers to bring everything into code, reviewed implementation, and made improvements along the way. 
+  <div className="highlight">
+    #### Faster Development
+    Teams achieved quicker development cycles with ready-to-use components
+  </div>
 
-As a result, we launched a full design system now used by all product teams. It sped up development, improved interface consistency, and made collaboration between design and development much smoother.
-
+  <div className="highlight">
+    #### Better Collaboration
+    Improved consistency and smoother design-development workflow
+  </div>
+</div>
 </section>
 
 

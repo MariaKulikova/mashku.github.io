@@ -18,7 +18,7 @@ import { ProjectNavigation } from '../components/NavigationButtons'
 
 <section className="section-margin">
 
-#### Context
+### Context
 
 At Marquiz, a survey and lead generation platform, I worked on optimizing the work completion act request process. Many clients needed these documents for accounting purposes, but the existing process was manual and time-consuming, leading to delays and numerous support requests.
 
@@ -26,7 +26,7 @@ At Marquiz, a survey and lead generation platform, I worked on optimizing the wo
 
 <section className="section-margin">
 
-#### Research
+### Research
 
 The key issues we identified through user research and support ticket analysis were:
 - Manual process requiring significant support team involvement
@@ -39,7 +39,7 @@ The key issues we identified through user research and support ticket analysis w
 
 <section className="section-margin">
 
-#### Solution
+### Solution
 
 We developed a streamlined process that:
 1. Standardized the request format
@@ -53,20 +53,18 @@ We developed a streamlined process that:
 
 <section className="section-margin">
 
-#### Results
+### Results
+<div className="columns">
+  <div className="highlight">
+    #### Reduced Support Load
+    Support requests related to act requests decreased significantly
+  </div>
 
-##### Reduced Support Load
-Support requests related to act requests decreased significantly
-
-##### Faster Processing
-Automated validation and standardized formats reduced processing time
-
-##### Better User Experience
-Users gained visibility into request status and estimated completion time
-
-##### Prepared for Automation
-The new standardized process laid groundwork for full automation
-
+  <div className="highlight">
+    #### Better Experience
+    Users gained visibility into request status and completion time
+  </div>
+</div>
 </section>
 
 <ProjectNavigation nextProject={{ title: "Hackathons", link: "/hackathons" }} />

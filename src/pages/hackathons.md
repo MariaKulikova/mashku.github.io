@@ -17,7 +17,7 @@ import { ProjectNavigation } from '../components/NavigationButtons'
 
 <section className="section-margin">
 
-#### Context
+### Context
 
 We took part in the Digital Breakthrough hackathon series, where the challenge was to build a working digital product in just 48 hours. 
 Our team included three developers, one QA engineer, and me as the designer. My role was to run a quick research phase, design the user interface, and prepare the project presentation for the jury. 
@@ -27,7 +27,7 @@ During the hackathon, we developed two impactful projects: Hunt U and Tovarishi 
 
 <section className="section-margin">
 
-#### Hunt U
+### Hunt U
   The first project, Hunt U, aimed to automate key hiring processes for companies facing a high volume of applicants. We built a functional prototype that streamlined resume filtering, skill checks, and candidate sorting. The solution focused on making life easier for recruiters while ensuring candidates were assessed fairly and efficiently. Our project was recognized for its strong practical value and advanced to the finals of Digital Breakthrough.
   
 <div className="columns">
@@ -35,12 +35,18 @@ During the hackathon, we developed two impactful projects: Hunt U and Tovarishi 
     <img src="/img/hackathons/huntu.png" alt="Hunt U Project" className="image"/>
   </div>
 </div>
+
+ <div className="highlight">
+  
+  #### 🏆 Advanced to finals of Digital Breakthrough for strong practical value
+  
+  </div>
   
 </section>
 
 <section className="section-margin">
 
-#### Tovarichy
+### Tovarichy
 
 The second project, Tovarishi, tackled everyday logistics for students living on campus. The idea was to connect students with and without cars to help each other with deliveries—saving time and building a stronger campus community. We created a mobile single-page application that allowed users to request and respond to delivery help. The app proved both useful and usable, earning us 3rd place at the regional stage of Digital Breakthrough.
 
@@ -50,11 +56,15 @@ The second project, Tovarishi, tackled everyday logistics for students living on
   </div>
 </div>
 
+ <div className="highlight">
+  
+  #### 🥉 Won 3rd place at regional stage with campus logistics solution
+  
+  </div>
+
 </section>
 
-<section className="section-margin">
 
-</section>
 
 <ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/selectel-design-system" }} />
 

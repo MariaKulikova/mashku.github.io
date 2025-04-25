@@ -18,7 +18,7 @@ import { ProjectNavigation } from '../components/NavigationButtons'
 
 <section className="section-margin">
 
-#### Context
+### Context
 
 Created an AI-powered assistant to help users make informed decisions when choosing used cars. The system analyzes multiple factors including price, condition, market value, and maintenance history to provide personalized recommendations.
 
