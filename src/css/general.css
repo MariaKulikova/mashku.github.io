@@ -34,9 +34,9 @@
   --font-size-h1: clamp(48px, 5vw, 64px);
   --font-size-h2: clamp(36px, 4vw, 48px);
   --font-size-h3: clamp(24px, 3vw, 32px);
-  --font-size-h4: 24px;
-  --font-size-subtitle: 20px;
-  --font-size-base: 16px;
+  --font-size-h4: 20px;
+  --font-size-subtitle: 18px;
+  --font-size-base: 18px;
   --font-size-small: 14px;
 
   /* Font weights */
@@ -90,7 +90,7 @@ h4 {
 /* Other typography classes */
 .subtitle {
   font-size: var(--font-size-subtitle);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   line-height: 1.4;
 }
 
@@ -226,23 +226,25 @@ nav.navbar {
 }
 
 nav.navbar .navbar__link {
-  height: 40px;
-  padding: 0 24px;
-  border-radius: 24px;
-  background-color: var(--color-white);
-  color: var(--color-gray-headings) !important;
+  padding: 0 16px;
   text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  transition: background-color 0.2s ease;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-bold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
+  background-size: 100% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease;
+  background-position: 0 100%;
 }
 
 nav.navbar .navbar__link:hover {
-  background-color: var(--color-gray-headings);
-  color: var(--color-white) !important;
+  background-position: 0 0;
 }
 
 nav.navbar .navbar__link svg {
@@ -251,6 +253,46 @@ nav.navbar .navbar__link svg {
 
 
 /* Project navigation */
+/* Top navigation */
+.top-navigation {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.top-navigation .button {
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  background: none;
+  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
+  background-size: 100% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease;
+  background-position: 0 100%;
+}
+
+.top-navigation .button:hover {
+  background-position: 0 0;
+}
+
+.top-navigation .button:hover svg path {
+  stroke: var(--color-accent);
+  transition: stroke 0.3s ease;
+}
+
+.top-navigation .button svg {
+  width: 20px;
+  height: 20px;
+}
 .project-navigation {
   height: 80px;
   display: flex;
@@ -261,20 +303,30 @@ nav.navbar .navbar__link svg {
 
 .project-navigation .button {
   padding: 12px 24px;
-  border-radius: 24px;
-  background-color: var(--color-white);
-  color: var(--color-gray-headings);
   text-decoration: none;
+  font-size: var(--font-size-h4);
   font-weight: var(--font-weight-medium);
-  transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+  background: none;
+  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
+  background-size: 100% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease;
+  background-position: 0 100%;
 }
 
 .project-navigation .button:hover {
-  background-color: var(--color-gray-headings);
-  color: var(--color-white);
+  background-position: 0 0;
+}
+
+.project-navigation .button:hover svg path {
+  stroke: var(--color-accent);
+  transition: stroke 0.3s ease;
 }
 
 .project-navigation .button svg {

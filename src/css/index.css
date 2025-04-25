@@ -57,7 +57,7 @@
 
   /* Product Design cards */
   .project-card[data-tags*="product design"] {
-    background: var(--color-accent);
+    background: var(--color-white);
   }
   .project-card__description {
     color: var(--color-gray-secondary-text);
@@ -67,40 +67,40 @@
 
   .project-card[data-tags*="product design"] .project-card__title h4,
   .project-card[data-tags*="product design"] .project-card__company p {
-    color: var(--color-white);
+    color: var(--color-gray-headings);
   }
 
   .project-card[data-tags*="product design"] .project-card__description {
-    color: var(--color-gray-surface);
+    color: var(--color-gray-secondary-text);
   }
 
   .project-card[data-tags*="product design"] .project-card__tag {
-    border-color: var(--color-white);
-    color: var(--color-white);
+    border-color: var(--color-gray-primary-text);
+    color: var(--color-gray-primary-text);
   }
 
   /* Design System and Teamwork cards */
   .project-card[data-tags*="design system"],
   .project-card[data-tags*="teamwork"] {
-    background: var(--color-black);
+    background: var(--color-white);
   }
 
   .project-card[data-tags*="design system"] .project-card__title h4,
   .project-card[data-tags*="teamwork"] .project-card__title h4,
   .project-card[data-tags*="design system"] .project-card__company p,
   .project-card[data-tags*="teamwork"] .project-card__company p {
-    color: var(--color-white);
+    color: var(--color-gray-headings);
   }
 
   .project-card[data-tags*="design system"] .project-card__description,
   .project-card[data-tags*="teamwork"] .project-card__description {
-    color: var(--color-gray-primary-text);
+    color: var(--color-gray-secondary-text);
   }
 
   .project-card[data-tags*="design system"] .project-card__tag,
   .project-card[data-tags*="teamwork"] .project-card__tag {
-    border-color: var(--color-white);
-    color: var(--color-white);
+    border-color: var(--color-gray-primary-text);
+    color: var(--color-gray-primary-text);
   }
 
   /* Default cards */
@@ -113,15 +113,11 @@
     transition: all 0.3s ease;
   }
 
-  .project-card[data-tags*="product design"]:hover {
-    background: var(--color-accent);
-    filter: brightness(0.9);
-  }
-
+  .project-card[data-tags*="product design"]:hover,
   .project-card[data-tags*="design system"]:hover,
   .project-card[data-tags*="teamwork"]:hover {
-    background: var(--color-black);
-    filter: brightness(1.2);
+    background: var(--color-white);
+    filter: brightness(0.95);
   }
 
   .project-card:hover {
@@ -158,8 +154,8 @@
   .project-card[data-tags*="product design"][target="_blank"] .project-card__title::after,
   .project-card[data-tags*="design system"][target="_blank"] .project-card__title::after,
   .project-card[data-tags*="teamwork"][target="_blank"] .project-card__title::after {
-    filter: brightness(0) invert(1);
-    opacity: 1;
+    filter: brightness(0);
+    opacity: 0.8;
   }
   
   .project-card__meta {

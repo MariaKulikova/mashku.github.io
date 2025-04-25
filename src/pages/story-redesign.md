@@ -32,9 +32,8 @@ In this case, I want to share a story about one specific challenge we faced whil
 
 <div className="columns">
   <div>
-    I started by reviewing the full user path — from the product page to resource creation. I looked at how users behave and found points in the path where about 30% of customers drop out. Users of CDN are 2 segments business users(Website owners, course creators, small teams) and Technical users (Sysadmins, developers, DevOps engineers). The issue mostly affected non-technical users who relied on the UI instead of reading documentation.
-
-    I reviewed more than 2,000 support tickets and watched more than 100 user web sessions.
+    I reviewed the full user journey from product page to resource creation and found key drop-off points where around 30% of users left. This mostly affected non-technical users who relied on the UI. 
+    I analyzed over 2,000 support tickets and watched 100+ user sessions. 
 
     Users filled out the form, clicked "Create", didn’t see feedback, and got confused. Some saw a blocked button and didn’t know what to do
   </div>
@@ -83,24 +82,33 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 <section className="section-margin">
 
 #### Results
+<div className="columns">   
 
-##### Support requests dropped from 40% to 10%
-A clear sign the new UI was easier to use
+  <div className="highlight">   
 
-
+  #### Support requests dropped from 40% to 10%**
+  A clear sign the new UI was easier to use
   
-##### Faster support
-Team used built-in validation instead of external tools
+  </div>  
 
+  <div className="highlight">  
 
+   #### Faster support
+    Team used built-in validation instead of external tools
+  
+  </div> 
 
-##### Faster troubleshooting
-Users started sending screenshots of test results, making it easier to help
+  <div className="highlight">   
 
+  #### Faster troubleshooting 
+  Users started sending screenshots of test results, making it easier to help
+ 
+  </div> 
+ </div> 
 </section>
 
 
-<ProjectNavigation nextProject={{ title: "Hackathons", link: "/hackathons" }} />
+<ProjectNavigation nextProject={{ title: "AI Car Assistant", link: "/ai-car-assistant" }} />
 
 </div>
 </article>
