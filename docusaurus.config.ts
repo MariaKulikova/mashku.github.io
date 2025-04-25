@@ -33,6 +33,7 @@ const config: Config = {
           customCss: [
             './src/css/general.css',
             './src/css/project-page.css',
+            './src/css/index.css',
           ],
         },
       } satisfies Preset.Options,
@@ -56,8 +57,8 @@ const config: Config = {
       },
       items: [
         {
-          href: 'mailto:hey@mashku.pro',
-          label: 'Contact',
+          href: 'mailto:mariakulikova18.01@gmail.com',
+          label: 'mariakulikova18.01@gmail.com',
           position: 'right',
         },
         {
@@ -69,30 +70,6 @@ const config: Config = {
     },
 
     
-    // Theme configuration
-    docs: {
-      sidebar: {
-        hideable: false,
-        autoCollapseCategories: true,
-      }
-    },
-    
-    // Custom theme settings
-    customTheme: {
-      style: {
-        html: {
-          backgroundColor: '#E7E7E9',
-          height: '100%'
-        }
-      }
-    },
-    
-    // Theme styles
-    style: {
-      lightBackground: '#E7E7E9',
-    },
-    
-    // No footer config to hide it
     metadata: [
       {
         name: 'description',
