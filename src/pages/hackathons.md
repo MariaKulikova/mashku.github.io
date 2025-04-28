@@ -52,7 +52,7 @@ The second project, Tovarishi, tackled everyday logistics for students living on
 
 <div className="columns">
   <div>
-    <img src="/img/hackathons/tovarichi.png" alt="Tovarichi Project" className="image"/>
+    <img src="/img/hackathons/Tovarichi.png" alt="Tovarichi Project" className="image"/>
   </div>
 </div>
 
