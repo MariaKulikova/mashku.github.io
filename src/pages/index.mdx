@@ -7,158 +7,162 @@ hide_table_of_contents: true
 import Link from '@docusaurus/Link';
 import '../styles/general.css'
 import '../styles/index.css'
+import '../styles/typography.css'
 
 
 <div className="container body">
   <section className="section" >
-  <div className="bio"> 
-  ## Hey, I'm Masha
-  I design complex B2C and B2B products in a wide range of fields, including AI, CloudTech, E-com, MarTech and other. Right now, I'm working on an AI assistant project with the University of Luxembourg.  
-
-  I believe good design is more than pretty screens — it's about making life easier for users.
-  My process is flexible: I stay involved from idea to launch, adapt methods to each project, and focus on what brings the most value.
+    <div className="bio"> 
+      ### Hey, I'm Masha. 
+      # I design, write and create products
     </div>
   </section>
 
   <section className="section">
+  
+  ## Teams
 
-    <div className="projects-grid">
-
-      <a href="/projects/ai-car-assistant/ai-car-assistant" className="project-card link" data-tags="product design ai">
-        <div className="project-card__title">
-          <h4>
-            AI Assistant for Used Cars
-          </h4>
+    <div className="teams-grid">
+     
+       <div className="project-card" data-tags="product design ai">
+        <div className="project-card-title-wrapper">
+          <div className="project-card-title">
+            <p className="label"> 2024</p>
+            ### AI Assistant and Startup spirit
+          </div>
         </div>
-        <p className="project-card__description">
-          Created an AI-powered assistant that helps users make informed decisions when choosing used cars by analyzing multiple factors and providing personalized recommendations.
+  
+        <p className="project-card-description">
+          We are developing an AI assistant to help users find used cars in Europe. The product is designed for people who are not familiar with cars and want to simplify the selection process. The assistant collects requirements, suggests suitable models, provides price guidance, and shows listings from verified platforms.
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+         <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               Product design
             </span>
-            <span className="project-card__tag">
+            <span className="project-card-tag">
               AI
             </span>
           </div>
+         </div>
+        <div className="project-card-image">
+          <img src="/img/AIUC/First_screen.png" alt="AI Car Assistant" />
         </div>
-      </a>
-
-      <a href="/projects/marquiz-act-requests/marquiz-act-requests" className="project-card link" data-tags="product design">
-        <div className="project-card__title">
-          <h4>
-            Simplifying act requests at Marquiz
-          </h4>
+        <Link to="/projects/ai-car-assistant/ai-car-assistant" className="button-team-card">Read case study</Link>
+      </div>
+      
+      <div className="project-card" data-tags="product design">
+        <div className="project-card-title-wrapper">
+          <div className="project-card-title">
+            <p className="label">2024</p>
+            ### Simplifying act requests at Marquiz
+          </div>
         </div>
-        <p className="project-card__description">
+      
+        <p className="project-card-description">
           Optimized the work completion act request process, reducing support requests, and preparing the system for full automation.
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+         <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               Product design
             </span>
           </div>
+         </div>
+        <div className="project-card-image">
+          <img src="/img/marquiz/Acts.png" alt="Marquiz Acts" />
         </div>
-      </a>
+        <Link to="/projects/marquiz-act-requests/marquiz-act-requests" className="button-team-card">Read case study</Link>
+      </div>
+      
+      <div className="project-card">
+        <div className="project-card-title-wrapper">
+          <div className="project-card-title">
+            <p className="label">2020-2022</p>
+            ### Redesign of CDN at Selectel
+          </div>
+        </div>
+    
+        <p className="project-card-description">
+          Led the redesign of CDN configuration pages and contributed to building a comprehensive design system. Reduced support requests from 40% to 10% while establishing consistent design patterns across products.
+        </p>
+         <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
+              Product design
+            </span>
+            <span className="project-card-tag">
+              Design System
+            </span>
+          </div>
+         </div>
+        <div className="project-card-image">
+          <img src="/img/story-redesign/storyRedesign-1.png" alt="Story Redesign" />
+        </div>
+        <Link to="/projects/story-redesign/story-redesign" className="button-team-card">Read case study</Link>
+      </div>
 
-      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="project-card link" data-tags="telegram">
-        <div className="project-card__title">
-          <h4>
-            Coffee Drinkers' Map
-          </h4>
+     
+
+     
+    </div>
+  </section>
+
+  <section className="section">
+     ## Projects
+    <div className="projects-grid">
+      <Link to="/projects/hackathons/hackathons" className="project-card link" data-tags="product design teamwork">
+        <div className="project-card-title">
+        
+          #### Hackathons
+      
         </div>
-        <p className="project-card__description">
+        <p className="project-card-description">
+          Participation in hackathons and creating innovative solutions under time constraints
+        </p>
+        <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
+              Speed design
+            </span>
+            <span className="project-card-tag">
+              Teamwork
+            </span>
+          </div>
+        </div>
+      </Link>
+
+       <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="project-card link" data-tags="telegram">
+        <div className="project-card-title">
+          
+          #### Coffee Drinkers' Map
+          
+        </div>
+        <p className="project-card-description">
           This bot helps you find the best coffee places in your city.
           I created it to share my love for coffee and help others discover new spots.
-
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+        <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               TelegramBot
             </span>
           </div>
         </div>
       </a>
 
-
-      <a href="/projects/hackathons/hackathons" className="project-card link" data-tags="product design teamwork">
-        <div className="project-card__title">
-          <h4>
-            Hackathons
-          </h4>
-        </div>
-        <p className="project-card__description">
-          Participation in hackathons and creating innovative solutions under time constraints
-        </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
-              Speed design
-            </span>
-            <span className="project-card__tag">
-              Teamwork
-            </span>
-          </div>
-        </div>
-      </a>
-
-      
-
-      <a href="/projects/selectel-design-system/selectel-design-system" className="project-card link" data-tags="product design design system">
-        <div className="project-card__title">
-          <h4>
-            Building Design System at Selectel
-          </h4>
-        </div>
-        <p className="project-card__description">
-          Collaborated with the design team to build a branded design system by customizing components, defining clear usage guidelines, and redesigning navigation for improved usability.
-        </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
-              Design System
-            </span>
-          </div>
-        </div>
-      </a>
-
-
-      <a href="/projects/story-redesign/story-redesign" className="project-card link" data-tags="product design">
-        <div className="project-card__title">
-          <h4>
-            Redesign of CDN at Selectel
-          </h4>
-        </div>
-        <p className="project-card__description">
-          Revamped CDN configuration pages to simplify customization. The result was an intuitive design that reduced the number of support requests from 40% to 10%, greatly simplifying our users' experience.
-        </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
-              Product design
-            </span>
-          </div>
-        </div>
-      </a>
-
-
-      
-
       <a href="https://t.me/nomadic_eye" target="_blank" className="project-card link" data-tags="blog">
-        <div className="project-card__title">
-          <h4>
-            Blog
-          </h4>
+        <div className="project-card-title">
+          
+         #### Blog
+          
         </div>
-        <p className="project-card__description">
+        <p className="project-card-description">
           Here you'll find stories about design and life — sometimes funny ones (RU).
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+        <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               Telegram Chanel
             </span>
           </div>
@@ -166,17 +170,17 @@ import '../styles/index.css'
       </a>
 
       <a href="https://planbanan.com/" target="_blank" className="project-card link" data-tags="product design">
-        <div className="project-card__title">
-          <h4>
-            PlanBanan
-          </h4>
+        <div className="project-card-title">
+         
+          #### PlanBanan
+          
         </div>
-        <p className="project-card__description">
+        <p className="project-card-description">
           This is a side prolect. Me and developer made a tool for task evaluation in teams
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+        <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               Product design
             </span>
           </div>
@@ -184,37 +188,72 @@ import '../styles/index.css'
       </a>
 
       <a href="https://www.behance.net/gallery/184823237/Illustrations-for-merch" target="_blank" className="project-card link" data-tags="visual">
-        <div className="project-card__title">
-          <h4>
-           Merch
-          </h4>
+        <div className="project-card-title">
+          
+          #### Merch
+          
         </div>
-        <p className="project-card__description">
+        <p className="project-card-description">
           I created illustrations for merch. The project was a fun way to express my creativity.
         </p>
-        <div className="project-card__meta">
-          <div className="project-card__tags">
-            <span className="project-card__tag">
+        <div className="project-card-meta">
+          <div className="project-card-tags">
+            <span className="project-card-tag">
               Visual design
             </span>
-            <span className="project-card__tag">
+            <span className="project-card-tag">
               Personal project
             </span>
           </div>
         </div>
       </a>
 
-      
+    </div>
+  </section>
+
+  <section className="section">
+    ## Experiments
+    <div className="experiments-grid projects-grid">
+     
+      <div className="experiments-card project-card">
+       <img src="/img/experiments/Form.jpg" alt="DribbleShot" />
+        <div className="project-card-tags">
+          <span className="project-card-tag">
+           UI
+          </span>
+        </div>  
+      </div>
+
+      <div className="experiments-card project-card">
+       <img src="/img/experiments/Login.jpg" alt="DribbleShot" />
+        <div className="project-card-tags">
+          <span className="project-card-tag">
+           UI
+          </span>
+        </div>  
+      </div>
+
+       <div className="experiments-card project-card">
+       <img src="/img/experiments/Rootsy.jpg" alt="WebDesign" />
+        <div className="project-card-tags">
+          <span className="project-card-tag">
+           UI
+          </span>
+        </div>  
+      </div>
+
+
+
     </div>
   </section>
 
   <section className="section contacts">
-    <h4 className="contacts__description">
+    <h4 className="contacts-description">
       I'm always open to new connections - if you have an interesting project or just want to chat, feel free to reach out!
     </h4>
 
-    <div className="contacts__content">
-      <div className="contacts__socials">
+    <div className="contacts-content">
+      <div className="contacts-socials">
         <Link to="https://www.instagram.com/mashku.me">
           <img src="/img/Instagram.svg" alt="Instagram" />
         </Link>

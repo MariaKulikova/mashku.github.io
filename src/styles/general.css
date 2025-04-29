@@ -40,6 +40,8 @@ nav.navbar {
   box-sizing: border-box;
 }
 
+
+
 /* Container query for navbar */
 @container (max-width: 500px) {
   .navbar__items--right .navbar__link[href^="mailto:"] {
@@ -58,7 +60,7 @@ nav.navbar {
 
 /* Override Docusaurus mobile navbar behavior */
 @media (max-width: 996px) {
-  .navbar-sidebar {
+  .navbar__sidebar {
     display: none !important;
   }
 

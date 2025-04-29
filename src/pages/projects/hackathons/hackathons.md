@@ -66,6 +66,6 @@ The second project, Tovarishi, tackled everyday logistics for students living on
 </section>
 
 
-<ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/projects/selectel-design-system/selectel-design-system" }} />
+<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/projects/story-redesign/story-redesign" }} />
 
 </article>
