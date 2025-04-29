@@ -2,6 +2,9 @@
 @import './typography.css';
 
 :root {
+  /* Shadows */
+  --shadow-tag: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   /* Layout */
   --layout-max-width: 1280px;
   --layout-padding: 16px;

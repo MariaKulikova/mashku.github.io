@@ -12,7 +12,29 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
 
 <div className="section-margin">
 
-# Hackatons
+# Hackathons
+---
+
+<div className="project-details">
+  <div className="project-details-column">
+    <ul>
+      <li><strong>Year:</strong> 2022</li>
+      <li><strong>Company:</strong> <div className="company-info"><span className="company-logo">🏆</span><a href="https://leadersofdigital.ru/" target="_blank">Digital Breakthrough</a></div></li>
+      <li><strong>Team:</strong> 5 people</li>
+    </ul>
+  </div>
+  <div className="project-details-column">
+    <div className="skill-tags">
+      <span className="skill-tag">UX Design</span>
+      <span className="skill-tag">Rapid Prototyping</span>
+      <span className="skill-tag">User Research</span>
+      <span className="skill-tag">Presentation</span>
+      <span className="skill-tag">Team Collaboration</span>
+    </div>
+  </div>
+</div>
+
+---
 
 </div>
 

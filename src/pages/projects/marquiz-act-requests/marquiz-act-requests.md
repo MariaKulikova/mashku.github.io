@@ -14,6 +14,22 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
 <div className="section-margin">
   
   # Simplifying Act Requests at Marquiz
+  ---
+
+  <div className="project-details">
+    <div className="project-details-column">
+      <a href="https://marquiz.io" className="link" target="_blank">Marquiz</a>
+      <p> SaaS platform for lead generation used by 10,000+ businesses  </p>
+    </div>
+    <div className="project-details-column">
+      <div className="skill-tags">
+        <span className="skill-tag">Product Design</span>
+        <span className="skill-tag">UX Research</span>
+        <span className="skill-tag">Process Optimization</span>
+        <span className="skill-tag">Support Analytics</span>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -27,26 +43,9 @@ At Marquiz, a survey and lead generation platform, I worked on optimizing the wo
 
 <section className="section-margin">
 
-### Research
-
-The key issues we identified through user research and support ticket analysis were:
-- Manual process requiring significant support team involvement
-- Delays in document generation and delivery
-- Lack of standardization in request format
-- No way for users to track request status
-- High volume of follow-up support requests
-
-</section>
-
-<section className="section-margin">
-
 ### Solution
-
-We developed a streamlined process that:
-1. Standardized the request format
-2. Added automated validation
-3. Implemented request status tracking
-4. Created clear user communication at each step
+We standardized the request format, added automated validation
+and created clear user communication at each step
 
 <img src="/img/marquiz/Acts.png" alt="New act request interface" className="image"/>
 
@@ -68,7 +67,7 @@ We developed a streamlined process that:
 </div>
 </section>
 
-<ProjectNavigation nextProject={{ title: "Hackathons", link: "/projects/hackathons/hackathons" }} />
+<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/projects/story-redesign/story-redesign" }} />
 
 </div>
 </article>
