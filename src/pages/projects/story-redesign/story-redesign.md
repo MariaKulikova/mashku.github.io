@@ -1,4 +1,5 @@
 ---
+title: How we reduce User Confusion and Support Load
 description: A case study of the redesign process and UX improvements at Selectel
 hide_table_of_contents: true
 image: /img/story-redesign/storyRedesign-1.png
@@ -108,7 +109,7 @@ I prepared interactive prototypes and conducted usability testing with non-techn
 </section>
 
 
-<ProjectNavigation nextProject={{ title: "AI Car Assistant", link: "/projects/ai-car-assistant" }} />
+<ProjectNavigation nextProject={{ title: "AI Car Assistant", link: "/projects/ai-car-assistant/ai-car-assistant" }} />
 
 </div>
 </article>

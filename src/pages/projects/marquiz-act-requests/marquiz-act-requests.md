@@ -1,11 +1,12 @@
 ---
+title: Simplifying Act Requests at Marquiz
 description: Case study of optimizing work completion act request process at Marquiz
 hide_table_of_contents: true
 image: /img/marquiz/Acts.png
 ---
 
-import '../../styles/project-page.css'
-import { ProjectNavigation } from '../../components/NavigationButtons'
+import '../../../styles/project-page.css'
+import { ProjectNavigation } from '../../../components/NavigationButtons'
 
 <article>
 <div className="container">
@@ -67,7 +68,7 @@ We developed a streamlined process that:
 </div>
 </section>
 
-<ProjectNavigation nextProject={{ title: "Hackathons", link: "/pages/hackathons" }} />
+<ProjectNavigation nextProject={{ title: "Hackathons", link: "/projects/hackathons/hackathons" }} />
 
 </div>
 </article>

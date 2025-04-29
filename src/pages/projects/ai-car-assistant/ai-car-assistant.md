@@ -1,4 +1,5 @@
 ---
+title: AI Assistant for Used Car Selection
 description: Case study of an AI assistant helping users choose used cars
 hide_table_of_contents: true
 image: /img/AIUC/First_screen.png
@@ -51,7 +52,7 @@ Created an AI-powered assistant to help users make informed decisions when choos
 
 </section>
 
-<ProjectNavigation nextProject={{ title: "Marquiz Act Requests", link: "/pages/marquiz-act-requests" }} />
+<ProjectNavigation nextProject={{ title: "Marquiz Act Requests", link: "/projects/marquiz-act-requests/marquiz-act-requests" }} />
 
 </div>
 </article>

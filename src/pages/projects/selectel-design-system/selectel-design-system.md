@@ -1,4 +1,5 @@
 ---
+title: Selectel Design System
 description: Development and implementation of a comprehensive design system for Selectel
 hide_table_of_contents: true
 image: /img/design-system/designSystem-1.png
@@ -107,7 +108,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 
 
-<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/projects/story-redesign" }} />
+<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/projects/story-redesign/story-redesign" }} />
 
 </div>
 </article>

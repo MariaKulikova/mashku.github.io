@@ -1,11 +1,12 @@
 ---
+title: Hackathons
 description: Participation in hackathons and creating innovative solutions under time constraints
 hide_table_of_contents: true
 image: /img/hackathons/huntu.png
 ---
 
-import '../../styles/project-page.css'
-import { ProjectNavigation } from '../../components/NavigationButtons'
+import '../../../styles/project-page.css'
+import { ProjectNavigation } from '../../../components/NavigationButtons'
 
 <article className="container">
 
@@ -65,7 +66,6 @@ The second project, Tovarishi, tackled everyday logistics for students living on
 </section>
 
 
-
-<ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/projects/selectel-design-system" }} />
+<ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/projects/selectel-design-system/selectel-design-system" }} />
 
 </article>
