@@ -28,6 +28,8 @@
 @media (max-width: 768px) {
   .project-content img {
     margin: 16px 0;
+    max-width: 100%;
+    height: auto;
   }
 
   .project-content h3 {
