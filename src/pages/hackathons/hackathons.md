@@ -4,8 +4,8 @@ hide_table_of_contents: true
 image: /img/hackathons/huntu.png
 ---
 
-import '../css/project-page.css'
-import { ProjectNavigation } from '../components/NavigationButtons'
+import '../../styles/project-page.css'
+import { ProjectNavigation } from '../../components/NavigationButtons'
 
 <article className="container">
 
@@ -66,6 +66,6 @@ The second project, Tovarishi, tackled everyday logistics for students living on
 
 
 
-<ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/selectel-design-system" }} />
+<ProjectNavigation nextProject={{ title: "Selectel Design System", link: "/projects/selectel-design-system" }} />
 
 </article>

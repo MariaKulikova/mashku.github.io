@@ -1,3 +1,6 @@
+@import './colors.css';
+@import './typography.css';
+
 .bio {
   max-width: 800px;
   

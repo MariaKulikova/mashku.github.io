@@ -1,0 +1,13 @@
+:root {
+  /* Color system */
+  --color-white: #FFFFFF;
+  --color-black: #131416;
+  --color-accent: #ED7044;
+  
+  /* Gray scale */
+  --color-gray-surface: #E7E7E9;
+  --color-gray-borders: #979ba2;
+  --color-gray-secondary-text: #777986;
+  --color-gray-primary-text: #5B5D6B;
+  --color-gray-headings: #1a1d32;
+}

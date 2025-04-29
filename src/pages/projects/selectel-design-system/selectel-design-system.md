@@ -4,8 +4,8 @@ hide_table_of_contents: true
 image: /img/design-system/designSystem-1.png
 ---
 
-import '../css/project-page.css'
-import { ProjectNavigation } from '../components/NavigationButtons'
+import '../../../styles/project-page.css'
+import { ProjectNavigation } from '../../../components/NavigationButtons'
 
 <article>
 <div className="container">
@@ -107,7 +107,7 @@ I worked as part of a horizontal design team. We discussed ideas, agreed on patt
 
 
 
-<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/story-redesign" }} />
+<ProjectNavigation nextProject={{ title: "Story Redesign", link: "/projects/story-redesign" }} />
 
 </div>
 </article>

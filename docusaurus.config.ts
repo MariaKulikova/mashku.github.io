@@ -31,9 +31,9 @@ const config: Config = {
         blog: false,
         theme: {
           customCss: [
-            './src/css/general.css',
-            './src/css/project-page.css',
-            './src/css/index.css',
+            './src/styles/general.css',
+            './src/styles/project-page.css',
+            './src/styles/index.css',
           ],
         },
       } satisfies Preset.Options,
