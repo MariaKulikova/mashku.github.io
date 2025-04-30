@@ -322,9 +322,8 @@ article {
   align-items: center;
   justify-content: center;
   padding: 4px 12px;
-  background-color: var(--color-gray-surface) 0.9;
+  background: rgba(231, 231, 233, 0.65);
   backdrop-filter: blur(4px);
-  backface-visibility: hidden;
   color: var(--color-gray-primary-text);
   border-radius: 16px;
   font-size: var(--font-size-small);
