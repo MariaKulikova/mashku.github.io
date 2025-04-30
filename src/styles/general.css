@@ -2,9 +2,7 @@
 @import './typography.css';
 
 :root {
-  /* Shadows */
-  --shadow-tag: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+ 
   /* Layout */
   --layout-max-width: 1280px;
   --layout-padding: 16px;
@@ -15,7 +13,7 @@
   }
 
   /* Docusaurus required overrides */
-  --ifm-background-color: var(--color-gray-surface) !important;
+  --ifm-background-color: var(--color-gray-surface);
   --ifm-color-primary: var(--color-gray-headings);
 }
 
@@ -27,7 +25,6 @@ h5:hover .hash-link,
 h6:hover .hash-link {
   display: none !important;
 }
-
 
 
 /* Navbar container */
@@ -166,7 +163,6 @@ nav.navbar .navbar__link {
   padding: 0 12px;
   text-decoration: none;
   font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-bold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -201,25 +197,6 @@ nav.navbar .navbar__link svg {
   padding: 0 var(--layout-padding);
 }
 
-.top-navigation .button {
-  padding: 12px 16px;
-  text-decoration: none;
-  font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-medium);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  background: none;
-  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
-  background-size: 100% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.3s ease;
-  background-position: 0 100%;
-  white-space: nowrap;
-}
 
 @media (max-width: 480px) {
   .top-navigation .button {
@@ -338,4 +315,16 @@ article {
 
   margin-top: 64px;
   
+}
+
+.tag {
+  
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--gray-surface);
+  color: var(--color-gray-primary-text);
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  box-shadow: var(--shadow-tag);
 }

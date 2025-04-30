@@ -24,12 +24,12 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
     </ul>
   </div>
   <div className="project-details-column">
-    <div className="skill-tags">
-      <span className="skill-tag">UX Design</span>
-      <span className="skill-tag">Rapid Prototyping</span>
-      <span className="skill-tag">User Research</span>
-      <span className="skill-tag">Presentation</span>
-      <span className="skill-tag">Team Collaboration</span>
+    <div className="tags">
+      <span className="tag">UX Design</span>
+      <span className="tag">Rapid Prototyping</span>
+      <span className="tag">User Research</span>
+      <span className="tag">Presentation</span>
+      <span className="tag">Team Collaboration</span>
     </div>
   </div>
 </div>

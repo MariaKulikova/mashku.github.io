@@ -23,13 +23,13 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
      <p>Cloud and infrastructure provider with 6 data centers and 23,000+ customers </p>
     </div>
     <div className="project-details-column">
-      <div className="skill-tags">
-        <span className="skill-tag">Design System</span>
-        <span className="skill-tag">Product Design</span>
-        <span className="skill-tag">Component Library</span>
-        <span className="skill-tag">Documentation</span>
-        <span className="skill-tag">User Research</span>
-        <span className="skill-tag">Analytics</span>
+      <div className="tags">
+        <span className="tag">Design System</span>
+        <span className="tag">Product Design</span>
+        <span className="tag">Component Library</span>
+        <span className="tag">Documentation</span>
+        <span className="tag">User Research</span>
+        <span className="tag">Analytics</span>
       </div>
     </div>
   </div>

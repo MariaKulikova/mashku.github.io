@@ -22,11 +22,11 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
       <p> SaaS platform for lead generation used by 10,000+ businesses  </p>
     </div>
     <div className="project-details-column">
-      <div className="skill-tags">
-        <span className="skill-tag">Product Design</span>
-        <span className="skill-tag">UX Research</span>
-        <span className="skill-tag">Process Optimization</span>
-        <span className="skill-tag">Support Analytics</span>
+      <div className="tags">
+        <span className="tag">Product Design</span>
+        <span className="tag">UX Research</span>
+        <span className="tag">Process Optimization</span>
+        <span className="tag">Support Analytics</span>
       </div>
     </div>
   </div>

@@ -10,4 +10,7 @@
   --color-gray-secondary-text: #777986;
   --color-gray-primary-text: #5B5D6B;
   --color-gray-headings: #1a1d32;
+
+  /* Shadows */
+  --shadow-tag: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

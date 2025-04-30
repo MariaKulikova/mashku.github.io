@@ -23,12 +23,12 @@ import { ProjectNavigation } from '../../../components/NavigationButtons'
    
   </div>
   <div className="project-details-column">
-    <div className="skill-tags">
-      <span className="skill-tag">UX Design</span>
-      <span className="skill-tag">UI Kit</span>
-      <span className="skill-tag">Design System</span>
-      <span className="skill-tag">Documentation</span>
-      <span className="skill-tag">User Testing</span>
+    <div className="tags">
+      <span className="tag">UX Design</span>
+      <span className="tag">UI Kit</span>
+      <span className="tag">Design System</span>
+      <span className="tag">Documentation</span>
+      <span className="tag">User Testing</span>
     </div>
   </div>
 </div>
