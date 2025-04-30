@@ -62,15 +62,19 @@ The basic flow includes gathering requirements, recommending suitable cars, sugg
 We show an input field and suggestions with the most common queries.
 
 <img src="/img/AIUC/First_screen.png" alt="AI Car Assistant interface" className="image"/>
+
+<img src="/img/AIUC/Cars.png" alt="AI Car Assistant interface" className="image"/>
 </section>
 
+
+
 <section className="section-margin">
+
 ### Recommendation
 
 We act as a car finder, so recommending a car is one of the main points in the user flow.
 We show recommendations based on the user's request and allow them to open the car card for more details.
 	
-<img src="/img/AIUC/Cars.png" alt="AI Car Assistant interface" className="image"/>
 </section>
 
 <section className="section-margin">
@@ -79,7 +83,7 @@ We show recommendations based on the user's request and allow them to open the c
 The result of the selection process is a set of relevant and up-to-date listings from classifieds, filtered according to the user's requirements and location.
 Users can save favorite listings to review them later.
 	
-<img src="/img/AIUC/Cars.png" alt="AI Car Assistant interface" className="image"/>
+
 </section>
 
 
