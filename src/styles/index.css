@@ -169,7 +169,6 @@
 
 
 
-
 /* Projects Grid */
 .projects-grid {
     width: 100%;
@@ -210,8 +209,10 @@
 
 
  
-  .experiments-grid .projects-grid  {
+  .experiments-grid .projects-grid {
     background: transparent;
+    display: flex;
+    gap: 24px;
   }
 
   
@@ -262,15 +263,10 @@
     margin-bottom: 24px;
   }
 
-  .experiments-card .project-card-tags {
-    margin-bottom: 0;
-  }
-
   .experiments-card {
     border-radius: 24px;
     position: relative;
     padding: 0 !important;
-    overflow: hidden;
     height: 100%;
   }
 
@@ -283,13 +279,19 @@
     margin: 0;
   }
 
-  .experiments-card .tag {
+  .experiments-card .project-card-tags {
     position: absolute;
-    bottom: 24px;
+    bottom: 0px;
     left: 24px;
+    right: 24px;
     z-index: 1;
-    
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+   
   }
+
+  
 
 
   
@@ -324,7 +326,7 @@
 
   .contacts-socials a {
     display: flex;
-    align-items: right;
+    align-items: center;
   }
   
   .contacts-socials img {

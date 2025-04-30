@@ -318,13 +318,16 @@ article {
 }
 
 .tag {
-  
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 12px;
-  background-color: var(--gray-surface);
+  background-color: var(--color-gray-surface) 0.9;
+  backdrop-filter: blur(4px);
+  backface-visibility: hidden;
   color: var(--color-gray-primary-text);
   border-radius: 16px;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-small);
   box-shadow: var(--shadow-tag);
+  
 }
