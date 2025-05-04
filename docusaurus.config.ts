@@ -52,8 +52,6 @@ const config: Config = {
       logo: {
         alt: '',
         src: 'img/eyes.svg',
-        
-        
       },
       items: [
         {

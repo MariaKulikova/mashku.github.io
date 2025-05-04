@@ -2,7 +2,8 @@
 @import './typography.css';
 
 :root {
- 
+  scroll-behavior: smooth;
+  
   /* Layout */
   --layout-max-width: 1280px;
   --layout-padding: 16px;
@@ -37,7 +38,7 @@ nav.navbar {
   top: 0;
   z-index: 1000;
   padding: 0 16px;
-  box-sizing: border-box;
+ 
 }
 
 
@@ -67,28 +68,7 @@ nav.navbar {
   .navbar__toggle {
     display: none !important;
   }
-
-  .navbar__items {
-    display: flex !important;
-    align-items: center;
-  }
-
-  .navbar__items--right {
-    
-    display: flex !important;
-  }
-
-  .navbar__items--right .navbar__item {
-    display: flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
-  .navbar__items--right .navbar__link {
-    display: flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
+  
 }
 
 /* Inner container with max-width */
@@ -96,8 +76,8 @@ nav.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--layout-content-width);
-  padding: 0 16px;
+  max-width: 1280px;
+  padding: 0 24px;
   margin: 0 auto;
   gap: 32px;
 }
@@ -131,10 +111,9 @@ nav.navbar {
   margin-right: auto;
   background:
     radial-gradient(farthest-side,#000 15%,#0000 18%)0 0/50% 100%,
-    radial-gradient(50% 100% at 50% 160%,#fff 95%,#0000) 0 0/50% 50%,
+    radial-gradient(50% 100% at 50% 160%,#fff 95%,#00000000) 0 0/50% 50%,
     radial-gradient(50% 100% at 50% -60%,#fff 95%,#0000) 0 100%/50% 50%;
   background-repeat: repeat-x;
-  mask: radial-gradient(closest-side at 50% 100%, #000 95%, #0000) 0 100%/50% 0% repeat-x;
   animation: l3 2s infinite alternate ease-in;
 }
 
@@ -152,6 +131,37 @@ nav.navbar {
     mask-size: 50% 100%;
   }
 }
+
+@keyframes l3 {
+  0%, 70% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+  85% {
+    -webkit-mask-size: 50% 0;
+    mask-size: 50% 0;
+  }
+  100% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+}
+
+@keyframes l3 {
+  0%, 70% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+  85% {
+    -webkit-mask-size: 50% 0;
+    mask-size: 50% 0;
+  }
+  100% {
+    -webkit-mask-size: 50% 100%;
+    mask-size: 50% 100%;
+  }
+}
+
 
 @media (max-width: 996px) {
   .navbar__logo {
@@ -185,44 +195,9 @@ nav.navbar .navbar__link svg {
 }
 
 
-/* Project navigation */
-/* Top navigation */
-.top-navigation {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 var(--layout-padding);
-}
 
 
-@media (max-width: 480px) {
-  .top-navigation .button {
-    font-size: var(--font-size-body);
-    padding: 8px 12px;
-  }
-  
-  .top-navigation {
-    height: 60px;
-    margin-bottom: 16px;
-  }
-}
 
-.top-navigation .button:hover {
-  background-position: 0 0;
-}
-
-.top-navigation .button:hover svg path {
-  stroke: var(--color-accent);
-  transition: stroke 0.3s ease;
-}
-
-.top-navigation .button svg {
-  width: 20px;
-  height: 20px;
-}
 .project-navigation {
   height: 80px;
   display: flex;
@@ -242,16 +217,13 @@ nav.navbar .navbar__link svg {
   display: flex;
   align-items: center;
   gap: 8px;
-  position: relative;
-  background: none;
   background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
   background-size: 100% 200%;
-  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.3s ease;
   background-position: 0 100%;
-  white-space: nowrap;
+ 
 }
 
 @media (max-width: 480px) {
