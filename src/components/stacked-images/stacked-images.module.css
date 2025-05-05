@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  align-items: center;
+  index: 0;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image:nth-child(1) {
+  transform: rotate(2deg);
+  position: absolute;
+  top: 0%;
+  left: - 5%;
+}
+
+.image:nth-child(2) {
+  transform: rotate(-10deg);
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+
+.image:nth-child(3) {
+  transform: rotate(10deg);
+  position: absolute;
+  top: 30%;
+  left: 45%;
+}
+
+.image:nth-child(1):hover,
+.image:nth-child(2):hover, 
+.image:nth-child(3):hover {
+  transform: rotate(1deg) scale(1.1);
+}

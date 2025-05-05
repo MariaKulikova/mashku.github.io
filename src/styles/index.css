@@ -1,13 +1,6 @@
 @import './colors.css';
 @import './typography.css';
 
-.bio h1 {
-  font-size: 104px;
-  font-weight: var(--font-weight-medium);
-  line-height: 1.1;
-  
-}
-
 
 .bio h1 span {
   color: var(--color-accent);
@@ -17,117 +10,31 @@
   padding: 144px 0 80px;
 }
 
-.section h2 {
-  margin-bottom: 40px;
-}
-/* Project card size adjustments for index page */
-@media (min-width: 1024px) {
-  .projects-grid {
-    column-count: 3;
-    column-gap: 24px;
-  }
-
-  .contacts {
-    margin-left: auto;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-  .projects-grid {
-    column-count: 2;
-    column-gap: 24px;
-  }
-}
-
-/* Specific adjustments for the bio section on mobile */
-@media (max-width: 480px) {
-  .bio {
-    margin-bottom: 24px;
-  }
-
-  .bio h1 {
-    margin-bottom: 4px;
-  }
+.experiments h1 {
+  margin-bottom: 64px;
 }
 
 /* Teams Grid */
 .teams-grid {
   display: flex;
   flex-direction: column;
-  gap: 128px;
+  gap: 300px;
 }
 
-.teams-grid .project-card {
-  max-width: none;
+/* Project card */
+.project-card {
   display: flex;
-  flex-direction: column;
-  position: relative;
+  gap: 32px;
 }
 
-.teams-grid h2 {
-  margin-bottom: 12px;
+.project-card-content {
+  max-width: 500px;
+  gap: 24px;
+  margin-right: 64px;
 }
-
-.teams-grid .project-card-image {
-  width: 100%;
-  margin-bottom: 1px;
-}
-
-@media (min-width: 901px) {
-  .teams-grid button {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-  }
-}
-
-
-
-@media (max-width: 900px) {
-  .teams-grid button {
-    position: static;
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 16px;
-  }
-}
-
-/* Product Design cards */
 .project-card-description {
   color: var(--color-gray-secondary-text);
-  flex-grow: 1;
-  margin-bottom: 16px;
-  max-width: 800px;
-}
-
-.project-card-image {
-  margin-bottom: 32px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.project-card-image img,
-.experiments-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.projects-grid {
-  display: block;
-  gap: 24px;
-}
-
-/* Hover effects only for projects and experiments cards */
-.projects-grid .project-card{
-  transition: all 0.3s ease;
-  background: var(--color-white);
-}
-
-.projects-grid .project-card:hover {
-  transform: scale(1.03);
-  filter: brightness(0.95);
+  margin-bottom: 24px;
 }
 
 .project-card-tags {
@@ -137,6 +44,27 @@
   margin-bottom: 24px;
 }
 
+
+.project-card-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.experiments-grid .project-card {
+  transition: all 0.3s ease;
+  background: var(--color-white);
+}
+
+.experiments-grid .project-card:hover {
+  transform: scale(1.03);
+  filter: brightness(0.95);
+}
+
+/* Experiments cards */
 .experiments-card {
   position: relative;
   height: 100%;
@@ -151,6 +79,9 @@
   border-radius: 16px;
   height: 100%;
   margin: 0;
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .experiments-card .project-card-tags {
@@ -159,7 +90,6 @@
   left: 24px;
   right: 24px;
   z-index: 1;
-  display: flex;
 }
 
 /* Layout */
@@ -172,6 +102,25 @@
   overflow-x: hidden;
 }
 
+/* Media queries */
+@media (min-width: 1024px) {
+  .experiments-grid {
+    column-count: 3;
+    column-gap: 24px;
+  }
+
+  .contacts {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .experiments-grid {
+    column-count: 2;
+    column-gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 124px 0 60px;
@@ -181,15 +130,13 @@
     padding: 60px 0;
   }
 
-  .projects-grid {
+  .experiments-grid {
     column-count: 1;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 12px;
-  }
+  
 
   .section {
     padding: 96px 0 32px;
@@ -199,7 +146,7 @@
     padding: 32px 0;
   }
 
-  .projects-grid {
+  .experiments-grid {
     margin-top: 24px;
   }
 
@@ -208,8 +155,4 @@
     margin-bottom: 24px;
   }
 
-  .project-card-meta,
-  .project-card-description {
-    margin: 24px 0;
   }
-}

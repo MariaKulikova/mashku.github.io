@@ -6,6 +6,7 @@ hide_table_of_contents: true
 
 import Button from '../components/button/Button';
 import Footer from '../components/footer/Footer';
+import StackedImages from '../components/stacked-images/StackedImages';
 import '../styles/general.css'
 import '../styles/index.css'
 import '../styles/typography.css'
@@ -15,96 +16,75 @@ import '../styles/typography.css'
   <section className="section" >
     <div className="bio"> 
       # Hey! 
-      # I'm Masha, a <span> product designer </span> and <span>storyteller</span>.
+      # I'm Masha, a <span> product </span> and <span> experience </span> designer
     </div>
   </section>
+
 
   <section className="section">
 
     <div className="teams-grid">
      
-       <div className="project-card" data-tags="product design ai">
-        <div className="project-card-title-wrapper">
-            ## AI Assistant and Startup spirit
-        </div>
-  
-        <p className="project-card-description">
-          We are developing an AI assistant to help users find used cars in Europe. The product is designed for people who are not familiar with cars and want to simplify the selection process. The assistant collects requirements, suggests suitable models, provides price guidance, and shows listings from verified platforms.
-        </p>
+       <div className="project-card">
+         <div className="project-card-content">
+          
+               ### AI Assistant and Startup spirit
+     
+            <p className="project-card-description"> 
+              We help people to find used cars in Europe. The assistant collects requirements, suggests suitable models, provides price guidance, and shows listings from verified platforms. 
+            </p>
+          
+           <Button variant="text" className="button-text" to="/projects/ai-car-assistant/ai-car-assistant">Read case study</Button>
+         </div>
          
-          <div className="project-card-tags">
-             <span className="tag">
-              2025
-            </span>
-            <span className="tag">
-              Product design
-            </span>
-            <span className="tag">
-              AI
-            </span>
-          </div>
-   
-        <div className="project-card-image">
-          <img src="/img/AIUC/Cover_AIUC.png" alt="AI Car Assistant" />
-        </div>
-        <Button className="button-outlined"  to="/projects/ai-car-assistant/ai-car-assistant">Read case study</Button>
-      </div>
+     
+          <StackedImages
+              images={[
+                { src: '/img/AIUC/First_screen.png', alt: 'AI Car Assistant First Screen' },
+                { src: '/img/AIUC/Illustrations.png', alt: 'AI Car Assistant Illustrations' }
+              ]}
+          />
+
+       </div>
       
      
-      <div className="project-card" data-tags="product design">
-        <div className="project-card-title-wrapper">
-       ## Simplifying act requests at Marquiz
-        </div>
-      
-        <p className="project-card-description">
-          Optimized the work completion act request process, reducing support requests, and preparing the system for full automation.
-        </p>
-       
-          <div className="project-card-tags">
-             <span className="tag">
-              2024
-            </span>
-            <span className="tag">
-              Product design
-            </span>
-          </div>
-
-        <div className="project-card-image">
-          <img src="/img/marquiz/Cover_Marquiz.png" alt="Marquiz Acts" />
-        </div>
-        <Button className="button-outlined" to="/projects/marquiz-act-requests/marquiz-act-requests">Read case study</Button>
-      </div>
-
-    
-
       <div className="project-card">
-        <div className="project-card-title-wrapper">
-
-            ## CDN and Design System at Selectel
- 
+        <div className="project-card-content">
+        
+         ### Simplifying act requests at Marquiz
+         
+        
+          <p className="project-card-description">
+            Optimized the work completion act request process, reducing support requests, and preparing the system for full automation.
+          </p>
+          <Button variant="text" className="button-text" to="/projects/marquiz-act-requests/marquiz-act-requests">Read case study</Button>
         </div>
-    
-        <p className="project-card-description">
-          Led the redesign of CDN configuration pages and contributed to building a comprehensive design system. 
-        </p>
-      
-          <div className="project-card-tags">
-            <span className="tag">
-              2020-2022
-            </span>
-            <span className="tag">
-              Product design
-            </span>
-            <span className="tag">
-              Design System
-            </span>
-          </div>
-
-        <div className="project-card-image">
-          <img src="/img/story-redesign/Cover_Selectel.png" alt="Story Redesign" />
-        </div>
-        <Button className="button-outlined" to="/projects/story-redesign/story-redesign">Read case study</Button>
+          <StackedImages
+                  images={[
+                    { src: '/img/marquiz/Cover_Marquiz.png', alt: 'Marquiz Cover' },
+                  
+                  ]}
+           />
       </div>
+
+     <div className="project-card">
+       <div className="project-card-content">
+           ### CDN and Design System at Selectel
+     
+         <p className="project-card-description">
+           Led the redesign of CDN configuration pages and contributed to building a comprehensive design system.
+         </p>
+      
+         <Button variant="text" className="button-text" to="/projects/story-redesign/story-redesign">Read case study</Button>
+       </div>
+        <StackedImages
+                images={[
+                  { src: '/img/story-redesign/Cover_Selectel.png', alt: 'Story Redesign' }
+                ]}
+              />
+        
+       </div>
+
 
      
 
@@ -113,9 +93,9 @@ import '../styles/typography.css'
   </section>
 
 
-  <section className="section">
-     ## Fun, experiments and side projects
-    <div className="experiments-grid projects-grid">
+  <section className="section experiments">
+     # Fun, experiments and side projects
+    <div className="experiments-grid">
    
      
       <a  href="https://dribbble.com/shots/25661407-Adding-a-card" target="_blank" className="experiments-card project-card">

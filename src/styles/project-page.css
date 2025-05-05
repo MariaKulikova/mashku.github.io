@@ -3,26 +3,36 @@
 
 /* Project page styles */
 
-.project-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
+
 
 
 .section-margin {
-  margin-bottom: 72px;
+  margin-bottom: 128px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  
+ 
 }
 
 .section-margin h1{
-  margin: 32px 0;
+  margin: 32px 0 0;
+}
+span {
+  color: var(--color-accent);
 }
 
 .section-margin  p {
   max-width: 700px;
-  margin-bottom: 32px;
+  margin: 0 0 56px;
+}
+
+.section-margin  h3 {
+  margin: 56px 0;
+  color: var(--color-gray-primary-text);
+}
+.section-margin  h4 {
+  margin: 56px 0;
+  color: var(--color-gray-primary-text);
 }
 
 @media (max-width: 768px) {
@@ -51,8 +61,8 @@
   flex-direction: row;
   max-width: 100%;
   gap: 32px;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: top;
+  margin: 32px 0;
 }
 
 .columns > * {
@@ -95,55 +105,30 @@
   }
 }
 
-.highlight {
-  border:  2px dotted var(--color-gray-borders);
-  color: var(--color-gray-secondary-text);
-  padding: 24px 24px;
-  border-radius: 16px;
-  align-items: stretch;
-  
-}
-.highlight h4{
-  color: var(--color-gray-headings);
-  
-}
 
 .project-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 96px;
-  
-  align-items: center;
+  align-items:top;
+  margin-top: 40px;
 }
 
 .project-details-column {
   list-style: none;
   padding: 0;
   margin: 0;
- 
+  gap: 96px;
 }
 
-.project-details a {
-  
-  font-size: var(--font-size-h4);
+.section-margin h2 {
+  margin: 56px 0 12px;
 }
 
-.project-details p {
-  
-  font-size: var(--font-small);
-  margin-bottom: 0;
-
+h4 {
+  margin: 32px 0 32px;
 }
 
-.project-details-column a {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-bold);
-}
 
-.project-details-column a:hover {
-  text-decoration: underline;
-}
 
 @media (max-width: 768px) {
   .project-details {
@@ -152,18 +137,6 @@
   }
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
 
 
-.company-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-
-}
 
