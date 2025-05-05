@@ -6,7 +6,7 @@ image: /img/hackathons/huntu.png
 ---
 
 import '../../../styles/project-page.css'
-import { ProjectNavigation } from '../../../components/NavigationButtons'
+import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
 
 <article className="container">
 

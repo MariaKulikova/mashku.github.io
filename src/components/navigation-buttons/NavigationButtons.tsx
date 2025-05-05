@@ -1,4 +1,5 @@
 import React from 'react';
+import './navigation-buttons.css';
 
 interface NavigationButtonsProps {
   nextProject?: {
@@ -22,7 +23,7 @@ const ForwardArrow = () => (
 );
 
 export const TopNavigation = () => (
-  <div className="top-navigation">
+  <div className="project-navigation">
     <a href="/" className="button">
       <BackArrow />
       All projects
