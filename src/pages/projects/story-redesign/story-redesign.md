@@ -7,6 +7,7 @@ image: /img/story-redesign/storyRedesign-1.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
+import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -189,3 +190,4 @@ I contributed to the core structure and created key components like the Skeleton
 
 </div>
 </article>
+<Footer />

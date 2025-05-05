@@ -64,12 +64,8 @@
   position: relative;
 }
 
-
-
 .teams-grid h2 {
-  
   margin-bottom: 12px;
-  
 }
 
 .teams-grid .project-card-image {
@@ -78,77 +74,50 @@
 }
 
 @media (min-width: 901px) {
-  .teams-grid .button-team-card {
+  .teams-grid button {
     position: absolute;
-    top: 24px;
+    top: 0px;
     right: 0px;
   }
 }
 
 
 
-
-
-
-.teams-grid .button-team-card {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 24px;
-  border-radius: 1000px;
-  border: 1px solid var(--color-gray-secondary-text);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-.teams-grid .button-team-card:hover {
-  background-color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  color: var(--color-white);
-}
-
-
-
 @media (max-width: 900px) {
-  .teams-grid .button-team-card {
+  .teams-grid button {
     position: static;
     width: 100%;
     margin-top: 0;
     margin-bottom: 16px;
   }
-  
- 
 }
 
-  /* Product Design cards */
-  .project-card-description {
-    color: var(--color-gray-secondary-text);
-    flex-grow: 1;
-    margin-bottom: 16px;
-    max-width: 800px;
-  }
+/* Product Design cards */
+.project-card-description {
+  color: var(--color-gray-secondary-text);
+  flex-grow: 1;
+  margin-bottom: 16px;
+  max-width: 800px;
+}
 
-  .project-card-image {
-    margin-bottom: 32px;
-    border-radius: 12px;
-    overflow: hidden;
-  }
+.project-card-image {
+  margin-bottom: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-  .project-card-image img,
-  .experiments-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
+.project-card-image img,
+.experiments-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
 
-  
-  .projects-grid {
-    display: block;
-    gap: 24px;
-  }
-
+.projects-grid {
+  display: block;
+  gap: 24px;
+}
 
 /* Hover effects only for projects and experiments cards */
 .projects-grid .project-card{
@@ -160,151 +129,87 @@
   transform: scale(1.03);
   filter: brightness(0.95);
 }
-  
- 
 
-  
-  
+.project-card-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
 
+.experiments-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  break-inside: avoid;
+}
 
- 
-  
-  
-  .project-card-tags {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
+.experiments-card img {
+  border-radius: 16px;
+  height: 100%;
+  margin: 0;
+}
+
+.experiments-card .project-card-tags {
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  right: 24px;
+  z-index: 1;
+  display: flex;
+}
+
+/* Layout */
+.container {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  background: var(--color-gray-surface);
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 124px 0 60px;
   }
 
-  .experiments-card {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-    
-    margin-bottom: 24px;
-    break-inside: avoid;
+  .section:not(:first-child) {
+    padding: 60px 0;
   }
 
-  .experiments-card img {
-    border-radius: 16px;
-    height: 100%;
-    margin: 0;
+  .projects-grid {
+    column-count: 1;
   }
+}
 
-  .experiments-card .project-card-tags {
-    position: absolute;
-    bottom: 0;
-    left: 24px;
-    right: 24px;
-    z-index: 1;
-    display: flex;
-   
-  }
-
-  /* Contacts section */
-  .contacts {
-    max-width: 1280px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contacts-description {
-    text-align: left;
-    font-size: var(--font-size-h3);
-    margin: 16px 0 48px;
-  }
-
-  .contacts-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .contacts-socials {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: flex-end;
-    
-  }
-
-  
-  
-  .contacts-socials img {
-    width: 32px;
-    height: 32px;
-    
-  }
-  
-  /* Layout */
+@media (max-width: 480px) {
   .container {
-    box-sizing: border-box;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 16px;
-    background: var(--color-gray-surface);
-    overflow-x: hidden;
+    padding: 0 12px;
   }
-  
-  
-  
-  @media (max-width: 768px) {
-    .section {
-      padding: 124px 0 60px;
-    }
 
-    .section:not(:first-child) {
-      padding: 60px 0;
-    }
-  
-    .projects-grid {
-      column-count: 1;
-    }
+  .section {
+    padding: 96px 0 32px;
   }
-  
-  @media (max-width: 480px) {
-    .container {
-      padding: 0 12px;
-    }
-  
-    .section {
-      padding: 96px 0 32px;
-    }
 
-    .section:not(:first-child) {
-      padding: 32px 0;
-    }
-  
-    .projects-grid {
-      margin-top: 24px;
-    }
-  
-    .project-card {
-      padding: 24px 16px;
-      margin-bottom: 24px;
-    }
-  
-    .project-card-meta,
-    .project-card-description {
-      margin: 24px 0;
-    }
-  
-    .contacts-content {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-
-    .contacts-socials {
-      justify-content: center;
-    }
-
-    .contacts-socials img {
-      width: 24px;
-      height: 24px;
-    }
+  .section:not(:first-child) {
+    padding: 32px 0;
   }
+
+  .projects-grid {
+    margin-top: 24px;
+  }
+
+  .project-card {
+    padding: 24px 16px;
+    margin-bottom: 24px;
+  }
+
+  .project-card-meta,
+  .project-card-description {
+    margin: 24px 0;
+  }
+}

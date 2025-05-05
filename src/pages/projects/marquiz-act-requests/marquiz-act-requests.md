@@ -7,6 +7,7 @@ image: /img/marquiz/Acts.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
+import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -71,3 +72,4 @@ and created clear user communication at each step
 
 </div>
 </article>
+<Footer />

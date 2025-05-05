@@ -7,6 +7,7 @@ image: /img/AIUC/First_screen.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
+import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -92,3 +93,4 @@ Users can save favorite listings to review them later.
 
 </div>
 </article>
+<Footer />
