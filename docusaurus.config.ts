@@ -48,7 +48,6 @@ const config: Config = {
     navbar: {
       style: 'primary',
       hideOnScroll: false,
-
       logo: {
         alt: '',
         src: 'img/eyes.svg',
@@ -66,8 +65,6 @@ const config: Config = {
         },
       ],
     },
-
-    
     metadata: [
       {
         name: 'description',
