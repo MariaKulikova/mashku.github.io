@@ -10,7 +10,7 @@ interface StackedImagesProps {
   images: ImageProps[];
 }
 
-const StackedImages: React.FC<StackedImagesProps> = ({ images }) => {
+const StackedImages: React.FC<StackedImagesProps & { type?: 'marquiz' }> = ({ images, type }) => {
   return (
     <div className={styles.container}>
       {images.map((image, index) => (
@@ -18,7 +18,7 @@ const StackedImages: React.FC<StackedImagesProps> = ({ images }) => {
           key={index}
           src={image.src}
           alt={image.alt}
-          className={styles.image}
+          className={`${styles.image} ${type ? styles[type] : ''}`}
         />
       ))}
     </div>

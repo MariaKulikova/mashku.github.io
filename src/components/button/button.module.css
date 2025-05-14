@@ -26,11 +26,11 @@
 }
 
 
-.button-text {
+.button-text[class*='button-text'] {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-
+  color: var(--color-gray-headings);
   font-weight: var(--font-weight-bold);
   transition: all 0.3s ease;
 }
@@ -56,10 +56,13 @@
   display: inline-block;
   transition: transform 0.3s ease;
   transform-origin: left;
+  color: var(--color-gray-headings);
 }
 
 .button-text:hover span {
   transform: scale(1.2);
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
 }
 
 

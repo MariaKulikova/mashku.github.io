@@ -25,7 +25,7 @@ import '../styles/typography.css'
 
     <div className="teams-grid">
      
-       <div className="project-card">
+       <div className="project-card aiuc">
          <div className="project-card-content">
           
                ### AI Assistant and Startup spirit
@@ -37,18 +37,21 @@ import '../styles/typography.css'
            <Button variant="text" className="button-text" to="/projects/ai-car-assistant/ai-car-assistant">Read case study</Button>
          </div>
          
-     
+         <div className="project-card-images">
           <StackedImages
+              type="aiuc"
               images={[
-                { src: '/img/AIUC/First_screen.png', alt: 'AI Car Assistant First Screen' },
-                { src: '/img/AIUC/Illustrations.png', alt: 'AI Car Assistant Illustrations' }
+                { src: '/img/AIUC/AIUC_Cover_Desktop.png', alt: 'AI Car Assistant First Screen' },
+                { src: '/img/AIUC/AIUC_Cover_Illustration.png', alt: 'AI Car Assistant Illustration' },
+                { src: '/img/AIUC/AIUC_Cover_Mobile.png', alt: 'AI Car Assistant Mobile' }
               ]}
-          />
+         />
+         </div>
 
        </div>
       
      
-      <div className="project-card">
+      <div className="project-card marquiz">
         <div className="project-card-content">
         
          ### Simplifying act requests at Marquiz
@@ -59,15 +62,19 @@ import '../styles/typography.css'
           </p>
           <Button variant="text" className="button-text" to="/projects/marquiz-act-requests/marquiz-act-requests">Read case study</Button>
         </div>
+        <div className="project-card-images">
           <StackedImages
+                  type="marquiz"
                   images={[
-                    { src: '/img/marquiz/Cover_Marquiz.png', alt: 'Marquiz Cover' },
-                  
+                    { src: '/img/marquiz/Marquiz_Cover_Circle.png', alt: 'Marquiz Circle' },
+                    { src: '/img/marquiz/Marquiz_Cover_Desktop.png', alt: 'Marquiz Desktop' },
+                    { src: '/img/marquiz/Marquiz_Cover_Modal.png', alt: 'Marquiz Modal' }
                   ]}
            />
+           </div>
       </div>
 
-     <div className="project-card">
+     <div className="project-card selectel">
        <div className="project-card-content">
            ### CDN and Design System at Selectel
      
@@ -77,12 +84,15 @@ import '../styles/typography.css'
       
          <Button variant="text" className="button-text" to="/projects/story-redesign/story-redesign">Read case study</Button>
        </div>
+        <div className="project-card-images">
         <StackedImages
+                type="selectel"
                 images={[
-                  { src: '/img/story-redesign/Cover_Selectel.png', alt: 'Story Redesign' }
+                  { src: '/img/story-redesign/Selectel_Cover_Create.png', alt: 'Create' },
+                  { src: '/img/story-redesign/Selectel_Cover_DS.png', alt: 'DS' }
                 ]}
               />
-        
+        </div>
        </div>
 
 
@@ -97,6 +107,7 @@ import '../styles/typography.css'
      # Fun, experiments and side projects
     <div className="experiments-grid">
    
+   
      
       <a  href="https://dribbble.com/shots/25661407-Adding-a-card" target="_blank" className="experiments-card project-card">
        <img src="/img/experiments/Form.jpg" alt="DribbleShot" />
@@ -110,7 +121,7 @@ import '../styles/typography.css'
           <span className="tag">
            Dribbble
           </span>
-        </div>  
+        </div>
       </a>
 
       <a href="https://dribbble.com/shots/25658336-Login-page" target="_blank" className="experiments-card project-card">
@@ -119,13 +130,13 @@ import '../styles/typography.css'
           <span className="tag">
            Concept
           </span>
-          <span className="tag">
+           <span className="tag">
            UI
           </span>
           <span className="tag">
            Driibble
           </span>
-        </div>  
+        </div>
       </a>
 
       <a href="https://deti-edyat.ru/" target="_blank" className="experiments-card project-card">
@@ -133,8 +144,8 @@ import '../styles/typography.css'
         <div className="project-card-tags">
           <span className="tag">
            WebDesign
-          </span>  
-        </div>  
+          </span>
+        </div>
       </a>
 
       <a href="https://planbanan.com/"target="_blank" className="experiments-card project-card">
@@ -142,14 +153,14 @@ import '../styles/typography.css'
         <div className="project-card-tags">
           <span className="tag">
            Product Design
-          </span>  
+          </span>
            <span className="tag">
            Illustration
-          </span>  
+          </span>
            <span className="tag">
            Side Project
-          </span>  
-        </div>  
+          </span>
+        </div>
       </a>
 
        <a href="/projects/hackathons/hackathons" target="_blank" className="experiments-card project-card">
@@ -157,11 +168,11 @@ import '../styles/typography.css'
         <div className="project-card-tags">
           <span className="tag">
            Speed Design
-          </span>  
+          </span>
            <span className="tag">
            Hackathon
-          </span>   
-        </div>  
+          </span>
+        </div>
       </a>
 
 
@@ -170,11 +181,11 @@ import '../styles/typography.css'
         <div className="project-card-tags">
           <span className="tag">
            Telegram Bot
-          </span>  
+          </span>
            <span className="tag">
            Side Project
-          </span>   
-        </div>  
+          </span>
+        </div>
       </a>
 
       <a href="https://t.me/nomadic_eye" target="_blank" className="experiments-card project-card">
@@ -182,13 +193,12 @@ import '../styles/typography.css'
         <div className="project-card-tags">
           <span className="tag">
           Blog
-          </span>  
+          </span>
            <span className="tag">
            Design notes
-          </span>   
-        </div>  
+          </span>
+        </div>
       </a>
-
     </div>
   </section>
 
