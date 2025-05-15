@@ -14,72 +14,12 @@
   margin-bottom: 64px;
 }
 
-/* Teams Grid */
-.teams-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 220px;
-}
-
-@media (max-width: 1024px) {
-  .teams-grid {
-    gap: 24px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .teams-grid .project-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-
-  .teams-grid .project-card-content {
-    max-width: 100%;
-    margin: 0 0 32px;
-    order: 2;
-
-  }
-  .project-card-images {
-    display: none;
-  }
-  
-}
-
-/* Project card */
-.project-card {
-  display: flex;
-  gap: 32px;
-}
-
-.project-card-content {
-  max-width: 40%;
-  gap: 24px;
-  margin-right: 80px;
-}
-
-.project-card-description {
-  color: var(--color-gray-secondary-text);
-  margin-bottom: 24px;
-}
-
-.project-card-tags {
+.projectCardTags {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
 }
-
-
-.project-card-images {
-  width: 40%;
-  display: flex;
-  padding: 32px;
-  align-items: center;
-  justify-content: left;
-}
-
 
 
 .experiments-grid .project-card {
@@ -115,10 +55,12 @@
 
 .experiments-card .project-card-tags {
   position: absolute;
-  bottom: 0;
+  bottom: 16px;
   left: 24px;
   right: 24px;
   z-index: 1;
+  gap: 4px;
+  display: flex;
 }
 
 /* Layout */
@@ -127,7 +69,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
-  background: var(--color-gray-surface);
+  background: transparent;
   overflow-x: hidden;
 }
 

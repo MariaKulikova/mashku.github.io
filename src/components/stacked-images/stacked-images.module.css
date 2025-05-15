@@ -1,9 +1,9 @@
 .container {
   position: relative;
-  max-width: 500px;
-  height: 300px;
   display: flex;
   justify-content: left;
+  overflow: visible;
+  max-width: none;
   align-items: center;
   padding: 24px;
  
@@ -14,6 +14,7 @@
   max-width: 400px;
   object-fit: contain;
   transition: transform 0.6s ease-in-out;
+  overflow: visible;
   
 }
 
@@ -30,7 +31,7 @@
 .aiuc.image:nth-child(1) {
   transform: rotate(1deg);
   position: absolute;
-  top: -32px;
+  top: 0;
   left: -5%;
 }
 
@@ -46,8 +47,8 @@
 .aiuc.image:nth-child(3) {
   transform: rotate(10deg);
   position: absolute;
-  top: 20%;
-  left: 600%;
+  top: 10%;
+  left: 700%;
   max-width: 300px;
  
   
@@ -66,7 +67,7 @@
     position: absolute;
     transform: rotate(-3deg);
     top: 2%;
-    left: -3%;
+    left: 0;
     max-width: 400px;
    
   }
@@ -74,7 +75,7 @@
   .marquiz.image:nth-child(3) {
     transform: rotate(10deg);
     position: absolute;
-    top:20%;
+    top: 15%;
     left: 500%;
     max-width: 240px;
   }
@@ -89,8 +90,8 @@
   .selectel.image:nth-child(2) {
     position: absolute;
     transform: rotate(10deg);
-    top: 30%;
-    left: 270%;
+    top: 15%;
+    left: 240%;
     
   }
 
