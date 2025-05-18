@@ -1,5 +1,6 @@
 import React from 'react';
 import './navigation-buttons.css';
+import buttonStyles from '../button/button.module.css';
 
 interface NavigationButtonsProps {
   nextProject?: {
@@ -24,7 +25,7 @@ const ForwardArrow = () => (
 
 export const TopNavigation = () => (
   <div className="project-navigation">
-    <a href="/" className="button">
+    <a href="/" className={`button ${buttonStyles['button-outlined']}`}>
       <BackArrow />
       All projects
     </a>
@@ -33,12 +34,12 @@ export const TopNavigation = () => (
 
 export const ProjectNavigation: React.FC<NavigationButtonsProps> = ({ nextProject }) => (
   <div className="project-navigation">
-    <a href="/" className="button">
+    <a href="/" className={`button ${buttonStyles['button-outlined']}`}>
       <BackArrow />
       All projects
     </a>
     {nextProject && (
-      <a href={nextProject.link} className="button">
+      <a href={nextProject.link} className={`button ${buttonStyles['button-outlined']}`}>
         {nextProject.title}
         <ForwardArrow />
       </a>

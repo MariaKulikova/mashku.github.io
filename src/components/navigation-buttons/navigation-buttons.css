@@ -2,7 +2,8 @@
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 32px;
   margin-top: 64px;
   width: 100%;
   box-sizing: border-box;
@@ -10,23 +11,19 @@
 }
 
 .project-navigation .button {
-  padding: 12px 16px;
-  text-decoration: none;
-  font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-medium);
   display: flex;
   align-items: center;
   gap: 8px;
-  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
-  background-size: 100% 200%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.3s ease;
-  background-position: 0 100%;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-headings);
+  padding: 12px 32px;
 }
 
+/* Override button-outlined hover styles */
 .project-navigation .button:hover {
-  background-position: 0 0;
+  background-color: transparent !important;
+  color: var(--color-accent) !important;
 }
 
 .project-navigation .button:hover svg path {

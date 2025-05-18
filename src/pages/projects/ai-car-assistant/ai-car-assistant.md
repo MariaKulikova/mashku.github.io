@@ -36,8 +36,6 @@ We do this work for them — and also guide them on prices, point out strengths 
 Currently working on the main car selection flow for user testing.
 The basic flow includes gathering requirements, recommending suitable cars, suggesting specific listings, and allowing users to save favorites.
 
-<img src="/img/AIUC/CarProject_Mobile.png" alt="AI Car Assistant interface" className="image"/>
-
 </section>
 
 
