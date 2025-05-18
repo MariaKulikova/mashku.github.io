@@ -12,34 +12,14 @@ import Footer from '../../../components/footer/Footer'
 <article>
 <div className="container">
 
-<div className="section-margin">
-  
+ 
   # Simplifying Act Requests at Marquiz
-  ---
-
-  <div className="project-details">
-    <div className="project-details-column">
-      <a href="https://marquiz.io" className="link" target="_blank">Marquiz</a>
-      <p> SaaS platform for lead generation used by 10,000+ businesses  </p>
-    </div>
-    <div className="project-details-column">
-      <div className="tags">
-        <span className="tag">Product Design</span>
-        <span className="tag">UX Research</span>
-        <span className="tag">Process Optimization</span>
-        <span className="tag">Support Analytics</span>
-      </div>
-    </div>
-  </div>
-
-</div>
 
 <section className="section-margin">
 
 ### Context
 
 At Marquiz, a survey and lead generation platform, I worked on optimizing the work completion act request process. Many clients needed these documents for accounting purposes, but the existing process was manual and time-consuming, leading to delays and numerous support requests.
-
 </section>
 
 <section className="section-margin">
@@ -55,16 +35,16 @@ and created clear user communication at each step
 <section className="section-margin">
 
 ### Results
-<div className="columns">
-  <div className="highlight">
-    #### Reduced Support Load
-    Support requests related to act requests decreased significantly
-  </div>
+<div>
 
-  <div className="highlight">
-    #### Better Experience
-    Users gained visibility into request status and completion time
-  </div>
+   **Reduced Support Load**
+  Support requests related to act requests decreased significantly
+
+
+ 
+   **Better Experience**
+  Users gained visibility into request status and completion time
+
 </div>
 </section>
 

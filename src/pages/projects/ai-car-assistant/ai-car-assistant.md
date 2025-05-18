@@ -26,6 +26,13 @@ We combine the best of chatbots, classified ads, and that familiar friend who kn
 Our goal is to relieve the user from having to read a lot of reviews, articles, and browse sales listings across different platforms.
 We do this work for them — and also guide them on prices, point out strengths and weaknesses of different cars based on their needs.
 
+<img src="/img/AIUC/CarProject_Mobile.png" alt="AI Car Assistant interface" className="image"/>
+
+</section>
+
+<section className="section-margin">
+### Current Focus
+
 Currently working on the main car selection flow for user testing.
 The basic flow includes gathering requirements, recommending suitable cars, suggesting specific listings, and allowing users to save favorites.
 
@@ -58,15 +65,20 @@ We show recommendations based on the user's request and allow them to open the c
 </section>
 
 <section className="section-margin">
+
 ### Offers and favorites
 
 The result of the selection process is a set of relevant and up-to-date listings from classifieds, filtered according to the user's requirements and location.
 Users can save favorite listings to review them later.
 
 <img src="/img/AIUC/Favorites.png" alt="AI Car Assistant interface" className="image"/>
-	
 
 </section>
+
+
+
+
+
 <ProjectNavigation nextProject={{ title: "Marquiz", link: "/projects/marquiz-act-requests/marquiz-act-requests" }} />
 
 </div>
