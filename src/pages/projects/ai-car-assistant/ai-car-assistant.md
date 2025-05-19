@@ -77,7 +77,7 @@ Users can save favorite listings to review them later.
 
 
 
-<ProjectNavigation nextProject={{ title: "Marquiz", link: "/projects/marquiz-act-requests/marquiz-act-requests" }} />
+<ProjectNavigation nextProject={{ title: "CDN Resesign", link: "/projects/story-redesign/story-redesign" }} />
 
 </div>
 </article>

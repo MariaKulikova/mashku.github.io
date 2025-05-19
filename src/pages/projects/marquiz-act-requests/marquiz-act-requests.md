@@ -66,7 +66,8 @@ This helped create a shared understanding of the product vision across design te
 </div>
 </section>
 
-<ProjectNavigation nextProject={{ title: "Redesign of CDN", link: "/projects/story-redesign/story-redesign" }} />
+
+
 
 </div>
 </article>
