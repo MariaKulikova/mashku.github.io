@@ -15,19 +15,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    padding: 24px;
+    height: 100%;
   }
 
   .teamsGrid .projectCardContent {
     max-width: 100%;
     margin: 0 0 32px;
     order: 2;
-
   }
+
   .projectCardImages {
     display: none;
   }
-  
 }
 
 /* Project card */
