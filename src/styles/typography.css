@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--ifm-heading-font-family) !important;
   margin: 12px 0;
   color: var(--color-gray-headings);
+  line-height: 1,5;
 }
 
 h1, .h1, .markdown h1 {

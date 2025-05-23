@@ -66,7 +66,7 @@ This helped create a shared understanding of the product vision across design te
 </div>
 </section>
 
-
+<ProjectNavigation nextProject={{ title: "AI Car Assistant", link: "/projects/ai-car-assistant/ai-car-assistant" }} />
 
 
 </div>

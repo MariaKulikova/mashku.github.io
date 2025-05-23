@@ -48,12 +48,12 @@ span {
 
 
   .section-margin {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     
   }
 
   .section-margin p {
-    margin: 32px 0;
+    margin: 8px 0;
   }
 }
 
@@ -97,6 +97,7 @@ span {
 @media (max-width: 768px) {
   .image {
     margin-bottom: 8px;
+    border-radius: 12px;
   }
 
   .columns > div > .image:last-child {
