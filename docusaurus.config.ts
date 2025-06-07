@@ -59,9 +59,10 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://docs.google.com/document/d/1mx1-8qmMANfiCamlVG_dNryXuxF23r-wZcwPh7Dgwig/edit?usp=drive_link',
+          href: 'https://docs.google.com/document/d/e/2PACX-1vTkWOx8OewyZs7_Xm1l891KkfykIU3_jVbRXmZ2_SKFZsQc85Zq36j3qLdyVQZ9gZYWh4gxm0jElNLx/pub',
           label: 'CV',
           position: 'right',
+          target: '_blank',
         },
       ],
     },

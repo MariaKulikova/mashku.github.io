@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './navbar.module.css';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { siteConfig } = useDocusaurusContext();
+  const { themeConfig } = siteConfig;
+  const { navbar } = themeConfig;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,25 +24,33 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const emailItem = navbar.items.find(item => item.label && item.label.includes('@'));
+  const cvItem = navbar.items.find(item => item.label === 'CV');
+
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles['navbar--scrolled'] : ''}`}>
       <div className={styles.navbar__inner}>
         <a href="/" className={styles.navbar__logo}>
-          <img src="/img/eyes.svg" alt="" />
+          <img src={navbar.logo.src} alt={navbar.logo.alt} />
         </a>
         <div className={styles['navbar__items--right']}>
-          <a
-            href="mailto:mariakulikova18.01@gmail.com"
-            className={styles.navbar__link}
-          >
-            mariakulikova18.01@gmail.com
-          </a>
-          <a
-            href="https://docs.google.com/document/d/1mx1-8qmMANfiCamlVG_dNryXuxF23r-wZcwPh7Dgwig/edit?usp=drive_link"
-            className={styles.navbar__link}
-          >
-            CV
-          </a>
+          {emailItem && (
+            <a
+              href={emailItem.href}
+              className={styles.navbar__link}
+            >
+              {emailItem.label}
+            </a>
+          )}
+          {cvItem && (
+            <a
+              href={cvItem.href}
+              className={styles.navbar__link}
+              target={cvItem.target}
+            >
+              {cvItem.label}
+            </a>
+          )}
         </div>
       </div>
     </nav>
