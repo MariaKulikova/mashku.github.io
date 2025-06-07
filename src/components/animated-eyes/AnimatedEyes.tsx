@@ -9,6 +9,7 @@ interface PupilPosition {
 const AnimatedEyes: React.FC = () => {
   const [leftPupilPos, setLeftPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
   const [rightPupilPos, setRightPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
+  const [isBlinking, setIsBlinking] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -59,6 +60,20 @@ const AnimatedEyes: React.FC = () => {
     };
   }, []);
 
+  // Blinking effect
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      setIsBlinking(true);
+      setTimeout(() => {
+        setIsBlinking(false);
+      }, 150); // Blink duration
+    }, 3000); // Blink every 3 seconds
+
+    return () => {
+      clearInterval(blinkInterval);
+    };
+  }, []);
+
   return (
     <svg
       ref={svgRef}
@@ -94,24 +109,28 @@ const AnimatedEyes: React.FC = () => {
       </defs>
       
       <g id="Logo">
-        {/* Eye backgrounds */}
-        <path
-          id="Eye_left"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M0.164062 47.6495C1.22525 48.8902 2.58224 50.4218 4.22285 52.1664C8.71372 56.9421 15.3274 63.3116 23.8138 69.6811C40.7887 82.4221 65.2344 95.1476 95.1603 95.1476C125.086 95.1476 149.532 82.4221 166.507 69.6811C174.993 63.3116 181.607 56.9421 186.098 52.1664C187.738 50.4218 189.095 48.8902 190.157 47.6495C189.095 46.4087 187.738 44.8771 186.098 43.1325C181.607 38.3569 174.993 31.9874 166.507 25.6178C149.532 12.8769 125.086 0.151367 95.1603 0.151367C65.2344 0.151367 40.7887 12.8769 23.8138 25.6178C15.3274 31.9874 8.71372 38.3569 4.22285 43.1325C2.58224 44.8771 1.22525 46.4087 0.164062 47.6495Z"
-          fill="white"
-        />
-        <path
-          id="Eye_right"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M412.674 47.6495C411.613 48.8902 410.256 50.4218 408.615 52.1664C404.124 56.9421 397.51 63.3116 389.024 69.6811C372.049 82.4221 347.603 95.1476 317.678 95.1476C287.752 95.1476 263.306 82.4221 246.331 69.6811C237.845 63.3116 231.231 56.9421 226.74 52.1664C225.1 50.4218 223.743 48.8902 222.681 47.6495C223.743 46.4087 225.1 44.8771 226.74 43.1325C231.231 38.3569 237.845 31.9874 246.331 25.6178C263.306 12.8769 287.752 0.151367 317.678 0.151367C347.603 0.151367 372.049 12.8769 389.024 25.6178C397.51 31.9874 404.124 38.3569 408.615 43.1325C410.256 44.8771 411.613 46.4087 412.674 47.6495Z"
-          fill="white"
-        />
+        {/* Eye backgrounds with blinking animation */}
+        <g transform={isBlinking ? 'scale(1, 0.1)' : 'scale(1, 1)'} 
+           style={{ transformOrigin: '206.5px 48px', transition: 'transform 0.15s ease-in-out' }}>
+          <path
+            id="Eye_left"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M0.164062 47.6495C1.22525 48.8902 2.58224 50.4218 4.22285 52.1664C8.71372 56.9421 15.3274 63.3116 23.8138 69.6811C40.7887 82.4221 65.2344 95.1476 95.1603 95.1476C125.086 95.1476 149.532 82.4221 166.507 69.6811C174.993 63.3116 181.607 56.9421 186.098 52.1664C187.738 50.4218 189.095 48.8902 190.157 47.6495C189.095 46.4087 187.738 44.8771 186.098 43.1325C181.607 38.3569 174.993 31.9874 166.507 25.6178C149.532 12.8769 125.086 0.151367 95.1603 0.151367C65.2344 0.151367 40.7887 12.8769 23.8138 25.6178C15.3274 31.9874 8.71372 38.3569 4.22285 43.1325C2.58224 44.8771 1.22525 46.4087 0.164062 47.6495Z"
+            fill="white"
+          />
+          <path
+            id="Eye_right"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M412.674 47.6495C411.613 48.8902 410.256 50.4218 408.615 52.1664C404.124 56.9421 397.51 63.3116 389.024 69.6811C372.049 82.4221 347.603 95.1476 317.678 95.1476C287.752 95.1476 263.306 82.4221 246.331 69.6811C237.845 63.3116 231.231 56.9421 226.74 52.1664C225.1 50.4218 223.743 48.8902 222.681 47.6495C223.743 46.4087 225.1 44.8771 226.74 43.1325C231.231 38.3569 237.845 31.9874 246.331 25.6178C263.306 12.8769 287.752 0.151367 317.678 0.151367C347.603 0.151367 372.049 12.8769 389.024 25.6178C397.51 31.9874 404.124 38.3569 408.615 43.1325C410.256 44.8771 411.613 46.4087 412.674 47.6495Z"
+            fill="white"
+          />
+        </g>
         
         {/* Pupils with masks */}
-        <g mask="url(#leftEyeMask)">
+        <g mask="url(#leftEyeMask)" 
+           style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${leftPupilPos.x}, ${leftPupilPos.y})`}>
             <path
               id="Pupil_left_2"
@@ -122,7 +141,8 @@ const AnimatedEyes: React.FC = () => {
           </g>
         </g>
         
-        <g mask="url(#rightEyeMask)">
+        <g mask="url(#rightEyeMask)"
+           style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${rightPupilPos.x}, ${rightPupilPos.y})`}>
             <path
               id="Pupil_left"
