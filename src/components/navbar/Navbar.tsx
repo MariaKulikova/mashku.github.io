@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import AnimatedEyes from '../animated-eyes/AnimatedEyes';
 import styles from './navbar.module.css';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { siteConfig } = useDocusaurusContext();
-  const { themeConfig } = siteConfig;
+  const { themeConfig } = siteConfig as any;
   const { navbar } = themeConfig;
 
   useEffect(() => {
@@ -24,14 +25,14 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const emailItem = navbar.items.find(item => item.label && item.label.includes('@'));
-  const cvItem = navbar.items.find(item => item.label === 'CV');
+  const emailItem = navbar.items.find((item: any) => item.label && item.label.includes('@'));
+  const cvItem = navbar.items.find((item: any) => item.label === 'CV');
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles['navbar--scrolled'] : ''}`}>
       <div className={styles.navbar__inner}>
         <a href="/" className={styles.navbar__logo}>
-          <img src={navbar.logo.src} alt={navbar.logo.alt} />
+          <AnimatedEyes />
         </a>
         <div className={styles['navbar__items--right']}>
           {emailItem && (

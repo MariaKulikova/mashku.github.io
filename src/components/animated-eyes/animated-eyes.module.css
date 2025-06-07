@@ -1,0 +1,12 @@
+.eyes {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  align-items: center;
+}
+
+.pupil {
+  transition: none;
+}

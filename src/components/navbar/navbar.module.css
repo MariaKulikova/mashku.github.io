@@ -54,10 +54,10 @@
 }
 
 .navbar__logo {
-  margin-top: 12px;
-  height: 40px;
+  display: flex;
+  align-items: center;
+  height: 56px;
   aspect-ratio: 2;
- 
 }
 
 @keyframes l3 {
