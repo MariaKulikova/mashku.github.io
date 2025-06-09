@@ -27,6 +27,11 @@ h6:hover .hash-link {
   display: none !important;
 }
 
+/* Полностью скрываем hash-link для h2 */
+h2 .hash-link {
+  display: none !important;
+}
+
 
 
 
