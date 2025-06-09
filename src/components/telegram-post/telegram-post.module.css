@@ -1,0 +1,53 @@
+@import '../../styles/colors.css';
+@import '../../styles/typography.css';
+
+.telegramPost {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  background: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  
+}
+
+
+
+
+.channelName {
+  font-size: var(--font-size-h4);
+  color: var(--color-gray-headings);
+ 
+}
+
+
+.content {
+  flex: 1;
+}
+
+.postText {
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+  color: var(--color-gray-secondary-text);
+  padding-left: 44px;
+}
+
+.loading {
+  font-size: var(--font-size-small);
+  color: var(--color-gray-secondary-text);
+}
+
+.blogCardTags {
+  margin-top: auto;
+  padding-top: 16px;
+}

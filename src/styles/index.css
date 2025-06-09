@@ -45,6 +45,10 @@ h2::after {
   transition: all 0.3s ease;
   background: var(--color-white);
 }
+
+.experiments-grid .project-card.blog-card {
+  background: transparent;
+}
 .experiments-grid .project-card:hover {
   transform: scale(1.02);
   rotate: 1deg;
@@ -60,6 +64,20 @@ h2::after {
   break-inside: avoid;
   border-radius: 16px;
   
+}
+
+.experiments-card.blog-card {
+  border: 1px solid var(--color-gray-borders);
+  padding: 24px;
+  text-decoration: none;
+}
+
+.experiments-card.blog-card:hover {
+  text-decoration: none;
+}
+
+.experiments-card.blog-card * {
+  text-decoration: none !important;
 }
 
 .experiments-card img {
