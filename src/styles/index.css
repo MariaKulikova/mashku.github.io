@@ -148,7 +148,7 @@ h2::after {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
   .section {
     padding: 6rem 0 2rem;
   }
@@ -158,8 +158,7 @@ h2::after {
   }
 
   .experiments-grid {
-    margin-top: 24px;
-    column-count: 2;
+    column-count: 1;
     column-gap: 16px;
   }
 
@@ -173,8 +172,6 @@ h2::after {
     width: 100%;
   }
 
-
-  
 
 
 
