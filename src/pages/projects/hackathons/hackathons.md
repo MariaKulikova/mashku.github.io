@@ -16,14 +16,6 @@ import { ProjectNavigation } from '../../../components/navigation-buttons/Naviga
 ---
 
 <div className="project-details">
-  <div className="project-details-column">
-    <ul>
-      <li><strong>Year:</strong> 2022</li>
-      <li><strong>Company:</strong> <div className="company-info"><span className="company-logo">🏆</span><a href="https://leadersofdigital.ru/" target="_blank">Digital Breakthrough</a></div></li>
-      <li><strong>Team:</strong> 5 people</li>
-    </ul>
-  </div>
-  <div className="project-details-column">
     <div className="tags">
       <span className="tag">UX Design</span>
       <span className="tag">Rapid Prototyping</span>
@@ -31,10 +23,8 @@ import { ProjectNavigation } from '../../../components/navigation-buttons/Naviga
       <span className="tag">Presentation</span>
       <span className="tag">Team Collaboration</span>
     </div>
-  </div>
 </div>
 
----
 
 </div>
 
@@ -61,6 +51,7 @@ During the hackathon, we developed two impactful projects: Hunt U and Tovarishi 
 
  <div className="highlight">
   
+
   #### 🏆 Advanced to finals of Digital Breakthrough for strong practical value
   
   </div>
