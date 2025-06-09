@@ -10,6 +10,7 @@ const AnimatedEyes: React.FC = () => {
   const [leftPupilPos, setLeftPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
   const [rightPupilPos, setRightPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
   const [isBlinking, setIsBlinking] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -83,6 +84,8 @@ const AnimatedEyes: React.FC = () => {
       viewBox="0 0 413 96"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <defs>
         {/* Mask for left eye */}
@@ -110,8 +113,10 @@ const AnimatedEyes: React.FC = () => {
       
       <g id="Logo">
         {/* Eye backgrounds with blinking animation */}
-        <g transform={isBlinking ? 'scale(1, 0.1)' : 'scale(1, 1)'} 
-           style={{ transformOrigin: '206.5px 48px', transition: 'transform 0.15s ease-in-out' }}>
+        <g style={{ 
+           clipPath: isBlinking ? 'inset(45% 0)' : 'inset(0 0)', 
+           transition: 'clip-path 0.15s ease-in-out' 
+        }}>
           <path
             id="Eye_left"
             fillRule="evenodd"
@@ -132,24 +137,30 @@ const AnimatedEyes: React.FC = () => {
         <g mask="url(#leftEyeMask)" 
            style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${leftPupilPos.x}, ${leftPupilPos.y})`}>
+            <g transform={`scale(${isHovered ? 1.1 : 1})`}
+               style={{ transformOrigin: '95.1602px 47.6494px', transition: 'transform 0.3s ease-in-out' }}>
             <path
               id="Pupil_left_2"
               d="M125.16 47.6494C125.16 64.218 111.729 77.6494 95.1602 77.6494C78.5916 77.6494 65.1602 64.218 65.1602 47.6494C65.1602 31.0809 78.5916 17.6494 95.1602 17.6494C111.729 17.6494 125.16 31.0809 125.16 47.6494Z"
               fill="black"
               className={styles.pupil}
             />
+            </g>
           </g>
         </g>
         
         <g mask="url(#rightEyeMask)"
            style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${rightPupilPos.x}, ${rightPupilPos.y})`}>
+            <g transform={`scale(${isHovered ? 1.1 : 1})`}
+               style={{ transformOrigin: '317.678px 47.6494px', transition: 'transform 0.3s ease-in-out' }}>
             <path
               id="Pupil_left"
               d="M347.678 47.6494C347.678 64.218 334.246 77.6494 317.678 77.6494C301.109 77.6494 287.678 64.218 287.678 47.6494C287.678 31.0809 301.109 17.6494 317.678 17.6494C334.246 17.6494 347.678 31.0809 347.678 47.6494Z"
               fill="black"
               className={styles.pupil}
             />
+            </g>
           </g>
         </g>
       </g>

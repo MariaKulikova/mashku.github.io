@@ -60,6 +60,12 @@
   aspect-ratio: 2;
 }
 
+@media (max-width: 996px) {
+  .navbar__logo {
+    height: 40px;
+  }
+}
+
 @keyframes l3 {
   0%, 70% {
     -webkit-mask-size: 50% 100%;
