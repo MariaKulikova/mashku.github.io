@@ -18,7 +18,7 @@ import '../styles/typography.css'
   <section className="section" >
     <div className="bio"> 
      
-      # Hey, my name is Mariia. I am a product designer based in Luxembourg. 
+      # Hey, my name is Mariia. I am a&nbsp;product designer based in&nbsp;Luxembourg. 
     </div>
   </section>
 
@@ -32,7 +32,10 @@ import '../styles/typography.css'
         description="Designed the AI car assistant interface from scratch, creating clear and simple screens to help users easily find used cars."
         caseStudyLink="/projects/ai-car-assistant"
         tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/AIUC/First_screen.png"
+        mainImage="/img/AIUC/CarProject_Cover.png"
+        buttonText="NDA"
+        buttonDisabled={true}
+        isBlurred={true}
       />
       
       <TeamCard
@@ -40,7 +43,7 @@ import '../styles/typography.css'
         description="Led the redesign of CDN configuration pages and contributed to building a comprehensive design system."
         caseStudyLink="/projects/story-redesign"
         tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/story-redesign/storyRedesign-1.png"
+        mainImage="/img/story-redesign/cdn_cover.png"
       />
 
       <TeamCard
@@ -48,7 +51,7 @@ import '../styles/typography.css'
         description="Optimized the design process by implementing a new Figma file structure, improving collaboration and efficiency."
         caseStudyLink="/projects/marquiz-act-requests"
         tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/marquiz/Acts.png"
+        mainImage="/img/marquiz/cover_acts.png"
       />
      
       
@@ -84,6 +87,36 @@ import '../styles/typography.css'
         <TelegramPost channelName="Nomadic Eye (RU)" channelUrl="https://t.me/nomadic_eye" />
       </a>
 
+      <a href="https://dribbble.com/shots/26135692-HR-Service" target="_blank" className="experiments-card project-card">
+       <img src="/img/experiments/HR-Service.png" alt="HR Service Design" />
+        <div className="project-card-tags">
+          <span className="tag">
+           UI Design
+          </span>
+          <span className="tag">
+           HR Service
+          </span>
+          <span className="tag">
+           Dribbble
+          </span>
+        </div>
+      </a>
+
+      <a href="https://dribbble.com/shots/26136221-HR-CRM" target="_blank" className="experiments-card project-card">
+       <img src="/img/experiments/HR-CRM.png" alt="HR CRM Design" />
+        <div className="project-card-tags">
+          <span className="tag">
+           UI Design
+          </span>
+          <span className="tag">
+           CRM
+          </span>
+          <span className="tag">
+           Dribbble
+          </span>
+        </div>
+      </a>
+
      
 
       <a href="https://deti-edyat.ru/" target="_blank" className="experiments-card project-card">
@@ -108,13 +141,8 @@ import '../styles/typography.css'
       </a>
 
 
-      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="experiments-card project-card">
-       <img src="/img/coffee.png" alt="CoffeBot" />
-        <div className="project-card-tags">
-          <span className="tag">
-           Telegram Bot
-          </span>
-        </div>
+      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="experiments-card project-card blog-card">
+        <TelegramPost channelName="Coffee Drinker Bot" channelUrl="https://t.me/CoffeeDrinker_Bot" avatarImage="/img/coffee.png" postText="Coffee Drinkers' Map: I explore cities, visit coffee spots, and map tasty finds." />
       </a>
 
    

@@ -1,12 +1,18 @@
 .teamsGrid {
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 260px;
 }
 
 @media (max-width: 1024px) {
   .teamsGrid {
     gap: 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .teamsGrid {
+    gap: 48px;
   }
 }
 
@@ -30,6 +36,20 @@
   .projectCardImages {
     display: none;
   }
+  
+  .projectCardColumns {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .projectCardButton {
+    width: 100%;
+  }
+  
+  .fullStoryLink {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Project card */
@@ -43,14 +63,15 @@
 
 .projectCardContent {
   max-width: 100%;
-  gap: 8px;
+  gap: 16px;
   display: flex;
   flex-direction: column;
 }
 
 .projectCardDescription {
-  color: var(--color-gray-secondary-text);
-  margin-bottom: 8px;
+  color: var(--color-gray-primary-text);
+  font-size: var(--font-size-subtitle);
+  margin-bottom: 32px;
   line-height: 1.5;
 }
 
@@ -66,30 +87,66 @@
 
 
 
-.titleRow {
+.projectCardColumns {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  gap: 24px;
 }
 
-.projectCardMeta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-gray-secondary-text);
-  font-size: 14px;
-  margin-bottom: 16px;
+.projectCardInfo {
+  flex: 1;
 }
 
-.projectCardTags {
-  display: flex;
-  gap: 4px;
+.projectCardButton {
+  flex-shrink: 0;
 }
+
+.projectCardTitle {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+
 
 
 
 .fullStoryLink {
-  flex-shrink: 0;
-  margin-left: 16px;
+  display: inline-flex;
+}
+
+/* Blur effect styles */
+.blurredImageContainer {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.blurredImage {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+}
+
+.clearImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  -webkit-mask-image: radial-gradient(
+    circle 250px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle 250px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  pointer-events: none;
 }

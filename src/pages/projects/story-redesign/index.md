@@ -128,7 +128,7 @@ As a result, the entire panel interface now looks fresher and more minimalistic 
 </section>
 
 
-<ProjectNavigation nextProject={{ title: "Marquiz", link: "/projects/marquiz-act-requests/marquiz-act-requests" }} />
+<ProjectNavigation nextProject={{ title: "Marquiz", link: "/projects/marquiz-act-requests" }} />
 
 
 </div>
