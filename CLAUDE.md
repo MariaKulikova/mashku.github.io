@@ -35,7 +35,7 @@ This is a **Docusaurus 3.7.0** portfolio website for UX Designer Masha K. It's c
 **Component Patterns:**
 - Components use TypeScript with CSS modules for styling
 - Navigation between projects uses custom NavigationButtons component
-- Reusable UI components: Button, TeamCard, StackedImages
+- Reusable UI components: Button, TeamCard
 - Custom project page layouts with MDX support
 
 ## Custom instructions

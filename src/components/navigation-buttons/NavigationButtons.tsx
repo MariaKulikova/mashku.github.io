@@ -1,6 +1,6 @@
 import React from 'react';
 import './navigation-buttons.css';
-import buttonStyles from '../button/button.module.css';
+import OutlinedButton from '../outlined-button/OutlinedButton';
 
 interface NavigationButtonsProps {
   nextProject?: {
@@ -25,24 +25,24 @@ const ForwardArrow = () => (
 
 export const TopNavigation = () => (
   <div className="project-navigation">
-    <a href="/" className={`button ${buttonStyles['button-outlined']}`}>
+    <OutlinedButton to="/" size="small">
       <BackArrow />
-      All projects
-    </a>
+      <span>All projects</span>
+    </OutlinedButton>
   </div>
 );
 
 export const ProjectNavigation: React.FC<NavigationButtonsProps> = ({ nextProject }) => (
   <div className="project-navigation">
-    <a href="/" className={`button ${buttonStyles['button-outlined']}`}>
+    <OutlinedButton to="/" size="small">
       <BackArrow />
-      All projects
-    </a>
+      <span>All projects</span>
+    </OutlinedButton>
     {nextProject && (
-      <a href={nextProject.link} className={`button ${buttonStyles['button-outlined']}`}>
-        {nextProject.title}
+      <OutlinedButton to={nextProject.link} size="small">
+        <span>{nextProject.title}</span>
         <ForwardArrow />
-      </a>
+      </OutlinedButton>
     )}
   </div>
 );

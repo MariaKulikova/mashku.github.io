@@ -33,12 +33,6 @@ h2::after {
   rotate: 1deg;
 }
 
-.projectCardTags {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-}
 
 
 .experiments-grid .project-card {
@@ -107,7 +101,19 @@ h2::after {
   margin: 0 auto;
   padding: 0 16px;
   background: transparent;
-  overflow-x: hidden;
+}
+
+/* Разрешаем overflow для изображений на всю ширину */
+.container .teamsGrid {
+  overflow: visible;
+}
+
+body {
+  overflow-x: visible;
+}
+
+html {
+  overflow-x: visible;
 }
 
 /* Media queries */

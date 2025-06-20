@@ -8,7 +8,6 @@ import TeamCard from '../components/team-card/TeamCard';
 import Button from '../components/button/Button';
 import Footer from '../components/footer/Footer';
 import styles from '../components/team-card/team-card.module.css';
-import StackedImages from '../components/stacked-images/StackedImages';
 import TelegramPost from '../components/telegram-post/TelegramPost';
 import '../styles/general.css'
 import '../styles/index.css'
@@ -29,38 +28,27 @@ import '../styles/typography.css'
 
     <div className={styles.teamsGrid}>
       <TeamCard
-        type="aiuc"
         title="AI Assistant and Startup spirit"
         description="Designed the AI car assistant interface from scratch, creating clear and simple screens to help users easily find used cars."
-        caseStudyLink="/projects/ai-car-assistant/ai-car-assistant"
-        images={[
-          { src: '/img/AIUC/AIUC_Cover_Desktop.png', alt: 'AI Car Assistant First Screen' },
-          { src: '/img/AIUC/AIUC_Cover_Illustration.png', alt: 'AI Car Assistant Illustration' },
-          { src: '/img/AIUC/AIUC_Cover_Mobile.png', alt: 'AI Car Assistant Mobile' },
-        ]}
+        caseStudyLink="/projects/ai-car-assistant"
+        tags={["product feature", "definition, research, architecture, ux, ui"]}
+        mainImage="/img/AIUC/First_screen.png"
       />
       
       <TeamCard
-        type="selectel"
         title="CDN Redesign at Selectel"
         description="Led the redesign of CDN configuration pages and contributed to building a comprehensive design system."
-        caseStudyLink="/projects/story-redesign/story-redesign"
-        images={[
-          { src: '/img/story-redesign/Selectel_Cover_Create.png', alt: 'Create' },
-          { src: '/img/story-redesign/Selectel_Cover_DS.png', alt: 'DS' },
-        ]}
+        caseStudyLink="/projects/story-redesign"
+        tags={["product feature", "definition, research, architecture, ux, ui"]}
+        mainImage="/img/story-redesign/storyRedesign-1.png"
       />
 
       <TeamCard
-        type="marquiz"
         title="Redesigning the design process at Marquiz"
         description="Optimized the design process by implementing a new Figma file structure, improving collaboration and efficiency."
-        caseStudyLink="/projects/marquiz-act-requests/marquiz-act-requests"
-        images={[
-          { src: '/img/marquiz/Marquiz_Cover_Circle.png', alt: 'Marquiz Circle' },
-          { src: '/img/marquiz/Marquiz_Cover_Desktop.png', alt: 'Marquiz Desktop' },
-          { src: '/img/marquiz/Structure.png', alt: 'Marquiz Modal' },
-        ]}
+        caseStudyLink="/projects/marquiz-act-requests"
+        tags={["product feature", "definition, research, architecture, ux, ui"]}
+        mainImage="/img/marquiz/Acts.png"
       />
      
       

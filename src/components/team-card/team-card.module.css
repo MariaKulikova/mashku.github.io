@@ -1,12 +1,12 @@
 .teamsGrid {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 96px;
 }
 
 @media (max-width: 1024px) {
   .teamsGrid {
-    gap: 24px;
+    gap: 64px;
   }
 }
 
@@ -35,36 +35,61 @@
 /* Project card */
 .projectCard {
   display: flex;
-  gap: 24px;
-  border: 1px solid var(--color-gray-borders);
-  border-radius: 24px;
-  padding: 48px;
-  height: 400px;
+  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  
+  position: relative;
 }
 
 .projectCardContent {
-  max-width: 40%;
-  gap: 24px;
-  margin-right: 144px;
+  max-width: 100%;
+  gap: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .projectCardDescription {
   color: var(--color-gray-secondary-text);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 
 
 
 .projectCardImages {
-  width: 40%;
-  display: flex;
-  justify-content: left;
   
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.projectCardMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-gray-secondary-text);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.projectCardTags {
+  display: flex;
+  gap: 4px;
+}
+
+
+
+.fullStoryLink {
+  flex-shrink: 0;
+  margin-left: 16px;
 }

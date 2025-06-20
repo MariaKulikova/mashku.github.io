@@ -1,28 +1,36 @@
 import React from 'react';
-import Button from '../button/Button';
-import StackedImages from '../stacked-images/StackedImages';
+import OutlinedButton from '../outlined-button/OutlinedButton';
 import styles from './team-card.module.css';
 
 interface TeamCardProps {
-  type: "aiuc" | "marquiz" | "selectel";
   title: string;
   description: string;
   caseStudyLink: string;
-  images: { src: string; alt: string }[];
+  tags: string[];
+  year: string;
+  mainImage: string;
 }
 
-const TeamCard: React.FC<TeamCardProps> = ({ type, title, description, caseStudyLink, images }) => {
+const TeamCard: React.FC<TeamCardProps> = ({ title, description, caseStudyLink, tags, year, mainImage }) => {
   return (
     <div className={styles.projectCard}>
       <div className={styles.projectCardContent}>
-        <div>
-          <h3>{title}</h3>
-          <p className={styles.projectCardDescription}>{description}</p>
-          <Button variant="text" className="button-text" to={caseStudyLink}>Read case study</Button>
+        <div className={styles.titleRow}>
+          <h3 className={styles.projectCardTitle}>{title}</h3>
+          <OutlinedButton size="large" className={styles.fullStoryLink} to={caseStudyLink}>
+            full story later
+          </OutlinedButton>
+        </div>
+        <p className={styles.projectCardDescription}>{description}</p>
+        <div className={styles.projectCardMeta}>
+          <div className={styles.projectCardTags}>
+            {tags.join(', ')}
+          </div>
+          <span className={styles.projectCardYear}>{year}</span>
         </div>
       </div>
       <div className={styles.projectCardImages}>
-        <StackedImages type={type} images={images} />
+        <img src={mainImage} alt={title} className={styles.projectCardImage} />
       </div>
     </div>
   );

@@ -1,0 +1,84 @@
+.outlinedButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000px;
+  border: 2px solid var(--color-gray-borders);
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  color: var(--color-gray-headings) !important;
+  background-color: transparent;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  padding: 10px 24px;
+}
+
+.outlinedButton:link,
+.outlinedButton:visited {
+  color: var(--color-gray-headings) !important;
+  text-decoration: none !important;
+}
+
+.outlinedButton:hover {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-white);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 1, 255, 0.2);
+  color: var(--color-accent)!important;
+}
+
+.outlinedButton span {
+  transition: all 0.3s ease;
+  color: inherit;
+}
+
+.outlinedButton svg {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.outlinedButton svg path {
+  stroke: currentColor;
+}
+
+.outlinedButton:hover span {
+  transform: scale(1.02);
+}
+
+/* Disabled state */
+.outlinedButton:disabled,
+.outlinedButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-color: var(--color-gray-borders);
+  color: var(--color-gray-secondary-text) !important;
+}
+
+.outlinedButton:disabled:hover,
+.outlinedButton.disabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-gray-borders);
+  color: var(--color-gray-secondary-text) !important;
+}
+
+/* Size variants */
+.outlinedButton.size-small {
+  padding: 8px 16px;
+  
+}
+
+.outlinedButton.size-medium {
+  padding: 12px 24px;
+  
+}
+
+.outlinedButton.size-large {
+  padding: 16px 32px;
+  
+}
