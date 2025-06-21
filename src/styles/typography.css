@@ -17,9 +17,9 @@
 
   /* Custom typography scale */
   --font-size-h1: clamp(48px, 7vw, 96px);
-  --font-size-h2: clamp(28px, 4vw, 48px);
-  --font-size-h3: clamp(20px, 3vw, 32px);
-  --font-size-h4: clamp(16px, 2vw, 20px);
+  --font-size-h2: clamp(32px, 4vw, 48px);
+  --font-size-h3: clamp(24px, 3vw, 32px);
+  --font-size-h4: clamp(20px, 2vw, 24px);
   --font-size-subtitle: clamp(16px, 1.8vw, 18px);
   --font-size-base: clamp(16px, 1.8vw, 18px);
   --font-size-small: clamp(12px, 1.4vw, 14px);
