@@ -7,6 +7,7 @@ hide_table_of_contents: true
 import TeamCard from '../components/team-card/TeamCard';
 import Button from '../components/button/Button';
 import Footer from '../components/footer/Footer';
+import MarqueeTitle from '../components/marquee-title/MarqueeTitle';
 import styles from '../components/team-card/team-card.module.css';
 import TelegramPost from '../components/telegram-post/TelegramPost';
 import '../styles/general.css'
@@ -16,15 +17,23 @@ import '../styles/typography.css'
 
 <div className="container body">
   <section className="section" >
+    <div className="navbar__inner">
+      <div className="hero-circle"></div>
+    </div>
     <div className="bio"> 
-     
-      # Hey, my name is Mariia. I am a&nbsp;product designer based in&nbsp;Luxembourg. 
+      <div className="bio-tags label">PRODUCT / UX /UI/ DIGITAL / VISUAL/ YOUR</div>
+      <h1 className="bio-title">DESIGNER</h1>
+      <p className="bio-text">
+        My name is Maria. I design for complex services and emotionally driven projects.
+        I believe that design helps people and the world evolve. We all know that beautiful is better than ugly,
+         and usable is better than unusable.
+      </p>
     </div>
   </section>
 
 
   <section className="section">
-  ## Product Stories
+    <MarqueeTitle>Product Stories</MarqueeTitle>
 
     <div className={styles.teamsGrid}>
       <TeamCard
@@ -63,7 +72,7 @@ import '../styles/typography.css'
 
 
   <section className="section experiments">
-     ## Fun, experiments and side projects
+    <MarqueeTitle>Fun, experiments and side projects</MarqueeTitle>
     <div className="experiments-grid">
    
    

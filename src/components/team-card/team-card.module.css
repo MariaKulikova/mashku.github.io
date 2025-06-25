@@ -45,7 +45,7 @@
 
 .projectCardDescription {
   color: var(--color-gray-primary-text);
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-h4) !important;
   margin-bottom: 32px;
   line-height: 1.5;
   max-width: 880px;

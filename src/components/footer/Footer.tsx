@@ -1,11 +1,12 @@
 import Link from '@docusaurus/Link';
 import styles from './footer.module.css';
 import buttonStyles from '../button/button.module.css';
+import MarqueeTitle from '../marquee-title/MarqueeTitle';
 
 export default function Footer() {
   return (
     <section className={styles.contacts}>
-      <div><h2>Contacts</h2></div>
+      <MarqueeTitle>Contacts</MarqueeTitle>
       <div className={styles.contactsContent}>
         <div className={styles.leftColumn}>
           <h3>

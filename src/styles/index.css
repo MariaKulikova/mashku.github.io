@@ -1,37 +1,87 @@
 @import './colors.css';
 @import './typography.css';
 
+.bio-title {
+  font-size: 16rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-gray-headings);
+  width: 100%;
+  white-space: nowrap;
+  text-transform: uppercase;
+  margin: 0;
+ 
+}
+h1 {
+  margin: 0!important;
 
-.bio h1{
-  font-weight: 300
+}
+
+.bio-text {
+  line-height: 1.5;
+  color: var(--color-gray-text);
+  margin-top: 32px;
+  max-width: 640px;
+  margin-left: 16px;
+}
+
+.bio-tags {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: var( --font-weight-bold);
+  margin-right: 32px;
+ 
 }
 
 
+@media (max-width: 1440px) {
+  .bio-title {
+    font-size: 14rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .bio-title {
+    font-size: 11rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bio-title {
+    font-size: 9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bio-title {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .bio-title {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .bio-title {
+    font-size: 3rem;
+  }
+}
 
 
 .section {
   padding: 9rem 0 5rem;
 }
 
-h2 {
-  margin-bottom: 64px;
-  color: var(--color-white);
-  position: relative;
-  display: inline-block;
-  
-}
 
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -4px;
-  right: -4px;
-  height: 65%;
-  background-color: var(--color-accent);
-  z-index: -1;
-  rotate: 1deg;
-}
 
 
 
@@ -108,13 +158,7 @@ h2::after {
   overflow: visible;
 }
 
-body {
-  overflow-x: visible;
-}
 
-html {
-  overflow-x: visible;
-}
 
 /* Media queries */
 @media (min-width: 1280px) {

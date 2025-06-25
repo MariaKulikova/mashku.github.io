@@ -2,7 +2,6 @@
 .navbar {
   display: flex;
   width: 100%;
-  background-color: var(--color-gray-surface);
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -12,60 +11,34 @@
   margin-top: 8px;
 }
 
-.navbar--scrolled {
-  width: calc(100% - 128px);
-  margin: 16px 64px;
-  border-radius: 1000px;
-  padding: 0 24px;
-  position: fixed;
-  top: 0;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(4px);
-}
 
-/* Inner container with max-width */
 .navbar__inner {
-  display: flex;
-  justify-content: space-between;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
   align-items: center;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 200px;
+  height: 200px;
+  padding: 0px 48px;
   gap: 32px;
-}
-
-@media (max-width: 996px) {
-  .navbar__inner {
-    padding: 0 8px;
-  }
-}
-
-.navbar__items--right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-left: auto;
-}
-
-@media (max-width: 996px) {
-  .navbar__items--right {
-    gap: 16px;
-  }
+  border-radius: 1000px;
+  background-color: var(--color-accent);
 }
 
 .navbar__logo {
+  width: 100%;
+  height: 100%;
+  margin-top: 48px;
   display: flex;
   align-items: center;
-  height: 52px;
-  aspect-ratio: 2;
+  justify-content: center;
+ 
 }
 
-@media (max-width: 996px) {
-  .navbar__logo {
-    height: 40px;
-  }
-}
+
+
+
 
 @keyframes l3 {
   0%, 70% {
@@ -82,48 +55,6 @@
   }
 }
 
-.navbar__link {
-  padding: 0 12px;
-  text-decoration: none;
-  font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-bold);
-  display: inline-flex;
-  align-items: center;
-  background-image: linear-gradient(to top, var(--color-gray-headings) 50%, var(--color-accent) 50%);
-  background-size: 100% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.3s ease;
-  background-position: 0 100%;
-}
 
-.navbar__link:hover {
-  background-position: 0 0;
-}
 
-.navbar__link svg {
-  display: none;
-}
 
-/* Container query for navbar */
-@container (max-width: 500px) {
-  .navbar__items--right .navbar__link[href^="mailto:"] {
-    display: none !important;
-  }
-}
-
-@media (max-width: 996px) {
-  .navbar {
-    container-type: inline-size;
-    container-name: navbar;
-  }
-  
-  .navbar__sidebar {
-    display: none !important;
-  }
-
-  .navbar__toggle {
-    display: none !important;
-  }
-}
