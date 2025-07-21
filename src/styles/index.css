@@ -2,15 +2,14 @@
 @import './typography.css';
 
 .bio-title {
-  font-size: 16rem;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--color-gray-headings);
   width: 100%;
-  white-space: nowrap;
-  text-transform: uppercase;
-  margin: 0;
- 
+  margin: 0 0 3rem 0;
+}
+
+.bio-title img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 h1 {
   margin: 0!important;
@@ -22,57 +21,21 @@ h1 {
   color: var(--color-gray-text);
   margin-top: 32px;
   max-width: 640px;
-  margin-left: 16px;
+ 
 }
 
 .bio-tags {
   display: flex;
   justify-content: flex-end;
   font-weight: var( --font-weight-bold);
-  margin-right: 32px;
+  margin-bottom: 16px;
  
 }
 
 
-@media (max-width: 1440px) {
-  .bio-title {
-    font-size: 14rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  .bio-title {
-    font-size: 11rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .bio-title {
-    font-size: 9rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .bio-title {
-    font-size: 7rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .bio-title {
-    font-size: 5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .bio-title {
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .bio-title {
-    font-size: 3rem;
+  .bio-title img {
+    max-width: 100%;
   }
 }
 
