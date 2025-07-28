@@ -2,10 +2,10 @@
 @import '../../styles/typography.css';
 
 .contacts {
-  max-width: 1280px;
   display: flex;
   flex-direction: column;
   padding: 128px 0 80px;
+  position: relative;
 }
 
 .contactsContent {

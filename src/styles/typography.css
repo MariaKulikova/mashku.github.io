@@ -71,7 +71,7 @@ h1, .h1, .markdown h1 {
 
 h2, .h2, .markdown h2 {
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-bold);
   line-height: 1.2;
 }
 

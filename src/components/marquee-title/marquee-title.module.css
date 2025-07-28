@@ -4,32 +4,25 @@
   position: relative;
   margin-left: calc(-50vw + 50%);
   margin-bottom: 64px;
+  display: flex;
+  background-color: var(--color-accent);
 }
 
 .marqueeContent {
   display: flex;
-  gap: 12px;
   align-items: center;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
+  flex-shrink: 0;
 }
 
 .marqueeContent h2 {
-  color: var(--color-accent);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: var(--font-size-h4);
+  color: var(--color-white);
   white-space: nowrap;
   margin: 0;
-}
-
-/* Дублирование через псевдоэлементы */
-.marqueeContent::after {
-  content: attr(data-text) ' ' attr(data-text) ' ' attr(data-text) ' ' attr(data-text) ' ' attr(data-text) ' ' attr(data-text);
-  color: var(--color-accent);
-  font-size: 2rem;
-  font-weight: 700;
-  white-space: nowrap;
-  margin-left: 12px;
+  padding: 0 8px;
+  display: inline-block;
 }
 
 @keyframes marquee {
@@ -37,6 +30,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }

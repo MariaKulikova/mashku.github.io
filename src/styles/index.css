@@ -61,6 +61,12 @@ h1 {
   rotate: 1deg;
 }
 
+/* Section specific styles */
+.experiments,
+.product-stories {
+  position: relative;
+}
+
 /* Experiments cards */
 .experiments-card {
   position: relative;
