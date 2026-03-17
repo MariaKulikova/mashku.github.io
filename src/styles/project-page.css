@@ -1,12 +1,7 @@
-@import './colors.css';
-@import './typography.css';
-
 /* Project page styles */
 
-
-
-h1{
-  margin: 24px 0 56px !important;
+h1 {
+  margin: var(--space-lg) 0 56px !important;
 }
 
 .section-margin {
@@ -16,44 +11,40 @@ h1{
 }
 
 .image {
-  border-radius: 24px;
-  margin: 24px 0  32px;
+  border-radius: var(--radius-lg);
+  margin: var(--space-lg) 0 var(--space-xl);
 }
 
 span {
   color: var(--color-accent);
 }
 
-.section-margin  p {
+.section-margin p {
   max-width: 700px;
-  margin: 0 0 24px;
-  
+  margin: 0 0 var(--space-lg);
 }
 
-.section-margin  h3 {
-  margin: 24px 0;
-  
+.section-margin h3 {
+  margin: var(--space-lg) 0;
 }
-.section-margin  h4 {
-  margin: 0 0 24px;
- 
+
+.section-margin h4 {
+  margin: 0 0 var(--space-lg);
 }
 
 @media (max-width: 768px) {
   .project-content img {
-    margin: 16px 0;
+    margin: var(--space-md) 0;
     max-width: 100%;
     height: auto;
   }
 
-
   .section-margin {
-    margin-bottom: 24px;
-    
+    margin-bottom: var(--space-lg);
   }
 
   .section-margin p {
-    margin: 8px 0;
+    margin: var(--space-sm) 0;
   }
 }
 
@@ -61,9 +52,8 @@ span {
   display: flex;
   flex-direction: row;
   max-width: 100%;
-  gap: 32px;
+  gap: var(--space-xl);
   align-items: top;
- 
 }
 
 .columns > * {
@@ -77,13 +67,13 @@ span {
   height: auto;
   object-fit: contain;
   display: block;
-  margin: 24px 0;
+  margin: var(--space-lg) 0;
 }
 
 @media (max-width: 768px) {
   .columns {
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
   }
 
   .columns > * {
@@ -92,21 +82,13 @@ span {
   }
 }
 
-
-
 @media (max-width: 768px) {
   .image {
-    margin-bottom: 8px;
-    border-radius: 12px;
+    margin-bottom: var(--space-sm);
+    border-radius: var(--radius-md);
   }
 
   .columns > div > .image:last-child {
     margin-bottom: 0;
   }
 }
-
-
-
-
-
-

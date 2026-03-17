@@ -1,16 +1,1 @@
-:root {
-  /* Color system */
-  --color-white: #FFFFFF;
-  --color-black: #131416;
-  --color-accent: #1a01ff;
-  
-  /* Gray scale */
-  --color-gray-surface: #e7e6e9;
-  --color-gray-borders: #979ba2;
-  --color-gray-secondary-text: #777986;
-  --color-gray-primary-text: #5B5D6B;
-  --color-gray-headings: #2d2d2d;
-
-  /* Shadows */
-  --shadow-tag: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+/* Deprecated: use tokens.css instead. This file kept for backward compatibility. */

@@ -1,41 +1,33 @@
-@import '../../styles/colors.css';
-@import '../../styles/typography.css';
-
 .telegramPost {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-sm);
 }
 
 .avatar {
   width: 32px;
   height: 32px;
-  
 }
-
 
 .channelName {
   font-size: var(--font-size-h4);
-  color: var(--color-gray-headings);
- 
+  color: var(--color-text-heading);
 }
-
 
 .content {
   flex: 1;
 }
 
 .postText {
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-base);
   line-height: 1.5;
-  color: var(--color-gray-secondary-text);
+  color: var(--color-text-secondary);
   padding-left: 44px;
- 
 }
 

@@ -15,7 +15,7 @@
 
 .projectCardContent {
   max-width: 100%;
-  gap: 16px;
+  gap: var(--space-md);
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
+  gap: var(--space-lg);
 }
 
 .projectCardInfo {
@@ -37,16 +37,16 @@
 
 .projectCardTitle {
   font-size: var(--font-size-h3);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-6);
   line-height: 1.2;
-  margin: 0 0 16px 0;
-  color: var(--color-gray-headings);
+  margin: 0 0 var(--space-md) 0;
+  color: var(--color-text-heading);
 }
 
 .projectCardDescription {
-  color: var(--color-gray-primary-text);
+  color: var(--color-text-primary);
   font-size: var(--font-size-h4) !important;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-xl);
   line-height: 1.5;
   max-width: 880px;
 }
@@ -67,7 +67,7 @@
   display: inline-flex;
 }
 
-/* Blur effect styles */
+/* Blur effect styles - DO NOT MODIFY mask-image logic */
 .blurredImageContainer {
   position: relative;
   cursor: pointer;
@@ -76,7 +76,7 @@
 
 .blurredImage {
   filter: blur(8px);
-  transition: filter 0.3s ease;
+  transition: filter var(--duration-normal) var(--ease-default);
 }
 
 .clearImage {
@@ -86,7 +86,7 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-normal) var(--ease-default);
   --mouse-x: 50%;
   --mouse-y: 50%;
   -webkit-mask-image: radial-gradient(
@@ -105,38 +105,38 @@
 /* Tablet styles */
 @media (max-width: 1024px) {
   .teamsGrid {
-    gap: 64px;
+    gap: var(--space-3xl);
   }
 
   .teamsGrid .projectCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px;
+    padding: var(--space-lg);
     height: 100%;
-    border-radius: 24px;
-    gap: 16px;
+    border-radius: var(--radius-lg);
+    gap: var(--space-md);
   }
 
   .teamsGrid .projectCardContent {
     max-width: 100%;
-    margin: 0 0 32px;
+    margin: 0 0 var(--space-xl);
     order: 2;
   }
 
   .projectCardImages {
     display: none;
   }
-  
+
   .projectCardColumns {
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
   }
-  
+
   .projectCardButton {
     width: 100%;
   }
-  
+
   .fullStoryLink {
     width: 100%;
     justify-content: center;
@@ -146,6 +146,6 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .teamsGrid {
-    gap: 48px;
+    gap: var(--space-2xl);
   }
 }

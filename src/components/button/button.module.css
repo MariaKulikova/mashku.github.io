@@ -1,13 +1,10 @@
-/* Outlined button variant moved to OutlinedButton component */
-
-
 .button-text[class*='button-text'] {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: var(--color-gray-headings);
-  font-weight: var(--font-weight-bold);
-  transition: all 0.3s ease;
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-7);
+  transition: all var(--duration-normal) var(--ease-default);
 }
 
 .button-text:hover {
@@ -15,29 +12,25 @@
   text-decoration: wavy;
 }
 
-
 .button-text::after {
-  content: '→';
-  margin-left: 4px;
-  transition: transform 0.3s ease;
-  
+  content: '\2192';
+  margin-left: var(--space-xs);
+  transition: transform var(--duration-normal) var(--ease-default);
 }
 
 .button-text:hover::after {
-  transform: translate(24px);
+  transform: translate(var(--space-lg));
 }
 
 .button-text span {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-normal) var(--ease-default);
   transform-origin: left;
-  color: var(--color-gray-headings);
+  color: var(--color-text-heading);
 }
 
 .button-text:hover span {
   transform: scale(1.2);
   color: var(--color-accent);
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-normal) var(--ease-default);
 }
-
-

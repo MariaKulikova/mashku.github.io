@@ -1,0 +1,68 @@
+@import './open-props-imports.css';
+
+:root {
+  /* ===== BRAND ===== */
+  --color-accent: #1a01ff;
+  --color-accent-hsl: 240 99% 50%;
+
+  /* ===== COLORS ===== */
+  --color-white: var(--gray-0);
+  --color-black: #131416;
+
+  /* Surfaces */
+  --color-surface: var(--gray-2);
+
+  /* Text */
+  --color-text-primary: var(--gray-8);
+  --color-text-secondary: var(--gray-7);
+  --color-text-heading: var(--gray-10);
+
+  /* Borders */
+  --color-border: var(--gray-6);
+
+  /* Shadows */
+  --shadow-tag: var(--shadow-2);
+
+  /* ===== BACKWARD COMPAT (temporary aliases) ===== */
+  --color-gray-surface: var(--color-surface);
+  --color-gray-borders: var(--color-border);
+  --color-gray-secondary-text: var(--color-text-secondary);
+  --color-gray-primary-text: var(--color-text-primary);
+  --color-gray-headings: var(--color-text-heading);
+
+  /* ===== SPACING (linear 8px scale) ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Semantic spacing aliases */
+  --space-xs: var(--space-1);
+  --space-sm: var(--space-2);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-5);
+  --space-xl: var(--space-6);
+  --space-2xl: var(--space-7);
+  --space-3xl: var(--space-8);
+
+  /* ===== LAYOUT ===== */
+  --layout-max-width: 80rem;
+  --layout-padding: var(--space-4);
+
+  /* ===== RADII ===== */
+  --radius-sm: var(--radius-2);
+  --radius-md: var(--radius-3);
+  --radius-lg: var(--radius-4);
+  --radius-pill: var(--radius-round);
+
+  /* ===== TRANSITIONS ===== */
+  --ease-default: var(--ease-3);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+}

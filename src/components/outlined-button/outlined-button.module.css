@@ -2,43 +2,42 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1000px;
-  border: 2px solid var(--color-gray-borders);
+  border-radius: var(--radius-pill);
+  border: var(--border-size-2) solid var(--color-border);
   text-decoration: none !important;
   white-space: nowrap;
-  transition: all 0.3s ease;
-  color: var(--color-gray-headings) !important;
+  transition: all var(--duration-normal) var(--ease-default);
+  color: var(--color-text-heading) !important;
   background-color: transparent;
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-regular);
-  padding: 10px 24px;
+  font-weight: var(--font-weight-4);
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .outlinedButton:link,
 .outlinedButton:visited {
-  color: var(--color-gray-headings) !important;
+  color: var(--color-text-heading) !important;
   text-decoration: none !important;
 }
 
 .outlinedButton:hover {
   background-color: transparent;
   border-color: var(--color-accent);
-  color: var(--color-white);
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 1, 255, 0.2);
-  color: var(--color-accent)!important;
+  box-shadow: 0 4px 12px hsl(var(--color-accent-hsl) / 0.2);
+  color: var(--color-accent) !important;
 }
 
 .outlinedButton span {
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) var(--ease-default);
   color: inherit;
 }
 
 .outlinedButton svg {
   width: 20px;
   height: 20px;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) var(--ease-default);
 }
 
 .outlinedButton svg path {
@@ -55,30 +54,27 @@
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
-  border-color: var(--color-gray-borders);
-  color: var(--color-gray-secondary-text) !important;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary) !important;
 }
 
 .outlinedButton:disabled:hover,
 .outlinedButton.disabled:hover {
   transform: none;
   box-shadow: none;
-  border-color: var(--color-gray-borders);
-  color: var(--color-gray-secondary-text) !important;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary) !important;
 }
 
 /* Size variants */
 .outlinedButton.size-small {
-  padding: 8px 16px;
-  
+  padding: var(--space-sm) var(--space-md);
 }
 
 .outlinedButton.size-medium {
-  padding: 12px 24px;
-  
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .outlinedButton.size-large {
-  padding: 16px 32px;
-  
+  padding: var(--space-md) var(--space-xl);
 }

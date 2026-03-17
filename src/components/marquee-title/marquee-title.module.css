@@ -3,7 +3,7 @@
   width: 100vw;
   position: relative;
   margin-left: calc(-50vw + 50%);
-  margin-bottom: 64px;
+  margin-bottom: var(--space-3xl);
   display: flex;
   background-color: var(--color-accent);
 }
@@ -21,7 +21,7 @@
   color: var(--color-white);
   white-space: nowrap;
   margin: 0;
-  padding: 0 8px;
+  padding: 0 var(--space-sm);
   display: inline-block;
 }
 

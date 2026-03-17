@@ -21,7 +21,7 @@ This is a **Docusaurus 3.7.0** portfolio website for UX Designer Masha K. It's c
 - **MDX Pages**: Content is written in MDX (Markdown + JSX) allowing rich interactive content
 - **Component Architecture**: Custom React components in `/src/components/` with CSS modules
 - **Project Structure**: Each project has its own MDX file in `/src/pages/projects/` with optional custom CSS
-- **Styling**: Combination of CSS modules (`.module.css`) for components and global styles in `/src/styles/`
+- **Styling**: Open Props + CSS modules. Design tokens defined in `/src/styles/tokens.css`
 - **Theme Customization**: Custom Navbar and Root components override default Docusaurus theme
 - **Static Assets**: Images organized by project in `/static/img/`
 
@@ -37,6 +37,14 @@ This is a **Docusaurus 3.7.0** portfolio website for UX Designer Masha K. It's c
 - Navigation between projects uses custom NavigationButtons component
 - Reusable UI components: Button, TeamCard
 - Custom project page layouts with MDX support
+
+## Design System Rules
+- **Никогда не хардкодить значения в CSS** — всегда использовать переменные из `tokens.css`
+- **Open Props** используется для: цветов (`--gray-*`), радиусов (`--radius-*`), теней (`--shadow-*`), easings (`--ease-*`), border sizes (`--border-size-*`)
+- **Кастомная spacing шкала** (`--space-1`...`--space-10`) — Open Props sizes имеют экспоненциальную шкалу, не подходящую для spacing
+- **Кастомная typography шкала** (`--font-size-h1`...`--font-size-small`) — Open Props fluid sizes имеют другие диапазоны
+- **Семантические алиасы** обязательны: `--space-xs`, `--space-sm`, `--space-md` и т.д.
+- Accent color `#1a01ff` — кастомный, нет аналога в Open Props
 
 ## Custom instructions
 - Отвечай на русском

@@ -31,6 +31,7 @@ const config: Config = {
         blog: false,
         theme: {
           customCss: [
+            './src/styles/tokens.css',
             './src/styles/general.css',
             './src/styles/project-page.css',
             './src/styles/index.css',

@@ -1,21 +1,18 @@
-@import './colors.css';
 @import './typography.css';
 
 :root {
   scroll-behavior: smooth;
-  
+
   /* Layout */
-  --layout-max-width: 1280px;
-  --layout-padding: 16px;
   --layout-content-width: min(calc(100vw - (var(--layout-padding) * 2)), var(--layout-max-width));
 
   @media (max-width: 996px) {
-    --layout-padding: 8px;
+    --layout-padding: var(--space-2);
   }
 
   /* Docusaurus required overrides */
-  --ifm-background-color: var(--color-gray-surface);
-  --ifm-color-primary: var(--color-gray-headings);
+  --ifm-background-color: var(--color-surface);
+  --ifm-color-primary: var(--color-text-heading);
 }
 
 h1:hover .hash-link,
@@ -27,14 +24,9 @@ h6:hover .hash-link {
   display: none !important;
 }
 
-/* Полностью скрываем hash-link для h2 */
 h2 .hash-link {
   display: none !important;
 }
-
-
-
-
 
 /* Eyes animation */
 .animated-eyes {
@@ -68,21 +60,18 @@ h2 .hash-link {
 }
 
 article {
-
-  margin-top: 64px;
-  
+  margin-top: var(--space-3xl);
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 12px;
+  padding: var(--space-xs) var(--space-sm);
   background: rgba(231, 231, 233, 0.65);
   backdrop-filter: blur(4px);
-  color: var(--color-gray-primary-text);
-  border-radius: 16px;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-lg);
   font-size: var(--font-size-small);
   box-shadow: var(--shadow-tag);
-  
 }

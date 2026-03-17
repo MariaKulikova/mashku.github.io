@@ -1,6 +1,3 @@
-@import '../../styles/colors.css';
-@import '../../styles/typography.css';
-
 .contacts {
   display: flex;
   flex-direction: column;
@@ -14,15 +11,11 @@
   width: 100%;
 }
 
-
-
-
-
 .contactsSocials {
   display: flex;
   flex-direction: row;
   gap: 56px;
-  margin-top: 32px;
+  margin-top: var(--space-xl);
   flex-wrap: wrap;
 }
 
@@ -30,7 +23,7 @@
   text-decoration: none;
   justify-content: flex-start;
   width: fit-content;
-  color: var(--color-gray-headings);
+  color: var(--color-text-heading);
 }
 
 .socialLink:hover {
@@ -39,31 +32,26 @@
 
 @media (max-width: 768px) {
   .contacts {
-    padding: 24px 16px;
+    padding: var(--space-lg) var(--space-md);
   }
 
   .contactsContent {
-    gap: 24px;
+    gap: var(--space-lg);
   }
-
- 
-
 
   .contactsSocials {
-    margin-top: 16px;
-    gap: 32px;
+    margin-top: var(--space-md);
+    gap: var(--space-xl);
   }
-
-  
 }
 
 @media (max-width: 480px) {
   .contacts {
-    padding: 16px 12px;
+    padding: var(--space-md) var(--space-sm);
   }
 
   .contactsSocials {
-    margin-top: 12px;
-    gap: 12px;
+    margin-top: var(--space-sm);
+    gap: var(--space-sm);
   }
 }
