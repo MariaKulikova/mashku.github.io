@@ -1,0 +1,55 @@
+.buddy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  display: flex;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.eyesWrapper {
+  width: 100px;
+  height: 28px;
+  pointer-events: auto;
+  position: absolute;
+}
+
+/* Top edge: eyes at bottom center, looking down into screen */
+.top .eyesWrapper {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Bottom edge: eyes at top center, flipped */
+.bottom .eyesWrapper {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1);
+}
+
+/* Left edge: eyes at right center, rotated */
+.left .eyesWrapper {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Right edge: eyes at left center, rotated */
+.right .eyesWrapper {
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .buddy {
+    display: none;
+  }
+}
