@@ -1,22 +1,23 @@
 .contacts {
   display: flex;
   flex-direction: column;
-  padding: 128px 0 80px;
-  position: relative;
-}
-
-.contactsContent {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  padding: var(--space-10) var(--layout-padding);
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .contactsSocials {
   display: flex;
   flex-direction: row;
-  gap: 56px;
+  gap: var(--space-2xl);
   margin-top: var(--space-xl);
   flex-wrap: wrap;
+}
+
+.contactsText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-4);
 }
 
 .socialLink {
@@ -32,11 +33,7 @@
 
 @media (max-width: 768px) {
   .contacts {
-    padding: var(--space-lg) var(--space-md);
-  }
-
-  .contactsContent {
-    gap: var(--space-lg);
+    padding: var(--space-3xl) var(--layout-padding);
   }
 
   .contactsSocials {
@@ -46,10 +43,6 @@
 }
 
 @media (max-width: 480px) {
-  .contacts {
-    padding: var(--space-md) var(--space-sm);
-  }
-
   .contactsSocials {
     margin-top: var(--space-sm);
     gap: var(--space-sm);

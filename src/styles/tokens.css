@@ -53,7 +53,14 @@
 
   /* ===== LAYOUT ===== */
   --layout-max-width: 80rem;
-  --layout-padding: var(--space-4);
+  --layout-padding: var(--space-7);
+  --layout-content-max: 47rem;
+  --navbar-height: 4rem;
+  --hero-padding-top: 10rem;
+
+  /* ===== ICON SIZES ===== */
+  --icon-sm: 1.25rem;
+  --icon-md: 1.5rem;
 
   /* ===== RADII ===== */
   --radius-sm: var(--radius-2);
@@ -65,4 +72,27 @@
   --ease-default: var(--ease-3);
   --duration-fast: 150ms;
   --duration-normal: 300ms;
+}
+
+/* ===== DARK THEME ===== */
+[data-theme='dark'] {
+  --color-accent: #4d3aff;
+  --color-accent-hsl: 245 100% 62%;
+
+  --color-white: var(--gray-12);
+  --color-black: var(--gray-1);
+
+  --color-surface: var(--gray-11);
+  --color-text-primary: var(--gray-4);
+  --color-text-secondary: var(--gray-5);
+  --color-text-heading: var(--gray-1);
+  --color-border: var(--gray-7);
+  --shadow-tag: var(--shadow-2);
+
+  /* Backward compat aliases */
+  --color-gray-surface: var(--color-surface);
+  --color-gray-borders: var(--color-border);
+  --color-gray-secondary-text: var(--color-text-secondary);
+  --color-gray-primary-text: var(--color-text-primary);
+  --color-gray-headings: var(--color-text-heading);
 }

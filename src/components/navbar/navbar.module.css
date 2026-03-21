@@ -1,11 +1,52 @@
 /* Navbar container */
 .navbar {
-  display: flex;
-  width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
-  padding: 0 var(--space-lg);
-  height: 64px;
-  margin-top: var(--space-sm);
+  display: flex;
+  justify-content: center;
+  height: var(--navbar-height);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background var(--duration-normal) var(--ease-default),
+              backdrop-filter var(--duration-normal) var(--ease-default);
+}
+
+.navbarInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--layout-max-width);
+  padding: 0 var(--layout-padding);
+}
+
+.logo {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-5);
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.scrolled {
+  background: hsl(var(--gray-2-hsl) / 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+:global([data-theme='dark']) .scrolled {
+  background: hsl(var(--gray-11-hsl) / 0.15);
 }

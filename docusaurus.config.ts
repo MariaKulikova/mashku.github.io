@@ -43,8 +43,8 @@ const config: Config = {
   
   themeConfig: {
     colorMode: {
-      disableSwitch: true,
       defaultMode: 'light',
+      respectPrefersColorScheme: true,
     },
     navbar: {
       style: 'primary',

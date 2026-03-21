@@ -11,8 +11,8 @@
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: var(--space-xl);
+  height: var(--space-xl);
 }
 
 .channelName {
@@ -28,6 +28,6 @@
   font-size: var(--font-size-base);
   line-height: 1.5;
   color: var(--color-text-secondary);
-  padding-left: 44px;
+  padding-left: calc(var(--space-xl) + var(--space-sm));
 }
 

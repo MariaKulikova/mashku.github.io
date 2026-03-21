@@ -21,28 +21,28 @@
 
 /* Top edge: eyes at bottom center, looking down into screen */
 .top .eyesWrapper {
-  bottom: 16px;
+  bottom: var(--space-md);
   left: 50%;
   transform: translateX(-50%);
 }
 
 /* Bottom edge: eyes at top center, flipped */
 .bottom .eyesWrapper {
-  top: 16px;
+  top: var(--space-md);
   left: 50%;
   transform: translateX(-50%) scaleY(-1);
 }
 
 /* Left edge: eyes at right center, rotated */
 .left .eyesWrapper {
-  right: 16px;
+  right: var(--space-md);
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
 }
 
 /* Right edge: eyes at left center, rotated */
 .right .eyesWrapper {
-  left: 16px;
+  left: var(--space-md);
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
 }

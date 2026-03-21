@@ -4,149 +4,54 @@ description: UX Designer creating user interfaces for complex B2C and B2B produc
 hide_table_of_contents: true
 ---
 
-import TeamCard from '../components/team-card/TeamCard';
-import Button from '../components/button/Button';
+import WorkCard from '../components/work-card/WorkCard';
 import Footer from '../components/footer/Footer';
-import styles from '../components/team-card/team-card.module.css';
-import TelegramPost from '../components/telegram-post/TelegramPost';
 import '../styles/general.css'
 import '../styles/index.css'
 import '../styles/typography.css'
 
 
 <div className="container body">
-  <section className="section" >
-    <div className="navbar__inner">
-      <div className="hero-circle"></div>
-    </div>
-    <div className="bio"> 
-      <div className="bio-tags label">PRODUCT / UX /UI/ DIGITAL / VISUAL/ YOUR</div>
-      <div className="bio-title">
-        <img src="/img/Designer.svg" alt="DESIGNER" />
-      </div>
-      <p className="bio-text">
-        My name is Maria. I design for complex services and emotionally driven projects.
-        I believe that design helps people and the world evolve. We all know that beautiful is better than ugly,
-         and usable is better than unusable.
-      </p>
+  <section className="hero">
+    <div className="hero-content">
+      <h1 className="hero-heading">UX designer who creates interfaces for complex services and emotionally driven projects</h1>
+      <p className="hero-sub">currently a designer at shiftgears.ai</p>
     </div>
   </section>
 
+  <section className="section projects">
+    <h2>Projects</h2>
+    <div className="projects-list">
+      <a href="https://posmotrim.design" target="_blank" className="project-link">Posmotrim.design</a>
+      <a href="https://planbanan.com/" target="_blank" className="project-link">Planbanan.com</a>
+      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="project-link">Coffee Drinker Bot</a>
+      <a href="https://t.me/nomadic_eye" target="_blank" className="project-link">Nomadic Eye</a>
+    </div>
+  </section>
 
-  <section className="section product-stories">
-    <h2>Product Stories</h2>
-
-    <div className={styles.teamsGrid}>
-      <TeamCard
+  <section className="section work">
+    <h2>Work</h2>
+    <div className="work-grid">
+      <WorkCard
+        company="Shiftgears.ai"
+        companyUrl="https://shiftgears.ai"
         title="AI Assistant and Startup spirit"
         description="Designed the AI car assistant interface from scratch, creating clear and simple screens to help users easily find used cars."
-        caseStudyLink="/projects/ai-car-assistant"
-        tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/AIUC/CarProject_Cover.png"
-        buttonText="NDA"
-        buttonDisabled={true}
-        isBlurred={true}
       />
-      
-      <TeamCard
-        title="CDN Redesign at Selectel"
+      <WorkCard
+        company="Selectel"
+        companyUrl="https://selectel.ru"
+        title="CDN Redesign"
         description="Led the redesign of CDN configuration pages and contributed to building a comprehensive design system."
         caseStudyLink="/projects/story-redesign"
-        tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/story-redesign/CDN_Cover.png"
       />
-
-      <TeamCard
-        title="Redesigning the design process at Marquiz"
+      <WorkCard
+        company="Marquiz"
+        companyUrl="https://marquiz.io"
+        title="Redesigning the design process"
         description="Optimized the design process by implementing a new Figma file structure, improving collaboration and efficiency."
         caseStudyLink="/projects/marquiz-act-requests"
-        tags={["product feature", "definition, research, architecture, ux, ui"]}
-        mainImage="/img/marquiz/Cover_acts.png"
       />
-     
-      
-     
-
-     
-    </div>
-  </section>
-
-
-  <section className="section experiments">
-    <h2>Fun and side projects</h2>
-    <div className="experiments-grid">
-   
-   
-     
-      <a  href="https://dribbble.com/shots/25661407-Adding-a-card" target="_blank" className="experiments-card project-card">
-       <img src="/img/experiments/Form.jpg" alt="DribbleShot" />
-        <div className="project-card-tags">
-          <span className="tag">
-           UI
-          </span>
-          <span className="tag">
-           Dribbble
-          </span>
-        </div>
-      </a>
-
-      <a href="https://t.me/nomadic_eye" target="_blank" className="experiments-card project-card blog-card">
-        <TelegramPost channelName="Nomadic Eye (RU)" channelUrl="https://t.me/nomadic_eye" />
-      </a>
-
-      <a href="https://dribbble.com/shots/26135692-HR-Service" target="_blank" className="experiments-card project-card">
-       <img src="/img/experiments/HR-Service.png" alt="HR Service Design" />
-        <div className="project-card-tags">
-          <span className="tag">
-           UI Design
-          </span>
-          <span className="tag">
-           Dribbble
-          </span>
-        </div>
-      </a>
-
-      <a href="https://dribbble.com/shots/26136221-HR-CRM" target="_blank" className="experiments-card project-card">
-       <img src="/img/experiments/HR-CRM.png" alt="HR CRM Design" />
-        <div className="project-card-tags">
-          <span className="tag">
-           UI Design
-          </span>
-          <span className="tag">
-           Dribbble
-          </span>
-        </div>
-      </a>
-
-     
-
-      <a href="https://deti-edyat.ru/" target="_blank" className="experiments-card project-card">
-       <img src="/img/experiments/Rootsy.jpg" alt="WebDesign" />
-        <div className="project-card-tags">
-          <span className="tag">
-           WebDesign
-          </span>
-        </div>
-      </a>
-
-
-
-
-      <a href="https://planbanan.com/"target="_blank" className="experiments-card project-card">
-       <img src="/img/PlanBanan.png" alt="Project" />
-        <div className="project-card-tags">
-          <span className="tag">
-           Product Design
-          </span>
-        </div>
-      </a>
-
-
-      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="experiments-card project-card blog-card">
-        <TelegramPost channelName="Coffee Drinker Bot" channelUrl="https://t.me/CoffeeDrinker_Bot" avatarImage="/img/coffee.png" postText="Coffee Drinkers' Map: I explore cities, visit coffee spots, and map tasty finds." />
-      </a>
-
-   
     </div>
   </section>
 </div>

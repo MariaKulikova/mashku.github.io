@@ -38,13 +38,9 @@ This is a **Docusaurus 3.7.0** portfolio website for UX Designer Masha K. It's c
 - Reusable UI components: Button, TeamCard
 - Custom project page layouts with MDX support
 
-## Design System Rules
-- **Никогда не хардкодить значения в CSS** — всегда использовать переменные из `tokens.css`
-- **Open Props** используется для: цветов (`--gray-*`), радиусов (`--radius-*`), теней (`--shadow-*`), easings (`--ease-*`), border sizes (`--border-size-*`)
-- **Кастомная spacing шкала** (`--space-1`...`--space-10`) — Open Props sizes имеют экспоненциальную шкалу, не подходящую для spacing
-- **Кастомная typography шкала** (`--font-size-h1`...`--font-size-small`) — Open Props fluid sizes имеют другие диапазоны
-- **Семантические алиасы** обязательны: `--space-xs`, `--space-sm`, `--space-md` и т.д.
-- Accent color `#1a01ff` — кастомный, нет аналога в Open Props
+## Design System
+Все правила дизайн-системы, токены, цвета, spacing и компоненты описаны в [`design.md`](design.md).
+При code review **обязательно сверяйся с `design.md`** — хардкод значений в CSS запрещён, используй только переменные из `tokens.css`.
 
 ## Custom instructions
 - Отвечай на русском

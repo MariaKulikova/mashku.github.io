@@ -1,5 +1,5 @@
 .project-navigation {
-  height: 80px;
+  height: var(--space-10);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-5);
   color: var(--color-text-heading);
   padding: var(--space-sm) var(--space-xl);
@@ -22,8 +22,8 @@
 
 /* Override button-outlined hover styles */
 .project-navigation .button:hover {
-  background-color: transparent !important;
-  color: var(--color-accent) !important;
+  background-color: transparent;
+  color: var(--color-accent);
 }
 
 .project-navigation .button:hover svg path {
@@ -32,13 +32,13 @@
 }
 
 .project-navigation .button svg {
-  width: 20px;
-  height: 20px;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
 }
 
 @media (max-width: 480px) {
   .project-navigation {
-    height: 60px;
+    height: var(--space-3xl);
     margin-top: var(--space-xl);
   }
 

@@ -1,0 +1,24 @@
+.button {
+  background: var(--color-white);
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-heading);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  transition: color var(--duration-normal) var(--ease-default),
+              background var(--duration-normal) var(--ease-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  margin-right: var(--space-md);
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.button:hover {
+  color: var(--color-accent);
+}

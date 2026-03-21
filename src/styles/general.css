@@ -7,10 +7,34 @@
   --layout-content-width: min(calc(100vw - (var(--layout-padding) * 2)), var(--layout-max-width));
 
   @media (max-width: 996px) {
-    --layout-padding: var(--space-2);
+    --layout-padding: var(--space-5);
+  }
+
+  @media (max-width: 480px) {
+    --layout-padding: var(--space-4);
   }
 
   /* Docusaurus required overrides */
+  --ifm-background-color: var(--color-surface);
+  --ifm-color-primary: var(--color-text-heading);
+  --ifm-container-width-xl: 100%;
+}
+
+/* Reset Docusaurus container padding — we use our own layout-padding */
+main.container {
+  padding: 0;
+  max-width: 100%;
+}
+
+.col {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+[data-theme='dark'] {
   --ifm-background-color: var(--color-surface);
   --ifm-color-primary: var(--color-text-heading);
 }
@@ -21,11 +45,11 @@ h3:hover .hash-link,
 h4:hover .hash-link,
 h5:hover .hash-link,
 h6:hover .hash-link {
-  display: none !important;
+  display: none;
 }
 
 h2 .hash-link {
-  display: none !important;
+  display: none;
 }
 
 /* Eyes animation */
@@ -68,10 +92,14 @@ article {
   align-items: center;
   justify-content: center;
   padding: var(--space-xs) var(--space-sm);
-  background: rgba(231, 231, 233, 0.65);
+  background: hsl(var(--gray-2-hsl) / 0.65);
   backdrop-filter: blur(4px);
   color: var(--color-text-primary);
   border-radius: var(--radius-lg);
   font-size: var(--font-size-small);
   box-shadow: var(--shadow-tag);
+}
+
+[data-theme='dark'] .tag {
+  background: hsl(var(--gray-10-hsl) / 0.65);
 }
