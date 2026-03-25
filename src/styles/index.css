@@ -118,10 +118,6 @@ h1 {
   background: transparent;
 }
 
-.container .teamsGrid {
-  overflow: visible;
-}
-
 /* Projects links */
 .projects-list {
   display: flex;
