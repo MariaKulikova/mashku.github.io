@@ -1,0 +1,150 @@
+# mashku — Docusaurus portfolio. CI/CD на gitlab.meteora.pro (team/mashku/mashku).
+# Модель деплоя: roma-контейнер за Gateway (по аналогии с prod posmotrim-ui).
+#   verify → typecheck
+#   build  → yarn build (артефакт) + docker-образ через BuildKit
+#   deploy → триггер guardrailed bump-пайплайна в meteora-pro/secure/it (Fleet GitOps)
+#
+# Prod-джобы (build-image/deploy) gated на IT_TRIGGER_TOKEN: пока владелец инфры
+# не задал group CI-vars (IT_TRIGGER_TOKEN, DEPLOY_HMAC_KEY), они НЕ создаются.
+# См. docs/DEPLOY_METEORA.md — что должен настроить владелец инфраструктуры.
+
+stages:
+  - verify
+  - build
+  - deploy
+
+variables:
+  # CI_REGISTRY / CI_REGISTRY_IMAGE задаёт платформа GitLab
+  KUBECONFIG_DIR: "/root/.kube"
+  KUBECONFIG: "${KUBECONFIG_DIR}/config"
+
+include:
+  - remote: "https://gitlab.com/meteora-public/common-ci/-/raw/main/ci-templates/.gitlab-ci.base-templates.yml"
+  - local: /ci/.gitlab-ci.buildkit-templates.yml
+
+# ── Общие правила: MR-пайплайны + push в main ─────────────────────────────
+.mashku-changes-rules: &mashku-changes-rules
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+.default-mashku-variables: &default-mashku-variables
+  APP_NAME: "mashku"
+
+# ── compute-version: IMAGE_PATH/IMAGE_TAG для BuildKit ────────────────────
+# flat-репо: версия из package.json в корне. Тег: <version>-<short_sha>
+# (совпадает с regex .trigger-deploy: ^\d+\.\d+\.\d+-[0-9a-f]{7,12}...$).
+.compute-version-for-rules:
+  stage: verify
+  image: alpine:latest
+  tags:
+    - verify
+  interruptible: true
+  artifacts:
+    reports:
+      dotenv: build.env
+  script:
+    - |
+        set -e
+        # анкер на top-level поле (2 пробела отступа), чтобы не поймать вложенный "version"
+        APP_VERSION=$(grep -E '^  "version":' package.json | head -1 | sed 's/.*"version": "\([^"]*\)".*/\1/' | tr -d ',')
+        [ -n "$APP_VERSION" ] || APP_VERSION="0.0.0"
+        COMMIT_SHA="${CI_COMMIT_SHORT_SHA}"
+        BRANCH_SLUG=$(echo "${CI_COMMIT_REF_SLUG}" | cut -c1-32)
+        if [ "$CI_COMMIT_REF_NAME" = "$CI_DEFAULT_BRANCH" ]; then
+          export IMAGE_PATH="${CI_REGISTRY_IMAGE}/${APP_NAME}/main"
+          export IMAGE_TAG="${APP_VERSION}-${COMMIT_SHA}"
+        else
+          export IMAGE_PATH="${CI_REGISTRY_IMAGE}/${APP_NAME}/review"
+          export IMAGE_TAG="${BRANCH_SLUG}-${APP_VERSION}-${COMMIT_SHA}"
+        fi
+        APP_NAME_SLUG=$(echo "$APP_NAME" | tr '[:lower:]' '[:upper:]' | sed 's/-/_/g')
+        echo "APP_VERSION: ${APP_VERSION}"
+        echo "IMAGE_PATH:  ${IMAGE_PATH}"
+        echo "IMAGE_TAG:   ${IMAGE_TAG}"
+        echo "${APP_NAME_SLUG}_IMAGE_TAG=${IMAGE_TAG}" >> build.env
+        echo "${APP_NAME_SLUG}_IMAGE_PATH=${IMAGE_PATH}" >> build.env
+        cat build.env
+
+# ── verify: TypeScript typecheck ──────────────────────────────────────────
+typecheck-mashku:
+  stage: verify
+  image: node:22-alpine
+  tags:
+    - verify
+  <<: *mashku-changes-rules
+  interruptible: true
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run typecheck
+
+# ── build: статика Docusaurus (артефакт для отладки/review) ────────────────
+# Не дублируем сборку: на main c IT_TRIGGER_TOKEN образ собирает build-image-mashku
+# (внутри Dockerfile), поэтому этот job — только на MR и на main БЕЗ токена
+# (когда image-путь спит), чтобы всё равно проверять сборку.
+build-mashku:
+  stage: build
+  image: node:22-alpine
+  tags:
+    - verify
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main" && $IT_TRIGGER_TOKEN == ""'
+  interruptible: true
+  needs: ["typecheck-mashku"]
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 hour
+
+# ── compute-version для BuildKit-образа ───────────────────────────────────
+compute-version-mashku:
+  extends: .compute-version-for-rules
+  <<: *mashku-changes-rules
+  variables:
+    <<: *default-mashku-variables
+
+# ── build docker-образа (BuildKit) — gated на IT_TRIGGER_TOKEN ────────────
+build-image-mashku:
+  extends: .buildkit-build
+  needs: ["compute-version-mashku", "typecheck-mashku"]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_TAG'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main" && $IT_TRIGGER_TOKEN != ""'
+  variables:
+    <<: *default-mashku-variables
+    BUILD_TARGET: "mashku"
+
+# ── prod deploy: триггер it-bump (roma Fleet GitOps) ──────────────────────
+deploy-prod-mashku:
+  extends: .trigger-deploy
+  needs: ["compute-version-mashku", "build-image-mashku"]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_TAG'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "main" && $IT_TRIGGER_TOKEN != ""'
+  variables:
+    BUMP_APP: "mashku"
+  environment:
+    name: mashku-prod
+    url: https://mashku.pro

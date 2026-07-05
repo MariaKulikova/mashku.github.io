@@ -1,0 +1,148 @@
+# BuildKit + roma-trigger templates для mashku (GitLab CI/CD на gitlab.meteora.pro).
+# Адаптировано из posmotrim-design/ci/.gitlab-ci.buildkit-templates.yml под flat-репо.
+# BuildKit-сервис развёрнут в кластере; собирает образ и пушит в registry проекта.
+#
+# Image structure:
+#   Main:   .../mashku/main:1.0.0-abc1234
+#   Review: .../mashku/review:branch-1.0.0-def5678
+#   Cache:  .../mashku:cache (shared across branches)
+
+# ── Сборка docker-образа через remote BuildKit ────────────────────────────
+.buildkit-before-script:
+  before_script:
+    # docker config для BuildKit (remote driver). DOCKER_CONFIG — чтобы buildx
+    # точно нашёл credentials независимо от $HOME.
+    - export DOCKER_CONFIG=${CI_PROJECT_DIR}/.docker
+    - mkdir -p $DOCKER_CONFIG
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n gitlab-ci-token:$CI_JOB_TOKEN | base64 -w0)\"}}}" > $DOCKER_CONFIG/config.json
+    - echo "Docker config created for registry $CI_REGISTRY"
+    # BUILDKIT_HOST инжектит runner (config.toml environment). Дефолт ниже —
+    # для раннеров, где он не задан. НЕ хардкодим в variables: (CI-vars
+    # перекрывают runner-env).
+    - export BUILDKIT_HOST="${BUILDKIT_HOST:-tcp://buildkit.infra.svc.cluster.local:1234}"
+    - docker buildx rm cluster 2>/dev/null || true
+    - docker buildx create --use --driver remote --name cluster $BUILDKIT_HOST
+    - docker buildx inspect --bootstrap
+
+.buildkit-build:
+  extends: .buildkit-before-script
+  stage: build
+  image: docker:25.0
+  tags:
+    - build_image
+  interruptible: true
+  retry:
+    max: 2
+  script:
+    - |
+      # IMAGE_PATH/IMAGE_TAG приходят из compute-version job (dotenv artifact)
+      APP_NAME_SLUG=$(echo "$BUILD_TARGET" | tr '[:lower:]' '[:upper:]' | sed 's/-/_/g')
+      APP_IMAGE_PATH_VAR="${APP_NAME_SLUG}_IMAGE_PATH"
+      APP_IMAGE_TAG_VAR="${APP_NAME_SLUG}_IMAGE_TAG"
+      export IMAGE_PATH=$(eval echo "\$${APP_IMAGE_PATH_VAR}")
+      export IMAGE_TAG=$(eval echo "\$${APP_IMAGE_TAG_VAR}")
+
+      if [ -z "$IMAGE_PATH" ] || [ -z "$IMAGE_TAG" ]; then
+        echo "Error: IMAGE_PATH или IMAGE_TAG не заданы"
+        echo "Expected: ${APP_IMAGE_PATH_VAR} и ${APP_IMAGE_TAG_VAR}"
+        env | grep "_IMAGE" || true
+        exit 1
+      fi
+
+      CACHE_IMAGE="${CI_REGISTRY_IMAGE}/${BUILD_TARGET}:cache"
+      FULL_IMAGE="${IMAGE_PATH}:${IMAGE_TAG}"
+
+      echo "BUILD_TARGET: $BUILD_TARGET"
+      echo "FULL_IMAGE:   $FULL_IMAGE"
+      echo "CACHE_IMAGE:  $CACHE_IMAGE"
+
+      # flat-репо: единственный Dockerfile в корне
+      case "${BUILD_TARGET}" in
+        "mashku")
+          DOCKERFILE_PATH="Dockerfile"
+          ;;
+        *)
+          echo "Error: Unknown BUILD_TARGET ${BUILD_TARGET}"
+          exit 1
+          ;;
+      esac
+
+      echo "Dockerfile: ${DOCKERFILE_PATH}"
+
+      if [ "$CI_COMMIT_REF_NAME" = "$CI_DEFAULT_BRANCH" ]; then
+        docker buildx build \
+          --build-arg IMAGE_TAG=${IMAGE_TAG} \
+          --file "${DOCKERFILE_PATH}" \
+          --cache-from type=registry,ref=${CACHE_IMAGE} \
+          --cache-to type=registry,ref=${CACHE_IMAGE},mode=max \
+          --output type=image,name=${FULL_IMAGE},push=true \
+          --output type=image,name=${IMAGE_PATH}:latest,push=true \
+          .
+      else
+        docker buildx build \
+          --build-arg IMAGE_TAG=${IMAGE_TAG} \
+          --file "${DOCKERFILE_PATH}" \
+          --cache-from type=registry,ref=${CACHE_IMAGE} \
+          --cache-to type=registry,ref=${CACHE_IMAGE},mode=max \
+          --output type=image,name=${FULL_IMAGE},push=true \
+          .
+      fi
+
+      echo "BUILT_IMAGE_NAME=${FULL_IMAGE}" > build.env
+      echo "Built and pushed: ${FULL_IMAGE}"
+  artifacts:
+    reports:
+      dotenv: build.env
+    expire_in: 1 week
+
+# ── Fleet-GitOps deploy на roma (Opt2: multi-tenant signed trigger) ────────
+# Deployment mashku принадлежит Fleet-бандлу crown-jewel инфра-репо
+# (gitlab.com/meteora-pro/secure/it). ЭТОТ app-репо (low-trust) НЕ имеет write в
+# инфру — он лишь ТРИГГЕРИТ guardrailed bump-пайплайн в it-репо через pipeline
+# **trigger token** (умеет только запустить пайплайн со входами). Точечность
+# per-tenant: app-CI подписывает HMAC-SHA256(DEPLOY_HMAC_KEY, tenant\nbump_app\n
+# image_tag\nts) — ключом mashku нельзя подписать deploy другого тенанта. Сам
+# bump делает it-пайплайн своим write-кредом с guardrails.
+#
+# Требует group CI-vars (team/mashku, masked+protected): IT_TRIGGER_TOKEN
+# (pipeline trigger token it-репо), DEPLOY_HMAC_KEY (per-tenant HMAC-ключ mashku,
+# = DEPLOY_HMAC_MASHKU в it-репо). Пока IT_TRIGGER_TOKEN не задан — deploy-джоба
+# НЕ создаётся (rules-guard).
+#
+# Конкретная джоба задаёт variables: BUMP_APP (mashku).
+.trigger-deploy:
+  image: alpine:3.20
+  stage: deploy
+  tags:
+    - verify
+  variables:
+    TENANT: "mashku"
+  before_script:
+    - apk add --no-cache curl openssl >/dev/null
+  script:
+    - APP_NAME_SLUG=$(echo "$BUMP_APP" | tr '[:lower:]' '[:upper:]' | sed 's/-/_/g')
+    - export NEW_TAG=$(eval echo "\$${APP_NAME_SLUG}_IMAGE_TAG")
+    - '[ -n "$NEW_TAG" ] || { echo "NEW_TAG пуст — ${APP_NAME_SLUG}_IMAGE_TAG не пришёл из compute-version (needs?)"; exit 1; }'
+    # defense-in-depth: формат тега (it-пайплайн валидирует повторно через spec:inputs regex)
+    - printf '%s' "$NEW_TAG" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+-[0-9a-f]{7,12}(\.[0-9]+)?$' || { echo "IMAGE_TAG '$NEW_TAG' не matches формат"; exit 1; }
+    - '[ -n "${DEPLOY_HMAC_KEY:-}" ] || { echo "DEPLOY_HMAC_KEY не задан (group var)"; exit 1; }'
+    - |
+      TS=$(date +%s)   # anti-replay: подпись валидна ~15 мин на it-стороне
+      # канон-сообщение ДОЛЖНО совпадать с it authorize-job: tenant\nbump_app\nimage_tag\nts
+      SIG=$(printf '%s\n%s\n%s\n%s' "$TENANT" "$BUMP_APP" "$NEW_TAG" "$TS" \
+              | openssl dgst -sha256 -hmac "$DEPLOY_HMAC_KEY" -r | cut -d' ' -f1)
+      resp=$(curl --fail-with-body --max-time 30 -X POST \
+        -F "token=${IT_TRIGGER_TOKEN}" \
+        -F "ref=master" \
+        -F "inputs[tenant]=${TENANT}" \
+        -F "inputs[bump_app]=${BUMP_APP}" \
+        -F "inputs[image_tag]=${NEW_TAG}" \
+        -F "inputs[ts]=${TS}" \
+        -F "inputs[sig]=${SIG}" \
+        -F "inputs[src_sha]=${CI_COMMIT_SHA}" \
+        -F "inputs[src_project]=${CI_PROJECT_PATH}" \
+        "https://gitlab.com/api/v4/projects/meteora-pro%2Fsecure%2Fit/trigger/pipeline")
+      url=$(printf '%s' "$resp" | sed -n 's/.*"web_url":"\([^"]*\)".*/\1/p' | head -1)
+      echo "✓ триггернул it-bump ($TENANT/$BUMP_APP → $NEW_TAG)"
+      echo "  it-pipeline: ${url:-<см. meteora-pro/secure/it>}"
+      echo "  ⚠ fire-and-forget: статус bump'а — в it-пайплайне (app-CI зелёный = триггер принят, не = deploy прошёл)"

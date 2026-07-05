@@ -4,14 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-**Development:**
-- `yarn start` - Start local development server (opens browser automatically)
-- `yarn build` - Build production-ready static site to `build/` directory
-- `yarn typecheck` - Run TypeScript type checking
+Пакетный менеджер — **npm** (единый тулчейн: GitHub CI, Docker и GitLab CI собирают через `npm ci` из `package-lock.json`).
 
-**Deployment (GitHub Pages):**
-- `USE_SSH=true yarn deploy` - Deploy using SSH
-- `GIT_USER=<username> yarn deploy` - Deploy using HTTPS
+**Development:**
+- `npm start` - Start local development server (opens browser automatically)
+- `npm run build` - Build production-ready static site to `build/` directory
+- `npm run typecheck` - Run TypeScript type checking
+
+**Deployment:**
+- Meteora (roma-контейнер) — через GitLab CI, см. [`docs/DEPLOY_METEORA.md`](docs/DEPLOY_METEORA.md)
+- GitHub Pages (legacy fallback до переключения DNS): `npm run deploy` (`USE_SSH=true` или `GIT_USER=<username>`)
 
 ## Architecture
 
