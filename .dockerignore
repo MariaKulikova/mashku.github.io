@@ -1,0 +1,13 @@
+.git
+.github
+node_modules
+build
+.docusaurus
+.DS_Store
+*.log
+# скриншоты-артефакты в корне репо (не нужны в образе)
+*-hero*.png
+*-check*.png
+typography-*.png
+alignment-*.png
+mobile-hero.png
