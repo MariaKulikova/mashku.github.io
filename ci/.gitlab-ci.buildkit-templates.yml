@@ -14,8 +14,15 @@
     # точно нашёл credentials независимо от $HOME.
     - export DOCKER_CONFIG=${CI_PROJECT_DIR}/.docker
     - mkdir -p $DOCKER_CONFIG
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n gitlab-ci-token:$CI_JOB_TOKEN | base64 -w0)\"}}}" > $DOCKER_CONFIG/config.json
-    - echo "Docker config created for registry $CI_REGISTRY"
+    # Пуш в registry.meteora.pro (внешний DNS registry gitlab.meteora.pro) —
+    # дефолтный gitlab-ci-token:$CI_JOB_TOKEN у НОВОГО проекта не имеет
+    # write_registry (job-token hardening) → insufficient_scope на push.
+    # Авторизуемся group deploy-token'ом (CI_REGISTRY_USER/PASSWORD = gitlab+
+    # deploy-token-9, scope write_registry на team/mashku), fallback на job-token.
+    - export REG_USER="${CI_REGISTRY_USER:-gitlab-ci-token}"
+    - export REG_PASS="${CI_REGISTRY_PASSWORD:-$CI_JOB_TOKEN}"
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n $REG_USER:$REG_PASS | base64 -w0)\"}}}" > $DOCKER_CONFIG/config.json
+    - echo "Docker config created for registry $CI_REGISTRY (user $REG_USER)"
     # BUILDKIT_HOST инжектит runner (config.toml environment). Дефолт ниже —
     # для раннеров, где он не задан. НЕ хардкодим в variables: (CI-vars
     # перекрывают runner-env).
