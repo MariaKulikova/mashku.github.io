@@ -18,6 +18,9 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+  // Отправка pageview в Яндекс.Метрику на SPA-переходах (init — в src/theme/Root.tsx)
+  clientModules: ['./src/clientModules/yandexMetrika.ts'],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en','ru'],
@@ -37,11 +40,19 @@ const config: Config = {
             './src/styles/index.css',
           ],
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          filename: 'sitemap.xml',
+          lastmod: 'date',
+        },
       } satisfies Preset.Options,
     ],
   ],
   
   themeConfig: {
+    // Дефолтная соц-карточка (og:image / twitter:image). Путь относительно static/.
+    image: 'img/Photo_Color.jpg',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -77,8 +88,21 @@ const config: Config = {
         content: 'UX Design, UI Design, Product Design, Portfolio, B2B, B2C, AI, CloudTech',
       },
       {
+        name: 'author',
+        content: 'Mariia Kulikova',
+      },
+      {
+        name: 'robots',
+        content: 'index, follow',
+      },
+      // Open Graph (og:title/og:description/og:url/og:image Docusaurus проставляет сам).
+      {property: 'og:type', content: 'profile'},
+      {property: 'og:site_name', content: 'Masha K — UX Designer'},
+      // Twitter Cards
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {
         name: 'last-updated',
-        content: '2025-04-01',
+        content: '2026-07-09',
       },
     ],
   } satisfies Preset.ThemeConfig,
