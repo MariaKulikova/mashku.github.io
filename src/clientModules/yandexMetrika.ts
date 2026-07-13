@@ -4,19 +4,26 @@
 // поэтому пропускаем срабатывание без previousLocation.
 const YM_ID = 110540163;
 
-type RouteUpdate = {
-  location: {pathname: string; href?: string};
-  previousLocation: {pathname: string; href?: string} | null;
-};
+// Docusaurus передаёт react-router Location: pathname/search/hash (без href).
+type Loc = {pathname: string; search?: string; hash?: string};
+type RouteUpdate = {location: Loc; previousLocation: Loc | null};
+
+const toPath = (l: Loc) => l.pathname + (l.search ?? '') + (l.hash ?? '');
 
 export function onRouteDidUpdate({location, previousLocation}: RouteUpdate) {
-  if (!previousLocation || previousLocation.pathname === location.pathname) {
+  if (!previousLocation) {
+    return;
+  }
+  const from = toPath(previousLocation);
+  const to = toPath(location);
+  // Сравниваем полный путь (с query/hash), а не только pathname — иначе
+  // переходы, меняющие только ?query или #hash, не попадут в статистику.
+  if (from === to) {
     return;
   }
   const ym = (window as any).ym;
   if (typeof ym === 'function') {
-    ym(YM_ID, 'hit', location.href ?? location.pathname, {
-      referer: previousLocation.href ?? previousLocation.pathname,
-    });
+    const {origin} = window.location;
+    ym(YM_ID, 'hit', origin + to, {referer: origin + from});
   }
 }

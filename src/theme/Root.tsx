@@ -1,27 +1,30 @@
 import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import BlueBuddy from '../components/blue-buddy/BlueBuddy';
+import { SITE_URL, OG_IMAGE, SOCIAL_PROFILE_URLS } from '../data/site';
 
 // schema.org Person — помогает поисковикам связать сайт с личностью автора
-// и формирует rich-результаты. Соц-ссылки продублированы из футера.
+// и формирует rich-результаты. Ссылки/мета берём из единого src/data/site.
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Mariia Kulikova',
   alternateName: 'Masha K',
   jobTitle: 'UX Designer',
-  url: 'https://mashku.pro',
-  image: 'https://mashku.pro/img/Photo_Color.jpg',
-  sameAs: [
-    'https://t.me/mashku_me',
-    'https://www.instagram.com/mashku.me',
-    'https://dribbble.com/mashku',
-    'https://www.behance.net/mashku',
-  ],
+  url: SITE_URL,
+  image: `${SITE_URL}/${OG_IMAGE}`,
+  sameAs: SOCIAL_PROFILE_URLS,
 };
 
 export default function Root({children}) {
   useEffect(() => {
+    // Гард от повторной инициализации (StrictMode / fast-refresh в dev,
+    // повторный mount Root): счётчики поднимаем один раз на документ.
+    if ((window as any).__analyticsInitialized) {
+      return;
+    }
+    (window as any).__analyticsInitialized = true;
+
     // Microsoft Clarity
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

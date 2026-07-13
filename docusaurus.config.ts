@@ -1,13 +1,14 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {SITE_URL, OG_IMAGE} from './src/data/site';
 
 const config: Config = {
   title: 'Masha K',
   tagline: 'UX Designer Portfolio',
   favicon: 'img/favicon.svg',
 
-  url: 'https://mashku.pro',
+  url: SITE_URL,
   baseUrl: '/',
 
   organizationName: 'mashku',
@@ -52,7 +53,7 @@ const config: Config = {
   
   themeConfig: {
     // Дефолтная соц-карточка (og:image / twitter:image). Путь относительно static/.
-    image: 'img/Photo_Color.jpg',
+    image: OG_IMAGE,
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -100,10 +101,6 @@ const config: Config = {
       {property: 'og:site_name', content: 'Masha K — UX Designer'},
       // Twitter Cards
       {name: 'twitter:card', content: 'summary_large_image'},
-      {
-        name: 'last-updated',
-        content: '2026-07-09',
-      },
     ],
   } satisfies Preset.ThemeConfig,
 };
