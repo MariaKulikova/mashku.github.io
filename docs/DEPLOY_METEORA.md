@@ -76,6 +76,12 @@ deploy   deploy-prod-mashku      HMAC-подписанный триггер it-b
 | `IT_TRIGGER_TOKEN` | pipeline trigger token it-репо `meteora-pro/secure/it` (только запуск bump-пайплайна со входами) |
 | `DEPLOY_HMAC_KEY` | per-tenant HMAC-ключ mashku (= `DEPLOY_HMAC_MASHKU` в it-репо) |
 
+> **Trigger ref.** Ветка bump-пайплайна it-репо **захардкожена как `master`** в
+> `ci/.gitlab-ci.buildkit-templates.yml` (`.trigger-deploy`) — намеренно, чтобы
+> low-trust app-репо не мог перенаправить триггер на ref без актуальных
+> guardrails. Это **не** CI-переменная. Если дефолт-ветка `meteora-pro/secure/it`
+> не `master` — инфра-владелец правит эту одну строку.
+
 Раннеры с тегами `verify` и `build_image` должны быть доступны проекту (обычно
 наследуются от группы — подтвердить). Проект также должен иметь доступ к remote
 include `gitlab.com/meteora-public/common-ci`.

@@ -138,9 +138,13 @@
       # канон-сообщение ДОЛЖНО совпадать с it authorize-job: tenant\nbump_app\nimage_tag\nts
       SIG=$(printf '%s\n%s\n%s\n%s' "$TENANT" "$BUMP_APP" "$NEW_TAG" "$TS" \
               | openssl dgst -sha256 -hmac "$DEPLOY_HMAC_KEY" -r | cut -d' ' -f1)
+      # ref пиннут к master намеренно (trust boundary): low-trust app-репо НЕ
+      # должен выбирать ref bump-пайплайна it-репо — актуальные guardrails
+      # (authorize/spec:inputs) живут на master. Если дефолт-ветка it-репо не
+      # master, значение меняет инфра-владелец здесь, а не через app-side CI-var.
       resp=$(curl --fail-with-body --max-time 30 -X POST \
         -F "token=${IT_TRIGGER_TOKEN}" \
-        -F "ref=${IT_TRIGGER_REF:-master}" \
+        -F "ref=master" \
         -F "inputs[tenant]=${TENANT}" \
         -F "inputs[bump_app]=${BUMP_APP}" \
         -F "inputs[image_tag]=${NEW_TAG}" \
