@@ -140,7 +140,7 @@
               | openssl dgst -sha256 -hmac "$DEPLOY_HMAC_KEY" -r | cut -d' ' -f1)
       resp=$(curl --fail-with-body --max-time 30 -X POST \
         -F "token=${IT_TRIGGER_TOKEN}" \
-        -F "ref=master" \
+        -F "ref=${IT_TRIGGER_REF:-master}" \
         -F "inputs[tenant]=${TENANT}" \
         -F "inputs[bump_app]=${BUMP_APP}" \
         -F "inputs[image_tag]=${NEW_TAG}" \
