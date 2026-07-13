@@ -1,7 +1,7 @@
 # mashku — Docusaurus portfolio. CI/CD на gitlab.meteora.pro (team/mashku/mashku).
 # Модель деплоя: roma-контейнер за Gateway (по аналогии с prod posmotrim-ui).
 #   verify → typecheck
-#   build  → yarn build (артефакт) + docker-образ через BuildKit
+#   build  → npm run build (артефакт) + docker-образ через BuildKit
 #   deploy → триггер guardrailed bump-пайплайна в meteora-pro/secure/it (Fleet GitOps)
 #
 # Prod-джобы (build-image/deploy) gated на IT_TRIGGER_TOKEN: пока владелец инфры
