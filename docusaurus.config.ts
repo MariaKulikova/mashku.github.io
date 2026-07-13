@@ -22,6 +22,22 @@ const config: Config = {
   // Отправка pageview в Яндекс.Метрику на SPA-переходах (init — в src/theme/Root.tsx)
   clientModules: ['./src/clientModules/yandexMetrika.ts'],
 
+  plugins: [
+    // Генерируем robots.txt на билде из siteConfig.url (= SITE_URL) — чтобы
+    // домен sitemap не дублировался вручную и не устарел при миграции.
+    function robotsTxtPlugin() {
+      return {
+        name: 'robots-txt-generator',
+        async postBuild({siteConfig, outDir}) {
+          const {writeFile} = await import('fs/promises');
+          const {join} = await import('path');
+          const body = `User-agent: *\nAllow: /\n\nSitemap: ${siteConfig.url}/sitemap.xml\n`;
+          await writeFile(join(outDir, 'robots.txt'), body);
+        },
+      };
+    },
+  ],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en','ru'],

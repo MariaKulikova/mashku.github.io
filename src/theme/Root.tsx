@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import BlueBuddy from '../components/blue-buddy/BlueBuddy';
-import { SITE_URL, OG_IMAGE, SOCIAL_PROFILE_URLS } from '../data/site';
+import { SITE_URL, OG_IMAGE, SOCIAL_PROFILE_URLS, YM_COUNTER_ID } from '../data/site';
 
 // schema.org Person — помогает поисковикам связать сайт с личностью автора
 // и формирует rich-результаты. Ссылки/мета берём из единого src/data/site.
@@ -23,7 +23,6 @@ export default function Root({children}) {
     if ((window as any).__analyticsInitialized) {
       return;
     }
-    (window as any).__analyticsInitialized = true;
 
     // Microsoft Clarity
     (function(c,l,a,r,i,t,y){
@@ -32,21 +31,25 @@ export default function Root({children}) {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "r9kzrl7vrg");
 
-    // Yandex.Metrica (id 110540163). Инициализация один раз; pageview на
-    // SPA-переходах шлётся из clientModule onRouteDidUpdate.
+    // Yandex.Metrica. Инициализация один раз; pageview на SPA-переходах
+    // шлётся из clientModule onRouteDidUpdate. Гард выше делает внутренний
+    // dedup-цикл стокового сниппета лишним, поэтому он убран.
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=Date.now();
-        for (var j=0; j<e.scripts.length; j++){if(e.scripts[j].src===r){return;}}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
-    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110540163', 'ym');
-    (window as any).ym(110540163, 'init', {
+    })(window, document, 'script', `https://mc.yandex.ru/metrika/tag.js?id=${YM_COUNTER_ID}`, 'ym');
+    (window as any).ym(YM_COUNTER_ID, 'init', {
       webvisor: true,
       clickmap: true,
       ecommerce: 'dataLayer',
       accurateTrackBounce: true,
       trackLinks: true,
     });
+
+    // Флаг ставим только после успешной инициализации: если код выше бросит,
+    // следующий mount повторит попытку, а не отключит аналитику навсегда.
+    (window as any).__analyticsInitialized = true;
   }, []);
 
   return (
@@ -64,7 +67,7 @@ export default function Root({children}) {
       <noscript>
         <div>
           <img
-            src="https://mc.yandex.ru/watch/110540163"
+            src={`https://mc.yandex.ru/watch/${YM_COUNTER_ID}`}
             style={{position: 'absolute', left: '-9999px'}}
             alt=""
           />

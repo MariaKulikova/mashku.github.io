@@ -5,7 +5,12 @@
 export const SITE_URL = 'https://mashku.pro';
 
 // Дефолтная соц-карточка (og:image / twitter:image). Путь относительно static/.
-export const OG_IMAGE = 'img/Photo_Color.jpg';
+// Оптимизированная карточка 1200×630 (1.91:1) — под превью соцсетей.
+export const OG_IMAGE = 'img/og-card.jpg';
+
+// Счётчик Яндекс.Метрики — единый id для Root.tsx (init/тег/noscript)
+// и clientModule (SPA-hit'ы), чтобы они не разошлись.
+export const YM_COUNTER_ID = 110540163;
 
 export type SocialLink = {label: string; href: string};
 
