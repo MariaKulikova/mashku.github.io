@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 900; /* ниже навбара (999) — не перекрывает контролы */
   width: 200px;
   height: 200px;
   border-radius: var(--radius-pill);
@@ -15,7 +15,7 @@
 .eyesWrapper {
   width: 100px;
   height: 28px;
-  pointer-events: auto;
+  pointer-events: none; /* декоративный — не перехватывает клики по контролам */
   position: absolute;
 }
 
