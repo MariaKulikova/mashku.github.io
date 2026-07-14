@@ -9,6 +9,8 @@ import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
 
 
+<div className="container">
+
 <section className="section-margin">
 
 ### Design System Development
@@ -92,3 +94,5 @@ I contributed to the core structure and created key components like the Skeleton
   </div> 
  </div> 
 </section>
+
+</div>

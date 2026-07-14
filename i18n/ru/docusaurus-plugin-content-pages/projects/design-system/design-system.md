@@ -9,6 +9,8 @@ import '@site/src/styles/project-page.css'
 import { ProjectNavigation } from '@site/src/components/navigation-buttons/NavigationButtons'
 
 
+<div className="container">
+
 <section className="section-margin">
 
 ### Разработка дизайн-системы
@@ -92,3 +94,5 @@ import { ProjectNavigation } from '@site/src/components/navigation-buttons/Navig
   </div> 
  </div> 
 </section>
+
+</div>
