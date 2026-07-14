@@ -10,7 +10,7 @@
 .contactsSocials {
   display: flex;
   flex-direction: row;
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
   margin-top: var(--space-xl);
   flex-wrap: wrap;
 }
@@ -21,14 +21,21 @@
 }
 
 .socialLink {
-  text-decoration: none;
-  justify-content: flex-start;
-  width: fit-content;
+  display: inline-flex;
+  align-items: center;
   color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.socialLink svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  display: block;
 }
 
 .socialLink:hover {
   opacity: 0.8;
+  color: var(--color-accent);
 }
 
 @media (max-width: 768px) {
