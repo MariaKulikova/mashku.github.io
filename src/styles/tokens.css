@@ -13,6 +13,7 @@
   --pink-2: #f3c6d8;
   --pink-3: #ffb3cd;
   --pink-4: #ff6fa5;
+  --pink-5: #8f1d49;
 
   /* ===== BRAND ===== */
   --color-accent: var(--blue-5);
@@ -98,7 +99,8 @@
    темой автоматически — в блоках ниже их дублировать не нужно. */
 
 /* ===== DARK ===== */
-[data-appearance='dark'] {
+/* :root[...] (0,2,0) — гарантированно перебивает :root, не завися от порядка/минификации */
+:root[data-appearance='dark'] {
   --color-accent: var(--blue-2);
   --color-accent-hsl: 245 100% 62%;
   --color-on-accent: var(--gray-0);
@@ -119,8 +121,8 @@
   --shadow-tag: var(--shadow-2);
 }
 
-/* ===== PINK (нежно розовый; праймари — синий) ===== */
-[data-appearance='pink'] {
+/* ===== PINK (насыщенный розовый; праймари — синий) ===== */
+:root[data-appearance='pink'] {
   --color-accent: var(--blue-5); /* праймари на розовой теме — синий */
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0);
@@ -129,20 +131,21 @@
   --color-black: #131416;
 
   --color-bg: var(--pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
-  --color-surface: var(--pink-0);
+  --color-surface: var(--pink-5); /* тёмный берри — под белый контент (карточки, пилюли контролов) */
   --color-glass-hsl: 337 100% 72%;
 
   --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
 
-  --color-text-primary: var(--gray-9);
-  --color-text-secondary: var(--gray-8);
-  --color-text-heading: var(--gray-10);
+  /* контент белый (по аналогии с синей темой) */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffd9e6;
+  --color-text-heading: #ffffff;
   --color-border: var(--pink-2);
   --shadow-tag: var(--shadow-2);
 }
 
 /* ===== BLUE (бренд-синий фон; праймари — розовый) ===== */
-[data-appearance='blue'] {
+:root[data-appearance='blue'] {
   --color-accent: var(--pink-4); /* праймари на синей теме — розовый */
   --color-accent-hsl: 337 100% 72%;
   --color-on-accent: #131416; /* тёмный текст на розовой акцентной заливке */
