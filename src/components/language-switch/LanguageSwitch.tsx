@@ -6,34 +6,30 @@ import styles from './language-switch.module.css';
 const LABELS: Record<string, string> = { en: 'EN', ru: 'RU' };
 
 /**
- * Переключатель языка (en/ru) для кастомного навбара. Ведёт на тот же путь под
- * другой локалью: en — без префикса, ru — с префиксом /ru. Полная перезагрузка
- * (у Docusaurus локали — отдельные сборки).
+ * Тогл языка одной кнопкой: показывает текущий язык, по клику ведёт на другой.
+ * en → нажатие → /ru (русский), ru → нажатие → / (английский).
+ * Полная перезагрузка — у Docusaurus локали это отдельные сборки.
  */
 export default function LanguageSwitch() {
   const { i18n } = useDocusaurusContext();
   const { pathname, search, hash } = useLocation();
 
-  // путь без префикса локали
+  const current = i18n.currentLocale;
+  const other = current === 'ru' ? 'en' : 'ru';
+
+  // путь без префикса локали → цель для «другого» языка
   const base = pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
-  const urlFor = (loc: string) => {
-    const path = loc === 'ru' ? (base === '/' ? '/ru/' : `/ru${base}`) : base;
-    return path + search + hash;
-  };
+  const target =
+    (other === 'ru' ? (base === '/' ? '/ru/' : `/ru${base}`) : base) + search + hash;
 
   return (
-    <div className={styles.root} role="group" aria-label="Language">
-      {i18n.locales.map((loc) => (
-        <a
-          key={loc}
-          href={urlFor(loc)}
-          lang={loc}
-          aria-current={loc === i18n.currentLocale ? 'true' : undefined}
-          className={`${styles.lang} ${loc === i18n.currentLocale ? styles.active : ''}`}
-        >
-          {LABELS[loc] ?? loc.toUpperCase()}
-        </a>
-      ))}
-    </div>
+    <a
+      className={styles.toggle}
+      href={target}
+      aria-label={`Switch language to ${LABELS[other]}`}
+      title={LABELS[other]}
+    >
+      {LABELS[current]}
+    </a>
   );
 }
