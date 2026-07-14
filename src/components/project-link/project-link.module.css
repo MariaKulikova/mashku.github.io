@@ -31,12 +31,11 @@
   color: var(--color-text-secondary);
 }
 
-/* Скриншот первого экрана сайта */
+/* Превью: скриншот сайта (16:10 — заполняет) или карточка бота (letterbox на surface) */
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
   display: block;
 }
 
