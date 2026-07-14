@@ -15,11 +15,6 @@ export default function Footer() {
   return (
     <section className={styles.contacts}>
       <h2><Translate id="footer.contacts">Contacts</Translate></h2>
-      <p className={styles.contactsText}>
-        <Translate id="footer.intro">
-          I'm always open to new connections - if you have an interesting project or just want to chat, feel free to reach out!
-        </Translate>
-      </p>
       <div className={styles.contactsSocials}>
         {SOCIALS.map(({ label, href, Icon }) => (
           <Link

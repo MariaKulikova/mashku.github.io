@@ -80,6 +80,7 @@
   /* ===== ICON SIZES ===== */
   --icon-sm: 1.25rem;
   --icon-md: 1.5rem;
+  --icon-lg: 2rem;
 
   /* ===== RADII ===== */
   --radius-sm: var(--radius-2);
@@ -127,9 +128,9 @@
   --color-white: #ffffff;
   --color-black: #131416;
 
-  --color-bg: var(--pink-1);
+  --color-bg: var(--pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
   --color-surface: var(--pink-0);
-  --color-glass-hsl: 336 100% 92%;
+  --color-glass-hsl: 337 100% 72%;
 
   --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
 
