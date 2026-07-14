@@ -1,7 +1,9 @@
 /* Project page styles */
 
-/* Контентная область кейса — той же ширины, что главная и контент навбара */
-.container {
+/* Контентная область кейса — той же ширины, что главная и контент навбара.
+   Селектор `main .container` (0,1,1) перебивает инфимовский `.container` (0,1,0),
+   который сайт тянет к 100% через --ifm-container-width-xl. */
+main .container {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   padding: 0 var(--layout-padding);
