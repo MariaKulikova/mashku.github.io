@@ -1,8 +1,21 @@
 @import './open-props-imports.css';
 
 :root {
+  /* ===== BRAND PALETTE (рампы для тем, по образцу серой шкалы Open Props) ===== */
+  --blue-0: #d9d0ff;
+  --blue-1: #6b4dff;
+  --blue-2: #4d3aff;
+  --blue-3: #4a35ff;
+  --blue-4: #3b26ff;
+  --blue-5: #1a01ff;
+  --pink-0: #fff2f7;
+  --pink-1: #ffe4ee;
+  --pink-2: #f3c6d8;
+  --pink-3: #ffb3cd;
+  --pink-4: #ff6fa5;
+
   /* ===== BRAND ===== */
-  --color-accent: #1a01ff;
+  --color-accent: var(--blue-5);
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0); /* контент на акцентной заливке (marquee и пр.) */
 
@@ -85,7 +98,7 @@
 
 /* ===== DARK ===== */
 [data-appearance='dark'] {
-  --color-accent: #4d3aff;
+  --color-accent: var(--blue-2);
   --color-accent-hsl: 245 100% 62%;
   --color-on-accent: var(--gray-0);
 
@@ -105,46 +118,46 @@
   --shadow-tag: var(--shadow-2);
 }
 
-/* ===== PINK (нежно розовый) ===== */
+/* ===== PINK (нежно розовый; праймари — синий) ===== */
 [data-appearance='pink'] {
-  --color-accent: #1a01ff;
+  --color-accent: var(--blue-5); /* праймари на розовой теме — синий */
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0);
 
   --color-white: #ffffff;
   --color-black: #131416;
 
-  --color-bg: #ffe4ee;
-  --color-surface: #fff2f7;
+  --color-bg: var(--pink-1);
+  --color-surface: var(--pink-0);
   --color-glass-hsl: 336 100% 92%;
 
-  --buddy-fill: var(--color-accent);
+  --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
 
   --color-text-primary: var(--gray-9);
   --color-text-secondary: var(--gray-8);
   --color-text-heading: var(--gray-10);
-  --color-border: #f3c6d8;
+  --color-border: var(--pink-2);
   --shadow-tag: var(--shadow-2);
 }
 
-/* ===== BLUE (наш акцент как фон) ===== */
+/* ===== BLUE (бренд-синий фон; праймари — розовый) ===== */
 [data-appearance='blue'] {
-  --color-accent: #d9d0ff; /* светлый лавандовый — читаемые ссылки на синем */
-  --color-accent-hsl: 249 100% 91%;
-  --color-on-accent: #131416; /* тёмный текст на светлой акцентной заливке */
+  --color-accent: var(--pink-4); /* праймари на синей теме — розовый */
+  --color-accent-hsl: 337 100% 72%;
+  --color-on-accent: #131416; /* тёмный текст на розовой акцентной заливке */
 
   --color-white: #ffffff;
   --color-black: #131416;
 
-  --color-bg: #1a01ff; /* фон = бренд-синий */
-  --color-surface: #3b26ff;
+  --color-bg: var(--blue-5); /* фон = бренд-синий */
+  --color-surface: var(--blue-4);
   --color-glass-hsl: 240 99% 55%;
 
-  --buddy-fill: #6b4dff; /* светлее фона: шар виден, белые/чёрные глаза читаемы */
+  --buddy-fill: var(--pink-4); /* розовый шар на синем фоне; глаза читаемы */
 
   --color-text-primary: var(--gray-2);
   --color-text-secondary: var(--gray-4);
   --color-text-heading: #ffffff;
-  --color-border: #4a35ff;
+  --color-border: var(--blue-3);
   --shadow-tag: var(--shadow-2);
 }

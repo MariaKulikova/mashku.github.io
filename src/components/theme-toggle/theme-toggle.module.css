@@ -32,19 +32,19 @@
   box-shadow: 0 0 0 2px var(--color-text-heading);
 }
 
-/* Превью-цвета тем (фиксированные значения фонов тем — не темизируются) */
+/* Превью-цвета тем (фоны тем; из палитры/шкалы, не зависят от текущей темы) */
 .white {
   background-color: #ffffff;
 }
 
 .dark {
-  background-color: #131416;
+  background-color: var(--gray-12);
 }
 
 .pink {
-  background-color: #ffb3cd;
+  background-color: var(--pink-1);
 }
 
 .blue {
-  background-color: #1a01ff;
+  background-color: var(--blue-5);
 }
