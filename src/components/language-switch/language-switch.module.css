@@ -1,0 +1,25 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-right: var(--space-sm);
+}
+
+.lang {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-5);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.lang:hover {
+  color: var(--color-text-heading);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--color-text-heading);
+}

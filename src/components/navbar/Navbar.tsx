@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ThemeToggle from '../theme-toggle/ThemeToggle';
 import SoundToggle from '../sound-toggle/SoundToggle';
+import LanguageSwitch from '../language-switch/LanguageSwitch';
 import styles from './navbar.module.css';
 
 const Navbar: React.FC = () => {
@@ -17,6 +18,7 @@ const Navbar: React.FC = () => {
       <div className={styles.navbarInner}>
         <a href="/" className={styles.logo}>Mariia Kulikova</a>
         <div className={styles.controls}>
+          <LanguageSwitch />
           <SoundToggle />
           <ThemeToggle />
         </div>
