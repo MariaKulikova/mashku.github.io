@@ -6,6 +6,7 @@ hide_table_of_contents: true
 
 import WorkCard from '../components/work-card/WorkCard';
 import Footer from '../components/footer/Footer';
+import ProjectLink from '../components/project-link/ProjectLink';
 import '../styles/general.css'
 import '../styles/index.css'
 import '../styles/typography.css'
@@ -15,17 +16,16 @@ import '../styles/typography.css'
   <section className="hero">
     <div className="hero-content">
       <h1 className="hero-heading">UX designer who creates interfaces for complex services and emotionally driven projects</h1>
-      <p className="hero-sub">currently a designer at shiftgears.ai</p>
+      <p className="hero-sub">currently a designer at <a href="https://shiftgears.ai" target="_blank" rel="noopener noreferrer">shiftgears.ai</a></p>
     </div>
   </section>
 
   <section className="section projects">
     <h2>Projects</h2>
     <div className="projects-list">
-      <a href="https://posmotrim.design" target="_blank" className="project-link">Posmotrim.design</a>
-      <a href="https://planbanan.com/" target="_blank" className="project-link">Planbanan.com</a>
-      <a href="https://t.me/CoffeeDrinker_Bot" target="_blank" className="project-link">Coffee Drinker Bot</a>
-      <a href="https://t.me/nomadic_eye" target="_blank" className="project-link">Nomadic Eye</a>
+      <ProjectLink href="https://posmotrim.design">Posmotrim.design</ProjectLink>
+      <ProjectLink href="https://t.me/CoffeeDrinker_Bot">Coffee Drinker Bot</ProjectLink>
+      <ProjectLink href="https://t.me/nomadic_eye">Nomadic Eye</ProjectLink>
     </div>
   </section>
 

@@ -1,0 +1,55 @@
+.wrap {
+  position: relative;
+  align-self: flex-start; /* не растягиваться на всю ширину колонки проектов */
+  display: inline-flex;
+}
+
+/* Поповер-превью справа от ссылки. Цвета на токенах → адаптируются к теме. */
+.popover {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--space-lg);
+  z-index: 1200;
+  width: 380px;
+  height: 238px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-tag);
+  background: var(--color-surface);
+  pointer-events: none; /* не перехватывает hover — поповер чисто декоративный */
+}
+
+.host {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+}
+
+/* Обрезаем отрендеренный на десктопной ширине iframe до размера поповера */
+.clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.frame {
+  width: 1280px;
+  height: 800px;
+  border: 0;
+  transform: scale(0.2969); /* 380 / 1280 */
+  transform-origin: top left;
+  background: var(--color-surface);
+}
+
+/* На узких экранах (и без hover) превью не показываем — чтобы не вылезало за вьюпорт */
+@media (max-width: 996px) {
+  .popover {
+    display: none;
+  }
+}
