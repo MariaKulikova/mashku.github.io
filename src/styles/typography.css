@@ -14,6 +14,7 @@
 
   /* Custom typography scale */
   --font-size-h1: clamp(32px, 4vw, 40px);
+  --font-size-hero: clamp(32px, 5vw, 52px);
   --font-size-h2: clamp(24px, 3vw, 32px);
   --font-size-h3: clamp(20px, 2vw, 24px);
   --font-size-h4: clamp(16px, 1.8vw, 18px);

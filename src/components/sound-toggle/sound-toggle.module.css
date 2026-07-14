@@ -1,5 +1,5 @@
 .button {
-  background: var(--color-surface);
+  background: transparent;
   border: none;
   cursor: pointer;
   color: var(--color-text-heading);

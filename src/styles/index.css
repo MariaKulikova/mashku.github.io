@@ -8,10 +8,13 @@
 
 .hero-content {
   max-width: var(--layout-content-max);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-heading {
   margin: 0 0 var(--space-md) 0;
+  font-size: var(--font-size-hero);
 }
 
 .hero-sub {

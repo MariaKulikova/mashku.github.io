@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 998; /* под навбаром (999): не перекрывает контролы/лого; клики и так проходят (pointer-events:none) */
+  z-index: 1000; /* поверх навбара (по просьбе); клики проходят сквозь (pointer-events:none) */
   width: 200px;
   height: 200px;
   border-radius: var(--radius-pill);
