@@ -1,5 +1,4 @@
 import Link from '@docusaurus/Link';
-import Translate from '@docusaurus/Translate';
 import styles from './footer.module.css';
 import { EmailIcon, TelegramIcon, InstagramIcon, DribbbleIcon, BehanceIcon } from './icons';
 
@@ -14,7 +13,6 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <section className={styles.contacts}>
-      <h2><Translate id="footer.contacts">Contacts</Translate></h2>
       <div className={styles.contactsSocials}>
         {SOCIALS.map(({ label, href, Icon }) => (
           <Link

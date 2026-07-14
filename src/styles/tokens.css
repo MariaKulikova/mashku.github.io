@@ -2,21 +2,21 @@
 
 :root {
   /* ===== BRAND PALETTE (рампы для тем, по образцу серой шкалы Open Props) ===== */
-  --blue-0: #d9d0ff;
-  --blue-1: #6b4dff;
-  --blue-2: #4d3aff;
-  --blue-3: #4a35ff;
-  --blue-4: #3b26ff;
-  --blue-5: #1a01ff;
-  --pink-0: #fff2f7;
-  --pink-1: #ffe4ee;
-  --pink-2: #f3c6d8;
-  --pink-3: #ffb3cd;
-  --pink-4: #ff6fa5;
-  --pink-5: #8f1d49;
+  --brand-blue-0: #d9d0ff;
+  --brand-blue-1: #6b4dff;
+  --brand-blue-2: #4d3aff;
+  --brand-blue-3: #4a35ff;
+  --brand-blue-4: #3b26ff;
+  --brand-blue-5: #1a01ff;
+  --brand-pink-0: #fff2f7;
+  --brand-pink-1: #ffe4ee;
+  --brand-pink-2: #f3c6d8;
+  --brand-pink-3: #ffb3cd;
+  --brand-pink-4: #ff6fa5;
+  --brand-pink-5: #8f1d49;
 
   /* ===== BRAND ===== */
-  --color-accent: var(--blue-5);
+  --color-accent: var(--brand-blue-5);
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0); /* контент на акцентной заливке (marquee и пр.) */
 
@@ -101,7 +101,7 @@
 /* ===== DARK ===== */
 /* :root[...] (0,2,0) — гарантированно перебивает :root, не завися от порядка/минификации */
 :root[data-appearance='dark'] {
-  --color-accent: var(--blue-2);
+  --color-accent: var(--brand-blue-2);
   --color-accent-hsl: 245 100% 62%;
   --color-on-accent: var(--gray-0);
 
@@ -123,15 +123,15 @@
 
 /* ===== PINK (насыщенный розовый; праймари — синий) ===== */
 :root[data-appearance='pink'] {
-  --color-accent: var(--blue-5); /* праймари на розовой теме — синий */
+  --color-accent: var(--brand-blue-5); /* праймари на розовой теме — синий */
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0);
 
   --color-white: #ffffff;
   --color-black: #131416;
 
-  --color-bg: var(--pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
-  --color-surface: var(--pink-5); /* тёмный берри — под белый контент (карточки, пилюли контролов) */
+  --color-bg: var(--brand-pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
+  --color-surface: var(--brand-pink-5); /* тёмный берри — под белый контент (карточки, пилюли контролов) */
   --color-glass-hsl: 337 100% 72%;
 
   --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
@@ -140,28 +140,28 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #ffd9e6;
   --color-text-heading: #ffffff;
-  --color-border: var(--pink-2);
+  --color-border: var(--brand-pink-2);
   --shadow-tag: var(--shadow-2);
 }
 
 /* ===== BLUE (бренд-синий фон; праймари — розовый) ===== */
 :root[data-appearance='blue'] {
-  --color-accent: var(--pink-4); /* праймари на синей теме — розовый */
+  --color-accent: var(--brand-pink-4); /* праймари на синей теме — розовый */
   --color-accent-hsl: 337 100% 72%;
   --color-on-accent: #131416; /* тёмный текст на розовой акцентной заливке */
 
   --color-white: #ffffff;
   --color-black: #131416;
 
-  --color-bg: var(--blue-5); /* фон = бренд-синий */
-  --color-surface: var(--blue-4);
+  --color-bg: var(--brand-blue-5); /* фон = бренд-синий */
+  --color-surface: var(--brand-blue-4);
   --color-glass-hsl: 240 99% 55%;
 
-  --buddy-fill: var(--pink-4); /* розовый шар на синем фоне; глаза читаемы */
+  --buddy-fill: var(--brand-pink-4); /* розовый шар на синем фоне; глаза читаемы */
 
   --color-text-primary: var(--gray-2);
   --color-text-secondary: var(--gray-4);
   --color-text-heading: #ffffff;
-  --color-border: var(--blue-3);
+  --color-border: var(--brand-blue-3);
   --shadow-tag: var(--shadow-2);
 }
