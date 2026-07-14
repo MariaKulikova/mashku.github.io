@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 900; /* ниже навбара (999) — не перекрывает контролы */
+  z-index: 1000; /* поверх навбара; клики не блокирует за счёт pointer-events:none ниже */
   width: 200px;
   height: 200px;
   border-radius: var(--radius-pill);
