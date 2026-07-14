@@ -42,11 +42,7 @@
 }
 
 .scrolled {
-  background: hsl(var(--gray-2-hsl) / 0.4);
+  background: hsl(var(--color-glass-hsl) / 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-}
-
-:global([data-theme='dark']) .scrolled {
-  background: hsl(var(--gray-11-hsl) / 0.15);
 }

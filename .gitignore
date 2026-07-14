@@ -31,3 +31,5 @@ build/
 # Cache directories
 .cache/
 .temp/
+# Playwright MCP artifacts
+.playwright-mcp/

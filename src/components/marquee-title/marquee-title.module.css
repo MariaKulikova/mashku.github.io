@@ -18,7 +18,7 @@
 
 .marqueeContent h2 {
   font-size: var(--font-size-h4);
-  color: var(--color-white);
+  color: var(--color-on-accent);
   white-space: nowrap;
   margin: 0;
   padding: 0 var(--space-sm);

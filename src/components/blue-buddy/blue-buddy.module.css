@@ -6,7 +6,7 @@
   width: 200px;
   height: 200px;
   border-radius: var(--radius-pill);
-  background-color: var(--color-accent);
+  background-color: var(--buddy-fill);
   display: flex;
   pointer-events: none;
   will-change: transform;

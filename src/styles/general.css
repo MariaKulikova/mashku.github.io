@@ -14,8 +14,8 @@
     --layout-padding: var(--space-4);
   }
 
-  /* Docusaurus required overrides */
-  --ifm-background-color: var(--color-surface);
+  /* Docusaurus required overrides. --color-bg переразрешается под каждой темой. */
+  --ifm-background-color: var(--color-bg);
   --ifm-color-primary: var(--color-text-heading);
   --ifm-container-width-xl: 100%;
 }
@@ -32,11 +32,6 @@ main.container {
 
 .row {
   margin: 0;
-}
-
-[data-theme='dark'] {
-  --ifm-background-color: var(--color-surface);
-  --ifm-color-primary: var(--color-text-heading);
 }
 
 h1:hover .hash-link,
@@ -92,14 +87,10 @@ article {
   align-items: center;
   justify-content: center;
   padding: var(--space-xs) var(--space-sm);
-  background: hsl(var(--gray-2-hsl) / 0.65);
+  background: hsl(var(--color-glass-hsl) / 0.65);
   backdrop-filter: blur(4px);
   color: var(--color-text-primary);
   border-radius: var(--radius-lg);
   font-size: var(--font-size-small);
   box-shadow: var(--shadow-tag);
-}
-
-[data-theme='dark'] .tag {
-  background: hsl(var(--gray-10-hsl) / 0.65);
 }

@@ -18,6 +18,27 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
+  plugins: [
+    // Анти-FOUC: до первой покраски ставим data-appearance из localStorage
+    // (тема white/dark/pink/blue; дефолт white). Значение читает useAppearance.
+    function appearancePlugin() {
+      return {
+        name: 'appearance-fouc-guard',
+        injectHtmlTags() {
+          return {
+            headTags: [
+              {
+                tagName: 'script',
+                innerHTML:
+                  "(function(){try{var a=localStorage.getItem('appearance');if(['white','dark','pink','blue'].indexOf(a)<0)a='white';document.documentElement.setAttribute('data-appearance',a);}catch(e){document.documentElement.setAttribute('data-appearance','white');}})();",
+              },
+            ],
+          };
+        },
+      };
+    },
+  ],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en','ru'],
