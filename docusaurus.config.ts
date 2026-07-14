@@ -63,9 +63,13 @@ const config: Config = {
   ],
   
   themeConfig: {
+    // Тема сайта управляется своей осью data-appearance (useAppearance).
+    // Docusaurus держим всегда в 'light', иначе тёмная ОС включает data-theme=dark
+    // и встроенные тёмные стили Infima перебивают наш --color-bg.
     colorMode: {
       defaultMode: 'light',
-      respectPrefersColorScheme: true,
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
     navbar: {
       style: 'primary',

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styles from './project-link.module.css';
 
-type Props = { href: string; children: React.ReactNode };
+type Props = { href: string; preview?: string; children: React.ReactNode };
 
-// Хост для подписи-фолбэка, если сайт запрещает встраивание в iframe
-// (X-Frame-Options / CSP frame-ancestors) — напр. Telegram (t.me).
+// Хост для подписи-фолбэка, когда для ссылки нет скриншота-превью.
 function hostOf(url: string): string {
   try {
     return new URL(url).host;
@@ -15,10 +14,10 @@ function hostOf(url: string): string {
 
 /**
  * Ссылка проекта с превью-поповером: при наведении рядом со ссылкой
- * показывается «первый экран» сайта в живом iframe (рендерится на десктопной
- * ширине и масштабируется вниз). iframe монтируется лениво — только на hover.
+ * показывается статичный скриншот первого экрана сайта (`preview`).
+ * Для ссылок без скриншота (напр. Telegram-боты) — подпись с хостом.
  */
-export default function ProjectLink({ href, children }: Props) {
+export default function ProjectLink({ href, preview, children }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,17 +31,11 @@ export default function ProjectLink({ href, children }: Props) {
       </a>
       {open && (
         <span className={styles.popover} aria-hidden="true">
-          <span className={styles.host}>{hostOf(href)}</span>
-          <span className={styles.clip}>
-            <iframe
-              className={styles.frame}
-              src={href}
-              title=""
-              loading="lazy"
-              scrolling="no"
-              tabIndex={-1}
-            />
-          </span>
+          {preview ? (
+            <img className={styles.image} src={preview} alt="" loading="lazy" />
+          ) : (
+            <span className={styles.host}>{hostOf(href)}</span>
+          )}
         </span>
       )}
     </span>

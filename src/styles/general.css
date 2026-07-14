@@ -20,6 +20,16 @@
   --ifm-container-width-xl: 100%;
 }
 
+/* Тема сайта управляется осью data-appearance. Перебиваем тёмные дефолты Infima
+   (когда Docusaurus по тёмной ОС ставит data-theme=dark): селектор
+   html[data-appearance] имеет специфичность >= инфимовского html[data-theme='dark'],
+   а наши стили грузятся позже — поэтому наш --color-bg выигрывает. Фон красим
+   и напрямую, чтобы не зависеть от --ifm-* переменных. */
+html[data-appearance] {
+  --ifm-background-color: var(--color-bg);
+  background-color: var(--color-bg);
+}
+
 /* Reset Docusaurus container padding — we use our own layout-padding */
 main.container {
   padding: 0;

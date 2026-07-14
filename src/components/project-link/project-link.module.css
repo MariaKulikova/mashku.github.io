@@ -31,20 +31,13 @@
   color: var(--color-text-secondary);
 }
 
-/* Обрезаем отрендеренный на десктопной ширине iframe до размера поповера */
-.clip {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.frame {
-  width: 1280px;
-  height: 800px;
-  border: 0;
-  transform: scale(0.2969); /* 380 / 1280 */
-  transform-origin: top left;
-  background: var(--color-surface);
+/* Скриншот первого экрана сайта */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 /* На узких экранах (и без hover) превью не показываем — чтобы не вылезало за вьюпорт */
