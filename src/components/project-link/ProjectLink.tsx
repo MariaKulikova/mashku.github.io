@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './project-link.module.css';
 
-type Props = { href: string; preview?: string; children: React.ReactNode };
+type Props = { href: string; preview?: string; previewBg?: string; children: React.ReactNode };
 
 // Хост для подписи-фолбэка, когда для ссылки нет скриншота-превью.
 function hostOf(url: string): string {
@@ -17,7 +17,7 @@ function hostOf(url: string): string {
  * показывается статичный скриншот первого экрана сайта (`preview`).
  * Для ссылок без скриншота (напр. Telegram-боты) — подпись с хостом.
  */
-export default function ProjectLink({ href, preview, children }: Props) {
+export default function ProjectLink({ href, preview, previewBg, children }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,7 +32,13 @@ export default function ProjectLink({ href, preview, children }: Props) {
       {open && (
         <span className={styles.popover} aria-hidden="true">
           {preview ? (
-            <img className={styles.image} src={preview} alt="" loading="lazy" />
+            <img
+              className={styles.image}
+              src={preview}
+              alt=""
+              loading="lazy"
+              style={previewBg ? { backgroundColor: previewBg } : undefined}
+            />
           ) : (
             <span className={styles.host}>{hostOf(href)}</span>
           )}
