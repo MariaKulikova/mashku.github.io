@@ -10,6 +10,9 @@
   display: flex;
   pointer-events: none;
   will-change: transform;
+  /* скрыт до первого позиционирования в RAF — иначе кадр в углу (0,0) при загрузке */
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-default);
 }
 
 .eyesWrapper {

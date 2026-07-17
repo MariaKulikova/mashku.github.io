@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from '@docusaurus/Link';
 import ThemeToggle from '../theme-toggle/ThemeToggle';
 import SoundToggle from '../sound-toggle/SoundToggle';
 import LanguageSwitch from '../language-switch/LanguageSwitch';
@@ -16,7 +17,8 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navbarInner}>
-        <a href="/" className={styles.logo}>Mariia Kulikova</a>
+        {/* Link авто-подставляет baseUrl локали (/ или /ru/) — не роняем язык */}
+        <Link to="/" className={styles.logo}>Mariia Kulikova</Link>
         <div className={styles.controls}>
           <LanguageSwitch />
           <SoundToggle />

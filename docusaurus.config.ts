@@ -21,6 +21,8 @@ const config: Config = {
   plugins: [
     // Анти-FOUC: до первой покраски ставим data-appearance из localStorage
     // (тема white/dark/pink/blue; дефолт white). Значение читает useAppearance.
+    // NB: список тем ниже продублирован из APPEARANCES (useAppearance.ts) — скрипт
+    // выполняется до бандла и не может импортировать; при правке синхронь оба места.
     function appearancePlugin() {
       return {
         name: 'appearance-fouc-guard',

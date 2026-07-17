@@ -120,6 +120,10 @@ export default function BlueBuddy() {
 
     if (elRef.current) {
       elRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      // показываем только после того, как позиция проставлена (убирает мелькание в углу)
+      if (elRef.current.style.opacity !== '1') {
+        elRef.current.style.opacity = '1';
+      }
     }
 
     raf.current = requestAnimationFrame(tick);

@@ -33,7 +33,7 @@
 
 /* Превью-цвета тем (фоны тем; из палитры/шкалы, не зависят от текущей темы) */
 .white {
-  background-color: #ffffff;
+  background-color: var(--brand-white);
 }
 
 .dark {

@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 
 export type Appearance = 'white' | 'dark' | 'pink' | 'blue';
 
+// ВНИМАНИЕ: этот же список продублирован в анти-FOUC инлайн-скрипте
+// (docusaurus.config.ts, appearancePlugin). Скрипт выполняется до бандла и не
+// может импортировать отсюда — при добавлении/переименовании темы правь оба места.
 export const APPEARANCES: Appearance[] = ['white', 'dark', 'pink', 'blue'];
 
 const STORAGE_KEY = 'appearance';
@@ -28,6 +31,20 @@ export function useAppearance(): [Appearance, (next: Appearance) => void] {
 
   useEffect(() => {
     setState(readFromDom());
+
+    // Синхронизация между вкладками: другая вкладка сменила тему → localStorage
+    // шлёт событие storage сюда, применяем то же значение (было у useColorMode).
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== STORAGE_KEY) return;
+      const next =
+        e.newValue && (APPEARANCES as string[]).includes(e.newValue)
+          ? (e.newValue as Appearance)
+          : DEFAULT;
+      setState(next);
+      document.documentElement.setAttribute('data-appearance', next);
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
   const setAppearance = useCallback((next: Appearance) => {

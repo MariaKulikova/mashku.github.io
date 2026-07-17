@@ -14,6 +14,8 @@
   --brand-pink-3: #ffb3cd;
   --brand-pink-4: #ff6fa5;
   --brand-pink-5: #8f1d49;
+  --brand-white: #ffffff; /* чистый белый (в шкале Open Props --gray-0 ≈ #f8f9fa) */
+  --brand-black: #131416; /* фирменный «почти чёрный» */
 
   /* ===== BRAND ===== */
   --color-accent: var(--brand-blue-5);
@@ -22,10 +24,10 @@
 
   /* ===== COLORS ===== */
   --color-white: var(--gray-0);
-  --color-black: #131416;
+  --color-black: var(--brand-black);
 
   /* Surfaces */
-  --color-bg: #ffffff; /* фон страницы (тема white) */
+  --color-bg: var(--brand-white); /* фон страницы (тема white) */
   --color-surface: var(--gray-2); /* приподнятые поверхности: карточки, тогглы */
   --color-glass-hsl: var(--gray-2-hsl); /* тон полупрозрачного стекла навбара/тегов */
 
@@ -127,8 +129,8 @@
   --color-accent-hsl: 240 99% 50%;
   --color-on-accent: var(--gray-0);
 
-  --color-white: #ffffff;
-  --color-black: #131416;
+  --color-white: var(--brand-white);
+  --color-black: var(--brand-black);
 
   --color-bg: var(--brand-pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
   --color-surface: var(--brand-pink-5); /* тёмный берри — под белый контент (карточки, пилюли контролов) */
@@ -137,9 +139,9 @@
   --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
 
   /* контент белый (по аналогии с синей темой) */
-  --color-text-primary: #ffffff;
+  --color-text-primary: var(--brand-white);
   --color-text-secondary: #ffd9e6;
-  --color-text-heading: #ffffff;
+  --color-text-heading: var(--brand-white);
   --color-border: var(--brand-pink-2);
   --shadow-tag: var(--shadow-2);
 }
@@ -148,10 +150,10 @@
 :root[data-appearance='blue'] {
   --color-accent: var(--brand-pink-4); /* праймари на синей теме — розовый */
   --color-accent-hsl: 337 100% 72%;
-  --color-on-accent: #131416; /* тёмный текст на розовой акцентной заливке */
+  --color-on-accent: var(--brand-black); /* тёмный текст на розовой акцентной заливке */
 
-  --color-white: #ffffff;
-  --color-black: #131416;
+  --color-white: var(--brand-white);
+  --color-black: var(--brand-black);
 
   --color-bg: var(--brand-blue-5); /* фон = бренд-синий */
   --color-surface: var(--brand-blue-4);
@@ -161,7 +163,7 @@
 
   --color-text-primary: var(--gray-2);
   --color-text-secondary: var(--gray-4);
-  --color-text-heading: #ffffff;
+  --color-text-heading: var(--brand-white);
   --color-border: var(--brand-blue-3);
   --shadow-tag: var(--shadow-2);
 }
