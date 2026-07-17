@@ -21,7 +21,7 @@ export function onRouteDidUpdate({location, previousLocation}: RouteUpdate) {
   if (from === to) {
     return;
   }
-  const ym = (window as any).ym;
+  const ym = window.ym;
   if (typeof ym === 'function') {
     const {origin} = window.location;
     ym(YM_COUNTER_ID, 'hit', origin + to, {referer: origin + from});

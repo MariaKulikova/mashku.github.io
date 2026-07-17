@@ -37,7 +37,9 @@ export default function ProjectLink({ href, preview, previewBg, children }: Prop
               src={preview}
               alt=""
               loading="lazy"
-              style={previewBg ? { backgroundColor: previewBg } : undefined}
+              // Подложка под конкретный скриншот (не тема) — прокидываем как CSS-переменную,
+              // сам цвет применяется в .module.css (без инлайновых визуальных стилей).
+              style={previewBg ? ({ '--preview-bg': previewBg } as React.CSSProperties) : undefined}
             />
           ) : (
             <span className={styles.host}>{hostOf(href)}</span>

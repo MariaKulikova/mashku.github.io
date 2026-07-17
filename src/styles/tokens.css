@@ -84,6 +84,7 @@
   --icon-sm: 1.25rem;
   --icon-md: 1.5rem;
   --icon-lg: 2rem;
+  --swatch-size: 1.125rem; /* 18px — цветной свотч переключателя тем */
 
   /* ===== RADII ===== */
   --radius-sm: var(--radius-2);
@@ -140,7 +141,7 @@
 
   /* контент белый (по аналогии с синей темой) */
   --color-text-primary: var(--brand-white);
-  --color-text-secondary: #ffd9e6;
+  --color-text-secondary: var(--brand-pink-1);
   --color-text-heading: var(--brand-white);
   --color-border: var(--brand-pink-2);
   --shadow-tag: var(--shadow-2);

@@ -1,5 +1,5 @@
-/* Font import */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* Шрифт Outfit подключается через <link rel="preconnect"> + <link> в src/theme/Root.tsx
+   (быстрее render-blocking @import и без дублирующего запроса). */
 
 :root {
   /* Font family */

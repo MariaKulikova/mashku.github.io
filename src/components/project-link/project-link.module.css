@@ -31,12 +31,14 @@
   color: var(--color-text-secondary);
 }
 
-/* Превью: скриншот сайта (16:10 — заполняет) или карточка бота (letterbox на surface) */
+/* Превью: скриншот сайта (16:10 — заполняет) или карточка бота (letterbox на surface).
+   --preview-bg приходит из компонента для скриншотов со своей подложкой. */
 .image {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
+  background-color: var(--preview-bg, transparent);
 }
 
 /* На узких экранах (и без hover) превью не показываем — чтобы не вылезало за вьюпорт */

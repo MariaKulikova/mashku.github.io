@@ -26,3 +26,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const SOCIAL_PROFILE_URLS = SOCIAL_LINKS
   .filter((l) => !l.href.startsWith('mailto:'))
   .map((l) => l.href);
+
+// Типизация глобалов сторонних счётчиков (Яндекс.Метрика, Microsoft Clarity)
+// и флага инициализации — чтобы обращаться к ним без `as any`. Все опциональны:
+// до загрузки внешних скриптов их может не быть.
+declare global {
+  interface Window {
+    __analyticsInitialized?: boolean;
+    ym?: (...args: unknown[]) => void;
+    clarity?: (...args: unknown[]) => void;
+  }
+}

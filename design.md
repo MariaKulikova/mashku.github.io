@@ -10,8 +10,9 @@
 
 ### Цвета
 - **Open Props** (`--gray-*`) используется как основа для серой палитры
-- Accent color `#1a01ff` — кастомный, нет аналога в Open Props
-- Семантические алиасы обязательны: `--color-surface`, `--color-text-primary`, `--color-border` и т.д.
+- **Бренд-рампы** `--brand-blue-0..5` и `--brand-pink-0..5` — по образцу серой шкалы Open Props (0 — светлый, 5 — насыщенный). Используются как основа для тем. Также `--brand-white` (чистый белый) и `--brand-black` (`#131416`, фирменный «почти чёрный»)
+- Accent color по умолчанию — `--brand-blue-5` (`#1a01ff`); в разных темах переопределяется (см. «Темы оформления»)
+- Семантические алиасы обязательны: `--color-bg`, `--color-surface`, `--color-text-primary`, `--color-border` и т.д. Сырые `--gray-*` / `--brand-*` — только в определениях токенов (`tokens.css`), не в компонентах
 
 | Токен | Значение | Назначение |
 |-------|----------|------------|
@@ -90,27 +91,46 @@
 | `--duration-normal` | `300ms` |
 | `--ease-default` | `var(--ease-3)` |
 
-## BlueBuddy (синий круг с глазами)
+## BlueBuddy (круг с глазами)
 - Размер: 200×200px, `border-radius: round`
-- Цвет: `--color-accent`
+- Цвет: `--buddy-fill` (отдельный токен, переопределяется по теме для авто-контраста — напр. на синей теме шар розовый)
 - Прячется на 120px за край экрана (видны ~80px с глазами)
 - Скользит вдоль края экрана за курсором (lerp 0.003)
 - При смене стороны: задвигается за текущий край → телепортируется → выдвигается с нового края
 - Глаза зеркалятся/поворачиваются для каждой стороны (всегда смотрят внутрь экрана)
 - Скрыт на touch-устройствах (`@media (hover: none)`)
 
-## Тёмная тема
-- Поддерживаются light и dark mode
-- Переключатель в навбаре (иконка солнце/луна)
-- `respectPrefersColorScheme: true` — автоматически определяет предпочтения пользователя
-- Dark токены определены в `[data-theme='dark']` в `tokens.css`
-- Accent color в dark mode: `#4d3aff` (чуть светлее для контраста)
+## Темы оформления (мультитемы)
 
-| Токен | Light | Dark |
-|-------|-------|------|
-| `--color-surface` | `var(--gray-2)` | `var(--gray-11)` |
-| `--color-text-primary` | `var(--gray-8)` | `var(--gray-4)` |
-| `--color-text-secondary` | `var(--gray-7)` | `var(--gray-5)` |
-| `--color-text-heading` | `var(--gray-10)` | `var(--gray-1)` |
-| `--color-border` | `var(--gray-6)` | `var(--gray-7)` |
-| `--color-accent` | `#1a01ff` | `#4d3aff` |
+Четыре темы: **white** (дефолт), **dark**, **pink**, **blue**.
+
+**Механика:**
+- Тема живёт на собственной оси `data-appearance` на `<html>` (`white` / `dark` / `pink` / `blue`), **независимой от Docusaurus colorMode**. Логика — в `src/components/theme-toggle/useAppearance.ts`; список тем `APPEARANCES` продублирован в анти-FOUC-скрипте (`docusaurus.config.ts`) — при добавлении темы править оба места.
+- Docusaurus держим в `light` + `disableSwitch` + **`respectPrefersColorScheme: false`** — иначе тёмная ОС включает `data-theme=dark`, и тёмные стили Infima перебивают наш `--color-bg`.
+- Переключатель — цветные свотчи в навбаре (`ThemeToggle`, `role="radiogroup"`, управление стрелками / Home / End, roving tabindex).
+- Анти-FOUC: инлайн-скрипт ставит `data-appearance` из `localStorage` до первой покраски; между вкладками темы синхронизируются через событие `storage`.
+- Скрыт на touch-устройствах (`@media (hover: none)`).
+
+**Токены тем** определяются в `:root[data-appearance='<тема>']` в `tokens.css` (селектор `(0,2,0)` гарантированно перебивает `:root`, не завися от порядка/минификации). Семантические алиасы (`--color-bg`, `--color-surface`, `--color-text-*`, `--color-border`, `--color-accent`, `--buddy-fill`) переразрешаются автоматически.
+
+| Токен | white | dark | pink | blue |
+|-------|-------|------|------|------|
+| `--color-bg` | `--brand-white` | `--gray-12` | `--brand-pink-4` | `--brand-blue-5` |
+| `--color-surface` | `--gray-2` | `--gray-11` | `--brand-pink-5` | `--brand-blue-4` |
+| `--color-text-primary` | `--gray-8` | `--gray-4` | `--brand-white` | `--gray-2` |
+| `--color-text-heading` | `--gray-10` | `--gray-1` | `--brand-white` | `--brand-white` |
+| `--color-border` | `--gray-6` | `--gray-7` | `--brand-pink-2` | `--brand-blue-3` |
+| `--color-accent` | `--brand-blue-5` | `--brand-blue-2` | `--brand-blue-5` | `--brand-pink-4` |
+| `--buddy-fill` | accent | accent | accent (синий) | `--brand-pink-4` |
+
+> Логика акцента: на «розовой» теме праймари остаётся синим, на «синей» — праймари розовый (акцент и фон меняются местами).
+
+## Интернационализация (i18n)
+- Локали `en` (дефолт) и `ru`; переводы страниц — в `i18n/ru/…`.
+- Переключатель языка — одна тогл-кнопка (`LanguageSwitch`), URL другой локали строит штатный `useAlternatePageUtils().createUrl` (учитывает baseUrl / trailingSlash / список локалей). Ссылки навигации — через `@docusaurus/Link` (сам подставляет baseUrl локали).
+- **Dev-ограничение:** `docusaurus start` поднимает только одну локаль → `/ru/` в dev отдаёт 404. Проверять обе локали локально через `npm run build && npm run serve`.
+
+## ProjectLink (превью-поповер)
+- Ссылка проекта с превью первого экрана при наведении (`src/components/project-link`).
+- Поповер декоративный: `pointer-events: none`, `aria-hidden="true"`, скрыт на узких экранах (`max-width: 996px`).
+- Подложка скриншота (для карточек-ботов) прокидывается CSS-переменной `--preview-bg`, красится в `.module.css` — без инлайновых визуальных стилей.

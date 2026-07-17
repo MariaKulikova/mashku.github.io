@@ -20,7 +20,7 @@ export default function Root({children}) {
   useEffect(() => {
     // Гард от повторной инициализации (StrictMode / fast-refresh в dev,
     // повторный mount Root): счётчики поднимаем один раз на документ.
-    if ((window as any).__analyticsInitialized) {
+    if (window.__analyticsInitialized) {
       return;
     }
 
@@ -39,7 +39,7 @@ export default function Root({children}) {
         m[i].l=Date.now();
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
     })(window, document, 'script', `https://mc.yandex.ru/metrika/tag.js?id=${YM_COUNTER_ID}`, 'ym');
-    (window as any).ym(YM_COUNTER_ID, 'init', {
+    window.ym?.(YM_COUNTER_ID, 'init', {
       webvisor: true,
       clickmap: true,
       ecommerce: 'dataLayer',
@@ -49,7 +49,7 @@ export default function Root({children}) {
 
     // Флаг ставим только после успешной инициализации: если код выше бросит,
     // следующий mount повторит попытку, а не отключит аналитику навсегда.
-    (window as any).__analyticsInitialized = true;
+    window.__analyticsInitialized = true;
   }, []);
 
   return (
