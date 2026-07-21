@@ -6,12 +6,23 @@ interface PupilPosition {
   y: number;
 }
 
-const AnimatedEyes: React.FC = () => {
+interface AnimatedEyesProps {
+  surprised?: boolean; // «удивление»: глаза расширяются, зрачки увеличиваются
+}
+
+const AnimatedEyes: React.FC<AnimatedEyesProps> = ({ surprised = false }) => {
   const [leftPupilPos, setLeftPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
   const [rightPupilPos, setRightPupilPos] = useState<PupilPosition>({ x: 0, y: 0 });
   const [isBlinking, setIsBlinking] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
+
+  // При удивлении глаза раскрыты (не моргают). Сам глаз чуть выше (только по
+  // высоте — ширину НЕ трогаем), а зрачки увеличиваются РАВНОМЕРНО (ширина=высота),
+  // поэтому остаются круглыми. Тело бубы не масштабируем.
+  const blinking = isBlinking && !surprised;
+  const eyeHeightScale = surprised ? 1.15 : 1; // только по высоте
+  const pupilScale = surprised ? 1.3 : isHovered ? 1.1 : 1; // равномерно
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -112,10 +123,13 @@ const AnimatedEyes: React.FC = () => {
       </defs>
       
       <g id="Logo">
-        {/* Eye backgrounds with blinking animation */}
-        <g style={{ 
-           clipPath: isBlinking ? 'inset(45% 0)' : 'inset(0 0)', 
-           transition: 'clip-path 0.15s ease-in-out' 
+        {/* Eye backgrounds: моргание + при испуге лёгкое увеличение по высоте
+            (только scaleY, ширину не трогаем; зрачки масштабируются отдельно). */}
+        <g style={{
+           clipPath: blinking ? 'inset(45% 0)' : 'inset(0 0)',
+           transform: `scaleY(${eyeHeightScale})`,
+           transformOrigin: '206.5px 47.6494px',
+           transition: 'clip-path 0.15s ease-in-out, transform 0.18s ease-out'
         }}>
           <path
             id="Eye_left"
@@ -135,9 +149,9 @@ const AnimatedEyes: React.FC = () => {
         
         {/* Pupils with masks */}
         <g mask="url(#leftEyeMask)" 
-           style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
+           style={{ opacity: blinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${leftPupilPos.x}, ${leftPupilPos.y})`}>
-            <g transform={`scale(${isHovered ? 1.1 : 1})`}
+            <g transform={`scale(${pupilScale})`}
                style={{ transformOrigin: '95.1602px 47.6494px', transition: 'transform 0.3s ease-in-out' }}>
             <path
               id="Pupil_left_2"
@@ -150,9 +164,9 @@ const AnimatedEyes: React.FC = () => {
         </g>
         
         <g mask="url(#rightEyeMask)"
-           style={{ opacity: isBlinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
+           style={{ opacity: blinking ? 0 : 1, transition: 'opacity 0.15s ease-in-out' }}>
           <g transform={`translate(${rightPupilPos.x}, ${rightPupilPos.y})`}>
-            <g transform={`scale(${isHovered ? 1.1 : 1})`}
+            <g transform={`scale(${pupilScale})`}
                style={{ transformOrigin: '317.678px 47.6494px', transition: 'transform 0.3s ease-in-out' }}>
             <path
               id="Pupil_left"

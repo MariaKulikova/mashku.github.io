@@ -4,56 +4,33 @@ description: UX-дизайнер, создающий интерфейсы для
 hide_table_of_contents: true
 ---
 
-import WorkCard from '@site/src/components/work-card/WorkCard';
+import PortfolioShowcase from '@site/src/components/portfolio-showcase/PortfolioShowcase';
 import Footer from '@site/src/components/footer/Footer';
-import ProjectLink from '@site/src/components/project-link/ProjectLink';
 import '@site/src/styles/general.css'
 import '@site/src/styles/index.css'
 import '@site/src/styles/typography.css'
+
+{/* disciplines → вкладки-фильтр; tags → сфера/аудитория/стадия; role → моя роль;
+    vibecoded → сама спроектировала и собрала. */}
+export const items = [
+  { title: 'AI-ассистент и дух стартапа', subtitle: 'Shiftgears.ai', role: 'Единственный дизайнер — собрала продукт с нуля', url: 'https://shiftgears.ai', disciplines: ['UI / графический дизайн', 'Опыт и взаимодействие'], tags: ['AI', 'B2C', 'Startup'], vibecoded: true },
+  { title: 'Редизайн CDN', subtitle: 'Selectel', role: 'Ведущий дизайнер — страницы CDN и дизайн-система', url: 'https://selectel.ru', caseStudyUrl: '/projects/story-redesign', disciplines: ['Опыт и взаимодействие', 'Дизайн-системы'], tags: ['CloudTech', 'B2B', 'Enterprise'] },
+  { title: 'Редизайн дизайн-процесса', subtitle: 'Marquiz', role: 'Senior product designer', url: 'https://marquiz.io', caseStudyUrl: '/projects/marquiz-act-requests', disciplines: ['Дизайн-системы'], tags: ['MarTech', 'B2B'] },
+  { title: 'Posmotrim.design', subtitle: 'Дизайн-инструмент', role: 'Спроектировала и собрала сама', url: 'https://posmotrim.design', image: '/img/previews/posmotrim.jpg', disciplines: ['UI / графический дизайн'], tags: ['B2B'], vibecoded: true },
+  { title: 'Coffee Drinker Bot', subtitle: 'Telegram-бот', role: 'Спроектировала и собрала сама', url: 'https://t.me/CoffeeDrinker_Bot', caseStudyUrl: '/projects/coffee-drinker-bot', image: '/img/previews/coffee.png', imageBg: '#ffffff', disciplines: ['UI / графический дизайн', 'Опыт и взаимодействие'], tags: ['B2C'], vibecoded: true },
+  { title: 'Nomadic Eye', subtitle: 'Telegram', role: 'Личный проект', url: 'https://t.me/nomadic_eye', caseStudyUrl: '/projects/nomadic-eye', image: '/img/previews/nomadic.jpg', imageBg: '#eae9ee', disciplines: ['UI / графический дизайн'], tags: ['B2C'], vibecoded: true },
+  { title: 'Mashku Art', subtitle: 'Арт', role: 'Спроектировала и собрала сама', url: 'https://mashku-art.pages.dev/', caseStudyUrl: '/projects/mashku-art', image: '/img/previews/mashku-art.jpg', imageBg: '#ffffff', disciplines: ['UI / графический дизайн'], tags: ['B2C'], vibecoded: true },
+];
 
 
 <div className="body">
   <section className="hero">
     <div className="hero-content">
-      <h1 className="hero-heading">Привет, я Мария, и я занимаюсь дизайном</h1>
-      <p className="hero-sub">сейчас дизайнер в <a href="https://shiftgears.ai" target="_blank" rel="noopener noreferrer">shiftgears.ai</a></p>
+      <h1 className="hero-heading">Привет! Меня зовут Мария, и я занимаюсь дизайном</h1>
+      <p className="hero-sub">сейчас работаю дизайнером в <a href="https://shiftgears.ai" target="_blank" rel="noopener noreferrer">shiftgears.ai</a></p>
     </div>
   </section>
 
-  <section className="section projects">
-    <h2>Проекты</h2>
-    <div className="projects-list">
-      <ProjectLink href="https://posmotrim.design" preview="/img/previews/posmotrim.jpg">Posmotrim.design</ProjectLink>
-      <ProjectLink href="https://t.me/CoffeeDrinker_Bot" preview="/img/previews/coffee.png" previewBg="#ffffff">Coffee Drinker Bot</ProjectLink>
-      <ProjectLink href="https://t.me/nomadic_eye" preview="/img/previews/nomadic.jpg" previewBg="#eae9ee">Nomadic Eye</ProjectLink>
-      <ProjectLink href="https://mashku-art.pages.dev/" preview="/img/previews/mashku-art.jpg" previewBg="#ffffff">Mashku Art</ProjectLink>
-    </div>
-  </section>
-
-  <section className="section work">
-    <h2>Опыт</h2>
-    <div className="work-grid">
-      <WorkCard
-        company="Shiftgears.ai"
-        companyUrl="https://shiftgears.ai"
-        title="AI-ассистент и дух стартапа"
-        description="Спроектировала интерфейс AI-ассистента по подбору авто с нуля — понятные и простые экраны, помогающие легко найти подержанный автомобиль."
-      />
-      <WorkCard
-        company="Selectel"
-        companyUrl="https://selectel.ru"
-        title="Редизайн CDN"
-        description="Вела редизайн страниц настройки CDN и участвовала в создании комплексной дизайн-системы."
-        caseStudyLink="/projects/story-redesign"
-      />
-      <WorkCard
-        company="Marquiz"
-        companyUrl="https://marquiz.io"
-        title="Редизайн дизайн-процесса"
-        description="Оптимизировала дизайн-процесс, внедрив новую структуру файлов Figma — улучшила совместную работу и эффективность."
-        caseStudyLink="/projects/marquiz-act-requests"
-      />
-    </div>
-  </section>
+  <PortfolioShowcase items={items} allLabel="Продуктовый дизайн" />
 </div>
 <Footer />

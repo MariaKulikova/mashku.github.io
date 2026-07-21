@@ -1,6 +1,17 @@
 /* Шрифт Outfit подключается через <link rel="preconnect"> + <link> в src/theme/Root.tsx
    (быстрее render-blocking @import и без дублирующего запроса). */
 
+/* Lineal (Velvetyne, OFL) — вариативный шрифт заголовков только для англ. локали.
+   Самохостинг: static/fonts/LinealVF.woff2 → /fonts/LinealVF.woff2. Один файл на
+   все веса (100–900). font-display: swap — не блокируем отрисовку. */
+@font-face {
+  font-family: 'Lineal';
+  src: url('/fonts/LinealVF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Font family */
   --ifm-font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
@@ -14,12 +25,18 @@
 
   /* Custom typography scale */
   --font-size-h1: clamp(32px, 4vw, 40px);
-  --font-size-hero: clamp(32px, 5vw, 52px);
+  --font-size-hero: clamp(28px, 4vw, 42px);
   --font-size-h2: clamp(24px, 3vw, 32px);
   --font-size-h3: clamp(20px, 2vw, 24px);
   --font-size-h4: clamp(16px, 1.8vw, 18px);
   --font-size-base: clamp(16px, 1.8vw, 18px);
   --font-size-small: clamp(12px, 1.4vw, 14px);
+}
+
+/* В английской локали заголовки набираем Lineal; в остальных остаётся Outfit.
+   Docusaurus проставляет <html lang> по локали — этого достаточно для скоупа. */
+html[lang='en'] {
+  --ifm-heading-font-family: 'Lineal', 'Outfit', system-ui, sans-serif;
 }
 
 /* Global typography styles */

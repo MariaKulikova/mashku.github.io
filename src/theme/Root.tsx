@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import BlueBuddy from '../components/blue-buddy/BlueBuddy';
+import SiteMenu from '../components/site-menu/SiteMenu';
+import SettingsMenu from '../components/site-menu/SettingsMenu';
 import { SITE_URL, OG_IMAGE, SOCIAL_PROFILE_URLS, YM_COUNTER_ID } from '../data/site';
 
 // schema.org Person — помогает поисковикам связать сайт с личностью автора
@@ -63,6 +65,8 @@ export default function Root({children}) {
         </script>
       </Head>
       <BlueBuddy />
+      <SiteMenu />
+      <SettingsMenu />
       {children}
       <noscript>
         <div>

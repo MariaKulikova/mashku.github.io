@@ -17,23 +17,11 @@
 
 .navbarInner {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* логотип убран (его заменяет плашка-меню) — контролы справа */
   align-items: center;
   width: 100%;
   max-width: var(--layout-max-width);
   padding: 0 var(--layout-padding);
-}
-
-.logo {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-5);
-  color: var(--color-text-heading);
-  text-decoration: none;
-}
-
-.logo:hover {
-  color: var(--color-text-heading);
-  text-decoration: none;
 }
 
 .controls {

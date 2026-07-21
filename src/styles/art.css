@@ -1,0 +1,104 @@
+/* Шапка страницы «Искусство»: заголовок+подзаголовок слева, кнопка справа. */
+.art-head {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: var(--hero-padding-top) var(--layout-padding) var(--space-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.art-head__text {
+  text-align: left;
+}
+
+.art-head__text .hero-heading {
+  margin-bottom: var(--space-sm);
+}
+
+@media (max-width: 640px) {
+  .art-head {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: var(--space-10);
+  }
+}
+
+/* Бегущая сетка работ: две строки, одна едет влево, другая вправо. */
+.art-marquee {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow: hidden;
+  margin-bottom: var(--space-10);
+}
+
+.art-row {
+  overflow: hidden;
+}
+
+.art-track {
+  display: flex;
+  gap: var(--space-md);
+  width: max-content;
+}
+
+.art-track--left {
+  animation: art-scroll-left 70s linear infinite;
+}
+
+.art-track--right {
+  animation: art-scroll-right 70s linear infinite;
+}
+
+/* Немного разной скорости у строк — движение выглядит живее. */
+.art-row:nth-child(2) .art-track {
+  animation-duration: 82s;
+}
+
+.art-row:nth-child(3) .art-track {
+  animation-duration: 64s;
+}
+
+.art-row:nth-child(4) .art-track {
+  animation-duration: 88s;
+}
+
+.art-row:nth-child(5) .art-track {
+  animation-duration: 74s;
+}
+
+.art-item {
+  flex: none;
+  height: 220px;
+}
+
+/* Белый фон — у работ без собственного фона (прозрачные PNG). */
+.art-item img {
+  height: 100%;
+  width: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--brand-white);
+}
+
+@keyframes art-scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes art-scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-track--left,
+  .art-track--right {
+    animation: none;
+  }
+}

@@ -1,0 +1,235 @@
+.showcase {
+  padding: var(--space-10) 0;
+}
+
+/* Полоса фильтра — брейк-аут из колонки .body (max-width 80rem) на всю ширину
+   вьюпорта. Внутренний ряд .filters возвращает контент в ту же колонку. */
+.band {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: var(--space-lg) 0;
+  margin-bottom: var(--space-10);
+  /* Появление вкладок по мере скролла (класс .bandIn добавляет JS). */
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--duration-slow, 0.6s) var(--ease-default),
+    transform var(--duration-slow, 0.6s) var(--ease-default);
+}
+
+.bandIn {
+  opacity: 1;
+  transform: none;
+}
+
+.filters {
+  position: relative; /* точка отсчёта для блоб-индикатора */
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--layout-padding);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl); /* воздух между вкладками, чтобы блобу было место */
+}
+
+/* Общий блоб-индикатор под активной вкладкой: едет (translate) и морфит форму
+   (border-radius) к выбранному чипу — эффект «перетекания». */
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: var(--color-accent);
+  pointer-events: none;
+  transition:
+    transform var(--duration-normal) var(--ease-default),
+    width var(--duration-normal) var(--ease-default),
+    height var(--duration-normal) var(--ease-default),
+    border-radius var(--duration-normal) var(--ease-default),
+    opacity var(--duration-fast) var(--ease-default);
+}
+
+/* Чип фильтра — без обводки/заливки (её даёт индикатор), типографика заголовков. */
+.chip {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-5);
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease-default),
+    color var(--duration-normal) var(--ease-default);
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  color: var(--color-accent);
+}
+
+/* Активный чип: только цвет текста — белый на заливке индикатора (синей/розовой). */
+.chipActive,
+.chipActive:hover {
+  color: var(--brand-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: opacity var(--duration-fast) var(--ease-default);
+  }
+
+  /* Без анимаций появления — контент сразу на месте. */
+  .band,
+  .cardItem {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Единая сетка карточек — в обычной колонке .body. Крупные карточки. */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-xl);
+  align-items: start; /* карточки по своей высоте, без растягивания на всю строку */
+}
+
+.cardItem {
+  display: flex;
+  /* Появление контента карточек — со стаггером (delay задаёт JS по индексу). */
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-normal) var(--ease-default),
+    transform var(--duration-normal) var(--ease-default);
+}
+
+.cardItemIn {
+  opacity: 1;
+  transform: none;
+}
+
+/* Карточка — без заливки, обводка цвета текста. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+  padding: var(--space-xl);
+  border: var(--border-size-1) solid var(--color-text-primary);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  text-decoration: none;
+}
+
+/* Превью проекта (там, где есть). */
+.imageWrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--card-img-bg, var(--color-surface));
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.cardTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-5);
+  color: var(--color-text-heading);
+}
+
+.cardSubtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.cardRole {
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: auto;
+}
+
+/* Тег-блоб: стеклянная заливка, органичная форма, типографика заголовков.
+   Форму варьируем через :nth-child — выглядит «рандомно» без JS. */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: var(--border-size-1) solid var(--color-text-primary);
+  color: var(--color-text-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: var(--font-size-base);
+  border-radius: 42% 58% 63% 37% / 53% 42% 58% 47%;
+}
+
+.tag:nth-child(4n + 2) {
+  border-radius: 63% 37% 42% 58% / 42% 63% 37% 58%;
+}
+
+.tag:nth-child(4n + 3) {
+  border-radius: 37% 63% 58% 42% / 63% 37% 47% 53%;
+}
+
+.tag:nth-child(4n) {
+  border-radius: 58% 42% 37% 63% / 37% 58% 63% 42%;
+}
+
+/* Значок «сделала сама» (vibecoded) — акцентная заливка, выделяется среди тегов. */
+.tagVibe {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--brand-white);
+}
+
+@media (max-width: 768px) {
+  .showcase {
+    padding: var(--space-3xl) 0;
+  }
+
+  .band {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

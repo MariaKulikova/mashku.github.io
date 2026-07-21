@@ -1,0 +1,8 @@
+/* Контейнеру Leaflet нужна явная высота. */
+.map {
+  width: 100%;
+  height: 70vh;
+  min-height: 360px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}

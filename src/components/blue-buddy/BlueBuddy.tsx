@@ -9,6 +9,14 @@ const HIDDEN_NORMAL = 120;
 const LERP = 0.003;
 const HIDE_LERP = 0.02;
 
+// --- Реакция на наведение: буба пугается и убегает за экран ---
+const BUDDY_R = SIZE / 2; // радиус тела бубы (100) — для детекта наведения
+const STARTLE_HOLD = 13; // кадров держим «удивление» (глаза расширены) до бегства
+const FLEE_LERP = 0.09; // скорость бегства (меньше = медленнее уезжает)
+const FLEE_HIDDEN = SIZE + 80; // насколько глубоко уезжает за край
+const GONE_FRAMES = 180; // сколько кадров прячется перед возвращением (~3с)
+const REARM_MARGIN = 60; // курсор должен отойти на столько, чтобы буба снова пугалась
+
 /**
  * No rotation. The buddy always looks the same (eyes at bottom of circle).
  * It slides along the current edge, and when it needs to change edge:
@@ -52,7 +60,7 @@ function edgeToXY(edge: Edge, slide: number, hidden: number, vw: number, vh: num
   }
 }
 
-type Phase = 'visible' | 'hiding' | 'hidden' | 'showing';
+type Phase = 'visible' | 'hiding' | 'hidden' | 'showing' | 'startled' | 'fleeing' | 'gone';
 
 export default function BlueBuddy() {
   const elRef = useRef<HTMLDivElement>(null);
@@ -71,9 +79,33 @@ export default function BlueBuddy() {
 
   const raf = useRef(0);
 
+  // Реакция на наведение (испуг/бегство).
+  const cursor = useRef({ x: -9999, y: -9999 }); // последняя позиция курсора
+  const goneFrames = useRef(0);
+  const holdFrames = useRef(0); // сколько держим «удивление» перед бегством
+  const armed = useRef(true); // готова ли пугаться (перевзводится, когда курсор ушёл)
+  const [surprised, setSurprised] = useState(false); // прокидываем в глаза
+
+  const reducedMotion = useRef(false);
+
   const tick = useCallback(() => {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
+
+    // Детект наведения — каждый кадр (надёжно с первого раза и при неподвижном
+    // курсоре, когда буба сама подъезжает под него).
+    if (!reducedMotion.current && phase.current === 'visible') {
+      const p = edgeToXY(currentEdge.current, currentSlide.current, currentHidden.current, vw, vh);
+      const d = Math.hypot(cursor.current.x - (p.x + SIZE / 2), cursor.current.y - (p.y + SIZE / 2));
+      if (armed.current && d < BUDDY_R) {
+        phase.current = 'startled';
+        holdFrames.current = 0;
+        armed.current = false;
+        setSurprised(true);
+      } else if (!armed.current && d > BUDDY_R + REARM_MARGIN) {
+        armed.current = true;
+      }
+    }
 
     switch (phase.current) {
       case 'visible':
@@ -114,6 +146,39 @@ export default function BlueBuddy() {
           currentHidden.current = HIDDEN_NORMAL;
         }
         break;
+
+      case 'startled': {
+        // Тело не увеличиваем — только глаза (surprised). Лёгкий баунс: буба
+        // «отшатывается» внутрь экрана с затухающим покачиванием, потом убегает.
+        const b = ++holdFrames.current;
+        const bounce = Math.sin(b * 0.6) * 16 * Math.exp(-b * 0.12);
+        currentHidden.current = HIDDEN_NORMAL - bounce;
+        if (b > STARTLE_HOLD) {
+          phase.current = 'fleeing';
+        }
+        break;
+      }
+
+      case 'fleeing':
+        // Уезжает за край (не спеша).
+        currentHidden.current += (FLEE_HIDDEN - currentHidden.current) * FLEE_LERP;
+        if (currentHidden.current > FLEE_HIDDEN - 6) {
+          phase.current = 'gone';
+          goneFrames.current = 0;
+          setSurprised(false); // за экраном — можно вернуть глаза в норму
+        }
+        break;
+
+      case 'gone':
+        // Прячется за экраном, затем возвращается (заезжает как в 'showing').
+        currentHidden.current = FLEE_HIDDEN;
+        if (++goneFrames.current > GONE_FRAMES) {
+          currentEdge.current = targetEdge.current;
+          setVisibleEdge(targetEdge.current);
+          currentSlide.current = pendingSlide.current;
+          phase.current = 'showing';
+        }
+        break;
     }
 
     const { x, y } = edgeToXY(currentEdge.current, currentSlide.current, currentHidden.current, vw, vh);
@@ -135,6 +200,12 @@ export default function BlueBuddy() {
     currentSlide.current = startX;
     targetSlide.current = startX;
 
+    // Уважаем системную настройку «уменьшить движение»: отключаем отталкивание.
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    reducedMotion.current = mq.matches;
+    const onMq = (e: MediaQueryListEvent) => { reducedMotion.current = e.matches; };
+    mq.addEventListener('change', onMq);
+
     const onMove = (e: MouseEvent) => {
       const vw = window.innerWidth;
       const vh = window.innerHeight;
@@ -148,6 +219,10 @@ export default function BlueBuddy() {
       }
       // Always update pending slide for when teleport happens
       pendingSlide.current = newSlide;
+
+      // Запоминаем позицию курсора — детект наведения делает RAF-цикл (tick).
+      cursor.current.x = e.clientX;
+      cursor.current.y = e.clientY;
     };
 
     window.addEventListener('mousemove', onMove);
@@ -155,6 +230,7 @@ export default function BlueBuddy() {
 
     return () => {
       window.removeEventListener('mousemove', onMove);
+      mq.removeEventListener('change', onMq);
       cancelAnimationFrame(raf.current);
     };
   }, [tick]);
@@ -162,7 +238,7 @@ export default function BlueBuddy() {
   return (
     <div ref={elRef} className={`${styles.buddy} ${styles[visibleEdge] || ''}`}>
       <div className={styles.eyesWrapper}>
-        <AnimatedEyes />
+        <AnimatedEyes surprised={surprised} />
       </div>
     </div>
   );

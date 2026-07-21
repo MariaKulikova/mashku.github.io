@@ -1,0 +1,124 @@
+/* Плавающая перетаскиваемая плашка-меню поверх страницы. */
+.menu {
+  position: fixed;
+  z-index: 1100; /* выше навбара (999) и бубы (1000) */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-tag);
+  cursor: grab;
+  touch-action: none; /* чтобы pointer-drag не скроллил страницу */
+  user-select: none;
+  transition:
+    opacity var(--duration-normal) var(--ease-default),
+    padding var(--duration-normal) var(--ease-default),
+    border-radius var(--duration-normal) var(--ease-default);
+}
+
+.menu:active {
+  cursor: grabbing;
+}
+
+/* Схлопнутое состояние: компактный блоб. Разворачивается по ховеру. */
+.collapsed {
+  padding: var(--space-sm);
+  align-items: center;
+  border-radius: 46% 54% 57% 43% / 54% 46% 54% 46%;
+}
+
+/* Точка в схлопнутом левом меню. */
+.dot {
+  width: var(--space-4);
+  height: var(--space-4);
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: menu-pop var(--duration-normal) var(--ease-default);
+}
+
+/* Обёртка последнего использованного контрола в схлопнутой правой плашке. */
+.blob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: menu-pop var(--duration-normal) var(--ease-default);
+}
+
+@keyframes menu-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  animation: menu-pop var(--duration-normal) var(--ease-default);
+}
+
+/* Тело плашки настроек: ряд «язык + звук» сверху, тема ниже. */
+.settingsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  animation: menu-pop var(--duration-normal) var(--ease-default);
+}
+
+.settingsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.link {
+  display: block;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-5);
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) var(--ease-default),
+    background-color var(--duration-fast) var(--ease-default);
+}
+
+.link:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.active {
+  background: var(--color-accent);
+  color: var(--brand-white);
+}
+
+.active:hover {
+  color: var(--brand-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    transition: opacity var(--duration-normal) var(--ease-default);
+  }
+
+  .dot,
+  .blob,
+  .list,
+  .settingsBody {
+    animation: none;
+  }
+}

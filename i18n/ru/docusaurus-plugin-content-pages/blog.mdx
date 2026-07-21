@@ -1,0 +1,33 @@
+---
+title: Блог
+description: Посты из Telegram-канала
+hide_table_of_contents: true
+---
+
+import Footer from '@site/src/components/footer/Footer';
+import OutlinedButton from '@site/src/components/outlined-button/OutlinedButton';
+import TelegramEmbed from '@site/src/components/telegram-embed/TelegramEmbed';
+import '@site/src/styles/general.css'
+import '@site/src/styles/index.css'
+import '@site/src/styles/typography.css'
+import '@site/src/styles/blog.css'
+
+<div className="body">
+
+{/* Свежие посты канала Nomadic Eye (@nomadic_eye). */}
+  <div className="blog-grid">
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/282" /></div>
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/281" /></div>
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/280" /></div>
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/279" /></div>
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/269" /></div>
+    <div className="blog-post"><TelegramEmbed post="nomadic_eye/268" /></div>
+  </div>
+
+  <div className="blog-cta">
+    <OutlinedButton to="https://t.me/nomadic_eye">
+      <span>Открыть канал</span>
+    </OutlinedButton>
+  </div>
+</div>
+<Footer />

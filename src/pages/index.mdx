@@ -4,12 +4,23 @@ description: UX Designer creating user interfaces for complex B2C and B2B produc
 hide_table_of_contents: true
 ---
 
-import WorkCard from '../components/work-card/WorkCard';
+import PortfolioShowcase from '../components/portfolio-showcase/PortfolioShowcase';
 import Footer from '../components/footer/Footer';
-import ProjectLink from '../components/project-link/ProjectLink';
 import '../styles/general.css'
 import '../styles/index.css'
 import '../styles/typography.css'
+
+{/* disciplines → вкладки-фильтр; tags → сфера/аудитория/стадия на карточке;
+    role → моя роль; vibecoded → сама спроектировала и собрала. Правь свободно. */}
+export const items = [
+  { title: 'AI Assistant and Startup spirit', subtitle: 'Shiftgears.ai', role: 'Sole designer — built the product from scratch', url: 'https://shiftgears.ai', disciplines: ['UI / Graphic Design', 'Experience & Interaction'], tags: ['AI', 'B2C', 'Startup'], vibecoded: true },
+  { title: 'CDN Redesign', subtitle: 'Selectel', role: 'Lead designer — CDN pages & design system', url: 'https://selectel.ru', caseStudyUrl: '/projects/story-redesign', disciplines: ['Experience & Interaction', 'Design Systems'], tags: ['CloudTech', 'B2B', 'Enterprise'] },
+  { title: 'Redesigning the design process', subtitle: 'Marquiz', role: 'Senior product designer', url: 'https://marquiz.io', caseStudyUrl: '/projects/marquiz-act-requests', disciplines: ['Design Systems'], tags: ['MarTech', 'B2B'] },
+  { title: 'Posmotrim.design', subtitle: 'Design tool', role: 'Designed & built it myself', url: 'https://posmotrim.design', image: '/img/previews/posmotrim.jpg', disciplines: ['UI / Graphic Design'], tags: ['B2B'], vibecoded: true },
+  { title: 'Coffee Drinker Bot', subtitle: 'Telegram bot', role: 'Designed & built it myself', url: 'https://t.me/CoffeeDrinker_Bot', caseStudyUrl: '/projects/coffee-drinker-bot', image: '/img/previews/coffee.png', imageBg: '#ffffff', disciplines: ['UI / Graphic Design', 'Experience & Interaction'], tags: ['B2C'], vibecoded: true },
+  { title: 'Nomadic Eye', subtitle: 'Telegram', role: 'Personal project', url: 'https://t.me/nomadic_eye', caseStudyUrl: '/projects/nomadic-eye', image: '/img/previews/nomadic.jpg', imageBg: '#eae9ee', disciplines: ['UI / Graphic Design'], tags: ['B2C'], vibecoded: true },
+  { title: 'Mashku Art', subtitle: 'Art', role: 'Designed & built it myself', url: 'https://mashku-art.pages.dev/', caseStudyUrl: '/projects/mashku-art', image: '/img/previews/mashku-art.jpg', imageBg: '#ffffff', disciplines: ['UI / Graphic Design'], tags: ['B2C'], vibecoded: true },
+];
 
 
 <div className="body">
@@ -20,40 +31,6 @@ import '../styles/typography.css'
     </div>
   </section>
 
-  <section className="section projects">
-    <h2>Projects</h2>
-    <div className="projects-list">
-      <ProjectLink href="https://posmotrim.design" preview="/img/previews/posmotrim.jpg">Posmotrim.design</ProjectLink>
-      <ProjectLink href="https://t.me/CoffeeDrinker_Bot" preview="/img/previews/coffee.png" previewBg="#ffffff">Coffee Drinker Bot</ProjectLink>
-      <ProjectLink href="https://t.me/nomadic_eye" preview="/img/previews/nomadic.jpg" previewBg="#eae9ee">Nomadic Eye</ProjectLink>
-      <ProjectLink href="https://mashku-art.pages.dev/" preview="/img/previews/mashku-art.jpg" previewBg="#ffffff">Mashku Art</ProjectLink>
-    </div>
-  </section>
-
-  <section className="section work">
-    <h2>Work</h2>
-    <div className="work-grid">
-      <WorkCard
-        company="Shiftgears.ai"
-        companyUrl="https://shiftgears.ai"
-        title="AI Assistant and Startup spirit"
-        description="Designed the AI car assistant interface from scratch, creating clear and simple screens to help users easily find used cars."
-      />
-      <WorkCard
-        company="Selectel"
-        companyUrl="https://selectel.ru"
-        title="CDN Redesign"
-        description="Led the redesign of CDN configuration pages and contributed to building a comprehensive design system."
-        caseStudyLink="/projects/story-redesign"
-      />
-      <WorkCard
-        company="Marquiz"
-        companyUrl="https://marquiz.io"
-        title="Redesigning the design process"
-        description="Optimized the design process by implementing a new Figma file structure, improving collaboration and efficiency."
-        caseStudyLink="/projects/marquiz-act-requests"
-      />
-    </div>
-  </section>
+  <PortfolioShowcase items={items} allLabel="Product Design" />
 </div>
 <Footer />

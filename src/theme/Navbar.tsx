@@ -1,8 +1,7 @@
 import React from 'react';
-import CustomNavbar from '../components/navbar/Navbar';
 
-const Navbar: React.FC = () => {
-  return <CustomNavbar />;
-};
+// Навбар убран: меню — в перетаскиваемой плашке слева (SiteMenu),
+// настройки (язык/звук/тема) — в плашке справа (SettingsMenu). Обе в Root.
+const Navbar: React.FC = () => null;
 
 export default Navbar;
