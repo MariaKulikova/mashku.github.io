@@ -72,6 +72,15 @@ export function useDraggable(storageKey: string, defaultPos: Pos) {
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (e.button !== 0) return;
+      // Не начинаем перетаскивание с интерактивных контролов (кнопка/ссылка/свотч/
+      // инпут) — иначе клик по ним «съедается» драгом и трудно попасть в кнопку.
+      if (
+        (e.target as HTMLElement).closest(
+          'button, a, input, select, label, [role="radio"], [role="button"]',
+        )
+      ) {
+        return;
+      }
       drag.current = {
         active: true,
         moved: false,

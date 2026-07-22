@@ -96,7 +96,11 @@ export default function BlueBuddy() {
     // курсоре, когда буба сама подъезжает под него).
     if (!reducedMotion.current && phase.current === 'visible') {
       const p = edgeToXY(currentEdge.current, currentSlide.current, currentHidden.current, vw, vh);
-      const d = Math.hypot(cursor.current.x - (p.x + SIZE / 2), cursor.current.y - (p.y + SIZE / 2));
+      // Центр ВИДИМОЙ части бубы (часть спрятана за краем): геометрический центр
+      // уходит за экран, и наведение на видимые глаза не всегда засчитывалось.
+      const cx = (Math.max(0, p.x) + Math.min(vw, p.x + SIZE)) / 2;
+      const cy = (Math.max(0, p.y) + Math.min(vh, p.y + SIZE)) / 2;
+      const d = Math.hypot(cursor.current.x - cx, cursor.current.y - cy);
       if (armed.current && d < BUDDY_R) {
         phase.current = 'startled';
         holdFrames.current = 0;
@@ -148,11 +152,11 @@ export default function BlueBuddy() {
         break;
 
       case 'startled': {
-        // Тело не увеличиваем — только глаза (surprised). Лёгкий баунс: буба
-        // «отшатывается» внутрь экрана с затухающим покачиванием, потом убегает.
+        // Тело не увеличиваем — только глаза (surprised). Плавное «отшатывание»
+        // внутрь экрана (ease-out, без резкого подпрыгивания), потом убегает.
         const b = ++holdFrames.current;
-        const bounce = Math.sin(b * 0.6) * 16 * Math.exp(-b * 0.12);
-        currentHidden.current = HIDDEN_NORMAL - bounce;
+        const recoil = 22 * (1 - Math.exp(-b * 0.16));
+        currentHidden.current = HIDDEN_NORMAL - recoil;
         if (b > STARTLE_HOLD) {
           phase.current = 'fleeing';
         }

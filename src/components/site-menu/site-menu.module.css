@@ -22,6 +22,14 @@
   cursor: grabbing;
 }
 
+/* Интерактивные контролы кликаются, а не тащат плашку — обычный курсор. */
+.menu button,
+.menu a,
+.menu label,
+.menu input {
+  cursor: pointer;
+}
+
 /* Схлопнутое состояние: компактный блоб. Разворачивается по ховеру. */
 .collapsed {
   padding: var(--space-sm);

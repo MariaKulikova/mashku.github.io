@@ -1,0 +1,182 @@
+/* Мокап главного экрана posmotrim.design. Внутренние размеры — в cqw (container
+   query width), сняты с оригинала (контейнер ~1200px): заголовок 108px→9cqw,
+   карточка 336px→28cqw, её заголовок 20px→1.7cqw, тело 14px→1.2cqw, паддинг
+   32px→2.7cqw, радиус 16px→1.3cqw, навигация 14px→1.2cqw, соцы 40px→3.3cqw.
+   Синие карточки — белый текст; зелёные — тёмный заголовок + серое тело.
+   Шрифт — нейтральный гротеск; цвета — фактические цвета продукта. */
+.mockup {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f7f7f5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  font-family: var(--ifm-font-family-base);
+  user-select: none;
+}
+
+.title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 9cqw;
+  letter-spacing: -0.02em;
+  color: #212529;
+  pointer-events: none;
+}
+
+/* Меню сверху: лого слева, разделы справа. */
+.nav {
+  position: absolute;
+  top: 4%;
+  left: 3%;
+  right: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Лого и пункты меню — одинаковой высоты (общая переменная). */
+.logo,
+.navItem {
+  height: 3.6cqw;
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  padding: 0 1.6cqw;
+}
+
+.logoImg {
+  height: 2cqw;
+  width: auto;
+  display: block;
+}
+
+.navItems {
+  display: inline-flex;
+  gap: 0.9cqw;
+}
+
+.navItem {
+  padding: 0 1.6cqw;
+  color: #212529;
+  font-size: 1.05cqw;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Соцсети — вертикально у правого края, в светлой капсуле. Иконки одного пака. */
+.socials {
+  position: absolute;
+  right: 1.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4cqw;
+  padding: 0.8cqw 0.4cqw;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.social {
+  width: 2.2cqw;
+  height: 2.2cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #212529;
+}
+
+.social svg {
+  width: 78%;
+  height: 78%;
+  fill: currentColor;
+}
+
+.cardWrap {
+  position: absolute;
+  width: 28cqw;
+  transition: transform 0.35s var(--ease-default);
+  will-change: transform;
+  z-index: 2;
+  cursor: grab;
+  touch-action: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8cqw;
+  padding: 2.7cqw;
+  border-radius: 1.3cqw;
+  text-align: left;
+  transform: rotate(var(--rot));
+  transition: transform 0.25s var(--ease-default), box-shadow 0.25s var(--ease-default);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Наведение: карточка выравнивается, поднимается и слегка увеличивается. */
+.cardWrap:hover .card {
+  transform: rotate(0deg) translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 1.7cqw;
+  line-height: 1.1;
+  color: #212529;
+}
+
+.cardBody {
+  font-size: 1.2cqw;
+  line-height: 1.3;
+  color: #495057;
+}
+
+/* Синие карточки — белый текст (заголовок и тело). */
+.cardLight .cardTitle,
+.cardLight .cardBody {
+  color: #fff;
+}
+
+/* Чёрная пилюля-CTA: выровнена по правому краю «ПОСМОТРИМ» (right ≈ инсет заголовка),
+   чуть ниже и компактнее. */
+.cta {
+  position: absolute;
+  right: 21%;
+  top: 59%;
+  display: inline-flex;
+  align-items: center;
+  padding: 1cqw 1.6cqw;
+  border-radius: 999px;
+  background: #212529;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1cqw;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardWrap,
+  .card {
+    transition: none;
+  }
+}

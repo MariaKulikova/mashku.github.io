@@ -1,80 +1,71 @@
-import React, {
-  useMemo,
-  useState,
-  useRef,
-  useEffect,
-  useLayoutEffect,
-  useCallback,
-} from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import Link from '@docusaurus/Link';
+import PosmotrimMockup from '../posmotrim-mockup/PosmotrimMockup';
 import styles from './portfolio-showcase.module.css';
-
-// SSR-safe layout effect (в браузере — до отрисовки, на сервере — no-op без варнинга).
-const useIsoLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
-// Радиус блоба считаем в пикселях от высоты (а не % от ширины) — иначе на широких
-// вкладках форма вырождается в «линзу» с острыми концами и режет крайние буквы.
-// Множители по углам дают органичную асимметрию; два набора — для морфа при переключении.
-// Органичная блоб-форма (проценты) — как была изначально. Две вариации для морфа.
-// От обрезки текста спасает не форма, а запас блоба вокруг лейбла (padX/padY в measure).
-// Радиус в пикселях от высоты: вертикальный = r (=h/2) → бока полностью скруглены
-// (не «срезаны»); горизонтальный варьируем (органичные концы). Текст держим за
-// пределами угловой зоны запасом padX, поэтому он не режется при любой ширине.
-function blobRadius(h: number, variant: number): string {
-  const r = h / 2;
-  const hx =
-    variant % 2 === 0 ? [1.0, 1.55, 1.3, 0.85] : [1.45, 0.9, 1.05, 1.4];
-  const parts = hx.map((k) => `${(r * k).toFixed(1)}px`).join(' ');
-  return `${parts} / ${r}px ${r}px ${r}px ${r}px`;
-}
 
 export type PortfolioItem = {
   title: string;
   subtitle?: string; // компания или тип (напр. 'Shiftgears.ai', 'Telegram bot')
   role?: string; // моя роль в проекте
   url: string; // внешний ресурс проекта
-  disciplines: string[]; // дисциплины — по ним работает фильтр-вкладки
+  disciplines: string[]; // дисциплины — показываем тегами на карточке
   tags: string[]; // теги карточки: сфера/аудитория/стадия (CloudTech, B2B, Startup…)
   vibecoded?: boolean; // спроектировала и собрала сама → значок
-  caseStudyUrl?: string; // внутренняя страница проекта/кейса — если есть, клик по карточке ведёт сюда
+  caseStudyUrl?: string; // внутренняя страница проекта/кейса — если есть, клик ведёт сюда
   image?: string; // превью (если есть)
   imageBg?: string; // подложка под превью-леттербокс
 };
 
 type Props = {
   items: PortfolioItem[];
-  allLabel?: string;
+  allLabel?: string; // больше не используется (оставлен для совместимости вызова)
 };
 
+// Ссылка карточки: внутренний кейс (Link) или внешний ресурс (a).
+function cardTags(item: PortfolioItem) {
+  return [...item.disciplines, ...item.tags];
+}
+
 /**
- * Полноширинная полоса тегов-фильтра + единая сетка карточек проектов и работ.
- * Активную вкладку подсвечивает один общий блоб-индикатор, который «перетекает»
- * (едет + морфит форму) к выбранной вкладке. Клик по карточке ведёт на внутреннюю
- * страницу (caseStudyUrl), если есть, иначе — на внешний ресурс.
+ * Витрина проектов без вкладок-фильтра: сверху — облако тегов (по всем проектам),
+ * затем избранный проект Posmotrim.design во всю ширину (интерактивный мокап слева,
+ * описание справа, без обводки), ниже — сетка остальных проектов. Все проекты
+ * показываются сразу, дисциплины и теги — прямо на карточках.
  */
-export default function PortfolioShowcase({ items, allLabel = 'All' }: Props) {
-  const [active, setActive] = useState(allLabel);
+export default function PortfolioShowcase({ items }: Props) {
+  // Активный тег из облака: null → показываем все проекты; иначе — только с этим тегом.
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  // Вкладки: allLabel (=«всё», умбрелла) + дисциплины в порядке первого появления.
-  const categories = useMemo(() => {
-    const seen: string[] = [];
-    for (const item of items) {
-      for (const d of item.disciplines) {
-        if (!seen.includes(d)) seen.push(d);
-      }
-    }
-    return [allLabel, ...seen];
-  }, [items, allLabel]);
-
-  const visible = items.filter(
-    (item) => active === allLabel || item.disciplines.includes(active),
+  const filtered = useMemo(
+    () => (activeTag ? items.filter((i) => cardTags(i).includes(activeTag)) : items),
+    [items, activeTag],
+  );
+  // Избранные проекты с крупными обложками (Posmotrim — интерактивный мокап,
+  // ShiftGears — обложка-скриншот). Остальные — обычной сеткой.
+  const posmotrim = useMemo(() => filtered.find((i) => i.url.includes('posmotrim')), [filtered]);
+  const shift = useMemo(() => filtered.find((i) => i.url.includes('shiftgears')), [filtered]);
+  const rest = useMemo(
+    () => filtered.filter((i) => i !== posmotrim && i !== shift),
+    [filtered, posmotrim, shift],
   );
 
-  // --- Поэтапное появление: вкладки и карточки въезжают по мере скролла ---
+  // Облако тегов: частота дисциплин+тегов по всем проектам → размер и насыщенность.
+  const cloud = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const it of items) {
+      for (const t of [...it.disciplines, ...it.tags]) counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+    const max = Math.max(1, ...[...counts.values()]);
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([tag, count]) => ({ tag, w: count / max }));
+  }, [items]);
+
+  // Поэтапное появление: облако и контент въезжают по мере скролла.
   const bandRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLUListElement>(null);
-  const [tabsIn, setTabsIn] = useState(false);
+  const [cloudIn, setCloudIn] = useState(false);
   const [cardsIn, setCardsIn] = useState(false);
 
   useEffect(() => {
@@ -82,7 +73,7 @@ export default function PortfolioShowcase({ items, allLabel = 'All' }: Props) {
       typeof window !== 'undefined' &&
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (typeof IntersectionObserver === 'undefined' || reduce) {
-      setTabsIn(true);
+      setCloudIn(true);
       setCardsIn(true);
       return;
     }
@@ -90,176 +81,146 @@ export default function PortfolioShowcase({ items, allLabel = 'All' }: Props) {
       (entries) => {
         for (const e of entries) {
           if (!e.isIntersecting) continue;
-          if (e.target === bandRef.current) setTabsIn(true);
-          if (e.target === gridRef.current) setCardsIn(true);
+          if (e.target === bandRef.current) setCloudIn(true);
+          if (e.target === contentRef.current) setCardsIn(true);
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.12 },
     );
     if (bandRef.current) obs.observe(bandRef.current);
-    if (gridRef.current) obs.observe(gridRef.current);
+    if (contentRef.current) obs.observe(contentRef.current);
     return () => obs.disconnect();
   }, []);
 
-  // --- Блоб-индикатор ---
-  const filtersRef = useRef<HTMLDivElement>(null);
-  const chipRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const [indicator, setIndicator] = useState({
-    x: 0,
-    y: 0,
-    w: 0,
-    h: 0,
-    ready: false,
-  });
-  // Счётчик переключений — по его чётности чередуем форму блоба (гарантирует морф).
-  const [switchCount, setSwitchCount] = useState(0);
+  const renderCardInner = (item: PortfolioItem) => (
+    <>
+      {item.image && (
+        <span
+          className={styles.imageWrap}
+          style={{ '--card-img-bg': item.imageBg } as React.CSSProperties}
+        >
+          <img className={styles.image} src={item.image} alt="" loading="lazy" />
+        </span>
+      )}
+      <span className={styles.cardTop}>
+        <span className={styles.cardTitle}>{item.title}</span>
+        {item.subtitle && <span className={styles.cardSubtitle}>{item.subtitle}</span>}
+        {item.role && <span className={styles.cardRole}>{item.role}</span>}
+      </span>
+      <span className={styles.tags}>
+        {item.vibecoded && <span className={styles.tag}>⚡ Vibecoded</span>}
+        {cardTags(item).map((tag) => (
+          <span key={tag} className={styles.tag}>
+            {tag}
+          </span>
+        ))}
+      </span>
+    </>
+  );
 
-  const measure = useCallback(() => {
-    const el = chipRefs.current[active];
-    if (!el) return;
-    // Запас вокруг лейбла: органичная (%) форма — «линза», поэтому текст должен
-    // сидеть в её полной центральной зоне. padX — горизонтальный воздух (в пределах,
-    // чтобы блоб не доставал до соседних лейблов), padY — чтобы бока были достаточно
-    // высокими и не срезали верх/низ крайних букв.
-    const padX = 16;
-    const padY = 4;
-    setIndicator({
-      x: el.offsetLeft - padX,
-      y: el.offsetTop - padY,
-      w: el.offsetWidth + padX * 2,
-      h: el.offsetHeight + padY * 2,
-      ready: true,
-    });
-  }, [active]);
-
-  // Пересчёт позиции при смене вкладки (до отрисовки — без мелькания).
-  useIsoLayoutEffect(() => {
-    measure();
-  }, [measure]);
-
-  // Морф формы — на каждое переключение.
-  useIsoLayoutEffect(() => {
-    setSwitchCount((c) => c + 1);
-  }, [active]);
-
-  // Пересчёт при ресайзе и после загрузки шрифта (меняется ширина чипов).
-  useEffect(() => {
-    const onResize = () => measure();
-    window.addEventListener('resize', onResize);
-    let cancelled = false;
-    if (typeof document !== 'undefined' && document.fonts?.ready) {
-      document.fonts.ready.then(() => {
-        if (!cancelled) measure();
-      });
-    }
-    return () => {
-      cancelled = true;
-      window.removeEventListener('resize', onResize);
-    };
-  }, [measure]);
+  // Избранный проект: крупная обложка + карточка-описание, наезжающая на её угол.
+  // Клик по названию — на сайт. mirror → обложка справа, карточка слева (ритм).
+  const renderFeatured = (item: PortfolioItem, cover: React.ReactNode, mirror: boolean) => (
+    <div
+      className={`${styles.featured} ${mirror ? styles.featuredMirror : ''} ${cardsIn ? styles.featuredIn : ''}`}
+    >
+      <div className={styles.featuredInner}>
+        <div className={styles.featuredMockup}>{cover}</div>
+        <div className={styles.featuredCard}>
+          <a
+            className={styles.featuredTitle}
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.title}
+          </a>
+          {item.subtitle && <span className={styles.featuredSubtitle}>{item.subtitle}</span>}
+          {item.role && <span className={styles.featuredRole}>{item.role}</span>}
+          <span className={styles.tags}>
+            {item.vibecoded && <span className={styles.tag}>⚡ Vibecoded</span>}
+            {cardTags(item).map((tag) => (
+              <span key={tag} className={styles.tag}>
+                {tag}
+              </span>
+            ))}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section className={styles.showcase}>
-      {/* Полоса фильтра — на всю ширину вьюпорта (брейк-аут из колонки .body). */}
-      <div ref={bandRef} className={`${styles.band} ${tabsIn ? styles.bandIn : ''}`}>
-        <div
-          ref={filtersRef}
-          className={styles.filters}
-          role="group"
-          aria-label="Filter by category"
-        >
-          <span
-            className={styles.indicator}
-            aria-hidden="true"
-            style={{
-              opacity: indicator.ready ? 1 : 0,
-              width: `${indicator.w}px`,
-              height: `${indicator.h}px`,
-              transform: `translate(${indicator.x}px, ${indicator.y}px)`,
-              borderRadius: blobRadius(indicator.h, switchCount),
-            }}
-          />
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              ref={(el) => {
-                chipRefs.current[cat] = el;
-              }}
-              className={`${styles.chip} ${active === cat ? styles.chipActive : ''}`}
-              aria-pressed={active === cat}
-              onClick={() => setActive(cat)}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* Облако тегов — на всю ширину вьюпорта (брейк-аут из колонки .body). */}
+      <div ref={bandRef} className={`${styles.band} ${cloudIn ? styles.bandIn : ''}`}>
+        <div className={styles.cloud} role="group" aria-label="Фильтр по тегам">
+          {cloud.map(({ tag, w }) => {
+            const active = activeTag === tag;
+            return (
+              <button
+                type="button"
+                key={tag}
+                className={`${styles.cloudTag} ${active ? styles.cloudTagActive : ''}`}
+                aria-pressed={active}
+                onClick={() => setActiveTag((cur) => (cur === tag ? null : tag))}
+                style={{
+                  fontSize: `${(0.95 + w * 1.3).toFixed(2)}rem`,
+                  opacity: active || !activeTag ? (0.5 + w * 0.5).toFixed(2) : 0.3,
+                }}
+              >
+                {tag}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <ul ref={gridRef} className={styles.grid}>
-        {visible.map((item, idx) => {
-          const internal = Boolean(item.caseStudyUrl);
-          const href = item.caseStudyUrl ?? item.url;
+      <div ref={contentRef}>
+        {/* Избранные проекты крупными обложками. */}
+        {posmotrim && renderFeatured(posmotrim, <PosmotrimMockup />, false)}
+        {shift &&
+          renderFeatured(
+            shift,
+            <img
+              className={styles.coverImg}
+              src="/img/shiftgears-cover.jpg"
+              alt=""
+              loading="lazy"
+            />,
+            true,
+          )}
 
-          const inner = (
-            <>
-              {item.image && (
-                <span
-                  className={styles.imageWrap}
-                  style={{ '--card-img-bg': item.imageBg } as React.CSSProperties}
-                >
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt=""
-                    loading="lazy"
-                  />
-                </span>
-              )}
-              <span className={styles.cardTop}>
-                <span className={styles.cardTitle}>{item.title}</span>
-                {item.subtitle && (
-                  <span className={styles.cardSubtitle}>{item.subtitle}</span>
+        {/* Остальные проекты — сетка карточек (с обводкой). */}
+        <ul ref={gridRef} className={styles.grid}>
+          {rest.map((item, idx) => {
+            const internal = Boolean(item.caseStudyUrl);
+            const href = item.caseStudyUrl ?? item.url;
+            return (
+              <li
+                key={item.title}
+                className={`${styles.cardItem} ${cardsIn ? styles.cardItemIn : ''}`}
+                style={{ transitionDelay: cardsIn ? `${idx * 70}ms` : '0ms' }}
+              >
+                {internal ? (
+                  <Link className={styles.card} to={href}>
+                    {renderCardInner(item)}
+                  </Link>
+                ) : (
+                  <a
+                    className={styles.card}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {renderCardInner(item)}
+                  </a>
                 )}
-                {item.role && <span className={styles.cardRole}>{item.role}</span>}
-              </span>
-              <span className={styles.tags}>
-                {item.vibecoded && (
-                  <span className={`${styles.tag} ${styles.tagVibe}`}>⚡ Vibecoded</span>
-                )}
-                {item.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
-              </span>
-            </>
-          );
-
-          return (
-            <li
-              key={item.title}
-              className={`${styles.cardItem} ${cardsIn ? styles.cardItemIn : ''}`}
-              style={{ transitionDelay: cardsIn ? `${idx * 70}ms` : '0ms' }}
-            >
-              {internal ? (
-                <Link className={styles.card} to={href}>
-                  {inner}
-                </Link>
-              ) : (
-                <a
-                  className={styles.card}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {inner}
-                </a>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }

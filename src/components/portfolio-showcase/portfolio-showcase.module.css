@@ -2,14 +2,13 @@
   padding: var(--space-10) 0;
 }
 
-/* Полоса фильтра — брейк-аут из колонки .body (max-width 80rem) на всю ширину
-   вьюпорта. Внутренний ряд .filters возвращает контент в ту же колонку. */
+/* Полоса облака тегов — брейк-аут из колонки .body на всю ширину вьюпорта. */
 .band {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   padding: var(--space-lg) 0;
   margin-bottom: var(--space-10);
-  /* Появление вкладок по мере скролла (класс .bandIn добавляет JS). */
+  /* Появление по мере скролла (класс .bandIn добавляет JS). */
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -22,75 +21,172 @@
   transform: none;
 }
 
-.filters {
-  position: relative; /* точка отсчёта для блоб-индикатора */
+/* Облако тегов (частота дисциплин+тегов по всем проектам). Размер и насыщенность
+   каждого тега задаются инлайн по данным; типографика — как в заголовках. */
+.cloud {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   padding: 0 var(--layout-padding);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-xl); /* воздух между вкладками, чтобы блобу было место */
+  align-items: baseline;
+  gap: var(--space-sm) var(--space-lg);
 }
 
-/* Общий блоб-индикатор под активной вкладкой: едет (translate) и морфит форму
-   (border-radius) к выбранному чипу — эффект «перетекания». */
-.indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  background: var(--color-accent);
-  pointer-events: none;
+.cloudTag {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: var(--font-weight-5);
+  line-height: 1.1;
+  color: var(--color-text-primary);
   transition:
-    transform var(--duration-normal) var(--ease-default),
-    width var(--duration-normal) var(--ease-default),
-    height var(--duration-normal) var(--ease-default),
-    border-radius var(--duration-normal) var(--ease-default),
+    transform var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default),
     opacity var(--duration-fast) var(--ease-default);
 }
 
-/* Чип фильтра — без обводки/заливки (её даёт индикатор), типографика заголовков. */
-.chip {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-sm) var(--space-lg);
-  border: none;
-  background: transparent;
-  color: var(--color-text-primary);
-  font-family: var(--ifm-heading-font-family);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-5);
-  cursor: pointer;
-  transition:
-    transform var(--duration-fast) var(--ease-default),
-    color var(--duration-normal) var(--ease-default);
-}
-
-.chip:hover {
+.cloudTag:hover {
   transform: translateY(-2px);
   color: var(--color-accent);
 }
 
-/* Активный чип: только цвет текста — белый на заливке индикатора (синей/розовой). */
-.chipActive,
-.chipActive:hover {
-  color: var(--brand-white);
+/* Активный тег фильтра — акцентным цветом. */
+.cloudTagActive,
+.cloudTagActive:hover {
+  color: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .indicator {
-    transition: opacity var(--duration-fast) var(--ease-default);
-  }
-
   /* Без анимаций появления — контент сразу на месте. */
   .band,
-  .cardItem {
+  .cardItem,
+  .featured {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Избранный проект: мокап во всю ширину вьюпорта; описание — на отдельной
+   карточке, наезжающей на нижний правый угол мокапа. Контент — в пределах ~92rem. */
+.featured {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  box-sizing: border-box;
+  padding: var(--space-xl) max(var(--layout-padding), calc((100vw - 92rem) / 2)) var(--space-3xl);
+  margin-bottom: var(--space-10);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-normal) var(--ease-default),
+    transform var(--duration-normal) var(--ease-default);
+}
+
+.featuredIn {
+  opacity: 1;
+  transform: none;
+}
+
+.featuredInner {
+  position: relative;
+  max-width: 54rem; /* мокап меньше */
+  margin: 0; /* и слева */
+}
+
+.featuredMockup {
+  width: 100%;
+}
+
+/* Карточка-описание наезжает на нижний правый угол мокапа и свисает ниже. */
+.featuredCard {
+  position: absolute;
+  right: calc(-1 * var(--space-3xl));
+  bottom: calc(-1 * var(--space-9) - var(--space-lg));
+  z-index: 10; /* выше внутренних карточек мокапа (их z-index 2) */
+  width: min(26rem, 46%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.16);
+}
+
+/* Иерархия: название — крупно и акцентно (ссылка на сайт), подзаголовок —
+   средний, роль — приглушённая, теги — ниже. */
+.featuredTitle {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-7);
+  line-height: 1.1;
+  color: var(--color-text-heading);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.featuredTitle:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.featuredSubtitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-5);
+  color: var(--color-text-primary);
+}
+
+.featuredRole {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+/* Теги в карточке избранного — мельче. */
+.featuredCard .tag {
+  font-size: var(--font-size-small);
+  padding: var(--space-xs) var(--space-md);
+}
+
+/* Обложка-скриншот (для проектов без интерактивного мокапа). */
+.coverImg {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Зеркальный вариант: обложка справа, карточка наезжает на нижний левый угол. */
+.featuredMirror .featuredInner {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.featuredMirror .featuredCard {
+  right: auto;
+  left: calc(-1 * var(--space-3xl));
+}
+
+/* На узких экранах карточка не наезжает, а идёт под мокапом. */
+@media (max-width: 996px) {
+  .featuredInner {
+    max-width: none;
+  }
+
+  .featuredMockup {
+    width: 100%;
+  }
+
+  .featuredCard {
+    position: static;
+    width: 100%;
+    margin-top: var(--space-lg);
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
   }
 }
 
@@ -213,12 +309,6 @@
   border-radius: 58% 42% 37% 63% / 37% 58% 63% 42%;
 }
 
-/* Значок «сделала сама» (vibecoded) — акцентная заливка, выделяется среди тегов. */
-.tagVibe {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--brand-white);
-}
 
 @media (max-width: 768px) {
   .showcase {

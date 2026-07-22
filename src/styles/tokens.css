@@ -104,8 +104,8 @@
 /* ===== DARK ===== */
 /* :root[...] (0,2,0) — гарантированно перебивает :root, не завися от порядка/минификации */
 :root[data-appearance='dark'] {
-  --color-accent: var(--brand-blue-2);
-  --color-accent-hsl: 245 100% 62%;
+  --color-accent: #2667ff;
+  --color-accent-hsl: 222 100% 57%;
   --color-on-accent: var(--gray-0);
 
   --color-white: var(--gray-12);
@@ -134,7 +134,7 @@
   --color-black: var(--brand-black);
 
   --color-bg: var(--brand-pink-4); /* насыщенный розовый — как «розовый праймари» синей темы */
-  --color-surface: var(--brand-pink-5); /* тёмный берри — под белый контент (карточки, пилюли контролов) */
+  --color-surface: #e91e63; /* чистый яркий розовый под белый контент (карточки, пилюли) */
   --color-glass-hsl: 337 100% 72%;
 
   --buddy-fill: var(--color-accent); /* синий шар на розовом фоне */
