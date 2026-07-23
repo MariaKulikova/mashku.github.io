@@ -14,6 +14,15 @@ import '../styles/blog.css'
 
 <div className="body">
 
+  <div className="blog-header">
+    <img className="blog-cover" src="/img/nomadic-eye-avatar.jpg" alt="Nomadic Eye" />
+    <h1 className="blog-name">Nomadic Eye</h1>
+    <p className="blog-bio">A nomadic designer’s blog — stories about design and life. Sometimes funny. By @mashku_me</p>
+    <OutlinedButton to="https://t.me/nomadic_eye">
+      <span>Subscribe</span>
+    </OutlinedButton>
+  </div>
+
 {/* Свежие посты канала Nomadic Eye (@nomadic_eye). Чтобы добавить/сменить —
     возьми id из ссылки t.me/nomadic_eye/<id> и вставь новый .blog-post. */}
   <div className="blog-grid">

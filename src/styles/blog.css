@@ -1,9 +1,41 @@
+/* Шапка канала: обложка (аватар), название, био, кнопка «Подписаться». */
+.blog-header {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: var(--hero-padding-top) var(--layout-padding) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+}
+
+.blog-cover {
+  width: 9rem;
+  height: 9rem;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: var(--shadow-tag);
+}
+
+.blog-name {
+  margin: 0;
+  font-size: var(--font-size-h1);
+}
+
+.blog-bio {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
 /* Бенто-лента постов блога: масонри через CSS-колонки (посты разной высоты
    красиво укладываются), адаптив по ширине экрана. */
 .blog-grid {
   max-width: var(--layout-max-width);
   margin: 0 auto;
-  padding: var(--space-9) var(--layout-padding) var(--space-8);
+  padding: var(--space-6) var(--layout-padding) var(--space-8);
   column-count: 3;
   column-gap: var(--space-lg);
 }
@@ -28,6 +60,6 @@
 @media (max-width: 640px) {
   .blog-grid {
     column-count: 1;
-    padding-top: var(--space-10); /* больше воздуха сверху под плашки на мобилке */
+    padding-top: var(--space-6);
   }
 }

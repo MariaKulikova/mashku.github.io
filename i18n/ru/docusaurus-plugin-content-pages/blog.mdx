@@ -14,6 +14,15 @@ import '@site/src/styles/blog.css'
 
 <div className="body">
 
+  <div className="blog-header">
+    <img className="blog-cover" src="/img/nomadic-eye-avatar.jpg" alt="Nomadic Eye" />
+    <h1 className="blog-name">Nomadic Eye</h1>
+    <p className="blog-bio">Блог кочующего дизайнера. Истории о дизайне и жизни. Иногда смешные. Автор @mashku_me</p>
+    <OutlinedButton to="https://t.me/nomadic_eye">
+      <span>Подписаться</span>
+    </OutlinedButton>
+  </div>
+
 {/* Свежие посты канала Nomadic Eye (@nomadic_eye). */}
   <div className="blog-grid">
     <div className="blog-post"><TelegramEmbed post="nomadic_eye/282" /></div>
