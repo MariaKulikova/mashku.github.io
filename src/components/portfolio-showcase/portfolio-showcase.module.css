@@ -71,14 +71,18 @@
   }
 }
 
-/* Избранный проект: мокап во всю ширину вьюпорта; описание — на отдельной
-   карточке, наезжающей на нижний правый угол мокапа. Контент — в пределах ~92rem. */
+/* Избранный проект: обложка + описание РЯДОМ (flex-ряд). Контент центрируется
+   в пределах ~92rem. mirror → обложка справа, описание слева. */
 .featured {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   box-sizing: border-box;
-  padding: var(--space-xl) max(var(--layout-padding), calc((100vw - 92rem) / 2)) var(--space-3xl);
+  padding: var(--space-xl) max(var(--layout-padding), calc((100vw - 92rem) / 2)) var(--space-2xl);
   margin-bottom: var(--space-10);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xl);
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -91,30 +95,37 @@
   transform: none;
 }
 
-.featuredInner {
-  position: relative;
-  max-width: 54rem; /* мокап меньше */
-  margin: 0; /* и слева */
+.featuredMirror {
+  flex-direction: row-reverse;
 }
 
+/* Обложка (интерактивный мокап или скролл-фрейм). */
 .featuredMockup {
-  width: 100%;
+  flex: 1.6 1 32rem;
+  min-width: 0;
 }
 
-/* Карточка-описание наезжает на нижний правый угол мокапа и свисает ниже. */
-.featuredCard {
-  position: absolute;
-  right: calc(-1 * var(--space-3xl));
-  bottom: calc(-1 * var(--space-9) - var(--space-lg));
-  z-index: 10; /* выше внутренних карточек мокапа (их z-index 2) */
-  width: min(26rem, 46%);
+/* Описание рядом с обложкой — простой текст, без подложки. */
+.featuredInfo {
+  flex: 1 1 16rem;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  padding: var(--space-xl);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.16);
+}
+
+/* Скролл-обложка: рамка фикс. высоты, внутри — весь лендинг (прокручивается). */
+.scrollCover {
+  height: 30rem;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  scrollbar-width: thin;
+}
+
+.scrollCover img {
+  width: 100%;
+  display: block;
 }
 
 /* Иерархия: название — крупно и акцентно (ссылка на сайт), подзаголовок —
@@ -145,60 +156,24 @@
   margin-bottom: var(--space-xs);
 }
 
-/* Теги в карточке избранного — мельче. */
-.featuredCard .tag {
-  font-size: var(--font-size-small);
-  padding: var(--space-xs) var(--space-md);
-}
-
-/* Обложка-скриншот (для проектов без интерактивного мокапа). */
-.coverImg {
-  width: 100%;
-  display: block;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Зеркальный вариант: обложка справа, карточка наезжает на нижний левый угол. */
-.featuredMirror .featuredInner {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.featuredMirror .featuredCard {
-  right: auto;
-  left: calc(-1 * var(--space-3xl));
-}
-
-/* На узких экранах карточка не наезжает, а идёт под мокапом. */
+/* На узких экранах ряд складывается в колонку: обложка, затем описание. */
 @media (max-width: 996px) {
-  .featuredInner {
-    max-width: none;
-  }
-
-  .featuredMockup {
-    width: 100%;
-  }
-
-  .featuredCard {
-    position: static;
-    width: 100%;
-    margin-top: var(--space-lg);
-    box-shadow: none;
-    padding: 0;
-    background: transparent;
+  .featured,
+  .featuredMirror {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
-/* Единая сетка карточек — в обычной колонке .body. Крупные карточки. */
+/* Сетка карточек — в колонке .body: карточки в ряд, на всю ширину. */
 .grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-xl);
-  align-items: start; /* карточки по своей высоте, без растягивания на всю строку */
+  align-items: stretch;
 }
 
 .cardItem {

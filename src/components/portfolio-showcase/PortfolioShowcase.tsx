@@ -118,34 +118,32 @@ export default function PortfolioShowcase({ items }: Props) {
     </>
   );
 
-  // Избранный проект: крупная обложка + карточка-описание, наезжающая на её угол.
-  // Клик по названию — на сайт. mirror → обложка справа, карточка слева (ритм).
+  // Избранный проект: обложка + описание РЯДОМ (без карточки-подложки).
+  // Клик по названию — на сайт. mirror → обложка справа, описание слева.
   const renderFeatured = (item: PortfolioItem, cover: React.ReactNode, mirror: boolean) => (
     <div
       className={`${styles.featured} ${mirror ? styles.featuredMirror : ''} ${cardsIn ? styles.featuredIn : ''}`}
     >
-      <div className={styles.featuredInner}>
-        <div className={styles.featuredMockup}>{cover}</div>
-        <div className={styles.featuredCard}>
-          <a
-            className={styles.featuredTitle}
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {item.title}
-          </a>
-          {item.subtitle && <span className={styles.featuredSubtitle}>{item.subtitle}</span>}
-          {item.role && <span className={styles.featuredRole}>{item.role}</span>}
-          <span className={styles.tags}>
-            {item.vibecoded && <span className={styles.tag}>⚡ Vibecoded</span>}
-            {cardTags(item).map((tag) => (
-              <span key={tag} className={styles.tag}>
-                {tag}
-              </span>
-            ))}
-          </span>
-        </div>
+      <div className={styles.featuredMockup}>{cover}</div>
+      <div className={styles.featuredInfo}>
+        <a
+          className={styles.featuredTitle}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {item.title}
+        </a>
+        {item.subtitle && <span className={styles.featuredSubtitle}>{item.subtitle}</span>}
+        {item.role && <span className={styles.featuredRole}>{item.role}</span>}
+        <span className={styles.tags}>
+          {item.vibecoded && <span className={styles.tag}>⚡ Vibecoded</span>}
+          {cardTags(item).map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
+            </span>
+          ))}
+        </span>
       </div>
     </div>
   );
@@ -182,12 +180,9 @@ export default function PortfolioShowcase({ items }: Props) {
         {shift &&
           renderFeatured(
             shift,
-            <img
-              className={styles.coverImg}
-              src="/img/shiftgears-cover.jpg"
-              alt=""
-              loading="lazy"
-            />,
+            <div className={styles.scrollCover}>
+              <img src="/img/shiftgears-cover.jpg" alt="Лендинг ShiftGears" loading="lazy" />
+            </div>,
             true,
           )}
 
