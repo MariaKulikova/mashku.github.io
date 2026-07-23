@@ -127,8 +127,8 @@
    (внешний край — чтобы не пересекаться с карточкой-компаньоном). */
 .featuredCard {
   position: absolute;
-  left: var(--space-lg);
-  right: auto;
+  right: var(--space-lg);
+  left: auto;
   bottom: calc(-1 * var(--space-2xl));
   z-index: 10; /* выше внутренних карточек мокапа (их z-index 2) */
   width: min(24rem, 72%);
@@ -181,12 +181,6 @@
   display: block;
   border-radius: var(--radius-lg);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Зеркальный вариант: карточка-описание на правом (внешнем) нижнем углу. */
-.featuredMirror .featuredCard {
-  left: auto;
-  right: var(--space-lg);
 }
 
 /* На узких экранах ряд складывается в колонку: обложка, компаньон, описание. */
