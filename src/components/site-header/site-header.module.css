@@ -1,0 +1,202 @@
+/* Единый липкий хедер: 3 колонки по ширине гаттеров (совпадают с .shell), боковые
+   и нижний дивайдеры. При схлопывании превращается в компактную полоску. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter);
+  background: var(--color-bg);
+  border-bottom: var(--divider-width) solid var(--color-divider);
+}
+
+/* Боковые колонки: меню/настройки + вертикальные дивайдеры (продолжают гаттеры). */
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+
+.left {
+  border-right: var(--divider-width) solid var(--color-divider);
+}
+
+.right {
+  border-left: var(--divider-width) solid var(--color-divider);
+}
+
+.avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  /* Плавное схлопывание: анимируем высоту навигации — высота хедера следует за ней. */
+  max-height: 20rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.28s var(--ease-default),
+    opacity 0.2s var(--ease-default);
+}
+
+.link {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--color-text-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-5);
+  text-decoration: none;
+  /* Только цвет; фон/блоб применяются мгновенно, иначе на первом кадре анимации
+     фона мелькает прямоугольник до применения сложного border-radius. */
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.link:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.active,
+.active:hover {
+  color: var(--brand-white);
+  background: var(--color-accent);
+  border-radius: 42% 58% 63% 37% / 53% 42% 58% 47%;
+}
+
+/* Центр — заголовок страницы (портал из mdx), по центру по вертикали. */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-6) var(--space-lg);
+  /* Единая высота хедер-блока на art/blog/coffee: контент центрируется, разное
+     наполнение (с кнопкой/без, шапка канала) не меняет высоту. Главная — своё
+     правило ниже, схлопнутое — тоже. */
+  min-height: var(--header-block-height);
+}
+
+/* Заголовок страницы в развёрнутом хедере — крупный (hero). */
+.center :global(.hero-heading) {
+  font-size: var(--font-size-hero);
+  margin: 0;
+  transition: font-size 0.28s var(--ease-default);
+}
+
+/* Главная («Дизайн») — более высокая hero-секция в развёрнутом состоянии. */
+.home:not(.collapsed) .center {
+  padding-block: calc(var(--space-10) * 2);
+}
+
+/* Подзаголовок плавно сворачивается при схлопывании. */
+.center :global(.hero-sub) {
+  max-height: 6rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.28s var(--ease-default),
+    opacity 0.2s var(--ease-default);
+}
+
+.settingsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.settingsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.blob {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Схлопнутое состояние: компактная полоска ===== */
+.collapsed {
+  cursor: pointer;
+}
+
+.collapsed .side {
+  padding: var(--space-sm) var(--space-md);
+  justify-content: center;
+  gap: 0;
+}
+
+.collapsed .center {
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 0; /* в полоске фикс. высота не нужна */
+}
+
+/* Навигация плавно сворачивается (высота хедера следует за ней). */
+.collapsed .nav {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* В полоске — заголовок мельче, подзаголовок свёрнут. */
+.collapsed .center :global(.hero-heading) {
+  font-size: var(--font-size-h3);
+}
+
+.collapsed .center :global(.hero-sub) {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+/* Blog: шапка канала в центре хедера — компактнее; при схлопывании прячем
+   обложку и био, оставляем имя + кнопку. */
+.center :global(.blog-header) {
+  padding: 0;
+  gap: var(--space-xs);
+}
+
+.center :global(.blog-cover) {
+  width: 3.5rem;
+  height: 3.5rem;
+  opacity: 1;
+  transition:
+    max-height 0.28s var(--ease-default),
+    opacity 0.2s var(--ease-default);
+}
+
+.center :global(.blog-bio) {
+  max-height: 6rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.28s var(--ease-default),
+    opacity 0.2s var(--ease-default);
+}
+
+.collapsed .center :global(.blog-cover),
+.collapsed .center :global(.blog-bio) {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  overflow: hidden;
+}

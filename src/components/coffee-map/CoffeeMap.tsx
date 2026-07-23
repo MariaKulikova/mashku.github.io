@@ -20,9 +20,6 @@ type Shop = {
 const ALL = shops as Shop[];
 const SHAPES = countryShapes as Record<string, GeoJSON.Feature>;
 
-// Сколько стран показывать в верхней строке (самые «кофейные»); остальные — под «Ещё».
-const TOP_COUNTRIES = 10;
-
 // Группировка кофеен по стране (ключ — англ. название). Считается один раз:
 // данные статичны, от локали зависит только подпись тега.
 const BY_COUNTRY: { key: string; ru: string; idxs: number[] }[] = (() => {
@@ -70,14 +67,11 @@ export default function CoffeeMap() {
   const allLabel = isRu ? 'Весь мир' : 'Whole world';
 
   const [active, setActive] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
 
   const countries = useMemo(
     () => BY_COUNTRY.map((c) => ({ key: c.key, label: isRu ? c.ru : c.key, count: c.idxs.length })),
     [isRu],
   );
-  const top = countries.slice(0, TOP_COUNTRIES);
-  const rest = countries.slice(TOP_COUNTRIES);
 
   useEffect(() => {
     let cancelled = false;
@@ -236,12 +230,14 @@ export default function CoffeeMap() {
     map.fitBounds(WORLD_BOUNDS, { padding: [8, 8], animate: true });
   };
 
+  // Клик по стране фокусирует её; повторный клик по активной — отжимает (сброс).
   const chip = (c: { key: string; label: string; count: number }) => (
     <button
       type="button"
       key={c.key}
       className={`coffee-country${active === c.key ? ' active' : ''}`}
-      onClick={() => focusCountry(c.key)}
+      aria-pressed={active === c.key}
+      onClick={() => (active === c.key ? resetView() : focusCountry(c.key))}
     >
       {c.label} <span className="coffee-country__count">{c.count}</span>
     </button>
@@ -257,29 +253,8 @@ export default function CoffeeMap() {
         >
           {allLabel}
         </button>
-        {top.map(chip)}
-        {rest.length > 0 && (
-          <button
-            type="button"
-            className="coffee-country coffee-country--more"
-            aria-expanded={expanded}
-            onClick={() => setExpanded((e) => !e)}
-          >
-            {isRu
-              ? expanded
-                ? 'Свернуть'
-                : `Ещё ${rest.length}`
-              : expanded
-                ? 'Less'
-                : `More ${rest.length}`}
-          </button>
-        )}
+        {countries.map(chip)}
       </div>
-      {expanded && rest.length > 0 && (
-        <div className="coffee-countries coffee-countries--extra" role="list">
-          {rest.map(chip)}
-        </div>
-      )}
       <div ref={ref} className="coffee-map-container" aria-label="Coffee spots map" />
     </div>
   );

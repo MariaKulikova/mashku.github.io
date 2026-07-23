@@ -4,25 +4,18 @@ description: Mashku Art — арт-пространство и магазин
 hide_table_of_contents: true
 ---
 
-import Footer from '@site/src/components/footer/Footer';
-import OutlinedButton from '@site/src/components/outlined-button/OutlinedButton';
 import ArtMarquee from '@site/src/components/art-marquee/ArtMarquee';
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter';
 import '@site/src/styles/general.css'
 import '@site/src/styles/index.css'
 import '@site/src/styles/typography.css'
 import '@site/src/styles/art.css'
 
-<div className="body">
-  <div className="art-head">
-    <div className="art-head__text">
-      <h1 className="hero-heading">Искусство</h1>
-      <p className="hero-sub">Mashku Art — моё личное арт-пространство</p>
-    </div>
-    <OutlinedButton to="https://mashku-art.pages.dev/">
-      <span>Купить что-нибудь</span>
-    </OutlinedButton>
-  </div>
+<HeaderCenter>
+  <h1 className="hero-heading">Искусство</h1>
+  <p className="hero-sub">моё личное арт-пространство</p>
+</HeaderCenter>
 
+<div className="body">
   <ArtMarquee />
 </div>
-<Footer />

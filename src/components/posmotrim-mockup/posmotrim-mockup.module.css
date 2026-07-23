@@ -10,9 +10,8 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #f7f7f5;
-  border-radius: var(--radius-lg);
+  border-radius: 0; /* чёткие углы — вписан в ячейку сетки */
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   font-family: var(--ifm-font-family-base);
   user-select: none;
 }

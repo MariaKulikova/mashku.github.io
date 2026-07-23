@@ -75,6 +75,7 @@ const config: Config = {
             './src/styles/general.css',
             './src/styles/project-page.css',
             './src/styles/index.css',
+            './src/styles/shell.css',
           ],
         },
         sitemap: {

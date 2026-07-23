@@ -1,90 +1,25 @@
-/* Плавающая перетаскиваемая плашка-меню поверх страницы. */
+/* Меню в боковой колонке сетки: без фона, по центру колонки. Закрепление сверху
+   (sticky), центрирование и z-index задаёт каркас .shell (src/styles/shell.css). */
 .menu {
-  position: fixed;
-  z-index: 1100; /* выше навбара (999) и бубы (1000) */
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-tag);
-  cursor: grab;
-  touch-action: none; /* чтобы pointer-drag не скроллил страницу */
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
   user-select: none;
-  transition:
-    opacity var(--duration-normal) var(--ease-default),
-    padding var(--duration-normal) var(--ease-default),
-    border-radius var(--duration-normal) var(--ease-default);
 }
 
-.menu:active {
-  cursor: grabbing;
-}
-
-/* Интерактивные контролы кликаются, а не тащат плашку — обычный курсор. */
-.menu button,
-.menu a,
-.menu label,
-.menu input {
+/* В схлопнутом состоянии меню — один кликабельный элемент (фото / иконка). */
+.collapsed {
   cursor: pointer;
 }
 
-/* Схлопнутое состояние: компактный кружок (с фото). Разворачивается по ховеру. */
-.collapsed {
-  padding: var(--space-xs);
-  align-items: center;
-  border-radius: 50%;
-}
-
-/* Аватар Марии. В развёрнутом меню — сверху по центру, наполовину над границей. */
+/* Аватар Марии — кружок сверху меню. */
 .avatar {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
   object-fit: cover;
-  border: var(--border-size-2) solid var(--color-surface);
-  box-shadow: var(--shadow-tag);
-  z-index: 1;
-  animation: menu-pop var(--duration-normal) var(--ease-default);
-}
-
-/* Развёрнутое меню: отступ сверху под нижнюю половину аватара. */
-.menu:not(.collapsed) {
-  padding-top: calc(1.25rem + var(--space-md));
-}
-
-/* Схлопнутое меню: аватар — маленький кружок в потоке (вместо точки). */
-.collapsed .avatar {
-  position: static;
-  transform: none;
-  width: var(--space-5);
-  height: var(--space-5);
-  border: none;
-  box-shadow: none;
-}
-
-/* Обёртка последнего использованного контрола в схлопнутой правой плашке. */
-.blob {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: menu-pop var(--duration-normal) var(--ease-default);
-}
-
-@keyframes menu-pop {
-  from {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .list {
@@ -93,17 +28,16 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xs);
-  animation: menu-pop var(--duration-normal) var(--ease-default);
 }
 
-/* Тело плашки настроек: ряд «язык + звук» сверху, тема ниже. */
+/* Тело настроек: ряд «язык + звук» сверху, тема ниже. */
 .settingsBody {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
-  animation: menu-pop var(--duration-normal) var(--ease-default);
 }
 
 .settingsRow {
@@ -112,10 +46,17 @@
   gap: var(--space-md);
 }
 
+/* Схлопнутые настройки — последний использованный контрол. */
+.blob {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Пункт меню — без заливки; активный подсвечен блобом (акцентная органичная форма). */
 .link {
-  display: block;
+  display: inline-block;
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-sm);
   color: var(--color-text-primary);
   font-family: var(--ifm-heading-font-family);
   font-size: var(--font-size-base);
@@ -123,7 +64,7 @@
   text-decoration: none;
   transition:
     color var(--duration-fast) var(--ease-default),
-    background-color var(--duration-fast) var(--ease-default);
+    background var(--duration-fast) var(--ease-default);
 }
 
 .link:hover {
@@ -131,24 +72,9 @@
   text-decoration: none;
 }
 
-.active {
-  background: var(--color-accent);
-  color: var(--brand-white);
-}
-
+.active,
 .active:hover {
   color: var(--brand-white);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .menu {
-    transition: opacity var(--duration-normal) var(--ease-default);
-  }
-
-  .avatar,
-  .blob,
-  .list,
-  .settingsBody {
-    animation: none;
-  }
+  background: var(--color-accent);
+  border-radius: 42% 58% 63% 37% / 53% 42% 58% 47%;
 }

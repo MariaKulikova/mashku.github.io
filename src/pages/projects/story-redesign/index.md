@@ -7,14 +7,14 @@ image: /img/story-redesign/storyRedesign-1.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
-import Footer from '../../../components/footer/Footer'
+import HeaderCenter from '../../../components/site-header/HeaderCenter'
+
+<HeaderCenter>
+  <h1 className="hero-heading">Users created a CDN resource and couldn't figure out, “Does it even work?”</h1>
+</HeaderCenter>
 
 <article>
 <div className="container">
-
-  
-# Users created a CDN resource and couldn't figure out, “Does it even work?”
- 
 
 <section className="section-margin">
  <div className="columns">
@@ -133,4 +133,3 @@ As a result, the entire panel interface now looks fresher and more minimalistic 
 
 </div>
 </article>
-<Footer />

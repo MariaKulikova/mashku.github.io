@@ -7,7 +7,6 @@ image: /img/previews/nomadic.jpg
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
-import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -28,4 +27,3 @@ Nomadic Eye is a personal Telegram project.
 
 </div>
 </article>
-<Footer />

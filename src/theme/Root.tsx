@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import BlueBuddy from '../components/blue-buddy/BlueBuddy';
-import SiteMenu from '../components/site-menu/SiteMenu';
-import SettingsMenu from '../components/site-menu/SettingsMenu';
+import { useBuddy } from '../components/blue-buddy/useBuddy';
+import SiteHeader from '../components/site-header/SiteHeader';
+import Footer from '../components/footer/Footer';
 import { SITE_URL, OG_IMAGE, SOCIAL_PROFILE_URLS, YM_COUNTER_ID } from '../data/site';
 
 // schema.org Person — помогает поисковикам связать сайт с личностью автора
@@ -19,6 +20,7 @@ const personJsonLd = {
 };
 
 export default function Root({children}) {
+  const [buddyEnabled] = useBuddy();
   useEffect(() => {
     // Гард от повторной инициализации (StrictMode / fast-refresh в dev,
     // повторный mount Root): счётчики поднимаем один раз на документ.
@@ -64,10 +66,16 @@ export default function Root({children}) {
           {JSON.stringify(personJsonLd)}
         </script>
       </Head>
-      <BlueBuddy />
-      <SiteMenu />
-      <SettingsMenu />
-      {children}
+      {buddyEnabled && <BlueBuddy />}
+      {/* Единый липкий хедер: меню + заголовок страницы + настройки. */}
+      <SiteHeader />
+      <div className="shell">
+        <aside className="shell-side shell-side--left" />
+        <div className="shell-main">{children}</div>
+        <aside className="shell-side shell-side--right" />
+      </div>
+      {/* Футер — вне сетки: боковые дивайдеры заканчиваются на его верхней линии. */}
+      <Footer />
       <noscript>
         <div>
           <img

@@ -15,7 +15,6 @@ image: /img/previews/example.jpg   # опционально: og-картинка
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
-import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -55,4 +54,3 @@ import Footer from '../../../components/footer/Footer'
 
 </div>
 </article>
-<Footer />

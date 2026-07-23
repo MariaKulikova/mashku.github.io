@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { useDraggable } from './useDraggable';
 import { useScrolledDown } from './useCollapsed';
 import styles from './site-menu.module.css';
 
@@ -18,23 +17,25 @@ const ITEMS: Item[] = [
 ];
 
 /**
- * Перетаскиваемая плашка-меню, плавающая поверх страницы (заменяет логотип).
- * Позиция сохраняется. Drag-логика — в useDraggable.
+ * Меню в левой колонке сетки: аватар + разделы, по центру колонки. При скролле
+ * вниз схлопывается в фото; скролл вверх / наведение / клик — разворачивают.
+ * Активный пункт подсвечен блобом.
  */
 export default function SiteMenu() {
   const { i18n } = useDocusaurusContext();
   const isRu = i18n.currentLocale === 'ru';
   const location = useLocation();
   const baseUrl = useBaseUrl('/');
-  const { rootRef, style, onPointerDown, onClickCapture } = useDraggable(
-    'siteMenuPos',
-    { top: 44, left: 16 }, // с запасом сверху — аватар наполовину выступает над меню
-  );
   const avatarUrl = useBaseUrl('/img/mashku-avatar.jpg');
 
-  const scrolled = useScrolledDown();
+  const down = useScrolledDown();
   const [hovered, setHovered] = useState(false);
-  const collapsed = scrolled && !hovered;
+  const [forceOpen, setForceOpen] = useState(false);
+  // При скролле вниз снова схлопываем, даже если разворачивали кликом.
+  useEffect(() => {
+    if (down) setForceOpen(false);
+  }, [down]);
+  const collapsed = down && !hovered && !forceOpen;
 
   // Активный пункт: сравниваем путь без префикса локали.
   const path = location.pathname.replace(/\/+$/, '') || '/';
@@ -43,14 +44,11 @@ export default function SiteMenu() {
 
   return (
     <nav
-      ref={rootRef as React.RefObject<HTMLElement>}
       className={`${styles.menu} ${collapsed ? styles.collapsed : ''}`}
       aria-label={isRu ? 'Меню сайта' : 'Site menu'}
-      style={style}
-      onPointerDown={onPointerDown}
-      onClickCapture={onClickCapture}
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
+      onClick={() => collapsed && setForceOpen(true)}
     >
       <img
         className={styles.avatar}

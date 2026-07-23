@@ -1,39 +1,35 @@
-/* Шапка страницы «Искусство»: заголовок+подзаголовок слева, кнопка справа. */
+/* Шапка страницы «Искусство»: заголовок + подзаголовок по центру. */
 .art-head {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   padding: var(--hero-padding-top) var(--layout-padding) var(--space-2xl);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-lg);
-}
-
-.art-head__text {
-  text-align: left;
-}
-
-.art-head__text .hero-heading {
-  margin-bottom: var(--space-sm);
+  text-align: center;
+  gap: var(--space-sm);
 }
 
 @media (max-width: 640px) {
   .art-head {
-    flex-direction: column;
-    align-items: flex-start;
     padding-top: var(--space-10);
   }
 }
 
-/* Бегущая сетка работ: две строки, одна едет влево, другая вправо. */
+/* Бегущая сетка работ: две строки, одна едет влево, другая вправо. Во всю ширину
+   экрана (до краёв), поверх линий гаттеров (z-index) с фоном темы — линии сетки
+   «обрываются» на дивайдере хедера. */
 .art-marquee {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg);
+  padding-block: var(--space-8); /* симметричный отступ сверху и снизу (внутри секции — фон накрывает гаттеры, линии не торчат) */
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   overflow: hidden;
-  margin-bottom: var(--space-10);
 }
 
 .art-row {

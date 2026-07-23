@@ -7,14 +7,14 @@ image: /img/story-redesign/storyRedesign-1.png
 
 import '@site/src/styles/project-page.css'
 import { ProjectNavigation } from '@site/src/components/navigation-buttons/NavigationButtons'
-import Footer from '@site/src/components/footer/Footer'
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter'
+
+<HeaderCenter>
+  <h1 className="hero-heading">Пользователи создавали CDN-ресурс и не понимали: «А он вообще работает?»</h1>
+</HeaderCenter>
 
 <article>
 <div className="container">
-
-  
-# Пользователи создавали CDN-ресурс и не понимали: «А он вообще работает?»
- 
 
 <section className="section-margin">
  <div className="columns">
@@ -129,4 +129,3 @@ import Footer from '@site/src/components/footer/Footer'
 
 </div>
 </article>
-<Footer />

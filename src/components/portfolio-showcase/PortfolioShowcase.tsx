@@ -27,10 +27,10 @@ function cardTags(item: PortfolioItem) {
 }
 
 /**
- * Витрина проектов без вкладок-фильтра: сверху — облако тегов (по всем проектам),
- * затем избранный проект Posmotrim.design во всю ширину (интерактивный мокап слева,
- * описание справа, без обводки), ниже — сетка остальных проектов. Все проекты
- * показываются сразу, дисциплины и теги — прямо на карточках.
+ * Витрина проектов в editorial-сетке: избранные проекты (Posmotrim — интерактивный
+ * мокап, ShiftGears — скролл-обложка) — двумя ячейками (обложка | описание) с
+ * вертикальным дивайдером; ниже — сетка остальных проектов. Блоки разделены
+ * горизонтальными дивайдерами «в край». Дисциплины и теги — прямо в ячейке.
  */
 export default function PortfolioShowcase({ items }: Props) {
   // Избранные проекты с крупными обложками (Posmotrim — интерактивный мокап,
@@ -93,13 +93,11 @@ export default function PortfolioShowcase({ items }: Props) {
     </>
   );
 
-  // Избранный проект: обложка + описание РЯДОМ (без карточки-подложки).
-  // Клик по названию — на сайт. mirror → обложка справа, описание слева.
-  const renderFeatured = (item: PortfolioItem, cover: React.ReactNode, mirror: boolean) => (
-    <div
-      className={`${styles.featured} ${mirror ? styles.featuredMirror : ''} ${cardsIn ? styles.featuredIn : ''}`}
-    >
-      <div className={styles.featuredMockup}>{cover}</div>
+  // Избранный проект: обложка и описание — две ячейки сетки с вертикальным
+  // дивайдером. Клик по названию — на кейс/сайт. mirror → обложка справа.
+  const renderFeatured = (item: PortfolioItem, cover: React.ReactNode, mirror: boolean) => {
+    const mockupCell = <div className={styles.featuredMockup}>{cover}</div>;
+    const infoCell = (
       <div className={styles.featuredInfo}>
         {item.caseStudyUrl ? (
           <Link className={styles.featuredTitle} to={item.caseStudyUrl}>
@@ -126,24 +124,35 @@ export default function PortfolioShowcase({ items }: Props) {
           ))}
         </span>
       </div>
-    </div>
-  );
+    );
+    return (
+      <div
+        className={`${styles.featured} ${mirror ? styles.featuredMirror : ''} ${cardsIn ? styles.featuredIn : ''}`}
+      >
+        {mirror ? (
+          <>
+            {infoCell}
+            {mockupCell}
+          </>
+        ) : (
+          <>
+            {mockupCell}
+            {infoCell}
+          </>
+        )}
+      </div>
+    );
+  };
 
   return (
     <section className={styles.showcase}>
       <div ref={contentRef}>
-        {/* Избранные проекты крупными обложками. */}
+        {/* Posmotrim — избранный проект (сверху граница = нижняя линия хедера). */}
         {posmotrim && renderFeatured(posmotrim, <PosmotrimMockup />, false)}
-        {shift &&
-          renderFeatured(
-            shift,
-            <div className={styles.scrollCover}>
-              <img src="/img/shiftgears-landing.jpg" alt="Лендинг ShiftGears" loading="lazy" />
-            </div>,
-            true,
-          )}
 
-        {/* Остальные проекты — сетка карточек (с обводкой). */}
+        {/* Сетка остальных проектов (CDN, Marquiz) — выше ShiftGears.
+            Дивайдеры между проектами доходят до боковых (в границах центр. колонки). */}
+        {posmotrim && rest.length > 0 && <hr className={styles.rowDivider} />}
         <ul ref={gridRef} className={styles.grid}>
           {rest.map((item, idx) => {
             const internal = Boolean(item.caseStudyUrl);
@@ -172,6 +181,17 @@ export default function PortfolioShowcase({ items }: Props) {
             );
           })}
         </ul>
+
+        {/* ShiftGears — избранный проект, ниже сетки. */}
+        {shift && <hr className={styles.rowDivider} />}
+        {shift &&
+          renderFeatured(
+            shift,
+            <div className={styles.scrollCover}>
+              <img src="/img/shiftgears-landing.jpg" alt="Лендинг ShiftGears" loading="lazy" />
+            </div>,
+            true,
+          )}
       </div>
     </section>
   );

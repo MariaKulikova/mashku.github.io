@@ -150,10 +150,11 @@ h1 {
   display: flex;
 }
 
-/* Layout */
+/* Layout — контент заполняет центральную колонку сетки (.shell-main); ширина
+   единая на всех страницах, задаётся гаттерами каркаса. */
 .body {
   box-sizing: border-box;
-  max-width: var(--layout-max-width);
+  max-width: none;
   margin: 0 auto;
   padding: 0 var(--layout-padding);
   background: transparent;

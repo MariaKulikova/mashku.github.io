@@ -1,5 +1,14 @@
 .showcase {
-  padding: var(--space-10) 0;
+  padding: 0;
+}
+
+/* Горизонтальный дивайдер между проектами: доходит ровно до боковых дивайдеров
+   (края центральной колонки), а не во весь экран — образует чёткие ячейки сетки. */
+.rowDivider {
+  margin-block: 0;
+  margin-inline: calc(-1 * var(--layout-padding));
+  border: none;
+  border-top: var(--divider-width) solid var(--color-divider);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -12,15 +21,14 @@
   }
 }
 
-/* Избранный проект: обложка + описание РЯДОМ (flex-ряд). Остаётся в колонке .body
-   (единая ширина контента на всех страницах). mirror → обложка справа, описание слева. */
+/* Избранный проект — две ячейки сетки (обложка | описание) с вертикальным
+   дивайдером между ними. Чёткие углы, без подложки. mirror → обложка справа. */
 .featured {
-  padding: var(--space-xl) 0 var(--space-2xl);
-  margin-bottom: var(--space-10);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2xl);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr; /* обложка (шире) | описание */
+  align-items: stretch;
+  /* до краёв центральной колонки — мокап касается боковых дивайдеров без отступа. */
+  margin-inline: calc(-1 * var(--layout-padding));
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -34,30 +42,48 @@
 }
 
 .featuredMirror {
-  flex-direction: row-reverse;
+  grid-template-columns: 1fr 1.6fr; /* описание | обложка (шире) */
 }
 
-/* Обложка (интерактивный мокап или скролл-фрейм). */
+/* Вертикальный дивайдер между ячейками — на границе (вторая ячейка в потоке). */
+.featured > * {
+  min-width: 0;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.featured > *:nth-child(2) {
+  border-left: var(--divider-width) solid var(--color-divider);
+}
+
+/* Обложка (интерактивный мокап или скролл-фрейм) — впритык к ячейке, без
+   внутренних отступов (мокап касается дивайдеров). */
 .featuredMockup {
-  flex: 1.6 1 32rem;
-  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
 
-/* Описание рядом с обложкой — простой текст, без подложки. */
+.featuredMockup > * {
+  width: 100%;
+}
+
+/* Описание рядом с обложкой — простой текст, центрирован по вертикали.
+   Вертикальный padding меньше, чем у ячейки по умолчанию: высоту ряда задаёт
+   мокап, поэтому он касается горизонтальных дивайдеров без зазора. */
 .featuredInfo {
-  flex: 1 1 16rem;
-  min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--space-sm);
+  padding-block: var(--space-sm);
 }
 
-/* Скролл-обложка: рамка фикс. высоты, внутри — весь лендинг (прокручивается). */
+/* Скролл-обложка: рамка фикс. высоты, внутри — весь лендинг (прокручивается).
+   Чёткие углы, без тени (editorial-сетка). */
 .scrollCover {
   height: 30rem;
   overflow-y: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 0;
   scrollbar-width: thin;
 }
 
@@ -69,8 +95,9 @@
 /* Иерархия: название — крупно и акцентно (ссылка на сайт), подзаголовок —
    средний, роль — приглушённая, теги — ниже. */
 .featuredTitle {
+  font-family: var(--ifm-heading-font-family);
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-7);
+  font-weight: var(--font-weight-5);
   line-height: 1.1;
   color: var(--color-text-heading);
   text-decoration: none;
@@ -94,23 +121,27 @@
   margin-bottom: var(--space-xs);
 }
 
-/* На узких экранах ряд складывается в колонку: обложка, затем описание. */
+/* На узких экранах ячейки складываются в колонку; вертикальный дивайдер → горизонтальный. */
 @media (max-width: 996px) {
   .featured,
   .featuredMirror {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .featured > *:nth-child(2) {
+    border-left: none;
+    border-top: var(--divider-width) solid var(--color-divider);
   }
 }
 
-/* Сетка карточек — в колонке .body: карточки в ряд, на всю ширину. */
+/* Сетка остальных проектов — ячейки в ряд с вертикальным дивайдером, чёткие углы. */
 .grid {
   list-style: none;
   margin: 0;
+  margin-inline: calc(-1 * var(--layout-padding)); /* к краям центральной колонки — встык к боковым дивайдерам */
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-xl);
   align-items: stretch;
 }
 
@@ -124,37 +155,41 @@
     transform var(--duration-normal) var(--ease-default);
 }
 
+.cardItem + .cardItem {
+  border-left: var(--divider-width) solid var(--color-divider);
+}
+
 .cardItemIn {
   opacity: 1;
   transform: none;
 }
 
-/* Карточка — без заливки, обводка цвета текста. */
+/* Карточка — без заливки и обводки (границы задают дивайдеры сетки), чёткие углы. */
 .card {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
   width: 100%;
-  padding: var(--space-xl);
-  border: var(--border-size-1) solid var(--color-text-primary);
-  border-radius: var(--radius-md);
+  padding: var(--space-2xl) var(--space-xl);
+  border: none;
+  border-radius: 0;
   background: transparent;
   color: var(--color-text-primary);
   text-decoration: none;
-  transition: transform var(--duration-fast) var(--ease-default);
+  transition: color var(--duration-fast) var(--ease-default);
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
-/* Превью проекта (там, где есть). */
+/* Превью проекта (там, где есть) — чёткие углы. */
 .imageWrap {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   overflow: hidden;
   background: var(--card-img-bg, var(--color-surface));
 }
@@ -172,21 +207,27 @@
   gap: var(--space-xs);
 }
 
+/* Описание карточки — идентично избранным проектам (единые размеры на всей
+   странице «Дизайн»): название крупно/акцентно, подзаголовок средний, роль
+   приглушённая. */
 .cardTitle {
-  font-size: var(--font-size-h3);
+  font-family: var(--ifm-heading-font-family);
+  font-size: var(--font-size-h2);
   font-weight: var(--font-weight-5);
+  line-height: 1.1;
   color: var(--color-text-heading);
 }
 
 .cardSubtitle {
   font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-5);
+  color: var(--color-text-primary);
 }
 
 .cardRole {
   margin-top: var(--space-xs);
   font-size: var(--font-size-small);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 }
 
 .tags {
@@ -196,17 +237,23 @@
   margin-top: auto;
 }
 
-/* Тег-блоб: стеклянная заливка, органичная форма, типографика заголовков.
+/* В описании избранного проекта: теги сгруппированы с текстом (описание
+   центрируется по вертикали, а не растягивается к краям). */
+.featuredInfo .tags {
+  margin-top: var(--space-sm);
+}
+
+/* Тег-блоб: обводка цвета текста, органичная форма, типографика заголовков.
    Форму варьируем через :nth-child — выглядит «рандомно» без JS. */
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
   background: transparent;
   border: var(--border-size-1) solid var(--color-text-primary);
   color: var(--color-text-primary);
   font-family: var(--ifm-heading-font-family);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-small);
   border-radius: 42% 58% 63% 37% / 53% 42% 58% 47%;
 }
 
@@ -222,17 +269,13 @@
   border-radius: 58% 42% 37% 63% / 37% 58% 63% 42%;
 }
 
-
 @media (max-width: 768px) {
-  .showcase {
-    padding: var(--space-3xl) 0;
-  }
-
-  .band {
-    margin-bottom: var(--space-3xl);
-  }
-
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .cardItem + .cardItem {
+    border-left: none;
+    border-top: var(--divider-width) solid var(--color-divider);
   }
 }

@@ -4,24 +4,21 @@ description: Coffee spots map and the Coffee Drinker bot
 hide_table_of_contents: true
 ---
 
-import Footer from '../components/footer/Footer';
 import OutlinedButton from '../components/outlined-button/OutlinedButton';
 import CoffeeMap from '../components/coffee-map/CoffeeMap';
+import HeaderCenter from '../components/site-header/HeaderCenter';
 import '../styles/general.css'
 import '../styles/index.css'
 import '../styles/typography.css'
 
-<div className="body">
-  <div className="coffee-head">
-    <div className="coffee-head__text">
-      <h1 className="hero-heading">A city begins with coffee</h1>
-      <p className="hero-sub">Coffee spots from around the world — via the Coffee Drinker bot</p>
-    </div>
-    <OutlinedButton to="https://t.me/CoffeeDrinker_Bot">
-      <span>Find a café nearby</span>
-    </OutlinedButton>
-  </div>
+<HeaderCenter>
+  <h1 className="hero-heading">A city begins with coffee</h1>
+  <p className="hero-sub">Coffee spots from around the world — via the Coffee Drinker bot</p>
+  <OutlinedButton to="https://t.me/CoffeeDrinker_Bot">
+    <span>Find a café nearby</span>
+  </OutlinedButton>
+</HeaderCenter>
 
+<div className="body">
   <CoffeeMap />
 </div>
-<Footer />

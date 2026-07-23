@@ -7,7 +7,6 @@ image: /img/previews/coffee.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
-import Footer from '../../../components/footer/Footer'
 
 <article>
 <div className="container">
@@ -28,4 +27,3 @@ Coffee Drinker Bot is a personal side project — a Telegram bot for coffee love
 
 </div>
 </article>
-<Footer />

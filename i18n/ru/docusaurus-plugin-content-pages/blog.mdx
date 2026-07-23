@@ -4,16 +4,15 @@ description: Посты из Telegram-канала
 hide_table_of_contents: true
 ---
 
-import Footer from '@site/src/components/footer/Footer';
 import OutlinedButton from '@site/src/components/outlined-button/OutlinedButton';
 import TelegramEmbed from '@site/src/components/telegram-embed/TelegramEmbed';
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter';
 import '@site/src/styles/general.css'
 import '@site/src/styles/index.css'
 import '@site/src/styles/typography.css'
 import '@site/src/styles/blog.css'
 
-<div className="body">
-
+<HeaderCenter>
   <div className="blog-header">
     <img className="blog-cover" src="/img/nomadic-eye-avatar.jpg" alt="Nomadic Eye" />
     <h1 className="blog-name">Nomadic Eye</h1>
@@ -22,6 +21,9 @@ import '@site/src/styles/blog.css'
       <span>Подписаться</span>
     </OutlinedButton>
   </div>
+</HeaderCenter>
+
+<div className="body">
 
 {/* Свежие посты канала Nomadic Eye (@nomadic_eye). */}
   <div className="blog-grid">
@@ -32,11 +34,4 @@ import '@site/src/styles/blog.css'
     <div className="blog-post"><TelegramEmbed post="nomadic_eye/269" /></div>
     <div className="blog-post"><TelegramEmbed post="nomadic_eye/268" /></div>
   </div>
-
-  <div className="blog-cta">
-    <OutlinedButton to="https://t.me/nomadic_eye">
-      <span>В канал</span>
-    </OutlinedButton>
-  </div>
 </div>
-<Footer />

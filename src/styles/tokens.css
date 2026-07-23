@@ -41,6 +41,8 @@
 
   /* Borders */
   --color-border: var(--gray-6);
+  --color-divider: var(--gray-4); /* линии сетки: серый на светлой теме */
+  --divider-width: 0.5px; /* тонкая линия editorial-сетки */
 
   /* Shadows */
   --shadow-tag: var(--shadow-2);
@@ -79,6 +81,7 @@
   --layout-content-max: 47rem;
   --navbar-height: 4rem;
   --hero-padding-top: 10rem;
+  --header-block-height: 18rem; /* единая высота хедер-блока на art/blog/coffee */
 
   /* ===== ICON SIZES ===== */
   --icon-sm: 1.25rem;
@@ -121,6 +124,7 @@
   --color-text-secondary: var(--gray-5);
   --color-text-heading: var(--gray-1);
   --color-border: var(--gray-7);
+  --color-divider: var(--brand-white); /* линии сетки: белый на тёмной теме */
   --shadow-tag: var(--shadow-2);
 }
 
@@ -144,6 +148,7 @@
   --color-text-secondary: var(--brand-pink-1);
   --color-text-heading: var(--brand-white);
   --color-border: var(--brand-pink-2);
+  --color-divider: var(--brand-white); /* линии сетки: белый на розовой теме */
   --shadow-tag: var(--shadow-2);
 }
 
@@ -166,5 +171,6 @@
   --color-text-secondary: var(--gray-4);
   --color-text-heading: var(--brand-white);
   --color-border: var(--brand-blue-3);
+  --color-divider: var(--brand-white); /* линии сетки: белый на синей теме */
   --shadow-tag: var(--shadow-2);
 }

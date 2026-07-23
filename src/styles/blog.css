@@ -30,25 +30,37 @@
   font-size: var(--font-size-base);
 }
 
-/* Бенто-лента постов блога: масонри через CSS-колонки (посты разной высоты
-   красиво укладываются), адаптив по ширине экрана. */
+/* Бенто-лента постов блога: масонри через CSS-колонки. Во всю ширину экрана
+   (до краёв), поверх линий гаттеров (z-index) с фоном темы — линии сетки
+   обрываются на дивайдере под шапкой. Отступы сверху и снизу одинаковые (от
+   верхнего дивайдера до постов = от постов до нижнего дивайдера). */
 .blog-grid {
-  max-width: var(--layout-max-width);
-  margin: 0 auto;
-  padding: var(--space-6) var(--layout-padding) var(--space-8);
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg);
+  /* по бокам — до границ боковых дивайдеров (ширина гаттера), чтобы посты стояли
+     ровно по колонкам сетки; сверху и снизу — равные отступы. */
+  padding: var(--space-8) var(--gutter);
   column-count: 3;
-  column-gap: var(--space-lg);
+  column-gap: var(--space-md); /* небольшой зазор между колонками — посты не слипаются */
 }
 
-/* Каждый пост целиком в одной колонке (не разрывается). */
+/* Каждый пост целиком в одной колонке (не разрывается), с небольшим зазором. */
 .blog-post {
   break-inside: avoid;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .blog-cta {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg);
   text-align: center;
-  padding: 0 var(--layout-padding) var(--space-10);
+  padding: var(--space-8) var(--layout-padding) var(--space-10);
 }
 
 @media (max-width: 1024px) {

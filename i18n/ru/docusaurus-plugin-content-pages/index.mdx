@@ -5,7 +5,7 @@ hide_table_of_contents: true
 ---
 
 import PortfolioShowcase from '@site/src/components/portfolio-showcase/PortfolioShowcase';
-import Footer from '@site/src/components/footer/Footer';
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter';
 import '@site/src/styles/general.css'
 import '@site/src/styles/index.css'
 import '@site/src/styles/typography.css'
@@ -20,14 +20,11 @@ export const items = [
 ];
 
 
-<div className="body">
-  <section className="hero">
-    <div className="hero-content">
-      <h1 className="hero-heading">Привет! Меня зовут Мария, и я занимаюсь дизайном</h1>
-      <p className="hero-sub">сейчас работаю дизайнером в <a href="https://shiftgears.ai" target="_blank" rel="noopener noreferrer">shiftgears.ai</a></p>
-    </div>
-  </section>
+<HeaderCenter>
+  <h1 className="hero-heading">Привет! Меня зовут Мария, и я занимаюсь дизайном</h1>
+  <p className="hero-sub">сейчас работаю дизайнером в <a href="https://shiftgears.ai" target="_blank" rel="noopener noreferrer">shiftgears.ai</a></p>
+</HeaderCenter>
 
+<div className="body">
   <PortfolioShowcase items={items} allLabel="Продуктовый дизайн" />
 </div>
-<Footer />

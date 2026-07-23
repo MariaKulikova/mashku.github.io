@@ -4,24 +4,21 @@ description: Карта кофеен и бот Coffee Drinker
 hide_table_of_contents: true
 ---
 
-import Footer from '@site/src/components/footer/Footer';
 import OutlinedButton from '@site/src/components/outlined-button/OutlinedButton';
 import CoffeeMap from '@site/src/components/coffee-map/CoffeeMap';
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter';
 import '@site/src/styles/general.css'
 import '@site/src/styles/index.css'
 import '@site/src/styles/typography.css'
 
-<div className="body">
-  <div className="coffee-head">
-    <div className="coffee-head__text">
-      <h1 className="hero-heading">Город начинается с кофе</h1>
-      <p className="hero-sub">Кофейни со всего мира — из бота Coffee Drinker</p>
-    </div>
-    <OutlinedButton to="https://t.me/CoffeeDrinker_Bot">
-      <span>Найти кофейню рядом</span>
-    </OutlinedButton>
-  </div>
+<HeaderCenter>
+  <h1 className="hero-heading">Город начинается с кофе</h1>
+  <p className="hero-sub">Кофейни со всего мира — из бота Coffee Drinker</p>
+  <OutlinedButton to="https://t.me/CoffeeDrinker_Bot">
+    <span>Найти кофейню рядом</span>
+  </OutlinedButton>
+</HeaderCenter>
 
+<div className="body">
   <CoffeeMap />
 </div>
-<Footer />

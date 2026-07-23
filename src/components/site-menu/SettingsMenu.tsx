@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import LanguageSwitch from '../language-switch/LanguageSwitch';
 import SoundToggle from '../sound-toggle/SoundToggle';
 import ThemeToggle from '../theme-toggle/ThemeToggle';
-import { useDraggable } from './useDraggable';
 import { useScrolledDown } from './useCollapsed';
 import styles from './site-menu.module.css';
 
@@ -17,27 +16,25 @@ function readLast(): Control {
 }
 
 /**
- * Перетаскиваемая плашка настроек (язык, звук, тема) — как меню, но справа.
- * При скролле вниз схлопывается в блоб с последним использованным контролом;
- * ховер разворачивает обратно. Drag-логика — useDraggable.
+ * Настройки в правой колонке сетки (язык, звук, тема), по центру колонки. При
+ * скролле вниз схлопывается в последний использованный контрол; скролл вверх /
+ * наведение / клик — разворачивают.
  */
 export default function SettingsMenu() {
   const { i18n } = useDocusaurusContext();
   const isRu = i18n.currentLocale === 'ru';
-  const { rootRef, style, onPointerDown, onClickCapture } = useDraggable(
-    'settingsMenuPos',
-    { top: 16, left: 99999 },
-  );
 
-  const scrolled = useScrolledDown();
+  const down = useScrolledDown();
   const [hovered, setHovered] = useState(false);
+  const [forceOpen, setForceOpen] = useState(false);
   const [last, setLast] = useState<Control>('theme');
-  const collapsed = scrolled && !hovered;
+  useEffect(() => {
+    if (down) setForceOpen(false);
+  }, [down]);
+  useEffect(() => setLast(readLast()), []);
+  const collapsed = down && !hovered && !forceOpen;
 
-  // Инициализация из localStorage после монтирования (SSR-safe).
-  React.useEffect(() => setLast(readLast()), []);
-
-  // Запоминаем, какой контрол трогали последним (по data-control обёртки).
+  // Запоминаем последний использованный контрол (по data-control обёртки).
   const rememberUsed = (e: React.MouseEvent) => {
     const el = (e.target as HTMLElement).closest('[data-control]');
     const c = el?.getAttribute('data-control') as Control | null;
@@ -59,19 +56,14 @@ export default function SettingsMenu() {
 
   return (
     <div
-      ref={rootRef as React.RefObject<HTMLDivElement>}
       className={`${styles.menu} ${collapsed ? styles.collapsed : ''}`}
       aria-label={isRu ? 'Настройки' : 'Settings'}
-      style={style}
-      onPointerDown={onPointerDown}
-      onClickCapture={onClickCapture}
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
+      onClick={() => collapsed && setForceOpen(true)}
     >
       {collapsed ? (
-        <div className={styles.blob} onClick={rememberUsed}>
-          {controls[last]}
-        </div>
+        <div className={styles.blob}>{controls[last]}</div>
       ) : (
         <div className={styles.settingsBody} onClick={rememberUsed}>
           <div className={styles.settingsRow}>

@@ -200,7 +200,9 @@ export default function BlueBuddy() {
 
   useEffect(() => {
     const vw = window.innerWidth;
-    const startX = vw / 2 - SIZE / 2;
+    // Стартуем правее центра, чтобы не перекрывать центрированный контент хедера
+    // (заголовок, обложка канала на блоге). Буба всё равно выезжает поверх всего.
+    const startX = Math.min(vw * 0.72 - SIZE / 2, vw - SIZE);
     currentSlide.current = startX;
     targetSlide.current = startX;
 

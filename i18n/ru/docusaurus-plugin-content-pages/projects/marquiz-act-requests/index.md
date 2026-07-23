@@ -7,13 +7,14 @@ image: /img/marquiz/Acts.png
 
 import '@site/src/styles/project-page.css'
 import { ProjectNavigation } from '@site/src/components/navigation-buttons/NavigationButtons'
-import Footer from '@site/src/components/footer/Footer'
+import HeaderCenter from '@site/src/components/site-header/HeaderCenter'
+
+<HeaderCenter>
+  <h1 className="hero-heading">Проектируем сам дизайн-процесс</h1>
+</HeaderCenter>
 
 <article>
 <div className="container">
-
-
-  # Проектируем сам дизайн-процесс
 
 <section className="section-margin">
 
@@ -71,4 +72,3 @@ Marquiz — платформа для квизов и лидогенерации
 
 </div>
 </article>
-<Footer />

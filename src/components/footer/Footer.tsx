@@ -16,8 +16,11 @@ const ICONS: Record<string, FC> = {
 
 export default function Footer() {
   return (
-    <section className={styles.contacts}>
-      <div className={styles.contactsSocials}>
+    <>
+      {/* Отделяем футер от контента горизонтальной линией «в край». */}
+      <hr className="divider" />
+      <section className={styles.contacts}>
+        <div className={styles.contactsSocials}>
         {SOCIAL_LINKS.map(({ label, href }) => {
           const Icon = ICONS[label];
           return (
@@ -30,9 +33,10 @@ export default function Footer() {
             >
               {Icon ? <Icon /> : null}
             </Link>
-          );
-        })}
-      </div>
-    </section>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }

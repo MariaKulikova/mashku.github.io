@@ -7,13 +7,14 @@ image: /img/marquiz/Acts.png
 
 import '../../../styles/project-page.css'
 import { ProjectNavigation } from '../../../components/navigation-buttons/NavigationButtons'
-import Footer from '../../../components/footer/Footer'
+import HeaderCenter from '../../../components/site-header/HeaderCenter'
+
+<HeaderCenter>
+  <h1 className="hero-heading">Designing the design process</h1>
+</HeaderCenter>
 
 <article>
 <div className="container">
-
- 
-  # Designing the design process
 
 <section className="section-margin">
 
@@ -71,4 +72,3 @@ This helped create a shared understanding of the product vision across design te
 
 </div>
 </article>
-<Footer />

@@ -17,16 +17,19 @@ export default function TelegramEmbed({ post }: Props) {
     const el = ref.current;
     if (!el) return;
 
-    // Тёмная тема (dark/blue) → тёмный фон постов (data-dark у виджета).
+    // Тёмный фон постов (data-dark) — только на тёмной теме. На синей/розовой
+    // тёмные карточки выглядели бы чёрными пятнами на цветном фоне.
     const inject = () => {
       const ap = document.documentElement.getAttribute('data-appearance');
-      const dark = ap === 'dark' || ap === 'blue';
+      const dark = ap === 'dark';
       el.innerHTML = '';
       const script = document.createElement('script');
       script.async = true;
       script.src = 'https://telegram.org/js/telegram-widget.js?22';
       script.setAttribute('data-telegram-post', post);
       script.setAttribute('data-width', '100%');
+      // Прячем аватар/имя канала у каждого поста — они уже есть в шапке блога.
+      script.setAttribute('data-userpic', 'false');
       if (dark) script.setAttribute('data-dark', '1');
       el.appendChild(script);
     };

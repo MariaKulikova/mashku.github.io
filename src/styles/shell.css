@@ -1,0 +1,83 @@
+/* Модульная editorial-сетка сайта: боковые колонки-гаттеры под меню + центр под
+   контент, разделённые вертикальными линиями (до низа). Горизонтальные линии между
+   блоками — full-bleed через .divider (см. ниже). Каркас задаётся в src/theme/Root.tsx. */
+
+:root {
+  --gutter: clamp(9rem, 13vw, 14rem); /* ширина боковой колонки-гаттера */
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter);
+  min-height: 100vh;
+}
+
+/* Боковые колонки: меню по центру по горизонтали. */
+.shell-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Вертикальные дивайдеры между колонками (идут на всю высоту грида). */
+.shell-side--left {
+  border-right: var(--divider-width) solid var(--color-divider);
+}
+
+.shell-side--right {
+  border-left: var(--divider-width) solid var(--color-divider);
+}
+
+/* Меню липнет к верху своей колонки при скролле (без перетаскивания);
+   z-index выше полноширинных секций — остаётся видимым поверх них. */
+.shell-side > * {
+  position: sticky;
+  top: 0;
+  padding: var(--space-md);
+  z-index: 1200;
+}
+
+.shell-main {
+  min-width: 0; /* чтобы контент не распирал колонку */
+}
+
+/* Docusaurus оборачивает страницу в .container.margin-vert--lg (верт. маржины
+   2rem через Infima с !important) — внутри сетки это оставляет мёртвое пространство
+   под контентом, из-за которого линии-гаттеры торчат над футером. Обнуляем. */
+.shell-main .container {
+  margin-block: 0 !important;
+}
+
+/* mdx-контент оборачивается в <article> с большим margin-top — внутри сетки это
+   открывает полосу над полноширинным контентом, где видны боковые линии гаттеров.
+   Обнуляем: верхняя граница контента — нижняя линия хедера. */
+.shell-main article {
+  margin-top: 0;
+}
+
+/* Горизонтальный дивайдер «в край»: центр отцентрован во вьюпорте (равные
+   гаттеры), поэтому 100vw-выламывание тянет линию через весь экран. */
+.divider {
+  width: 100vw;
+  margin-block: 0; /* без дефолтных отступов <hr> — блоки встык, вертикальные линии доходят до горизонтальных */
+  margin-inline: calc(50% - 50vw);
+  border: none;
+  border-top: var(--divider-width) solid var(--color-divider);
+}
+
+/* Мобилка: одна колонка, меню сверху/снизу, без вертикальных линий. */
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .shell-side--left,
+  .shell-side--right {
+    border: none;
+    border-bottom: var(--divider-width) solid var(--color-divider);
+  }
+
+  .shell-side > * {
+    position: static;
+  }
+}
