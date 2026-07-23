@@ -33,39 +33,18 @@ function cardTags(item: PortfolioItem) {
  * показываются сразу, дисциплины и теги — прямо на карточках.
  */
 export default function PortfolioShowcase({ items }: Props) {
-  // Активный тег из облака: null → показываем все проекты; иначе — только с этим тегом.
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-
-  const filtered = useMemo(
-    () => (activeTag ? items.filter((i) => cardTags(i).includes(activeTag)) : items),
-    [items, activeTag],
-  );
   // Избранные проекты с крупными обложками (Posmotrim — интерактивный мокап,
   // ShiftGears — обложка-скриншот). Остальные — обычной сеткой.
-  const posmotrim = useMemo(() => filtered.find((i) => i.url.includes('posmotrim')), [filtered]);
-  const shift = useMemo(() => filtered.find((i) => i.url.includes('shiftgears')), [filtered]);
+  const posmotrim = useMemo(() => items.find((i) => i.url.includes('posmotrim')), [items]);
+  const shift = useMemo(() => items.find((i) => i.url.includes('shiftgears')), [items]);
   const rest = useMemo(
-    () => filtered.filter((i) => i !== posmotrim && i !== shift),
-    [filtered, posmotrim, shift],
+    () => items.filter((i) => i !== posmotrim && i !== shift),
+    [items, posmotrim, shift],
   );
 
-  // Облако тегов: частота дисциплин+тегов по всем проектам → размер и насыщенность.
-  const cloud = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const it of items) {
-      for (const t of [...it.disciplines, ...it.tags]) counts.set(t, (counts.get(t) ?? 0) + 1);
-    }
-    const max = Math.max(1, ...[...counts.values()]);
-    return [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([tag, count]) => ({ tag, w: count / max }));
-  }, [items]);
-
-  // Поэтапное появление: облако и контент въезжают по мере скролла.
-  const bandRef = useRef<HTMLDivElement>(null);
+  // Поэтапное появление контента по мере скролла.
   const contentRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLUListElement>(null);
-  const [cloudIn, setCloudIn] = useState(false);
   const [cardsIn, setCardsIn] = useState(false);
 
   useEffect(() => {
@@ -73,21 +52,17 @@ export default function PortfolioShowcase({ items }: Props) {
       typeof window !== 'undefined' &&
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (typeof IntersectionObserver === 'undefined' || reduce) {
-      setCloudIn(true);
       setCardsIn(true);
       return;
     }
     const obs = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (!e.isIntersecting) continue;
-          if (e.target === bandRef.current) setCloudIn(true);
-          if (e.target === contentRef.current) setCardsIn(true);
+          if (e.isIntersecting && e.target === contentRef.current) setCardsIn(true);
         }
       },
       { threshold: 0.12 },
     );
-    if (bandRef.current) obs.observe(bandRef.current);
     if (contentRef.current) obs.observe(contentRef.current);
     return () => obs.disconnect();
   }, []);
@@ -150,30 +125,6 @@ export default function PortfolioShowcase({ items }: Props) {
 
   return (
     <section className={styles.showcase}>
-      {/* Облако тегов — на всю ширину вьюпорта (брейк-аут из колонки .body). */}
-      <div ref={bandRef} className={`${styles.band} ${cloudIn ? styles.bandIn : ''}`}>
-        <div className={styles.cloud} role="group" aria-label="Фильтр по тегам">
-          {cloud.map(({ tag, w }) => {
-            const active = activeTag === tag;
-            return (
-              <button
-                type="button"
-                key={tag}
-                className={`${styles.cloudTag} ${active ? styles.cloudTagActive : ''}`}
-                aria-pressed={active}
-                onClick={() => setActiveTag((cur) => (cur === tag ? null : tag))}
-                style={{
-                  fontSize: `${(0.95 + w * 1.3).toFixed(2)}rem`,
-                  opacity: active || !activeTag ? (0.5 + w * 0.5).toFixed(2) : 0.3,
-                }}
-              >
-                {tag}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       <div ref={contentRef}>
         {/* Избранные проекты крупными обложками. */}
         {posmotrim && renderFeatured(posmotrim, <PosmotrimMockup />, false)}

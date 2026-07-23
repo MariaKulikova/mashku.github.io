@@ -30,20 +30,42 @@
   cursor: pointer;
 }
 
-/* Схлопнутое состояние: компактный блоб. Разворачивается по ховеру. */
+/* Схлопнутое состояние: компактный кружок (с фото). Разворачивается по ховеру. */
 .collapsed {
-  padding: var(--space-sm);
+  padding: var(--space-xs);
   align-items: center;
-  border-radius: 46% 54% 57% 43% / 54% 46% 54% 46%;
+  border-radius: 50%;
 }
 
-/* Точка в схлопнутом левом меню. */
-.dot {
-  width: var(--space-4);
-  height: var(--space-4);
+/* Аватар Марии. В развёрнутом меню — сверху по центру, наполовину над границей. */
+.avatar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  background: var(--color-accent);
+  object-fit: cover;
+  border: var(--border-size-2) solid var(--color-surface);
+  box-shadow: var(--shadow-tag);
+  z-index: 1;
   animation: menu-pop var(--duration-normal) var(--ease-default);
+}
+
+/* Развёрнутое меню: отступ сверху под нижнюю половину аватара. */
+.menu:not(.collapsed) {
+  padding-top: calc(1.25rem + var(--space-md));
+}
+
+/* Схлопнутое меню: аватар — маленький кружок в потоке (вместо точки). */
+.collapsed .avatar {
+  position: static;
+  transform: none;
+  width: var(--space-5);
+  height: var(--space-5);
+  border: none;
+  box-shadow: none;
 }
 
 /* Обёртка последнего использованного контрола в схлопнутой правой плашке. */
@@ -123,7 +145,7 @@
     transition: opacity var(--duration-normal) var(--ease-default);
   }
 
-  .dot,
+  .avatar,
   .blob,
   .list,
   .settingsBody {

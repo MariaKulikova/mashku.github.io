@@ -2,67 +2,8 @@
   padding: var(--space-10) 0;
 }
 
-/* Полоса облака тегов — брейк-аут из колонки .body на всю ширину вьюпорта. */
-.band {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  padding: var(--space-lg) 0;
-  margin-bottom: var(--space-10);
-  /* Появление по мере скролла (класс .bandIn добавляет JS). */
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity var(--duration-slow, 0.6s) var(--ease-default),
-    transform var(--duration-slow, 0.6s) var(--ease-default);
-}
-
-.bandIn {
-  opacity: 1;
-  transform: none;
-}
-
-/* Облако тегов (частота дисциплин+тегов по всем проектам). Размер и насыщенность
-   каждого тега задаются инлайн по данным; типографика — как в заголовках. */
-.cloud {
-  max-width: var(--layout-max-width);
-  margin: 0 auto;
-  padding: 0 var(--layout-padding);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  gap: var(--space-sm) var(--space-lg);
-}
-
-.cloudTag {
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-family: var(--ifm-heading-font-family);
-  font-weight: var(--font-weight-5);
-  line-height: 1.1;
-  color: var(--color-text-primary);
-  transition:
-    transform var(--duration-fast) var(--ease-default),
-    color var(--duration-fast) var(--ease-default),
-    opacity var(--duration-fast) var(--ease-default);
-}
-
-.cloudTag:hover {
-  transform: translateY(-2px);
-  color: var(--color-accent);
-}
-
-/* Активный тег фильтра — акцентным цветом. */
-.cloudTagActive,
-.cloudTagActive:hover {
-  color: var(--color-accent);
-}
-
 @media (prefers-reduced-motion: reduce) {
   /* Без анимаций появления — контент сразу на месте. */
-  .band,
   .cardItem,
   .featured {
     opacity: 1;
@@ -71,13 +12,10 @@
   }
 }
 
-/* Избранный проект: обложка + описание РЯДОМ (flex-ряд). Контент центрируется
-   в пределах ~92rem. mirror → обложка справа, описание слева. */
+/* Избранный проект: обложка + описание РЯДОМ (flex-ряд). Остаётся в колонке .body
+   (единая ширина контента на всех страницах). mirror → обложка справа, описание слева. */
 .featured {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  box-sizing: border-box;
-  padding: var(--space-xl) max(var(--layout-padding), calc((100vw - 92rem) / 2)) var(--space-2xl);
+  padding: var(--space-xl) 0 var(--space-2xl);
   margin-bottom: var(--space-10);
   display: flex;
   flex-wrap: wrap;

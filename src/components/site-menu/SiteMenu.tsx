@@ -28,8 +28,9 @@ export default function SiteMenu() {
   const baseUrl = useBaseUrl('/');
   const { rootRef, style, onPointerDown, onClickCapture } = useDraggable(
     'siteMenuPos',
-    { top: 16, left: 16 },
+    { top: 44, left: 16 }, // с запасом сверху — аватар наполовину выступает над меню
   );
+  const avatarUrl = useBaseUrl('/img/mashku-avatar.jpg');
 
   const scrolled = useScrolledDown();
   const [hovered, setHovered] = useState(false);
@@ -51,9 +52,13 @@ export default function SiteMenu() {
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >
-      {collapsed ? (
-        <span className={styles.dot} aria-hidden="true" />
-      ) : (
+      <img
+        className={styles.avatar}
+        src={avatarUrl}
+        alt={isRu ? 'Мария Куликова' : 'Mariia Kulikova'}
+        draggable={false}
+      />
+      {!collapsed && (
         <ul className={styles.list}>
           {ITEMS.map((item) => {
             const active = item.to === '/' ? rel === '/' : rel.startsWith(item.to);
