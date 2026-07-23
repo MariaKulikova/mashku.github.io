@@ -101,14 +101,20 @@ export default function PortfolioShowcase({ items }: Props) {
     >
       <div className={styles.featuredMockup}>{cover}</div>
       <div className={styles.featuredInfo}>
-        <a
-          className={styles.featuredTitle}
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {item.title}
-        </a>
+        {item.caseStudyUrl ? (
+          <Link className={styles.featuredTitle} to={item.caseStudyUrl}>
+            {item.title}
+          </Link>
+        ) : (
+          <a
+            className={styles.featuredTitle}
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.title}
+          </a>
+        )}
         {item.subtitle && <span className={styles.featuredSubtitle}>{item.subtitle}</span>}
         {item.role && <span className={styles.featuredRole}>{item.role}</span>}
         <span className={styles.tags}>
