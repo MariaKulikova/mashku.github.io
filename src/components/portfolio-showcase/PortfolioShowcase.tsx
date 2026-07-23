@@ -132,7 +132,7 @@ export default function PortfolioShowcase({ items }: Props) {
           renderFeatured(
             shift,
             <div className={styles.scrollCover}>
-              <img src="/img/shiftgears-cover.jpg" alt="Лендинг ShiftGears" loading="lazy" />
+              <img src="/img/shiftgears-landing.jpg" alt="Лендинг ShiftGears" loading="lazy" />
             </div>,
             true,
           )}
