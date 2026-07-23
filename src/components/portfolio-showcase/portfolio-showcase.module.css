@@ -71,14 +71,18 @@
   }
 }
 
-/* Избранный проект: мокап во всю ширину вьюпорта; описание — на отдельной
-   карточке, наезжающей на нижний правый угол мокапа. Контент — в пределах ~92rem. */
+/* Избранный проект: обложка + карточка-описание (наезжает на её угол), рядом —
+   карточка-компаньон. Ряд-флекс; контент центрируется в пределах ~92rem. */
 .featured {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   box-sizing: border-box;
   padding: var(--space-xl) max(var(--layout-padding), calc((100vw - 92rem) / 2)) var(--space-3xl);
   margin-bottom: var(--space-10);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xl);
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -91,23 +95,43 @@
   transform: none;
 }
 
+/* Зеркальный ряд: обложка справа, компаньон слева. */
+.featuredMirror {
+  flex-direction: row-reverse;
+}
+
 .featuredInner {
   position: relative;
-  max-width: 54rem; /* мокап меньше */
-  margin: 0; /* и слева */
+  flex: 1 1 34rem;
+  min-width: 0;
+  max-width: 58rem;
 }
 
 .featuredMockup {
   width: 100%;
 }
 
-/* Карточка-описание наезжает на нижний правый угол мокапа и свисает ниже. */
+/* Карточка-компаньон рядом с обложкой (в свободном месте). */
+.featuredSide {
+  flex: 1 1 17rem;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.featuredSide .card {
+  width: 100%;
+}
+
+/* Карточка-описание наезжает на ВНЕШНИЙ нижний угол обложки и свисает ниже
+   (внешний край — чтобы не пересекаться с карточкой-компаньоном). */
 .featuredCard {
   position: absolute;
-  right: calc(-1 * var(--space-3xl));
-  bottom: calc(-1 * var(--space-9) - var(--space-lg));
+  left: var(--space-lg);
+  right: auto;
+  bottom: calc(-1 * var(--space-2xl));
   z-index: 10; /* выше внутренних карточек мокапа (их z-index 2) */
-  width: min(26rem, 46%);
+  width: min(24rem, 72%);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -159,25 +183,22 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Зеркальный вариант: обложка справа, карточка наезжает на нижний левый угол. */
-.featuredMirror .featuredInner {
-  margin-left: auto;
-  margin-right: 0;
-}
-
+/* Зеркальный вариант: карточка-описание на правом (внешнем) нижнем углу. */
 .featuredMirror .featuredCard {
-  right: auto;
-  left: calc(-1 * var(--space-3xl));
+  left: auto;
+  right: var(--space-lg);
 }
 
-/* На узких экранах карточка не наезжает, а идёт под мокапом. */
+/* На узких экранах ряд складывается в колонку: обложка, компаньон, описание. */
 @media (max-width: 996px) {
-  .featuredInner {
-    max-width: none;
+  .featured,
+  .featuredMirror {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .featuredMockup {
-    width: 100%;
+  .featuredInner {
+    max-width: none;
   }
 
   .featuredCard {

@@ -118,9 +118,30 @@ export default function PortfolioShowcase({ items }: Props) {
     </>
   );
 
-  // Избранный проект: крупная обложка + карточка-описание, наезжающая на её угол.
-  // Клик по названию — на сайт. mirror → обложка справа, карточка слева (ритм).
-  const renderFeatured = (item: PortfolioItem, cover: React.ReactNode, mirror: boolean) => (
+  // Обычная карточка проекта (внутренний кейс — Link, иначе внешняя ссылка).
+  const renderProjectCard = (item: PortfolioItem) => {
+    const internal = Boolean(item.caseStudyUrl);
+    const href = item.caseStudyUrl ?? item.url;
+    return internal ? (
+      <Link className={styles.card} to={href}>
+        {renderCardInner(item)}
+      </Link>
+    ) : (
+      <a className={styles.card} href={href} target="_blank" rel="noopener noreferrer">
+        {renderCardInner(item)}
+      </a>
+    );
+  };
+
+  // Избранный проект: крупная обложка + карточка-описание, наезжающая на её угол,
+  // и рядом (в свободном месте) — карточка-компаньон. Клик по названию — на сайт.
+  // mirror → обложка справа, компаньон слева (ритм).
+  const renderFeatured = (
+    item: PortfolioItem,
+    cover: React.ReactNode,
+    mirror: boolean,
+    companion?: PortfolioItem,
+  ) => (
     <div
       className={`${styles.featured} ${mirror ? styles.featuredMirror : ''} ${cardsIn ? styles.featuredIn : ''}`}
     >
@@ -147,6 +168,7 @@ export default function PortfolioShowcase({ items }: Props) {
           </span>
         </div>
       </div>
+      {companion && <div className={styles.featuredSide}>{renderProjectCard(companion)}</div>}
     </div>
   );
 
@@ -177,8 +199,9 @@ export default function PortfolioShowcase({ items }: Props) {
       </div>
 
       <div ref={contentRef}>
-        {/* Избранные проекты крупными обложками. */}
-        {posmotrim && renderFeatured(posmotrim, <PosmotrimMockup />, false)}
+        {/* Избранные проекты крупными обложками; рядом — карточка-компаньон
+            (Posmotrim + первый из остальных, ShiftGears + второй). Лишние — в сетку. */}
+        {posmotrim && renderFeatured(posmotrim, <PosmotrimMockup />, false, rest[0])}
         {shift &&
           renderFeatured(
             shift,
@@ -189,37 +212,23 @@ export default function PortfolioShowcase({ items }: Props) {
               loading="lazy"
             />,
             true,
+            rest[1],
           )}
 
-        {/* Остальные проекты — сетка карточек (с обводкой). */}
-        <ul ref={gridRef} className={styles.grid}>
-          {rest.map((item, idx) => {
-            const internal = Boolean(item.caseStudyUrl);
-            const href = item.caseStudyUrl ?? item.url;
-            return (
+        {/* Оставшиеся проекты (если есть) — обычной сеткой. */}
+        {rest.length > 2 && (
+          <ul ref={gridRef} className={styles.grid}>
+            {rest.slice(2).map((item, idx) => (
               <li
                 key={item.title}
                 className={`${styles.cardItem} ${cardsIn ? styles.cardItemIn : ''}`}
                 style={{ transitionDelay: cardsIn ? `${idx * 70}ms` : '0ms' }}
               >
-                {internal ? (
-                  <Link className={styles.card} to={href}>
-                    {renderCardInner(item)}
-                  </Link>
-                ) : (
-                  <a
-                    className={styles.card}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {renderCardInner(item)}
-                  </a>
-                )}
+                {renderProjectCard(item)}
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );
