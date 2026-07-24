@@ -96,8 +96,10 @@
     min-height 0.28s var(--ease-default);
 }
 
-/* Заголовок страницы в развёрнутом хедере — крупный (hero). */
-.center :global(.hero-heading) {
+/* Заголовок страницы в развёрнутом хедере — крупный (hero). Единый размер для
+   всех страниц: обычный заголовок (.hero-heading) и имя канала блога (.blog-name). */
+.center :global(.hero-heading),
+.center :global(.blog-name) {
   font-size: var(--font-size-hero);
   margin: 0;
   transition: font-size 0.28s var(--ease-default);
@@ -161,8 +163,9 @@
   pointer-events: none;
 }
 
-/* В полоске — заголовок мельче, подзаголовок свёрнут. */
-.collapsed .center :global(.hero-heading) {
+/* В полоске — заголовок мельче (единый размер на всех страницах). */
+.collapsed .center :global(.hero-heading),
+.collapsed .center :global(.blog-name) {
   font-size: var(--font-size-h3);
 }
 
