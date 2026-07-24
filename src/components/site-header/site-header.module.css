@@ -90,6 +90,10 @@
      наполнение (с кнопкой/без, шапка канала) не меняет высоту. Главная — своё
      правило ниже, схлопнутое — тоже. */
   min-height: var(--header-block-height);
+  /* Плавная смена высоты при схлопывании/разворачивании — без резкого скачка. */
+  transition:
+    padding 0.28s var(--ease-default),
+    min-height 0.28s var(--ease-default);
 }
 
 /* Заголовок страницы в развёрнутом хедере — крупный (hero). */
@@ -162,10 +166,10 @@
   font-size: var(--font-size-h3);
 }
 
+/* Скрытые в полоске элементы убираем из потока (иначе 0-высотный элемент всё
+   равно добавляет flex-gap и раздувает отступ до кнопки). */
 .collapsed .center :global(.hero-sub) {
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
+  display: none;
 }
 
 /* Blog: шапка канала в центре хедера — компактнее; при схлопывании прячем
@@ -195,8 +199,5 @@
 
 .collapsed .center :global(.blog-cover),
 .collapsed .center :global(.blog-bio) {
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-  overflow: hidden;
+  display: none;
 }

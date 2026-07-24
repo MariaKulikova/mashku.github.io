@@ -8,13 +8,13 @@ const DOME =
   'M2.5 18a9.5 9.5 0 0 1 19 0H2.5Zm6-4.4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z';
 
 const BuddyOnIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
     <path fillRule="evenodd" clipRule="evenodd" d={DOME} />
   </svg>
 );
 
 const BuddyOffIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 24 24">
+  <svg width="36" height="36" viewBox="0 0 24 24">
     <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d={DOME} />
     <line x1="3" y1="4" x2="21" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
