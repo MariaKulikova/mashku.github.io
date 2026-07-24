@@ -150,9 +150,24 @@
   gap: 0;
 }
 
+/* В свернутом хедере заголовок и кнопка — в одну строку: заголовок по левому
+   краю, кнопка по правому (развёрнутое состояние не меняется). */
 .collapsed .center {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: var(--space-md);
   padding: var(--space-sm) var(--space-lg);
   min-height: 0; /* в полоске фикс. высота не нужна */
+}
+
+/* Блог: имя канала слева, «Подписаться» справа — тоже строкой. */
+.collapsed .center :global(.blog-header) {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 /* Навигация плавно сворачивается (высота хедера следует за ней). */
