@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -18,20 +18,15 @@ const NAV: Item[] = [
   { to: '/coffee', en: 'Coffee', ru: 'Кофе' },
 ];
 
-type Control = 'lang' | 'sound' | 'buddy' | 'theme';
-const LAST_KEY = 'settingsMenuLast';
-function readLast(): Control {
-  if (typeof localStorage === 'undefined') return 'theme';
-  const v = localStorage.getItem(LAST_KEY);
-  return v === 'lang' || v === 'sound' || v === 'buddy' || v === 'theme' ? v : 'theme';
-}
-
 /**
- * Единый липкий хедер во всю ширину: слева фото + навигация, в центре — заголовок
- * страницы (телепортируется сюда через HeaderCenter из mdx), справа — настройки.
- * При скролле вниз сжимается в полоску (фото | заголовок(+кнопка) | последняя
- * иконка) с линией снизу и по бокам; скролл вверх / наведение / клик разворачивают.
- * Центр — портал-цель с id="site-header-center".
+ * Хедер из ДВУХ частей (чтобы контент не «прыгал» при схлопывании):
+ *  1. Развёрнутый хедер — в потоке (position: relative), уезжает вверх вместе с
+ *     контентом. Фото+навигация, заголовок страницы (портал), настройки.
+ *  2. Липкая полоска — отдельный position: fixed элемент, появляется, когда
+ *     развёрнутый хедер уехал (порог ≈ его высота). Вне потока → её появление
+ *     ничего не сдвигает. Фото (клик — наверх), заголовок (портал), тема.
+ *
+ * Заголовок в оба места кладёт HeaderCenter (два портала).
  */
 export default function SiteHeader() {
   const { i18n } = useDocusaurusContext();
@@ -40,112 +35,79 @@ export default function SiteHeader() {
   const baseUrl = useBaseUrl('/');
   const avatarUrl = useBaseUrl('/img/mashku-avatar.jpg');
 
-  // Путь без префикса локали (для active-пунктов, .home и порога схлопывания).
   const path = location.pathname.replace(/\/+$/, '') || '/';
   const base = baseUrl.replace(/\/+$/, '');
   const rel = (path.startsWith(base) ? path.slice(base.length) : path) || '/';
   const isHome = rel === '/';
+  const isActive = (to: string) => (to === '/' ? rel === '/' : rel.startsWith(to));
 
-  // Небольшой порог схлопывания — хедер схлопывается почти сразу, поэтому проект
-  // почти не уходит под развёрнутый hero.
-  const scrolled = useScrolledDown(48, 12);
-  // Клик по схлопнутому меню разворачивает хедер; следующий (осознанный) скролл
-  // возвращает обычную логику. Кулдаун после клика игнорирует событие скролла от
-  // scroll-anchoring (хедер растёт на ~184px и браузер поджимает scrollY).
-  const [forceOpen, setForceOpen] = useState(false);
-  const [last, setLast] = useState<Control>('theme');
-  const clickCooldown = useRef(0);
-  useEffect(() => {
-    const onScroll = () => {
-      if (performance.now() > clickCooldown.current) setForceOpen(false);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-  useEffect(() => setLast(readLast()), []);
-  const collapsed = scrolled && !forceOpen;
+  // Порог показа полоски ≈ высота развёрнутого хедера минус высота полоски: она
+  // появляется ровно тогда, когда хедер уехал за верх.
+  const barVisible = useScrolledDown(isHome ? 548 : 228, 12);
 
-  const expandOnClick = () => {
-    if (collapsed) {
-      setForceOpen(true);
-      clickCooldown.current = performance.now() + 450;
-    }
-  };
+  const scrollTop = () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const rememberUsed = (e: React.MouseEvent) => {
-    const el = (e.target as HTMLElement).closest('[data-control]');
-    const c = el?.getAttribute('data-control') as Control | null;
-    if (c) {
-      setLast(c);
-      try {
-        localStorage.setItem(LAST_KEY, c);
-      } catch {
-        /* localStorage недоступен — не критично */
-      }
-    }
-  };
-  const controls: Record<Control, React.ReactNode> = {
-    lang: <LanguageSwitch />,
-    sound: <SoundToggle />,
-    buddy: <BuddyToggle />,
-    theme: <ThemeToggle />,
-  };
+  const nav = (
+    <ul className={styles.nav}>
+      {NAV.map((item) => (
+        <li key={item.to}>
+          <Link
+            to={item.to}
+            className={`${styles.link} ${isActive(item.to) ? styles.active : ''}`}
+            draggable={false}
+          >
+            {isRu ? item.ru : item.en}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
-    <header
-      className={`${styles.header} ${collapsed ? styles.collapsed : ''} ${isHome ? styles.home : ''}`}
-      onClick={expandOnClick}
-    >
-      <div className={`${styles.side} ${styles.left}`}>
-        <img
-          className={styles.avatar}
-          src={avatarUrl}
-          alt={isRu ? 'Мария Куликова' : 'Mariia Kulikova'}
-          draggable={false}
-        />
-        <ul className={styles.nav}>
-          {NAV.map((item) => {
-            const active = item.to === '/' ? rel === '/' : rel.startsWith(item.to);
-            return (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  className={`${styles.link} ${active ? styles.active : ''}`}
-                  draggable={false}
-                >
-                  {isRu ? item.ru : item.en}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      {/* Центр — портал-цель для заголовка страницы (HeaderCenter из mdx). */}
-      <div className={styles.center} id="site-header-center" />
-
-      <div className={`${styles.side} ${styles.right}`} onClick={rememberUsed}>
-        {collapsed ? (
-          <div className={styles.blob}>{controls[last]}</div>
-        ) : (
+    <>
+      {/* 1. Развёрнутый хедер — в потоке, уезжает вместе с контентом. */}
+      <header className={`${styles.header} ${isHome ? styles.home : ''}`}>
+        <div className={`${styles.side} ${styles.left}`}>
+          <img
+            className={styles.avatar}
+            src={avatarUrl}
+            alt={isRu ? 'Мария Куликова' : 'Mariia Kulikova'}
+            draggable={false}
+          />
+          {nav}
+        </div>
+        <div className={styles.center} id="site-header-center" />
+        <div className={`${styles.side} ${styles.right}`}>
           <div className={styles.settingsBody}>
             <div className={styles.settingsRow}>
-              <span data-control="lang">
-                <LanguageSwitch />
-              </span>
-              <span data-control="sound">
-                <SoundToggle />
-              </span>
+              <LanguageSwitch />
+              <SoundToggle />
             </div>
-            <span data-control="theme">
-              <ThemeToggle />
-            </span>
-            <span data-control="buddy">
-              <BuddyToggle />
-            </span>
+            <ThemeToggle />
+            <BuddyToggle />
           </div>
-        )}
+        </div>
+      </header>
+
+      {/* 2. Липкая полоска — fixed, появляется когда хедер уехал. */}
+      <div
+        className={`${styles.bar} ${barVisible ? styles.barVisible : ''}`}
+        aria-hidden={!barVisible}
+      >
+        <button
+          type="button"
+          className={styles.barAvatar}
+          onClick={scrollTop}
+          aria-label={isRu ? 'Наверх' : 'To top'}
+        >
+          <img src={avatarUrl} alt="" draggable={false} />
+        </button>
+        <div className={styles.barCenter} id="site-header-bar-center" />
+        <div className={styles.barSettings}>
+          <ThemeToggle />
+        </div>
       </div>
-    </header>
+    </>
   );
 }

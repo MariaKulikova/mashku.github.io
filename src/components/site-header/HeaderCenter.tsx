@@ -2,15 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
- * Телепортирует заголовок страницы в центр липкого хедера (#site-header-center).
- * Используется в mdx каждой страницы вместо инлайнового hero/заголовка, чтобы
- * контент и i18n оставались в mdx, а раскладку задавал глобальный SiteHeader.
- * Рендерится только на клиенте (портал), поэтому на сервере — null.
+ * Телепортирует заголовок страницы В ДВА места: центр развёрнутого хедера
+ * (#site-header-center) и центр липкой полоски (#site-header-bar-center). Оба
+ * получают один и тот же контент из mdx; развёрнутый показывает крупно, полоска —
+ * компактно (стили — в site-header.module.css). Рендерится только на клиенте.
  */
 export default function HeaderCenter({ children }: { children: React.ReactNode }) {
-  const [el, setEl] = useState<HTMLElement | null>(null);
+  const [targets, setTargets] = useState<{ expanded: HTMLElement | null; bar: HTMLElement | null }>(
+    { expanded: null, bar: null },
+  );
   useEffect(() => {
-    setEl(document.getElementById('site-header-center'));
+    setTargets({
+      expanded: document.getElementById('site-header-center'),
+      bar: document.getElementById('site-header-bar-center'),
+    });
   }, []);
-  return el ? createPortal(children, el) : null;
+  return (
+    <>
+      {targets.expanded && createPortal(children, targets.expanded)}
+      {targets.bar && createPortal(children, targets.bar)}
+    </>
+  );
 }

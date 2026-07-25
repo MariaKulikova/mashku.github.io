@@ -1,9 +1,14 @@
-/* Единый липкий хедер: 3 колонки по ширине гаттеров (совпадают с .shell), боковые
-   и нижний дивайдеры. При схлопывании превращается в компактную полоску. */
+/* ============================================================================
+   Хедер из двух частей:
+   1) .header  — развёрнутый, В ПОТОКЕ (relative), уезжает вверх вместе с
+      контентом. Высота постоянна → потоку ничего не сдвигает (нет «прыжка»).
+   2) .bar     — липкая полоска, fixed, появляется когда хедер уехал. Вне потока.
+   ============================================================================ */
+
+/* ===== 1. Развёрнутый хедер (в потоке) ===== */
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 1200;
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter);
   background: var(--color-bg);
@@ -43,13 +48,6 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
-  /* Плавное схлопывание: анимируем высоту навигации — высота хедера следует за ней. */
-  max-height: 20rem;
-  opacity: 1;
-  overflow: hidden;
-  transition:
-    max-height 0.28s var(--ease-default),
-    opacity 0.2s var(--ease-default);
 }
 
 .link {
@@ -60,8 +58,6 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-5);
   text-decoration: none;
-  /* Только цвет; фон/блоб применяются мгновенно, иначе на первом кадре анимации
-     фона мелькает прямоугольник до применения сложного border-radius. */
   transition: color var(--duration-fast) var(--ease-default);
 }
 
@@ -77,7 +73,8 @@
   border-radius: 42% 58% 63% 37% / 53% 42% 58% 47%;
 }
 
-/* Центр — заголовок страницы (портал из mdx), по центру по вертикали. */
+/* Центр — заголовок страницы (портал из mdx), по центру по вертикали. Высота
+   фиксирована (единая на art/blog/coffee), контент центрируется. */
 .center {
   display: flex;
   flex-direction: column;
@@ -86,36 +83,19 @@
   text-align: center;
   gap: var(--space-md);
   padding-inline: var(--space-lg);
-  /* Высоту задаём явно и анимируем ОДНИМ свойством — контент центрируется внутри
-     и его изменения (размер шрифта, скрытие подзаголовка) не дёргают высоту.
-     Единая высота на art/blog/coffee; главная и свернутое — правила ниже. */
   height: var(--header-block-height);
   overflow: hidden;
-  transition: height 0.28s var(--ease-default);
 }
 
-/* Заголовок страницы в развёрнутом хедере — крупный (hero). Единый размер для
-   всех страниц: обычный заголовок (.hero-heading) и имя канала блога (.blog-name). */
 .center :global(.hero-heading),
 .center :global(.blog-name) {
   font-size: var(--font-size-hero);
   margin: 0;
-  transition: font-size 0.28s var(--ease-default);
 }
 
-/* Главная («Дизайн») — более высокая hero-секция в развёрнутом состоянии. */
-.home:not(.collapsed) .center {
+/* Главная («Дизайн») — более высокая hero-секция. */
+.home .center {
   height: var(--header-hero-height);
-}
-
-/* Подзаголовок плавно сворачивается при схлопывании. */
-.center :global(.hero-sub) {
-  max-height: 6rem;
-  opacity: 1;
-  overflow: hidden;
-  transition:
-    max-height 0.28s var(--ease-default),
-    opacity 0.2s var(--ease-default);
 }
 
 .settingsBody {
@@ -131,69 +111,7 @@
   gap: var(--space-md);
 }
 
-.blob {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ===== Схлопнутое состояние: компактная полоска ===== */
-.collapsed {
-  cursor: pointer;
-}
-
-.collapsed .side {
-  padding: var(--space-sm) var(--space-md);
-  justify-content: center;
-  gap: 0;
-}
-
-.collapsed .center {
-  height: var(--header-bar-height);
-  padding-inline: var(--space-lg);
-}
-
-/* В свернутом хедере с кнопкой (прямым потомком — coffee) — заголовок и кнопка
-   в одну строку: заголовок слева, кнопка справа. Без кнопки заголовок остаётся
-   по центру (базовое поведение .center). Развёрнутое состояние не меняется. */
-.collapsed .center:has(> a) {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-  gap: var(--space-md);
-}
-
-/* Блог: имя канала слева, «Подписаться» справа — тоже строкой. */
-.collapsed .center :global(.blog-header) {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-/* Навигация плавно сворачивается (высота хедера следует за ней). */
-.collapsed .nav {
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-  pointer-events: none;
-}
-
-/* В полоске — заголовок мельче (единый размер на всех страницах). */
-.collapsed .center :global(.hero-heading),
-.collapsed .center :global(.blog-name) {
-  font-size: var(--font-size-h3);
-}
-
-/* Скрытые в полоске элементы убираем из потока (иначе 0-высотный элемент всё
-   равно добавляет flex-gap и раздувает отступ до кнопки). */
-.collapsed .center :global(.hero-sub) {
-  display: none;
-}
-
-/* Blog: шапка канала в центре хедера — компактнее; при схлопывании прячем
-   обложку и био, оставляем имя + кнопку. */
+/* Blog: шапка канала в центре хедера — компактный кружок. */
 .center :global(.blog-header) {
   padding: 0;
   gap: var(--space-xs);
@@ -202,22 +120,98 @@
 .center :global(.blog-cover) {
   width: 3.5rem;
   height: 3.5rem;
-  opacity: 1;
-  transition:
-    max-height 0.28s var(--ease-default),
-    opacity 0.2s var(--ease-default);
 }
 
-.center :global(.blog-bio) {
-  max-height: 6rem;
+/* ===== 2. Липкая полоска (fixed, появляется при скролле) ===== */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter);
+  height: var(--header-bar-height);
+  background: var(--color-bg);
+  border-bottom: var(--divider-width) solid var(--color-divider);
+  /* Скрыта по умолчанию — выезжает сверху при появлении. */
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition:
+    opacity 0.2s var(--ease-default),
+    transform 0.2s var(--ease-default);
+}
+
+.barVisible {
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Фото в полоске — кнопка «наверх». Слева, с вертикальным дивайдером. */
+.barAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-right: var(--divider-width) solid var(--color-divider);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.barAvatar img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Настройки в полоске (тема) — справа, с вертикальным дивайдером. */
+.barSettings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: var(--divider-width) solid var(--color-divider);
+}
+
+/* Центр полоски — компактный заголовок (портал из mdx). Без кнопки — по центру;
+   с кнопкой (coffee) — заголовок слева, кнопка справа. */
+.barCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-inline: var(--space-lg);
   overflow: hidden;
-  transition:
-    max-height 0.28s var(--ease-default),
-    opacity 0.2s var(--ease-default);
 }
 
-.collapsed .center :global(.blog-cover),
-.collapsed .center :global(.blog-bio) {
+.barCenter :global(.hero-heading),
+.barCenter :global(.blog-name) {
+  font-size: var(--font-size-h3);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Подзаголовок, обложку и био канала в полоске не показываем. */
+.barCenter :global(.hero-sub),
+.barCenter :global(.blog-cover),
+.barCenter :global(.blog-bio) {
   display: none;
+}
+
+/* Есть кнопка (прямой потомок — coffee) → заголовок слева, кнопка справа. */
+.barCenter:has(> a) {
+  justify-content: space-between;
+}
+
+/* Блог: имя канала слева, «Подписаться» справа. */
+.barCenter :global(.blog-header) {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-md);
 }
