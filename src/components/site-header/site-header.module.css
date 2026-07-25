@@ -207,11 +207,13 @@
   justify-content: space-between;
 }
 
-/* Блог: имя канала слева, «Подписаться» справа. */
+/* Блог: имя канала слева, «Подписаться» справа. Обнуляем большой padding шапки
+   (из blog.css), иначе имя и кнопку выпихивает за пределы 60px-полоски. */
 .barCenter :global(.blog-header) {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   gap: var(--space-md);
+  padding: 0;
 }
