@@ -85,15 +85,13 @@
   justify-content: center;
   text-align: center;
   gap: var(--space-md);
-  padding: var(--space-6) var(--space-lg);
-  /* Единая высота хедер-блока на art/blog/coffee: контент центрируется, разное
-     наполнение (с кнопкой/без, шапка канала) не меняет высоту. Главная — своё
-     правило ниже, схлопнутое — тоже. */
-  min-height: var(--header-block-height);
-  /* Плавная смена высоты при схлопывании/разворачивании — без резкого скачка. */
-  transition:
-    padding 0.28s var(--ease-default),
-    min-height 0.28s var(--ease-default);
+  padding-inline: var(--space-lg);
+  /* Высоту задаём явно и анимируем ОДНИМ свойством — контент центрируется внутри
+     и его изменения (размер шрифта, скрытие подзаголовка) не дёргают высоту.
+     Единая высота на art/blog/coffee; главная и свернутое — правила ниже. */
+  height: var(--header-block-height);
+  overflow: hidden;
+  transition: height 0.28s var(--ease-default);
 }
 
 /* Заголовок страницы в развёрнутом хедере — крупный (hero). Единый размер для
@@ -107,7 +105,7 @@
 
 /* Главная («Дизайн») — более высокая hero-секция в развёрнутом состоянии. */
 .home:not(.collapsed) .center {
-  padding-block: calc(var(--space-10) * 2);
+  height: var(--header-hero-height);
 }
 
 /* Подзаголовок плавно сворачивается при схлопывании. */
@@ -150,16 +148,20 @@
   gap: 0;
 }
 
-/* В свернутом хедере заголовок и кнопка — в одну строку: заголовок по левому
-   краю, кнопка по правому (развёрнутое состояние не меняется). */
 .collapsed .center {
+  height: var(--header-bar-height);
+  padding-inline: var(--space-lg);
+}
+
+/* В свернутом хедере с кнопкой (прямым потомком — coffee) — заголовок и кнопка
+   в одну строку: заголовок слева, кнопка справа. Без кнопки заголовок остаётся
+   по центру (базовое поведение .center). Развёрнутое состояние не меняется. */
+.collapsed .center:has(> a) {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   text-align: left;
   gap: var(--space-md);
-  padding: var(--space-sm) var(--space-lg);
-  min-height: 0; /* в полоске фикс. высота не нужна */
 }
 
 /* Блог: имя канала слева, «Подписаться» справа — тоже строкой. */

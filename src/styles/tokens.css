@@ -82,6 +82,8 @@
   --navbar-height: 4rem;
   --hero-padding-top: 10rem;
   --header-block-height: 18rem; /* единая высота хедер-блока на art/blog/coffee */
+  --header-hero-height: 38rem; /* высокий hero-хедер на главной */
+  --header-bar-height: 3.75rem; /* свернутая полоска хедера */
 
   /* ===== ICON SIZES ===== */
   --icon-sm: 1.25rem;
