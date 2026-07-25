@@ -40,7 +40,15 @@ export default function SiteHeader() {
   const baseUrl = useBaseUrl('/');
   const avatarUrl = useBaseUrl('/img/mashku-avatar.jpg');
 
-  const scrolled = useScrolledDown();
+  // Путь без префикса локали (для active-пунктов, .home и порога схлопывания).
+  const path = location.pathname.replace(/\/+$/, '') || '/';
+  const base = baseUrl.replace(/\/+$/, '');
+  const rel = (path.startsWith(base) ? path.slice(base.length) : path) || '/';
+  const isHome = rel === '/';
+
+  // Небольшой порог схлопывания — хедер схлопывается почти сразу, поэтому проект
+  // почти не уходит под развёрнутый hero.
+  const scrolled = useScrolledDown(48, 12);
   // Клик по схлопнутому меню разворачивает хедер; следующий (осознанный) скролл
   // возвращает обычную логику. Кулдаун после клика игнорирует событие скролла от
   // scroll-anchoring (хедер растёт на ~184px и браузер поджимает scrollY).
@@ -64,10 +72,6 @@ export default function SiteHeader() {
     }
   };
 
-  const path = location.pathname.replace(/\/+$/, '') || '/';
-  const base = baseUrl.replace(/\/+$/, '');
-  const rel = (path.startsWith(base) ? path.slice(base.length) : path) || '/';
-
   const rememberUsed = (e: React.MouseEvent) => {
     const el = (e.target as HTMLElement).closest('[data-control]');
     const c = el?.getAttribute('data-control') as Control | null;
@@ -89,7 +93,7 @@ export default function SiteHeader() {
 
   return (
     <header
-      className={`${styles.header} ${collapsed ? styles.collapsed : ''} ${rel === '/' ? styles.home : ''}`}
+      className={`${styles.header} ${collapsed ? styles.collapsed : ''} ${isHome ? styles.home : ''}`}
       onClick={expandOnClick}
     >
       <div className={`${styles.side} ${styles.left}`}>
